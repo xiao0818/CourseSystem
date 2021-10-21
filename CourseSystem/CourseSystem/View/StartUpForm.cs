@@ -13,6 +13,7 @@ namespace CourseSystem
     public partial class StartUpForm : Form
     {
         Model _model;
+        CourseManagementFormPresentationModel _courseManagementFormPresentationModel;
         CourseSelectingFormPresentationModel _courseSelectingFormPresentationModel;
         CourseSelectionResultFormPresentationModel _courseSelectionResultFormPresentationModel;
         StartUpFormPresentationModel _startUpFormPresentationModel;
@@ -21,11 +22,12 @@ namespace CourseSystem
         public StartUpForm()
         {
             _model = new Model();
+            _courseManagementFormPresentationModel = new CourseManagementFormPresentationModel(_model);
             _courseSelectingFormPresentationModel = new CourseSelectingFormPresentationModel(_model);
             _courseSelectionResultFormPresentationModel = new CourseSelectionResultFormPresentationModel(_model);
             _startUpFormPresentationModel = new StartUpFormPresentationModel();
             _courseSelectingForm = new CourseSelectingForm(this, _courseSelectingFormPresentationModel, _courseSelectionResultFormPresentationModel);
-            _courseManagementForm = new CourseManagementForm(this);
+            _courseManagementForm = new CourseManagementForm(this, _courseManagementFormPresentationModel);
             InitializeComponent();
         }
 

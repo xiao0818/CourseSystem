@@ -38,26 +38,24 @@ namespace CourseSystem
             this._comingSoonLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this._comingSoonLabel.Font = new System.Drawing.Font("DFKai-SB", 72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this._comingSoonLabel.Location = new System.Drawing.Point(0, 0);
-            this._comingSoonLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this._comingSoonLabel.Name = "_comingSoonLabel";
-            this._comingSoonLabel.Size = new System.Drawing.Size(1200, 675);
+            this._comingSoonLabel.Size = new System.Drawing.Size(800, 450);
             this._comingSoonLabel.TabIndex = 0;
             this._comingSoonLabel.Text = "Coming Soon";
             this._comingSoonLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // CourseManagementForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1200, 675);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this._comingSoonLabel);
             this.Enabled = false;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "CourseManagementForm";
-            this.Text = "QQ";
+            this.Text = "課程管理";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ClosingFormCourseManagementForm);
             this.ResumeLayout(false);
 
