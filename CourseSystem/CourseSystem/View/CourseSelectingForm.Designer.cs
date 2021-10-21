@@ -32,7 +32,7 @@ namespace CourseSystem
         {
             this._submitButton = new System.Windows.Forms.Button();
             this._checkButton = new System.Windows.Forms.Button();
-            this._courseTabControl = new System.Windows.Forms.TabControl();
+            this._selectingTabControl = new System.Windows.Forms.TabControl();
             this._computerScience3TabPage = new System.Windows.Forms.TabPage();
             this._computerScience3DataGridView = new System.Windows.Forms.DataGridView();
             this._computerScience3CheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -85,7 +85,7 @@ namespace CourseSystem
             this._electronicEngineering3ANote = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this._electronicEngineering3AAttachStudent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this._electronicEngineering3AExperiment = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this._courseTabControl.SuspendLayout();
+            this._selectingTabControl.SuspendLayout();
             this._computerScience3TabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._computerScience3DataGridView)).BeginInit();
             this._electronicEngineer3ATabPage.SuspendLayout();
@@ -117,15 +117,15 @@ namespace CourseSystem
             // 
             // _courseTabControl
             // 
-            this._courseTabControl.Controls.Add(this._computerScience3TabPage);
-            this._courseTabControl.Controls.Add(this._electronicEngineer3ATabPage);
-            this._courseTabControl.Dock = System.Windows.Forms.DockStyle.Top;
-            this._courseTabControl.Location = new System.Drawing.Point(0, 0);
-            this._courseTabControl.Margin = new System.Windows.Forms.Padding(4);
-            this._courseTabControl.Name = "_courseTabControl";
-            this._courseTabControl.SelectedIndex = 0;
-            this._courseTabControl.Size = new System.Drawing.Size(1200, 543);
-            this._courseTabControl.TabIndex = 3;
+            this._selectingTabControl.Controls.Add(this._computerScience3TabPage);
+            this._selectingTabControl.Controls.Add(this._electronicEngineer3ATabPage);
+            this._selectingTabControl.Dock = System.Windows.Forms.DockStyle.Top;
+            this._selectingTabControl.Location = new System.Drawing.Point(0, 0);
+            this._selectingTabControl.Margin = new System.Windows.Forms.Padding(4);
+            this._selectingTabControl.Name = "_courseTabControl";
+            this._selectingTabControl.SelectedIndex = 0;
+            this._selectingTabControl.Size = new System.Drawing.Size(1200, 543);
+            this._selectingTabControl.TabIndex = 3;
             // 
             // _computerScience3TabPage
             // 
@@ -724,7 +724,7 @@ namespace CourseSystem
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1200, 675);
-            this.Controls.Add(this._courseTabControl);
+            this.Controls.Add(this._selectingTabControl);
             this.Controls.Add(this._checkButton);
             this.Controls.Add(this._submitButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -735,7 +735,7 @@ namespace CourseSystem
             this.Text = "選課";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ClosingFormCourseSelectingForm);
             this.Load += new System.EventHandler(this.LoadSelectCourseForm);
-            this._courseTabControl.ResumeLayout(false);
+            this._selectingTabControl.ResumeLayout(false);
             this._computerScience3TabPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this._computerScience3DataGridView)).EndInit();
             this._electronicEngineer3ATabPage.ResumeLayout(false);
@@ -747,7 +747,7 @@ namespace CourseSystem
         #endregion
         private System.Windows.Forms.Button _submitButton;
         private System.Windows.Forms.Button _checkButton;
-        private System.Windows.Forms.TabControl _courseTabControl;
+        private System.Windows.Forms.TabControl _selectingTabControl;
         private System.Windows.Forms.TabPage _computerScience3TabPage;
         private System.Windows.Forms.DataGridView _computerScience3DataGridView;
         private System.Windows.Forms.TabPage _electronicEngineer3ATabPage;

@@ -191,62 +191,42 @@
           <AnalysisFileManager>
             <AnalysisFiles>
               <AnalysisFile>
-                <RelativePath>CourseInfo.cs</RelativePath>
+                <RelativePath>Class\CourseInfo.cs</RelativePath>
                 <ProjectName>CourseSystem</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
-                <RelativePath>CourseInfoHeaderText.cs</RelativePath>
+                <RelativePath>Class\CourseInfoHeaderText.cs</RelativePath>
                 <ProjectName>CourseSystem</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
-                <RelativePath>CourseManagementForm.cs</RelativePath>
-                <ProjectName>CourseSystem</ProjectName>
-                <AnalysisFileType>ViewOrController</AnalysisFileType>
-              </AnalysisFile>
-              <AnalysisFile>
-                <RelativePath>CourseManagementForm.Designer.cs</RelativePath>
-                <ProjectName>CourseSystem</ProjectName>
-                <AnalysisFileType>Designer</AnalysisFileType>
-              </AnalysisFile>
-              <AnalysisFile>
-                <RelativePath>CourseSelectingForm.cs</RelativePath>
-                <ProjectName>CourseSystem</ProjectName>
-                <AnalysisFileType>ViewOrController</AnalysisFileType>
-              </AnalysisFile>
-              <AnalysisFile>
-                <RelativePath>CourseSelectingForm.Designer.cs</RelativePath>
-                <ProjectName>CourseSystem</ProjectName>
-                <AnalysisFileType>Designer</AnalysisFileType>
-              </AnalysisFile>
-              <AnalysisFile>
-                <RelativePath>CourseSelectingFormPresentationModel.cs</RelativePath>
-                <ProjectName>CourseSystem</ProjectName>
-                <AnalysisFileType>Model</AnalysisFileType>
-              </AnalysisFile>
-              <AnalysisFile>
-                <RelativePath>CourseSelectionResultForm.cs</RelativePath>
-                <ProjectName>CourseSystem</ProjectName>
-                <AnalysisFileType>ViewOrController</AnalysisFileType>
-              </AnalysisFile>
-              <AnalysisFile>
-                <RelativePath>CourseSelectionResultForm.Designer.cs</RelativePath>
-                <ProjectName>CourseSystem</ProjectName>
-                <AnalysisFileType>Designer</AnalysisFileType>
-              </AnalysisFile>
-              <AnalysisFile>
-                <RelativePath>CourseSelectionResultFormPresentationModel.cs</RelativePath>
-                <ProjectName>CourseSystem</ProjectName>
-                <AnalysisFileType>Model</AnalysisFileType>
-              </AnalysisFile>
-              <AnalysisFile>
-                <RelativePath>Department.cs</RelativePath>
+                <RelativePath>Class\Department.cs</RelativePath>
                 <ProjectName>CourseSystem</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
                 <RelativePath>Model.cs</RelativePath>
+                <ProjectName>CourseSystem</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>PresentationModel\CourseManagementFormPresentationModel.cs</RelativePath>
+                <ProjectName>CourseSystem</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>PresentationModel\CourseSelectingFormPresentationModel.cs</RelativePath>
+                <ProjectName>CourseSystem</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>PresentationModel\CourseSelectionResultFormPresentationModel.cs</RelativePath>
+                <ProjectName>CourseSystem</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>PresentationModel\StartUpFormPresentationModel.cs</RelativePath>
                 <ProjectName>CourseSystem</ProjectName>
                 <AnalysisFileType>Model</AnalysisFileType>
               </AnalysisFile>
@@ -271,23 +251,48 @@
                 <AnalysisFileType>Designer</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
-                <RelativePath>StartUpForm.cs</RelativePath>
+                <RelativePath>View\CourseManagementForm.cs</RelativePath>
                 <ProjectName>CourseSystem</ProjectName>
                 <AnalysisFileType>ViewOrController</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
-                <RelativePath>StartUpForm.Designer.cs</RelativePath>
+                <RelativePath>View\CourseManagementForm.Designer.cs</RelativePath>
                 <ProjectName>CourseSystem</ProjectName>
                 <AnalysisFileType>Designer</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
-                <RelativePath>StartUpFormPresentationModel.cs</RelativePath>
+                <RelativePath>View\CourseSelectingForm.cs</RelativePath>
                 <ProjectName>CourseSystem</ProjectName>
-                <AnalysisFileType>Model</AnalysisFileType>
+                <AnalysisFileType>ViewOrController</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>View\CourseSelectingForm.Designer.cs</RelativePath>
+                <ProjectName>CourseSystem</ProjectName>
+                <AnalysisFileType>Designer</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>View\CourseSelectionResultForm.cs</RelativePath>
+                <ProjectName>CourseSystem</ProjectName>
+                <AnalysisFileType>ViewOrController</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>View\CourseSelectionResultForm.Designer.cs</RelativePath>
+                <ProjectName>CourseSystem</ProjectName>
+                <AnalysisFileType>Designer</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>View\StartUpForm.cs</RelativePath>
+                <ProjectName>CourseSystem</ProjectName>
+                <AnalysisFileType>ViewOrController</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>View\StartUpForm.Designer.cs</RelativePath>
+                <ProjectName>CourseSystem</ProjectName>
+                <AnalysisFileType>Designer</AnalysisFileType>
               </AnalysisFile>
             </AnalysisFiles>
           </AnalysisFileManager>
-          <ProductionLoc>2594</ProductionLoc>
+          <ProductionLoc>2612</ProductionLoc>
           <TestLoc>0</TestLoc>
         </CodeReview>
       </Data>
