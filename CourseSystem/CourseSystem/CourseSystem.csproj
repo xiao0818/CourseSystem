@@ -50,46 +50,46 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CourseInfo.cs" />
-    <Compile Include="CourseInfoHeaderText.cs" />
-    <Compile Include="CourseManagementForm.cs">
+    <Compile Include="Class\CourseInfo.cs" />
+    <Compile Include="Class\CourseInfoHeaderText.cs" />
+    <Compile Include="View\CourseManagementForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CourseManagementForm.Designer.cs">
+    <Compile Include="View\CourseManagementForm.Designer.cs">
       <DependentUpon>CourseManagementForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="CourseSelectingFormPresentationModel.cs" />
-    <Compile Include="CourseSelectionResultForm.cs">
+    <Compile Include="PresentationModel\CourseSelectingFormPresentationModel.cs" />
+    <Compile Include="View\CourseSelectionResultForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CourseSelectionResultForm.Designer.cs">
+    <Compile Include="View\CourseSelectionResultForm.Designer.cs">
       <DependentUpon>CourseSelectionResultForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="CourseSelectionResultFormPresentationModel.cs" />
-    <Compile Include="Department.cs" />
+    <Compile Include="PresentationModel\CourseSelectionResultFormPresentationModel.cs" />
+    <Compile Include="Class\Department.cs" />
     <Compile Include="Model.cs" />
-    <Compile Include="CourseSelectingForm.cs">
+    <Compile Include="View\CourseSelectingForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CourseSelectingForm.Designer.cs">
+    <Compile Include="View\CourseSelectingForm.Designer.cs">
       <DependentUpon>CourseSelectingForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StartUpForm.cs">
+    <Compile Include="View\StartUpForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="StartUpForm.Designer.cs">
+    <Compile Include="View\StartUpForm.Designer.cs">
       <DependentUpon>StartUpForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="StartUpFormPresentationModel.cs" />
-    <EmbeddedResource Include="CourseSelectingForm.resx">
+    <Compile Include="PresentationModel\StartUpFormPresentationModel.cs" />
+    <EmbeddedResource Include="View\CourseSelectingForm.resx">
       <DependentUpon>CourseSelectingForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CourseManagementForm.resx">
+    <EmbeddedResource Include="View\CourseManagementForm.resx">
       <DependentUpon>CourseManagementForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CourseSelectionResultForm.resx">
+    <EmbeddedResource Include="View\CourseSelectionResultForm.resx">
       <DependentUpon>CourseSelectionResultForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -101,7 +101,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="StartUpForm.resx">
+    <EmbeddedResource Include="View\StartUpForm.resx">
       <DependentUpon>StartUpForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
