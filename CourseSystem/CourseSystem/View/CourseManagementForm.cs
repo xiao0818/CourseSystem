@@ -28,5 +28,33 @@ namespace CourseSystem
             e.Cancel = true;
             Hide();
         }
+
+        //LoadCourseManagementForm
+        private void LoadCourseManagementForm(object sender, EventArgs e)
+        {
+            AddRowsInClassTimeDataGridView();
+        }
+
+        //AddRowsInClassTimeDataGridView
+        private void AddRowsInClassTimeDataGridView()
+        {
+            string classTimeChar = "1234N56789ABCD";
+            foreach (char timeChar in classTimeChar)
+            {
+                DataGridViewRow row = new DataGridViewRow();
+                for (int index = 0; index < 7; index++)
+                {
+                    row.Cells.Add(new DataGridViewCheckBoxCell
+                    {
+                        Value = false
+                    });
+                }
+                row.Cells.Insert(0, new DataGridViewTextBoxCell
+                {
+                    Value = timeChar
+                });
+                _classTimeDataGridView.Rows.Add(row);
+            }
+        }
     }
 }
