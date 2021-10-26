@@ -31,5 +31,26 @@ namespace CourseSystem
                 return _model.GetElectronicEngineering3CourseList;
             }
         }
+
+        //Get
+        public List<CourseInfo> GetSelectedCourseList
+        {
+            get
+            {
+                return _model.GetSelectedCourseList;
+            }
+        }
+
+        //GetCourseInfoBySelectedIndex
+        public CourseInfo GetCourseInfoBySelectedIndex(int selectedIndex)
+        {
+            return _model.GetCourseInfoBySelectedIndex(selectedIndex);
+        }
+
+        //GetCourseDepartmentBySelectedIndex
+        public int GetCourseDepartmentBySelectedIndex(int selectedIndex)
+        {
+            return _model.GetCourseDepartmentBySelectedIndex(selectedIndex);
+        }
     }
 }

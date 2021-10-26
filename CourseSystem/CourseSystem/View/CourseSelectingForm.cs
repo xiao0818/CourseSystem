@@ -199,6 +199,7 @@ namespace CourseSystem
                 _courseSelectionResultForm.LoadCourseResultDataGridView();
                 _courseSelectingFormPresentationModel.ResetSubmitButton();
                 _submitButton.Enabled = _courseSelectingFormPresentationModel.IsSubmitButtonEnabled;
+                
             }
             else
             {

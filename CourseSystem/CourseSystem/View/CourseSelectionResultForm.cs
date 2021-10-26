@@ -45,7 +45,6 @@ namespace CourseSystem
             {
                 _courseSelectionResultFormPresentationModel.RemoveCourseFromSelectionResult(e.RowIndex);
             }
-            _courseResultDataGridView.Rows.Clear();
             LoadCourseResultDataGridView();
             _courseSelectingForm.LoadForm();
         }

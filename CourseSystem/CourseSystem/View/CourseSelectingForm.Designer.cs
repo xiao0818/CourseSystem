@@ -57,7 +57,7 @@ namespace CourseSystem
             this._computerScience3Language = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this._computerScience3Outline = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this._computerScience3Note = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this._computerScience3ttachStudent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this._computerScience3attachStudent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this._computerScience3Experiment = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this._electronicEngineer3TabPage = new System.Windows.Forms.TabPage();
             this._electronicEngineering3DataGridView = new System.Windows.Forms.DataGridView();
@@ -168,7 +168,7 @@ namespace CourseSystem
             this._computerScience3Language,
             this._computerScience3Outline,
             this._computerScience3Note,
-            this._computerScience3ttachStudent,
+            this._computerScience3attachStudent,
             this._computerScience3Experiment});
             this._computerScience3DataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this._computerScience3DataGridView.GridColor = System.Drawing.SystemColors.ControlDarkDark;
@@ -405,13 +405,13 @@ namespace CourseSystem
             // 
             // _computerScience3ttachStudent
             // 
-            this._computerScience3ttachStudent.DataPropertyName = "attachStudent";
-            this._computerScience3ttachStudent.HeaderText = "隨班附讀";
-            this._computerScience3ttachStudent.MinimumWidth = 8;
-            this._computerScience3ttachStudent.Name = "_computerScience3ttachStudent";
-            this._computerScience3ttachStudent.ReadOnly = true;
-            this._computerScience3ttachStudent.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this._computerScience3ttachStudent.Width = 61;
+            this._computerScience3attachStudent.DataPropertyName = "attachStudent";
+            this._computerScience3attachStudent.HeaderText = "隨班附讀";
+            this._computerScience3attachStudent.MinimumWidth = 8;
+            this._computerScience3attachStudent.Name = "_computerScience3ttachStudent";
+            this._computerScience3attachStudent.ReadOnly = true;
+            this._computerScience3attachStudent.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this._computerScience3attachStudent.Width = 61;
             // 
             // _computerScience3Experiment
             // 
@@ -774,7 +774,7 @@ namespace CourseSystem
         private System.Windows.Forms.DataGridViewTextBoxColumn _computerScience3Language;
         private System.Windows.Forms.DataGridViewTextBoxColumn _computerScience3Outline;
         private System.Windows.Forms.DataGridViewTextBoxColumn _computerScience3Note;
-        private System.Windows.Forms.DataGridViewTextBoxColumn _computerScience3ttachStudent;
+        private System.Windows.Forms.DataGridViewTextBoxColumn _computerScience3attachStudent;
         private System.Windows.Forms.DataGridViewTextBoxColumn _computerScience3Experiment;
         private System.Windows.Forms.DataGridViewCheckBoxColumn _electronicEngineering3CheckBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn _electronicEngineering3Number;

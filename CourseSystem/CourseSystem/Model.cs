@@ -27,6 +27,7 @@ namespace CourseSystem
             SortAll();
             _courseTabDictionary = new Dictionary<string, int>();
         }
+
         //爬蟲網頁資料
         private List<CourseInfo> GetCourseInfo(string web)
         {
@@ -243,6 +244,40 @@ namespace CourseSystem
                 }
             }
             return sameTimeMessage;
+        }
+
+        //GetCourseInfoBySelectedIndex(_courseListBox.SelectedIndex)
+        public CourseInfo GetCourseInfoBySelectedIndex(int selectedIndex)
+        {
+            if (selectedIndex < _computerScience3CourseList.Count)
+            {
+                return _computerScience3CourseList[selectedIndex];
+            }
+            else if (selectedIndex - _computerScience3CourseList.Count < _electronicEngineering3CourseList.Count)
+            {
+                return _electronicEngineering3CourseList[selectedIndex - _computerScience3CourseList.Count];
+            }
+            else
+            {
+                return _selectedCourseList[selectedIndex - _computerScience3CourseList.Count - _electronicEngineering3CourseList.Count];
+            }
+        }
+
+        //GetCourseDepartmentBySelectedIndex(_courseListBox.SelectedIndex)
+        public int GetCourseDepartmentBySelectedIndex(int selectedIndex)
+        {
+            if (selectedIndex < _computerScience3CourseList.Count)
+            {
+                return (int)Department.ComputerScience3;
+            }
+            else if (selectedIndex - _computerScience3CourseList.Count < _electronicEngineering3CourseList.Count)
+            {
+                return (int)Department.ElectronicEngineering3;
+            }
+            else
+            {
+                return _courseTabDictionary[_selectedCourseList[selectedIndex - _computerScience3CourseList.Count - _electronicEngineering3CourseList.Count].Number];
+            }
         }
     }
 }
