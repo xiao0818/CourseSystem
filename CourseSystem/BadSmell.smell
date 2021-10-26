@@ -189,9 +189,9 @@
             <Smell>
               <Id>1</Id>
               <SmellType>Long method(過長函式)</SmellType>
-              <HashCode>LongMethod.CourseManagementForm.LoadContext.22int department;CourseInfo course;</HashCode>
-              <Severity>Warning</Severity>
-              <Weight>22</Weight>
+              <HashCode>LongMethod.CourseManagementForm.LoadContext.38int department;CourseInfo course;</HashCode>
+              <Severity>Red</Severity>
+              <Weight>38</Weight>
               <Project>CourseSystem</Project>
               <File>CourseManagementForm.cs</File>
               <Line>91</Line>
@@ -309,7 +309,7 @@
               </AnalysisFile>
             </AnalysisFiles>
           </AnalysisFileManager>
-          <ProductionLoc>3247</ProductionLoc>
+          <ProductionLoc>3263</ProductionLoc>
           <TestLoc>0</TestLoc>
         </CodeReview>
       </Data>

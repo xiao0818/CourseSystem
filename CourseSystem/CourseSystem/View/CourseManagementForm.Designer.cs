@@ -33,14 +33,14 @@ namespace CourseSystem
             this._courseManagementTabPage = new System.Windows.Forms.TabPage();
             this._classDataGroupBox = new System.Windows.Forms.GroupBox();
             this._classTimeDataGridView = new System.Windows.Forms.DataGridView();
-            this._classTimeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this._classTime0Column = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this._classTime1Column = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this._classTime2Column = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this._classTime3Column = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this._classTime4Column = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this._classTime5Column = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this._classTime6Column = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.classTimeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.classTime0Column = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.classTime1Column = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.classTime2Column = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.classTime3Column = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.classTime4Column = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.classTime5Column = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.classTime6Column = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this._courseSelectionComboBox = new System.Windows.Forms.ComboBox();
             this._courseSelectionLabel = new System.Windows.Forms.Label();
             this._classTimeSelectionComboBox = new System.Windows.Forms.ComboBox();
@@ -139,15 +139,14 @@ namespace CourseSystem
             this._classTimeDataGridView.AllowUserToAddRows = false;
             this._classTimeDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this._classTimeDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this._classTimeColumn,
-            this._classTime0Column,
-            this._classTime1Column,
-            this._classTime2Column,
-            this._classTime3Column,
-            this._classTime4Column,
-            this._classTime5Column,
-            this._classTime6Column});
-            this._classTimeDataGridView.Enabled = false;
+            this.classTimeColumn,
+            this.classTime0Column,
+            this.classTime1Column,
+            this.classTime2Column,
+            this.classTime3Column,
+            this.classTime4Column,
+            this.classTime5Column,
+            this.classTime6Column});
             this._classTimeDataGridView.Location = new System.Drawing.Point(8, 152);
             this._classTimeDataGridView.Name = "_classTimeDataGridView";
             this._classTimeDataGridView.RowHeadersVisible = false;
@@ -157,59 +156,59 @@ namespace CourseSystem
             // 
             // classTimeColumn
             // 
-            this._classTimeColumn.HeaderText = "節數";
-            this._classTimeColumn.Name = "classTimeColumn";
-            this._classTimeColumn.ReadOnly = true;
-            this._classTimeColumn.Width = 53;
+            this.classTimeColumn.HeaderText = "節數";
+            this.classTimeColumn.Name = "classTimeColumn";
+            this.classTimeColumn.ReadOnly = true;
+            this.classTimeColumn.Width = 53;
             // 
             // classTime0Column
             // 
-            this._classTime0Column.HeaderText = "日";
-            this._classTime0Column.Name = "classTime0Column";
-            this._classTime0Column.ReadOnly = true;
-            this._classTime0Column.Width = 75;
+            this.classTime0Column.HeaderText = "日";
+            this.classTime0Column.Name = "classTime0Column";
+            this.classTime0Column.ReadOnly = true;
+            this.classTime0Column.Width = 75;
             // 
             // classTime1Column
             // 
-            this._classTime1Column.HeaderText = "一";
-            this._classTime1Column.Name = "classTime1Column";
-            this._classTime1Column.ReadOnly = true;
-            this._classTime1Column.Width = 75;
+            this.classTime1Column.HeaderText = "一";
+            this.classTime1Column.Name = "classTime1Column";
+            this.classTime1Column.ReadOnly = true;
+            this.classTime1Column.Width = 75;
             // 
             // classTime2Column
             // 
-            this._classTime2Column.HeaderText = "二";
-            this._classTime2Column.Name = "classTime2Column";
-            this._classTime2Column.ReadOnly = true;
-            this._classTime2Column.Width = 75;
+            this.classTime2Column.HeaderText = "二";
+            this.classTime2Column.Name = "classTime2Column";
+            this.classTime2Column.ReadOnly = true;
+            this.classTime2Column.Width = 75;
             // 
             // classTime3Column
             // 
-            this._classTime3Column.HeaderText = "三";
-            this._classTime3Column.Name = "classTime3Column";
-            this._classTime3Column.ReadOnly = true;
-            this._classTime3Column.Width = 75;
+            this.classTime3Column.HeaderText = "三";
+            this.classTime3Column.Name = "classTime3Column";
+            this.classTime3Column.ReadOnly = true;
+            this.classTime3Column.Width = 75;
             // 
             // classTime4Column
             // 
-            this._classTime4Column.HeaderText = "四";
-            this._classTime4Column.Name = "classTime4Column";
-            this._classTime4Column.ReadOnly = true;
-            this._classTime4Column.Width = 75;
+            this.classTime4Column.HeaderText = "四";
+            this.classTime4Column.Name = "classTime4Column";
+            this.classTime4Column.ReadOnly = true;
+            this.classTime4Column.Width = 75;
             // 
             // classTime5Column
             // 
-            this._classTime5Column.HeaderText = "五";
-            this._classTime5Column.Name = "classTime5Column";
-            this._classTime5Column.ReadOnly = true;
-            this._classTime5Column.Width = 75;
+            this.classTime5Column.HeaderText = "五";
+            this.classTime5Column.Name = "classTime5Column";
+            this.classTime5Column.ReadOnly = true;
+            this.classTime5Column.Width = 75;
             // 
             // classTime6Column
             // 
-            this._classTime6Column.HeaderText = "六";
-            this._classTime6Column.Name = "classTime6Column";
-            this._classTime6Column.ReadOnly = true;
-            this._classTime6Column.Width = 75;
+            this.classTime6Column.HeaderText = "六";
+            this.classTime6Column.Name = "classTime6Column";
+            this.classTime6Column.ReadOnly = true;
+            this.classTime6Column.Width = 75;
             // 
             // _courseSelectionComboBox
             // 
@@ -254,53 +253,53 @@ namespace CourseSystem
             this._classTimeSelectionLabel.TabIndex = 19;
             this._classTimeSelectionLabel.Text = "時數(*)";
             // 
-            // _noteTextBox
+            // _courseNoteTextBox
             // 
             this._courseNoteTextBox.Enabled = false;
             this._courseNoteTextBox.Location = new System.Drawing.Point(43, 96);
-            this._courseNoteTextBox.Name = "_noteTextBox";
+            this._courseNoteTextBox.Name = "_courseNoteTextBox";
             this._courseNoteTextBox.Size = new System.Drawing.Size(563, 22);
             this._courseNoteTextBox.TabIndex = 18;
             // 
-            // _noteLabel
+            // _courseNoteLabel
             // 
             this._courseNoteLabel.AutoSize = true;
             this._courseNoteLabel.Location = new System.Drawing.Point(8, 99);
-            this._courseNoteLabel.Name = "_noteLabel";
+            this._courseNoteLabel.Name = "_courseNoteLabel";
             this._courseNoteLabel.Size = new System.Drawing.Size(29, 12);
             this._courseNoteLabel.TabIndex = 17;
             this._courseNoteLabel.Text = "備註";
             // 
-            // _languageTextBox
+            // _courseLanguageTextBox
             // 
             this._courseLanguageTextBox.Enabled = false;
             this._courseLanguageTextBox.Location = new System.Drawing.Point(365, 68);
-            this._courseLanguageTextBox.Name = "_languageTextBox";
+            this._courseLanguageTextBox.Name = "_courseLanguageTextBox";
             this._courseLanguageTextBox.Size = new System.Drawing.Size(241, 22);
             this._courseLanguageTextBox.TabIndex = 16;
             // 
-            // _languageLabel
+            // _courseLanguageLabel
             // 
             this._courseLanguageLabel.AutoSize = true;
             this._courseLanguageLabel.Location = new System.Drawing.Point(306, 71);
-            this._courseLanguageLabel.Name = "_languageLabel";
+            this._courseLanguageLabel.Name = "_courseLanguageLabel";
             this._courseLanguageLabel.Size = new System.Drawing.Size(53, 12);
             this._courseLanguageLabel.TabIndex = 15;
             this._courseLanguageLabel.Text = "授課語言";
             // 
-            // _teachingAssistantTextBox
+            // _courseTeachingAssistantTextBox
             // 
             this._courseTeachingAssistantTextBox.Enabled = false;
             this._courseTeachingAssistantTextBox.Location = new System.Drawing.Point(65, 68);
-            this._courseTeachingAssistantTextBox.Name = "_teachingAssistantTextBox";
+            this._courseTeachingAssistantTextBox.Name = "_courseTeachingAssistantTextBox";
             this._courseTeachingAssistantTextBox.Size = new System.Drawing.Size(235, 22);
             this._courseTeachingAssistantTextBox.TabIndex = 14;
             // 
-            // _teachingAssistantLabel
+            // _courseTeachingAssistantLabel
             // 
             this._courseTeachingAssistantLabel.AutoSize = true;
             this._courseTeachingAssistantLabel.Location = new System.Drawing.Point(6, 73);
-            this._courseTeachingAssistantLabel.Name = "_teachingAssistantLabel";
+            this._courseTeachingAssistantLabel.Name = "_courseTeachingAssistantLabel";
             this._courseTeachingAssistantLabel.Size = new System.Drawing.Size(53, 12);
             this._courseTeachingAssistantLabel.TabIndex = 13;
             this._courseTeachingAssistantLabel.Text = "教學助理";
@@ -330,53 +329,53 @@ namespace CourseSystem
             this._courseTypeSelectionLabel.TabIndex = 11;
             this._courseTypeSelectionLabel.Text = "修(*)";
             // 
-            // _teacherTextBox
+            // _courseTeacherTextBox
             // 
             this._courseTeacherTextBox.Enabled = false;
             this._courseTeacherTextBox.Location = new System.Drawing.Point(365, 42);
-            this._courseTeacherTextBox.Name = "_teacherTextBox";
+            this._courseTeacherTextBox.Name = "_courseTeacherTextBox";
             this._courseTeacherTextBox.Size = new System.Drawing.Size(100, 22);
             this._courseTeacherTextBox.TabIndex = 10;
             // 
-            // _teacherLabel
+            // _courseTeacherLabel
             // 
             this._courseTeacherLabel.AutoSize = true;
             this._courseTeacherLabel.Location = new System.Drawing.Point(316, 45);
-            this._courseTeacherLabel.Name = "_teacherLabel";
+            this._courseTeacherLabel.Name = "_courseTeacherLabel";
             this._courseTeacherLabel.Size = new System.Drawing.Size(43, 12);
             this._courseTeacherLabel.TabIndex = 9;
             this._courseTeacherLabel.Text = "教師(*)";
             // 
-            // _creditTextBox
+            // _courseCreditTextBox
             // 
             this._courseCreditTextBox.Enabled = false;
             this._courseCreditTextBox.Location = new System.Drawing.Point(210, 42);
-            this._courseCreditTextBox.Name = "_creditTextBox";
+            this._courseCreditTextBox.Name = "_courseCreditTextBox";
             this._courseCreditTextBox.Size = new System.Drawing.Size(100, 22);
             this._courseCreditTextBox.TabIndex = 8;
             // 
-            // _creditLabel
+            // _courseCreditLabel
             // 
             this._courseCreditLabel.AutoSize = true;
             this._courseCreditLabel.Location = new System.Drawing.Point(161, 45);
-            this._courseCreditLabel.Name = "_creditLabel";
+            this._courseCreditLabel.Name = "_courseCreditLabel";
             this._courseCreditLabel.Size = new System.Drawing.Size(43, 12);
             this._courseCreditLabel.TabIndex = 7;
             this._courseCreditLabel.Text = "學分(*)";
             // 
-            // _stageTextBox
+            // _courseStageTextBox
             // 
             this._courseStageTextBox.Enabled = false;
             this._courseStageTextBox.Location = new System.Drawing.Point(55, 42);
-            this._courseStageTextBox.Name = "_stageTextBox";
+            this._courseStageTextBox.Name = "_courseStageTextBox";
             this._courseStageTextBox.Size = new System.Drawing.Size(100, 22);
             this._courseStageTextBox.TabIndex = 6;
             // 
-            // _stageLabel
+            // _courseStageLabel
             // 
             this._courseStageLabel.AutoSize = true;
             this._courseStageLabel.Location = new System.Drawing.Point(6, 45);
-            this._courseStageLabel.Name = "_stageLabel";
+            this._courseStageLabel.Name = "_courseStageLabel";
             this._courseStageLabel.Size = new System.Drawing.Size(43, 12);
             this._courseStageLabel.TabIndex = 5;
             this._courseStageLabel.Text = "階段(*)";
@@ -543,5 +542,13 @@ namespace CourseSystem
         private System.Windows.Forms.DataGridViewCheckBoxColumn _classTime4Column;
         private System.Windows.Forms.DataGridViewCheckBoxColumn _classTime5Column;
         private System.Windows.Forms.DataGridViewCheckBoxColumn _classTime6Column;
+        private System.Windows.Forms.DataGridViewTextBoxColumn classTimeColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn classTime0Column;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn classTime1Column;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn classTime2Column;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn classTime3Column;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn classTime4Column;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn classTime5Column;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn classTime6Column;
     }
 }

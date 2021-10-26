@@ -61,6 +61,7 @@ namespace CourseSystem
         private void AddRowsInClassTimeDataGridView()
         {
             string classTimeChar = "1234N56789ABCD";
+            _classTimeDataGridView.Rows.Clear();
             foreach (char timeChar in classTimeChar)
             {
                 DataGridViewRow row = new DataGridViewRow();
@@ -109,7 +110,27 @@ namespace CourseSystem
             {
                 _courseSelectionComboBox.Text = "電子三甲";
             }
+            AddRowsInClassTimeDataGridView();
+            foreach (Tuple<int, string> time in course.GetCourseClassTime())
+            {
+                _classTimeDataGridView.Rows[TranslateClassTimeToIndex(time.Item2)].Cells[time.Item1 + 1].Value = Enabled;
+            }
+        }
 
+        //TranslateClassTimeToIndex
+        private int TranslateClassTimeToIndex(string time)
+        {
+            int count = 0;
+            string classTimeChar = "1234N56789ABCD";
+            foreach (char timeChar in classTimeChar)
+            {
+                if (time == timeChar.ToString())
+                {
+                    return count;
+                }
+                count++;
+            }
+            return -1;
         }
     }
 }
