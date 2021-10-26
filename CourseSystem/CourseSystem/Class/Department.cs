@@ -9,6 +9,6 @@ namespace CourseSystem
     public enum Department
     {
         ComputerScience3,
-        ElectronicEngineering3A
+        ElectronicEngineering3
     }
 }

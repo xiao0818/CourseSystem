@@ -32,9 +32,9 @@ namespace CourseSystem
         }
 
         //remove
-        public void RemoveFromElectronicEngineering3A(int index)
+        public void RemoveFromElectronicEngineering3(int index)
         {
-            _model.RemoveFromElectronicEngineering3A(index);
+            _model.RemoveFromElectronicEngineering3(index);
         }
         
         //set

@@ -32,7 +32,16 @@ namespace CourseSystem
         //LoadCourseManagementForm
         private void LoadCourseManagementForm(object sender, EventArgs e)
         {
+            LoadListBox();
             AddRowsInClassTimeDataGridView();
+        }
+
+        //LoadListBox
+        private void LoadListBox()
+        {
+            List<CourseInfo> _computerScience3CourseList = _courseManagementFormPresentationModel.GetComputerScience3CourseList;
+            List<CourseInfo> _ElectronicEngineering3CourseList = _courseManagementFormPresentationModel.GetElectronicEngineering3CourseList;
+            ////////////////////////////////
         }
 
         //AddRowsInClassTimeDataGridView

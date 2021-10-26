@@ -12,7 +12,7 @@ namespace CourseSystem
         const string WEB_COMPUTER_SCIENCE_3 = "https://aps.ntut.edu.tw/course/tw/Subj.jsp?format=-4&year=110&sem=1&code=2433";
         const string WEB_ELECTRONIC_ENGINEERING_3_A = "https://aps.ntut.edu.tw/course/tw/Subj.jsp?format=-4&year=110&sem=1&code=2423";
         private List<CourseInfo> _computerScience3CourseList;
-        private List<CourseInfo> _electronicEngineering3ACourseList;
+        private List<CourseInfo> _electronicEngineering3CourseList;
         private List<CourseInfo> _selectedCourseList;
         private Dictionary<string, int> _courseTabDictionary;
         const string STRUCTURE = "//body/table";
@@ -22,7 +22,7 @@ namespace CourseSystem
         public Model()
         {
             _computerScience3CourseList = GetCourseInfo(WEB_COMPUTER_SCIENCE_3);
-            _electronicEngineering3ACourseList = GetCourseInfo(WEB_ELECTRONIC_ENGINEERING_3_A);
+            _electronicEngineering3CourseList = GetCourseInfo(WEB_ELECTRONIC_ENGINEERING_3_A);
             _selectedCourseList = new List<CourseInfo>();
             SortAll();
             _courseTabDictionary = new Dictionary<string, int>();
@@ -103,7 +103,7 @@ namespace CourseSystem
         {
             get
             {
-                return _electronicEngineering3ACourseList;
+                return _electronicEngineering3CourseList;
             }
         }
 
@@ -131,10 +131,10 @@ namespace CourseSystem
         }
 
         //remove
-        public void RemoveFromElectronicEngineering3A(int index)
+        public void RemoveFromElectronicEngineering3(int index)
         {
-            _courseTabDictionary.Add(_electronicEngineering3ACourseList[index].Number, (int)Department.ElectronicEngineering3A);
-            _electronicEngineering3ACourseList.RemoveAt(index);
+            _courseTabDictionary.Add(_electronicEngineering3CourseList[index].Number, (int)Department.ElectronicEngineering3);
+            _electronicEngineering3CourseList.RemoveAt(index);
         }
 
         //remove
@@ -144,9 +144,9 @@ namespace CourseSystem
             {
                 _computerScience3CourseList.Add(_selectedCourseList[index]);
             }
-            if (_courseTabDictionary[_selectedCourseList[index].Number] == (int)Department.ElectronicEngineering3A)
+            if (_courseTabDictionary[_selectedCourseList[index].Number] == (int)Department.ElectronicEngineering3)
             {
-                _electronicEngineering3ACourseList.Add(_selectedCourseList[index]);
+                _electronicEngineering3CourseList.Add(_selectedCourseList[index]);
             }
             _courseTabDictionary.Remove(_selectedCourseList[index].Number);
             _selectedCourseList.RemoveAt(index);
@@ -176,7 +176,7 @@ namespace CourseSystem
             {
                 return x.Number.CompareTo(GetNumber(y));
             });
-            _electronicEngineering3ACourseList.Sort(delegate (CourseInfo x, CourseInfo y)
+            _electronicEngineering3CourseList.Sort(delegate (CourseInfo x, CourseInfo y)
             {
                 return x.Number.CompareTo(GetNumber(y));
             });

@@ -33,9 +33,9 @@ namespace CourseSystem
         public void LoadForm()
         {
             _computerScience3DataGridView.Rows.Clear();
-            _electronicEngineering3ADataGridView.Rows.Clear();
+            _electronicEngineering3DataGridView.Rows.Clear();
             LoadDataGridView(_courseSelectingFormPresentationModel.GetComputerScience3CourseList, _computerScience3DataGridView);
-            LoadDataGridView(_courseSelectingFormPresentationModel.GetElectronicEngineering3CourseList, _electronicEngineering3ADataGridView);
+            LoadDataGridView(_courseSelectingFormPresentationModel.GetElectronicEngineering3CourseList, _electronicEngineering3DataGridView);
         }
 
         //LoadDataGridView
@@ -60,7 +60,7 @@ namespace CourseSystem
         private void EndEditDataGridView()
         {
             _computerScience3DataGridView.EndEdit();
-            _electronicEngineering3ADataGridView.EndEdit();
+            _electronicEngineering3DataGridView.EndEdit();
         }
 
         //CheckDataGridViewCheckBox
@@ -81,7 +81,7 @@ namespace CourseSystem
         {
             EndEditDataGridView();
             CheckDataGridViewCheckBox(_computerScience3DataGridView);
-            CheckDataGridViewCheckBox(_electronicEngineering3ADataGridView);
+            CheckDataGridViewCheckBox(_electronicEngineering3DataGridView);
             _submitButton.Enabled = _courseSelectingFormPresentationModel.IsSubmitButtonEnabled;
         }
 
@@ -106,13 +106,13 @@ namespace CourseSystem
         {
             if (e.RowIndex >= 0 && e.ColumnIndex == 0)
             {
-                if (Convert.ToBoolean(_electronicEngineering3ADataGridView.Rows[e.RowIndex].Cells[0].Value) == true)
+                if (Convert.ToBoolean(_electronicEngineering3DataGridView.Rows[e.RowIndex].Cells[0].Value) == true)
                 {
-                    _electronicEngineering3ADataGridView.Rows[e.RowIndex].Cells[0].Value = false;
+                    _electronicEngineering3DataGridView.Rows[e.RowIndex].Cells[0].Value = false;
                 }
                 else
                 {
-                    _electronicEngineering3ADataGridView.Rows[e.RowIndex].Cells[0].Value = true;
+                    _electronicEngineering3DataGridView.Rows[e.RowIndex].Cells[0].Value = true;
                 }
             }
         }
@@ -147,13 +147,13 @@ namespace CourseSystem
             return selectedCourseList;
         }
 
-        //SubmitElectronicEngineering3ADataGridView
+        //SubmitElectronicEngineering3DataGridView
         private List<CourseInfo> SubmitElectronicEngineering3DataGridView(List<CourseInfo> selectedCourseList)
         {
-            int numberOfCourse = _electronicEngineering3ADataGridView.RowCount;
+            int numberOfCourse = _electronicEngineering3DataGridView.RowCount;
             for (int index = 0; index < numberOfCourse; index++)
             {
-                DataGridViewRow row = _electronicEngineering3ADataGridView.Rows[numberOfCourse - index - 1];
+                DataGridViewRow row = _electronicEngineering3DataGridView.Rows[numberOfCourse - index - 1];
                 if (Convert.ToBoolean(row.Cells[0].Value) == true)
                 {
                     CourseInfo selectedCourse = new CourseInfo
@@ -163,7 +163,7 @@ namespace CourseSystem
                         row.Cells[(int)CourseInfoHeaderText.NumberOfDropStudent + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.TeachingAssistant + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.Language + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.Outline + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.Note + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.AttachStudent + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.Experiment + 1].Value.ToString()
                     );
                     selectedCourseList.Add(selectedCourse);
-                    _courseSelectingFormPresentationModel.RemoveFromElectronicEngineering3A(row.Index);
+                    _courseSelectingFormPresentationModel.RemoveFromElectronicEngineering3(row.Index);
                 }
             }
             return selectedCourseList;
@@ -230,10 +230,10 @@ namespace CourseSystem
         //TakeOutElectronicEngineering3CheckedCourseList
         private List<CourseInfo> TakeOutElectronicEngineering3CheckedCourseList(List<CourseInfo> checkedCourseList)
         {
-            int numberOfCourse = _electronicEngineering3ADataGridView.RowCount;
+            int numberOfCourse = _electronicEngineering3DataGridView.RowCount;
             for (int index = 0; index < numberOfCourse; index++)
             {
-                DataGridViewRow row = _electronicEngineering3ADataGridView.Rows[numberOfCourse - index - 1];
+                DataGridViewRow row = _electronicEngineering3DataGridView.Rows[numberOfCourse - index - 1];
                 if (Convert.ToBoolean(row.Cells[0].Value) == true)
                 {
                     CourseInfo selectedCourse = new CourseInfo

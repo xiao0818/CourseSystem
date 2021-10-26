@@ -13,5 +13,23 @@ namespace CourseSystem
         {
             _model = model;
         }
+
+        //Get
+        public List<CourseInfo> GetComputerScience3CourseList
+        {
+            get
+            {
+                return _model.GetComputerScience3CourseList;
+            }
+        }
+
+        //Get
+        public List<CourseInfo> GetElectronicEngineering3CourseList
+        {
+            get
+            {
+                return _model.GetElectronicEngineering3CourseList;
+            }
+        }
     }
 }
