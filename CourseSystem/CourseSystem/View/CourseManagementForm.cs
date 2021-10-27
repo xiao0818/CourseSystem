@@ -202,5 +202,24 @@ namespace CourseSystem
                 }
             }
         }
+
+        //KeyInLimit
+        private void KeyInLimit(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == '.')
+            {
+                foreach (char i in (sender as TextBox).Text)
+                {
+                    if (i == '.')
+                        e.Handled = true;
+                }
+                return;
+            }
+            if (e.KeyChar != (Char)48 && e.KeyChar != (Char)49 && e.KeyChar != (Char)50 && e.KeyChar != (Char)51 && e.KeyChar != (Char)52 && e.KeyChar != (Char)53 &&
+                e.KeyChar != (Char)54 && e.KeyChar != (Char)55 && e.KeyChar != (Char)56 && e.KeyChar != (Char)57 && e.KeyChar != (Char)8)
+            {
+                e.Handled =  true;
+            }
+        }
     }
 }

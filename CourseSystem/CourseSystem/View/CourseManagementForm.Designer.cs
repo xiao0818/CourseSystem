@@ -358,6 +358,7 @@ namespace CourseSystem
             this._courseCreditTextBox.Name = "_courseCreditTextBox";
             this._courseCreditTextBox.Size = new System.Drawing.Size(100, 22);
             this._courseCreditTextBox.TabIndex = 8;
+            this._courseCreditTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyInLimit);
             // 
             // _courseCreditLabel
             // 
@@ -375,6 +376,7 @@ namespace CourseSystem
             this._courseStageTextBox.Name = "_courseStageTextBox";
             this._courseStageTextBox.Size = new System.Drawing.Size(100, 22);
             this._courseStageTextBox.TabIndex = 6;
+            this._courseStageTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyInLimit);
             // 
             // _courseStageLabel
             // 
@@ -409,6 +411,7 @@ namespace CourseSystem
             this._courseNumberTextBox.Name = "_courseNumberTextBox";
             this._courseNumberTextBox.Size = new System.Drawing.Size(138, 22);
             this._courseNumberTextBox.TabIndex = 2;
+            this._courseNumberTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyInLimit);
             // 
             // _courseNumberLabel
             // 
