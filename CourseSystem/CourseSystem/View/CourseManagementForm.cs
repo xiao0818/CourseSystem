@@ -24,6 +24,7 @@ namespace CourseSystem
         //ClosingFormCourseManagementForm
         private void ClosingFormCourseManagementForm(object sender, FormClosingEventArgs e)
         {
+            _startUpForm.ResetCourseManagementFormButton();
             e.Cancel = true;
             Hide();
         }
@@ -82,6 +83,7 @@ namespace CourseSystem
         //ChangedSelectedIndexCourseListBox
         private void ChangedSelectedIndexCourseListBox(object sender, EventArgs e)
         {
+            _classDataGroupBox.Text = "編輯課程";
             CourseInfo course = _courseManagementFormPresentationModel.GetCourseInfoBySelectedIndex(_courseListBox.SelectedIndex);
             int department = _courseManagementFormPresentationModel.GetCourseDepartmentBySelectedIndex(_courseListBox.SelectedIndex);
             LoadContext(department, course);
@@ -149,6 +151,40 @@ namespace CourseSystem
             _classTimeSelectionComboBox.Enabled = true;
             _courseSelectionComboBox.Enabled = true;
             _classTimeDataGridView.Enabled = true;
+        }
+
+        //ReloadManagementForm
+        public void ReloadManagementForm()
+        {
+            LoadListBox();
+            SetAllObjectInGroupBoxEmpty();
+            AddRowsInClassTimeDataGridView();
+        }
+
+        //SetAllObjectInGroupBoxEmpty
+        private void SetAllObjectInGroupBoxEmpty()
+        {
+            _courseEnabledComboBox.Text = "";
+            _courseNumberTextBox.Text = "";
+            _courseNameTextBox.Text = "";
+            _courseStageTextBox.Text = "";
+            _courseCreditTextBox.Text = "";
+            _courseTeacherTextBox.Text = "";
+            _courseTypeSelectionComboBox.Text = "";
+            _courseTeachingAssistantTextBox.Text = "";
+            _courseLanguageTextBox.Text = "";
+            _courseNoteTextBox.Text = "";
+            _classTimeSelectionComboBox.Text = "";
+            _courseSelectionComboBox.Text = "";
+        }
+
+        //ClickAddCourseButton
+        private void ClickAddCourseButton(object sender, EventArgs e)
+        {
+            _classDataGroupBox.Text = "新增課程";
+            SetAllObjectInGroupBoxEmpty();
+            AddRowsInClassTimeDataGridView();
+            SetAllObjectInGroupBoxEnabled();
         }
     }
 }

@@ -12,10 +12,12 @@ namespace CourseSystem
 {
     public partial class CourseSelectionResultForm : Form
     {
+        StartUpForm _startUpForm;
         CourseSelectionResultFormPresentationModel _courseSelectionResultFormPresentationModel;
         CourseSelectingForm _courseSelectingForm;
-        public CourseSelectionResultForm(CourseSelectingForm courseSelectingForm, CourseSelectionResultFormPresentationModel courseSelectionResultFormPresentationModel)
+        public CourseSelectionResultForm(CourseSelectingForm courseSelectingForm, CourseSelectionResultFormPresentationModel courseSelectionResultFormPresentationModel, StartUpForm startUpForm)
         {
+            _startUpForm = startUpForm;
             _courseSelectionResultFormPresentationModel = courseSelectionResultFormPresentationModel;
             _courseSelectingForm = courseSelectingForm;
             InitializeComponent();
@@ -45,8 +47,9 @@ namespace CourseSystem
             {
                 _courseSelectionResultFormPresentationModel.RemoveCourseFromSelectionResult(e.RowIndex);
             }
-            LoadCourseResultDataGridView();
-            _courseSelectingForm.LoadForm();
+            //LoadCourseResultDataGridView();
+            //_courseSelectingForm.LoadForm();
+            _startUpForm.ReloadAllForm();
         }
 
         //ClosingFormCourseSelectionResultForm

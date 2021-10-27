@@ -18,7 +18,7 @@ namespace CourseSystem
         public CourseSelectingForm(StartUpForm startUpForm, CourseSelectingFormPresentationModel courseSelectingFormPresentationModel, CourseSelectionResultFormPresentationModel courseSelectionResultFormPresentationModel)
         {
             _courseSelectingFormPresentationModel = courseSelectingFormPresentationModel;
-            _courseSelectionResultForm = new CourseSelectionResultForm(this, courseSelectionResultFormPresentationModel);
+            _courseSelectionResultForm = new CourseSelectionResultForm(this, courseSelectionResultFormPresentationModel, startUpForm);
             _startUpForm = startUpForm;
             InitializeComponent();
         }
@@ -195,8 +195,9 @@ namespace CourseSystem
                 SubmitElectronicEngineering3DataGridView(selectedCourseList);
                 _courseSelectingFormPresentationModel.SetSelectedCourseList(GetSelectedCourseList(selectedCourseList));
                 MessageBox.Show("加選成功");
-                LoadForm();
-                _courseSelectionResultForm.LoadCourseResultDataGridView();
+                //LoadForm();
+                //_courseSelectionResultForm.LoadCourseResultDataGridView();
+                _startUpForm.ReloadAllForm();
                 _courseSelectingFormPresentationModel.ResetSubmitButton();
                 _submitButton.Enabled = _courseSelectingFormPresentationModel.IsSubmitButtonEnabled;
                 
@@ -263,6 +264,13 @@ namespace CourseSystem
             _startUpForm.ResetCourseSelectingFormButton();
             e.Cancel = true;
             this.Hide();
+        }
+
+        //ReloadSelectingFormAndSelectionResultForm
+        public void ReloadSelectingFormAndSelectionResultForm()
+        {
+            LoadForm();
+            _courseSelectionResultForm.LoadCourseResultDataGridView();
         }
     }
 }
