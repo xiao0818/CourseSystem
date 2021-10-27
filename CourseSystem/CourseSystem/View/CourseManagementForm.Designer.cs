@@ -147,6 +147,7 @@ namespace CourseSystem
             this.classTime4Column,
             this.classTime5Column,
             this.classTime6Column});
+            this._classTimeDataGridView.Enabled = false;
             this._classTimeDataGridView.Location = new System.Drawing.Point(8, 152);
             this._classTimeDataGridView.Name = "_classTimeDataGridView";
             this._classTimeDataGridView.RowHeadersVisible = false;

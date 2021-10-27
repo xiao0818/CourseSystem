@@ -24,7 +24,6 @@ namespace CourseSystem
         //ClosingFormCourseManagementForm
         private void ClosingFormCourseManagementForm(object sender, FormClosingEventArgs e)
         {
-            _startUpForm.ResetCourseManagementFormButton();
             e.Cancel = true;
             Hide();
         }
@@ -115,6 +114,7 @@ namespace CourseSystem
             {
                 _classTimeDataGridView.Rows[TranslateClassTimeToIndex(time.Item2)].Cells[time.Item1 + 1].Value = Enabled;
             }
+            SetAllObjectInGroupBoxEnabled();
         }
 
         //TranslateClassTimeToIndex
@@ -131,6 +131,24 @@ namespace CourseSystem
                 count++;
             }
             return -1;
+        }
+
+        //SetAllObjectInGroupBoxEnabled
+        private void SetAllObjectInGroupBoxEnabled()
+        {
+            _courseEnabledComboBox.Enabled = true;
+            _courseNumberTextBox.Enabled = true;
+            _courseNameTextBox.Enabled = true;
+            _courseStageTextBox.Enabled = true;
+            _courseCreditTextBox.Enabled = true;
+            _courseTeacherTextBox.Enabled = true;
+            _courseTypeSelectionComboBox.Enabled = true;
+            _courseTeachingAssistantTextBox.Enabled = true;
+            _courseLanguageTextBox.Enabled = true;
+            _courseNoteTextBox.Enabled = true;
+            _classTimeSelectionComboBox.Enabled = true;
+            _courseSelectionComboBox.Enabled = true;
+            _classTimeDataGridView.Enabled = true;
         }
     }
 }
