@@ -186,5 +186,21 @@ namespace CourseSystem
             AddRowsInClassTimeDataGridView();
             SetAllObjectInGroupBoxEnabled();
         }
+
+        //ClickCellClassTimeDataGridView
+        private void ClickCellClassTimeDataGridView(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                if (Convert.ToBoolean(_classTimeDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value) == true)
+                {
+                    _classTimeDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = false;
+                }
+                else
+                {
+                    _classTimeDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = true;
+                }
+            }
+        }
     }
 }

@@ -154,6 +154,7 @@ namespace CourseSystem
             this._classTimeDataGridView.RowTemplate.Height = 24;
             this._classTimeDataGridView.Size = new System.Drawing.Size(598, 194);
             this._classTimeDataGridView.TabIndex = 23;
+            this._classTimeDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ClickCellClassTimeDataGridView);
             // 
             // classTimeColumn
             // 
@@ -213,6 +214,7 @@ namespace CourseSystem
             // 
             // _courseSelectionComboBox
             // 
+            this._courseSelectionComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this._courseSelectionComboBox.Enabled = false;
             this._courseSelectionComboBox.FormattingEnabled = true;
             this._courseSelectionComboBox.Items.AddRange(new object[] {
@@ -234,6 +236,7 @@ namespace CourseSystem
             // 
             // _classTimeSelectionComboBox
             // 
+            this._classTimeSelectionComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this._classTimeSelectionComboBox.Enabled = false;
             this._classTimeSelectionComboBox.FormattingEnabled = true;
             this._classTimeSelectionComboBox.Items.AddRange(new object[] {
@@ -307,6 +310,7 @@ namespace CourseSystem
             // 
             // _courseTypeSelectionComboBox
             // 
+            this._courseTypeSelectionComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this._courseTypeSelectionComboBox.Enabled = false;
             this._courseTypeSelectionComboBox.FormattingEnabled = true;
             this._courseTypeSelectionComboBox.Items.AddRange(new object[] {
@@ -417,6 +421,7 @@ namespace CourseSystem
             // 
             // _courseEnabledComboBox
             // 
+            this._courseEnabledComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this._courseEnabledComboBox.Enabled = false;
             this._courseEnabledComboBox.FormattingEnabled = true;
             this._courseEnabledComboBox.Items.AddRange(new object[] {
