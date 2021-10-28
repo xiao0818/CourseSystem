@@ -279,5 +279,12 @@ namespace CourseSystem
                 return Tuple.Create(2, _courseTabDictionary[_selectedCourseList[selectedIndex - _computerScience3CourseList.Count - _electronicEngineering3CourseList.Count].Number], selectedIndex - _computerScience3CourseList.Count - _electronicEngineering3CourseList.Count);
             }
         }
+
+        //AddIntoSelectedCourseList
+        public void AddIntoSelectedCourseList(CourseInfo course)
+        {
+            _selectedCourseList.Add(course);
+            SortAll();
+        }
     }
 }

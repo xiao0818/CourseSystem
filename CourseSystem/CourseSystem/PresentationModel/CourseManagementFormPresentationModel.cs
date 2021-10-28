@@ -52,5 +52,11 @@ namespace CourseSystem
         {
             return _model.GetCourseDepartmentBySelectedIndex(selectedIndex);
         }
+
+        //AddIntoSelectedCourseList
+        public void AddIntoSelectedCourseList(CourseInfo course)
+        {
+            _model.AddIntoSelectedCourseList(course);
+        }
     }
 }

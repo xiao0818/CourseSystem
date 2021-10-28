@@ -252,7 +252,7 @@ namespace CourseSystem
                     {
                         if (Convert.ToBoolean(row.Cells[day + 1].Value) == true)
                         {
-                            ClassTimeStringList[day] += row.Cells[0];
+                            ClassTimeStringList[day] += row.Cells[0].Value;
                             ClassTimeStringList[day] += " ";
                         }
                     }
@@ -264,6 +264,7 @@ namespace CourseSystem
                 course.ClassTime4 = ClassTimeStringList[4];
                 course.ClassTime5 = ClassTimeStringList[5];
                 course.ClassTime6 = ClassTimeStringList[6];
+                _courseManagementFormPresentationModel.AddIntoSelectedCourseList(course);
             }
             else
             {
@@ -275,7 +276,7 @@ namespace CourseSystem
                     {
                         if (Convert.ToBoolean(row.Cells[day + 1].Value) == true)
                         {
-                            ClassTimeStringList[day] += row.Cells[0];
+                            ClassTimeStringList[day] += row.Cells[0].Value;
                             ClassTimeStringList[day] += " ";
                         }
                     }
@@ -287,7 +288,9 @@ namespace CourseSystem
                     "", "", _courseTeachingAssistantTextBox.Text, _courseLanguageTextBox.Text, "", _courseNoteTextBox.Text, "", "");
                 //開課班級
                 //開課, 停開
+                _courseManagementFormPresentationModel.AddIntoSelectedCourseList(course);
             }
+            _startUpForm.ReloadAllForm();
         }
     }
 }
