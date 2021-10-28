@@ -85,12 +85,13 @@ namespace CourseSystem
         {
             _classDataGroupBox.Text = "編輯課程";
             CourseInfo course = _courseManagementFormPresentationModel.GetCourseInfoBySelectedIndex(_courseListBox.SelectedIndex);
-            int department = _courseManagementFormPresentationModel.GetCourseDepartmentBySelectedIndex(_courseListBox.SelectedIndex);
+            Tuple<int, int, int> department = _courseManagementFormPresentationModel.GetCourseDepartmentBySelectedIndex(_courseListBox.SelectedIndex);
             LoadContext(department, course);
+            _addCourseButton.Enabled = true;
         }
 
         //LoadContext
-        private void LoadContext(int department, CourseInfo course)
+        private void LoadContext(Tuple<int, int, int> department, CourseInfo course)
         {
             _courseEnabledComboBox.Text = "開課";
             _courseNumberTextBox.Text = course.Number;
@@ -103,11 +104,11 @@ namespace CourseSystem
             _courseLanguageTextBox.Text = course.Language;
             _courseNoteTextBox.Text = course.Note;
             _classTimeSelectionComboBox.Text = course.Hour;
-            if (department == 0)
+            if (department.Item2 == 0)
             {
                 _courseSelectionComboBox.Text = "資工三";
             }
-            else if (department == 1)
+            else if (department.Item2 == 1)
             {
                 _courseSelectionComboBox.Text = "電子三甲";
             }
@@ -164,24 +165,25 @@ namespace CourseSystem
         //SetAllObjectInGroupBoxEmpty
         private void SetAllObjectInGroupBoxEmpty()
         {
-            _courseEnabledComboBox.Text = "";
+            _courseEnabledComboBox.SelectedIndex = -1;
             _courseNumberTextBox.Text = "";
             _courseNameTextBox.Text = "";
             _courseStageTextBox.Text = "";
             _courseCreditTextBox.Text = "";
             _courseTeacherTextBox.Text = "";
-            _courseTypeSelectionComboBox.Text = "";
+            _courseTypeSelectionComboBox.SelectedIndex = -1;
             _courseTeachingAssistantTextBox.Text = "";
             _courseLanguageTextBox.Text = "";
             _courseNoteTextBox.Text = "";
-            _classTimeSelectionComboBox.Text = "";
-            _courseSelectionComboBox.Text = "";
+            _classTimeSelectionComboBox.SelectedIndex = -1;
+            _courseSelectionComboBox.SelectedIndex = -1;
         }
 
         //ClickAddCourseButton
         private void ClickAddCourseButton(object sender, EventArgs e)
         {
             _classDataGroupBox.Text = "新增課程";
+            _addCourseButton.Enabled = false;
             SetAllObjectInGroupBoxEmpty();
             AddRowsInClassTimeDataGridView();
             SetAllObjectInGroupBoxEnabled();
@@ -220,6 +222,26 @@ namespace CourseSystem
             {
                 e.Handled =  true;
             }
+        }
+
+        //ClickSaveCourseDataButton
+        private void ClickSaveCourseDataButton(object sender, EventArgs e)
+        {
+            CourseInfo course = _courseManagementFormPresentationModel.GetCourseInfoBySelectedIndex(_courseListBox.SelectedIndex);
+            Tuple<int, int, int> department = _courseManagementFormPresentationModel.GetCourseDepartmentBySelectedIndex(_courseListBox.SelectedIndex);
+            course.Number = _courseNumberTextBox.Text;
+            course.Name = _courseNameTextBox.Text;
+            course.Stage = _courseStageTextBox.Text;
+            course.Credit = _courseCreditTextBox.Text;
+            course.Teacher = _courseTeacherTextBox.Text;
+            course.CourseType = _courseTypeSelectionComboBox.Text;
+            course.TeachingAssistant = _courseTeachingAssistantTextBox.Text;
+            course.Language = _courseLanguageTextBox.Text;
+            course.Note = _courseNoteTextBox.Text;
+            course.Hour = _classTimeSelectionComboBox.Text;
+            //開課班級
+            //開課, 停開
+
         }
     }
 }

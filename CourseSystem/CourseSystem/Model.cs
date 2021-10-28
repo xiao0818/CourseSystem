@@ -264,19 +264,19 @@ namespace CourseSystem
         }
 
         //GetCourseDepartmentBySelectedIndex(_courseListBox.SelectedIndex)
-        public int GetCourseDepartmentBySelectedIndex(int selectedIndex)
+        public Tuple<int, int, int> GetCourseDepartmentBySelectedIndex(int selectedIndex)
         {
             if (selectedIndex < _computerScience3CourseList.Count)
             {
-                return (int)Department.ComputerScience3;
+                return Tuple.Create(0, (int)Department.ComputerScience3, selectedIndex);
             }
             else if (selectedIndex - _computerScience3CourseList.Count < _electronicEngineering3CourseList.Count)
             {
-                return (int)Department.ElectronicEngineering3;
+                return Tuple.Create(1, (int)Department.ElectronicEngineering3, selectedIndex - _computerScience3CourseList.Count);
             }
             else
             {
-                return _courseTabDictionary[_selectedCourseList[selectedIndex - _computerScience3CourseList.Count - _electronicEngineering3CourseList.Count].Number];
+                return Tuple.Create(2, _courseTabDictionary[_selectedCourseList[selectedIndex - _computerScience3CourseList.Count - _electronicEngineering3CourseList.Count].Number], selectedIndex - _computerScience3CourseList.Count - _electronicEngineering3CourseList.Count);
             }
         }
     }

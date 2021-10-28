@@ -48,7 +48,7 @@ namespace CourseSystem
         }
 
         //GetCourseDepartmentBySelectedIndex
-        public int GetCourseDepartmentBySelectedIndex(int selectedIndex)
+        public Tuple<int, int, int> GetCourseDepartmentBySelectedIndex(int selectedIndex)
         {
             return _model.GetCourseDepartmentBySelectedIndex(selectedIndex);
         }
