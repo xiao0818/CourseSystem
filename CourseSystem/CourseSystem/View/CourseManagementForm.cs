@@ -227,21 +227,34 @@ namespace CourseSystem
         //ClickSaveCourseDataButton
         private void ClickSaveCourseDataButton(object sender, EventArgs e)
         {
-            CourseInfo course = _courseManagementFormPresentationModel.GetCourseInfoBySelectedIndex(_courseListBox.SelectedIndex);
-            Tuple<int, int, int> department = _courseManagementFormPresentationModel.GetCourseDepartmentBySelectedIndex(_courseListBox.SelectedIndex);
-            course.Number = _courseNumberTextBox.Text;
-            course.Name = _courseNameTextBox.Text;
-            course.Stage = _courseStageTextBox.Text;
-            course.Credit = _courseCreditTextBox.Text;
-            course.Teacher = _courseTeacherTextBox.Text;
-            course.CourseType = _courseTypeSelectionComboBox.Text;
-            course.TeachingAssistant = _courseTeachingAssistantTextBox.Text;
-            course.Language = _courseLanguageTextBox.Text;
-            course.Note = _courseNoteTextBox.Text;
-            course.Hour = _classTimeSelectionComboBox.Text;
-            //開課班級
-            //開課, 停開
-
+            if (_classDataGroupBox.Text == "編輯課程")
+            {
+                CourseInfo course = _courseManagementFormPresentationModel.GetCourseInfoBySelectedIndex(_courseListBox.SelectedIndex);
+                Tuple<int, int, int> department = _courseManagementFormPresentationModel.GetCourseDepartmentBySelectedIndex(_courseListBox.SelectedIndex);
+                course.Number = _courseNumberTextBox.Text;
+                course.Name = _courseNameTextBox.Text;
+                course.Stage = _courseStageTextBox.Text;
+                course.Credit = _courseCreditTextBox.Text;
+                course.Teacher = _courseTeacherTextBox.Text;
+                course.CourseType = _courseTypeSelectionComboBox.Text;
+                course.TeachingAssistant = _courseTeachingAssistantTextBox.Text;
+                course.Language = _courseLanguageTextBox.Text;
+                course.Note = _courseNoteTextBox.Text;
+                course.Hour = _classTimeSelectionComboBox.Text;
+                //開課班級
+                //開課, 停開
+                //time
+            }
+            else
+            {
+                CourseInfo course = new CourseInfo(
+                    _courseNumberTextBox.Text, _courseNameTextBox.Text, _courseStageTextBox.Text, _courseCreditTextBox.Text, _classTimeSelectionComboBox.Text, _courseTypeSelectionComboBox.Text, _courseTeacherTextBox.Text,
+                    "", "", "", "", "", "", "", "",
+                    "", "", _courseTeachingAssistantTextBox.Text, _courseLanguageTextBox.Text, "", _courseNoteTextBox.Text, "", "");
+                //開課班級
+                //開課, 停開
+                //time
+            }
         }
     }
 }
