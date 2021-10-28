@@ -243,17 +243,50 @@ namespace CourseSystem
                 course.Hour = _classTimeSelectionComboBox.Text;
                 //開課班級
                 //開課, 停開
-                //time
+                //
+                List<string> ClassTimeStringList = new List<string> { "" ,"" ,"" ,"" ,"" ,"" ,""};
+                const int DAY_PER_WEEK = 7;
+                for (int day = 0; day < DAY_PER_WEEK; day++)
+                {
+                    foreach (DataGridViewRow row in _classTimeDataGridView.Rows)
+                    {
+                        if (Convert.ToBoolean(row.Cells[day + 1].Value) == true)
+                        {
+                            ClassTimeStringList[day] += row.Cells[0];
+                            ClassTimeStringList[day] += " ";
+                        }
+                    }
+                }
+                course.ClassTime0 = ClassTimeStringList[0];
+                course.ClassTime1 = ClassTimeStringList[1];
+                course.ClassTime2 = ClassTimeStringList[2];
+                course.ClassTime3 = ClassTimeStringList[3];
+                course.ClassTime4 = ClassTimeStringList[4];
+                course.ClassTime5 = ClassTimeStringList[5];
+                course.ClassTime6 = ClassTimeStringList[6];
             }
             else
             {
+                List<string> ClassTimeStringList = new List<string> { "", "", "", "", "", "", "" };
+                const int DAY_PER_WEEK = 7;
+                for (int day = 0; day < DAY_PER_WEEK; day++)
+                {
+                    foreach (DataGridViewRow row in _classTimeDataGridView.Rows)
+                    {
+                        if (Convert.ToBoolean(row.Cells[day + 1].Value) == true)
+                        {
+                            ClassTimeStringList[day] += row.Cells[0];
+                            ClassTimeStringList[day] += " ";
+                        }
+                    }
+                }
+                //
                 CourseInfo course = new CourseInfo(
                     _courseNumberTextBox.Text, _courseNameTextBox.Text, _courseStageTextBox.Text, _courseCreditTextBox.Text, _classTimeSelectionComboBox.Text, _courseTypeSelectionComboBox.Text, _courseTeacherTextBox.Text,
-                    "", "", "", "", "", "", "", "",
+                    ClassTimeStringList[0], ClassTimeStringList[1], ClassTimeStringList[2], ClassTimeStringList[3], ClassTimeStringList[4], ClassTimeStringList[5], ClassTimeStringList[6], "",
                     "", "", _courseTeachingAssistantTextBox.Text, _courseLanguageTextBox.Text, "", _courseNoteTextBox.Text, "", "");
                 //開課班級
                 //開課, 停開
-                //time
             }
         }
     }
