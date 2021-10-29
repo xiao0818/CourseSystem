@@ -321,5 +321,12 @@ namespace CourseSystem
         {
             _courseTabDictionary.Remove(_selectedCourseList[index].Number);
         }
+
+        //AddSelectedCourse
+        public void AddSelectedCourse(CourseInfo selectingCourse)
+        {
+            _selectedCourseList.Add(selectingCourse);
+            SortAll();
+        }
     }
 }

@@ -136,5 +136,11 @@ namespace CourseSystem
             }
             return sameNumberMessage + sameNameMessage + sameTimeMessage;
         }
+
+        //AddSelectedCourse
+        public void AddSelectedCourse(CourseInfo selectingCourse)
+        {
+            _model.AddSelectedCourse(selectingCourse);
+        }
     }
 }
