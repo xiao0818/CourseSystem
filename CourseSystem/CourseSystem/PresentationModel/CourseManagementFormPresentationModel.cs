@@ -123,5 +123,11 @@ namespace CourseSystem
             }
             return sameNumberMessage + sameNameMessage + sameTimeMessage;
         }
+
+        //RemoveCourseFromTabDictionary
+        public void RemoveCourseFromTabDictionary(int index)
+        {
+            _model.RemoveCourseFromTabDictionary(index);
+        }
     }
 }

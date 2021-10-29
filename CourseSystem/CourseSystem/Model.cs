@@ -315,5 +315,11 @@ namespace CourseSystem
             _electronicEngineering3CourseList.Add(course);
             SortAll();
         }
+
+        //RemoveCourseFromTabDictionary
+        public void RemoveCourseFromTabDictionary(int index)
+        {
+            _courseTabDictionary.Remove(_selectedCourseList[index].Number);
+        }
     }
 }

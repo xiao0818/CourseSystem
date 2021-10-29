@@ -231,16 +231,6 @@ namespace CourseSystem
             {
                 CourseInfo course = _courseManagementFormPresentationModel.GetCourseInfoBySelectedIndex(_courseListBox.SelectedIndex);
                 Tuple<int, int, int> department = _courseManagementFormPresentationModel.GetCourseDepartmentBySelectedIndex(_courseListBox.SelectedIndex);
-                course.Number = _courseNumberTextBox.Text;
-                course.Name = _courseNameTextBox.Text;
-                course.Stage = _courseStageTextBox.Text;
-                course.Credit = _courseCreditTextBox.Text;
-                course.Teacher = _courseTeacherTextBox.Text;
-                course.CourseType = _courseTypeSelectionComboBox.Text;
-                course.TeachingAssistant = _courseTeachingAssistantTextBox.Text;
-                course.Language = _courseLanguageTextBox.Text;
-                course.Note = _courseNoteTextBox.Text;
-                course.Hour = _classTimeSelectionComboBox.Text;
                 //開課班級
                 List<string> ClassTimeStringList = new List<string> { "" ,"" ,"" ,"" ,"" ,"" ,""};
                 const int DAY_PER_WEEK = 7;
@@ -253,80 +243,89 @@ namespace CourseSystem
                             ClassTimeStringList[day] += row.Cells[0].Value;
                             ClassTimeStringList[day] += " ";
                         }
+                        ClassTimeStringList[day] = ClassTimeStringList[day];
                     }
                 }
-                course.ClassTime0 = ClassTimeStringList[0];
-                course.ClassTime1 = ClassTimeStringList[1];
-                course.ClassTime2 = ClassTimeStringList[2];
-                course.ClassTime3 = ClassTimeStringList[3];
-                course.ClassTime4 = ClassTimeStringList[4];
-                course.ClassTime5 = ClassTimeStringList[5];
-                course.ClassTime6 = ClassTimeStringList[6];
+                CourseInfo newCourse = new CourseInfo(
+                    _courseNumberTextBox.Text, _courseNameTextBox.Text, _courseStageTextBox.Text, _courseCreditTextBox.Text, _classTimeSelectionComboBox.Text, _courseTypeSelectionComboBox.Text, _courseTeacherTextBox.Text,
+                    ClassTimeStringList[0].Trim(), ClassTimeStringList[1].Trim(), ClassTimeStringList[2].Trim(), ClassTimeStringList[3].Trim(), ClassTimeStringList[4].Trim(), ClassTimeStringList[5].Trim(), ClassTimeStringList[6].Trim(), course.Classroom,
+                    course.NumberOfStudent, course.NumberOfDropStudent, _courseTeachingAssistantTextBox.Text, _courseLanguageTextBox.Text, course.Outline, _courseNoteTextBox.Text, course.AttachStudent, course.Experiment);
                 if (department.Item1 == (int)Department.ComputerScience3)
                 {
-                    //_courseManagementFormPresentationModel.RemoveCourseFromComputerScience3(department.Item3);
-                    //_courseManagementFormPresentationModel.AddIntoComputerScience3CourseList(course);
-                    MessageBox.Show("編輯成功1");
+                    _courseManagementFormPresentationModel.RemoveCourseFromComputerScience3(department.Item3);
+                    if (_courseSelectionComboBox.SelectedIndex == (int)Department.ComputerScience3)
+                    {
+                        _courseManagementFormPresentationModel.AddIntoComputerScience3CourseList(newCourse);
+                    }
+                    else if (_courseSelectionComboBox.SelectedIndex == (int)Department.ElectronicEngineering3)
+                    {
+                        _courseManagementFormPresentationModel.AddIntoElectronicEngineering3CourseList(newCourse);
+                    }
+                    MessageBox.Show("編輯成功");
                     _startUpForm.ReloadAllForm();
                 }
                 else if (department.Item1 == (int)Department.ElectronicEngineering3)
                 {
-                    //_courseManagementFormPresentationModel.RemoveCourseFromComputerScience3(department.Item3);
-                    //_courseManagementFormPresentationModel.AddIntoComputerScience3CourseList(course);
-                    MessageBox.Show("編輯成功2");
+                    _courseManagementFormPresentationModel.RemoveCourseFromElectronicEngineering3(department.Item3);
+                    if (_courseSelectionComboBox.SelectedIndex == (int)Department.ComputerScience3)
+                    {
+                        _courseManagementFormPresentationModel.AddIntoComputerScience3CourseList(newCourse);
+                    }
+                    else if (_courseSelectionComboBox.SelectedIndex == (int)Department.ElectronicEngineering3)
+                    {
+                        _courseManagementFormPresentationModel.AddIntoElectronicEngineering3CourseList(newCourse);
+                    }
+                    MessageBox.Show("編輯成功");
                     _startUpForm.ReloadAllForm();
                 }
                 else
                 {
-                    //CourseInfo oringinalCourse = _courseManagementFormPresentationModel.GetCourseInfoBySelectedIndex(_courseListBox.SelectedIndex);
-                    //List<CourseInfo> selectedCourseList = _courseManagementFormPresentationModel.GetSelectedCourseList;
-                    //selectedCourseList.RemoveAt(department.Item3);
-                    //string checkedMessage = _courseManagementFormPresentationModel.CheckCourseList(course, selectedCourseList);
-                    _startUpForm.ReloadAllForm();
-                    //if (checkedMessage == "")
-                    //{
-                        MessageBox.Show("編輯成功3");
-                    //    //_courseManagementFormPresentationModel.AddIntoSelectedCourseList(course, department.Item1);
-                    //    _startUpForm.ReloadAllForm();
-                    //}
-                    //else
-                    //{
-                        //MessageBox.Show("編輯失敗" + checkedMessage);
-                    //    //_courseManagementFormPresentationModel.AddIntoSelectedCourseList(oringinalCourse, department.Item1);
-                    //    _startUpForm.ReloadAllForm();
-                    //}
+                    List<CourseInfo> selectedCourseList = _courseManagementFormPresentationModel.GetSelectedCourseList;
+                    selectedCourseList.RemoveAt(department.Item3);
+                    string checkedMessage = _courseManagementFormPresentationModel.CheckCourseList(newCourse, selectedCourseList);
+                    if (checkedMessage == "")
+                    {
+                        MessageBox.Show("編輯成功");
+                        _courseManagementFormPresentationModel.RemoveCourseFromTabDictionary(department.Item3);
+                        _courseManagementFormPresentationModel.AddIntoSelectedCourseList(newCourse, department.Item1);
+                        _startUpForm.ReloadAllForm();
+                    }
+                    else
+                    {
+                        MessageBox.Show("編輯失敗" + checkedMessage);
+                    }
                 }
             }
             else
             {
-                //List<string> ClassTimeStringList = new List<string> { "", "", "", "", "", "", "" };
-                //const int DAY_PER_WEEK = 7;
-                //for (int day = 0; day < DAY_PER_WEEK; day++)
-                //{
-                //    foreach (DataGridViewRow row in _classTimeDataGridView.Rows)
-                //    {
-                //        if (Convert.ToBoolean(row.Cells[day + 1].Value) == true)
-                //        {
-                //            ClassTimeStringList[day] += row.Cells[0].Value;
-                //            ClassTimeStringList[day] += " ";
-                //        }
-                //        ClassTimeStringList[day] = ClassTimeStringList[day].Trim();
-                //    }
-                //}
-                //CourseInfo course = new CourseInfo(
-                //    _courseNumberTextBox.Text, _courseNameTextBox.Text, _courseStageTextBox.Text, _courseCreditTextBox.Text, _classTimeSelectionComboBox.Text, _courseTypeSelectionComboBox.Text, _courseTeacherTextBox.Text,
-                //    ClassTimeStringList[0], ClassTimeStringList[1], ClassTimeStringList[2], ClassTimeStringList[3], ClassTimeStringList[4], ClassTimeStringList[5], ClassTimeStringList[6], "",
-                //    "", "", _courseTeachingAssistantTextBox.Text, _courseLanguageTextBox.Text, "", _courseNoteTextBox.Text, "", "");
-                //if (_courseSelectionComboBox.Text == Department.ComputerScience3.ToString())
-                //{
-                //    _courseManagementFormPresentationModel.AddIntoComputerScience3CourseList(course);
-                //}
-                //else if (_courseSelectionComboBox.Text == Department.ElectronicEngineering3.ToString())
-                //{
-                //    _courseManagementFormPresentationModel.AddIntoComputerScience3CourseList(course);
-                //}
-                //MessageBox.Show("新增成功");
-                //_startUpForm.ReloadAllForm();
+                List<string> ClassTimeStringList = new List<string> { "", "", "", "", "", "", "" };
+                const int DAY_PER_WEEK = 7;
+                for (int day = 0; day < DAY_PER_WEEK; day++)
+                {
+                    foreach (DataGridViewRow row in _classTimeDataGridView.Rows)
+                    {
+                        if (Convert.ToBoolean(row.Cells[day + 1].Value) == true)
+                        {
+                            ClassTimeStringList[day] += row.Cells[0].Value;
+                            ClassTimeStringList[day] += " ";
+                        }
+                        ClassTimeStringList[day] = ClassTimeStringList[day];
+                    }
+                }
+                CourseInfo course = new CourseInfo(
+                    _courseNumberTextBox.Text, _courseNameTextBox.Text, _courseStageTextBox.Text, _courseCreditTextBox.Text, _classTimeSelectionComboBox.Text, _courseTypeSelectionComboBox.Text, _courseTeacherTextBox.Text,
+                    ClassTimeStringList[0].Trim(), ClassTimeStringList[1].Trim(), ClassTimeStringList[2].Trim(), ClassTimeStringList[3].Trim(), ClassTimeStringList[4].Trim(), ClassTimeStringList[5].Trim(), ClassTimeStringList[6].Trim(), "",
+                    "", "", _courseTeachingAssistantTextBox.Text, _courseLanguageTextBox.Text, "", _courseNoteTextBox.Text, "", "");
+                if (_courseSelectionComboBox.Text == Department.ComputerScience3.ToString())
+                {
+                    _courseManagementFormPresentationModel.AddIntoComputerScience3CourseList(course);
+                }
+                else if (_courseSelectionComboBox.Text == Department.ElectronicEngineering3.ToString())
+                {
+                    _courseManagementFormPresentationModel.AddIntoComputerScience3CourseList(course);
+                }
+                MessageBox.Show("新增成功");
+                _startUpForm.ReloadAllForm();
             }
         }
     }

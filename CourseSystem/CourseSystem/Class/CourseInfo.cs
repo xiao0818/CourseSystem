@@ -8,7 +8,7 @@ namespace CourseSystem
 {
     public class CourseInfo
     {
-        public CourseInfo(string number, string name, string stage, string credit, string hour, string courseType, string teacher,
+        public CourseInfo(string number , string name, string stage, string credit, string hour, string courseType, string teacher,
             string classTime0, string classTime1, string classTime2, string classTime3, string classTime4, string classTime5, string classTime6, string classroom,
             string numberOfStudent, string numberOfDropStudent, string teachingAssistant, string language, string outline, string note, string attachStudent, string experiment)
         {
