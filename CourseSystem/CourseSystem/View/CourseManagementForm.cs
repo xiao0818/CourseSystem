@@ -34,6 +34,7 @@ namespace CourseSystem
         {
             LoadListBox();
             AddRowsInClassTimeDataGridView();
+            _saveCourseDataButton.Enabled = false;
         }
 
         //LoadListBox
@@ -60,9 +61,9 @@ namespace CourseSystem
         //AddRowsInClassTimeDataGridView
         private void AddRowsInClassTimeDataGridView()
         {
-            string classTimeChar = "1234N56789ABCD";
+            const string CLASS_TIME_CHAR = "1234N56789ABCD";
             _classTimeDataGridView.Rows.Clear();
-            foreach (char timeChar in classTimeChar)
+            foreach (char timeChar in CLASS_TIME_CHAR)
             {
                 DataGridViewRow row = new DataGridViewRow();
                 for (int index = 0; index < 7; index++)
@@ -124,8 +125,8 @@ namespace CourseSystem
         private int TranslateClassTimeToIndex(string time)
         {
             int count = 0;
-            string classTimeChar = "1234N56789ABCD";
-            foreach (char timeChar in classTimeChar)
+            const string CLASS_TIME_CHAR = "1234N56789ABCD";
+            foreach (char timeChar in CLASS_TIME_CHAR)
             {
                 if (time == timeChar.ToString())
                 {
@@ -160,6 +161,7 @@ namespace CourseSystem
             LoadListBox();
             SetAllObjectInGroupBoxEmpty();
             AddRowsInClassTimeDataGridView();
+            _saveCourseDataButton.Enabled = false;
         }
 
         //SetAllObjectInGroupBoxEmpty
@@ -187,6 +189,7 @@ namespace CourseSystem
             SetAllObjectInGroupBoxEmpty();
             AddRowsInClassTimeDataGridView();
             SetAllObjectInGroupBoxEnabled();
+            _saveCourseDataButton.Enabled = false;
         }
 
         //ClickCellClassTimeDataGridView
@@ -220,7 +223,7 @@ namespace CourseSystem
             if (e.KeyChar != (Char)48 && e.KeyChar != (Char)49 && e.KeyChar != (Char)50 && e.KeyChar != (Char)51 && e.KeyChar != (Char)52 && e.KeyChar != (Char)53 &&
                 e.KeyChar != (Char)54 && e.KeyChar != (Char)55 && e.KeyChar != (Char)56 && e.KeyChar != (Char)57 && e.KeyChar != (Char)8)
             {
-                e.Handled =  true;
+                e.Handled = true;
             }
         }
 
@@ -232,7 +235,10 @@ namespace CourseSystem
                 CourseInfo course = _courseManagementFormPresentationModel.GetCourseInfoBySelectedIndex(_courseListBox.SelectedIndex);
                 Tuple<int, int, int> department = _courseManagementFormPresentationModel.GetCourseDepartmentBySelectedIndex(_courseListBox.SelectedIndex);
                 //開課班級
-                List<string> ClassTimeStringList = new List<string> { "" ,"" ,"" ,"" ,"" ,"" ,""};
+                List<string> ClassTimeStringList = new List<string>
+                {
+                    "" ,"" ,"" ,"" ,"" ,"" ,""
+                };
                 const int DAY_PER_WEEK = 7;
                 for (int day = 0; day < DAY_PER_WEEK; day++)
                 {
@@ -298,7 +304,10 @@ namespace CourseSystem
             }
             else
             {
-                List<string> ClassTimeStringList = new List<string> { "", "", "", "", "", "", "" };
+                List<string> ClassTimeStringList = new List<string> 
+                {
+                    "", "", "", "", "", "", ""
+                };
                 const int DAY_PER_WEEK = 7;
                 for (int day = 0; day < DAY_PER_WEEK; day++)
                 {
@@ -319,14 +328,22 @@ namespace CourseSystem
                 if (_courseSelectionComboBox.Text == Department.ComputerScience3.ToString())
                 {
                     _courseManagementFormPresentationModel.AddIntoComputerScience3CourseList(course);
+                    MessageBox.Show("新增成功");
+                    _startUpForm.ReloadAllForm();
                 }
                 else if (_courseSelectionComboBox.Text == Department.ElectronicEngineering3.ToString())
                 {
                     _courseManagementFormPresentationModel.AddIntoComputerScience3CourseList(course);
+                    MessageBox.Show("新增成功");
+                    _startUpForm.ReloadAllForm();
                 }
-                MessageBox.Show("新增成功");
-                _startUpForm.ReloadAllForm();
             }
+        }
+
+        //ChangedText
+        private void ChangedText(object sender, EventArgs e)
+        {
+            _saveCourseDataButton.Enabled = true;
         }
     }
 }

@@ -188,18 +188,482 @@
           <Reviews>
             <Smell>
               <Id>1</Id>
-              <SmellType>Long method(過長函式)</SmellType>
-              <HashCode>LongMethod.CourseManagementForm.LoadContext.38int department;CourseInfo course;</HashCode>
-              <Severity>Red</Severity>
-              <Weight>38</Weight>
+              <SmellType>Literal constants(字面常數)-2</SmellType>
+              <HashCode>LiteralConstants.GetCourseDepartmentBySelectedIndex.2</HashCode>
+              <Severity>Warning</Severity>
+              <Weight>1</Weight>
               <Project>CourseSystem</Project>
-              <File>CourseManagementForm.cs</File>
-              <Line>91</Line>
+              <File>Model.cs</File>
+              <Line>293</Line>
               <StartLine>0</StartLine>
               <StartCol>0</StartCol>
               <EndLine>0</EndLine>
               <EndCol>0</EndCol>
               <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>2</Id>
+              <SmellType>ICS(空白與空行-9)</SmellType>
+              <HashCode>SpacingAndNewLine9</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>CourseSystem</Project>
+              <File>CourseManagementForm.cs</File>
+              <Line>240</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(空白與空行-9) 陣列初始化的左大括號後面，右大括號前面</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>3</Id>
+              <SmellType>ICS(空白與空行-9)</SmellType>
+              <HashCode>SpacingAndNewLine9</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>CourseSystem</Project>
+              <File>CourseManagementForm.cs</File>
+              <Line>241</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(空白與空行-9) 陣列初始化的左大括號後面，右大括號前面</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>4</Id>
+              <SmellType>ICS(空白與空行-9)</SmellType>
+              <HashCode>SpacingAndNewLine9</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>CourseSystem</Project>
+              <File>CourseManagementForm.cs</File>
+              <Line>309</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(空白與空行-9) 陣列初始化的左大括號後面，右大括號前面</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>5</Id>
+              <SmellType>ICS(空白與空行-9)</SmellType>
+              <HashCode>SpacingAndNewLine9</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>CourseSystem</Project>
+              <File>CourseManagementForm.cs</File>
+              <Line>310</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(空白與空行-9) 陣列初始化的左大括號後面，右大括號前面</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>6</Id>
+              <SmellType>Literal constants(字面常數)-"編輯課程"</SmellType>
+              <HashCode>LiteralConstants.ChangedSelectedIndexCourseListBox."編輯課程"</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>CourseSystem</Project>
+              <File>CourseManagementForm.cs</File>
+              <Line>87</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>7</Id>
+              <SmellType>Literal constants(字面常數)-"編輯課程"</SmellType>
+              <HashCode>LiteralConstants.ClickSaveCourseDataButton."編輯課程"</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>CourseSystem</Project>
+              <File>CourseManagementForm.cs</File>
+              <Line>233</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>8</Id>
+              <SmellType>Literal constants(字面常數)-'.'</SmellType>
+              <HashCode>LiteralConstants.KeyInLimit.'.'</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>CourseSystem</Project>
+              <File>CourseManagementForm.cs</File>
+              <Line>214</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>9</Id>
+              <SmellType>Literal constants(字面常數)-'.'</SmellType>
+              <HashCode>LiteralConstants.KeyInLimit.'.'</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>CourseSystem</Project>
+              <File>CourseManagementForm.cs</File>
+              <Line>218</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>10</Id>
+              <SmellType>Literal constants(字面常數)-" "</SmellType>
+              <HashCode>LiteralConstants.ClickSaveCourseDataButton." "</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>CourseSystem</Project>
+              <File>CourseManagementForm.cs</File>
+              <Line>250</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>11</Id>
+              <SmellType>Literal constants(字面常數)-" "</SmellType>
+              <HashCode>LiteralConstants.ClickSaveCourseDataButton." "</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>CourseSystem</Project>
+              <File>CourseManagementForm.cs</File>
+              <Line>319</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>12</Id>
+              <SmellType>Literal constants(字面常數)-2</SmellType>
+              <HashCode>LiteralConstants.ClickSaveCourseDataButton.2</HashCode>
+              <Severity>Warning</Severity>
+              <Weight>1</Weight>
+              <Project>CourseSystem</Project>
+              <File>CourseManagementForm.cs</File>
+              <Line>257</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>13</Id>
+              <SmellType>Literal constants(字面常數)-2</SmellType>
+              <HashCode>LiteralConstants.ClickSaveCourseDataButton.2</HashCode>
+              <Severity>Warning</Severity>
+              <Weight>1</Weight>
+              <Project>CourseSystem</Project>
+              <File>CourseManagementForm.cs</File>
+              <Line>326</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>14</Id>
+              <SmellType>Literal constants(字面常數)-3</SmellType>
+              <HashCode>LiteralConstants.ClickSaveCourseDataButton.3</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>CourseSystem</Project>
+              <File>CourseManagementForm.cs</File>
+              <Line>257</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>15</Id>
+              <SmellType>Literal constants(字面常數)-3</SmellType>
+              <HashCode>LiteralConstants.ClickSaveCourseDataButton.3</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>CourseSystem</Project>
+              <File>CourseManagementForm.cs</File>
+              <Line>326</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>16</Id>
+              <SmellType>Literal constants(字面常數)-4</SmellType>
+              <HashCode>LiteralConstants.ClickSaveCourseDataButton.4</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>CourseSystem</Project>
+              <File>CourseManagementForm.cs</File>
+              <Line>257</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>17</Id>
+              <SmellType>Literal constants(字面常數)-4</SmellType>
+              <HashCode>LiteralConstants.ClickSaveCourseDataButton.4</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>CourseSystem</Project>
+              <File>CourseManagementForm.cs</File>
+              <Line>326</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>18</Id>
+              <SmellType>Literal constants(字面常數)-5</SmellType>
+              <HashCode>LiteralConstants.ClickSaveCourseDataButton.5</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>CourseSystem</Project>
+              <File>CourseManagementForm.cs</File>
+              <Line>257</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>19</Id>
+              <SmellType>Literal constants(字面常數)-5</SmellType>
+              <HashCode>LiteralConstants.ClickSaveCourseDataButton.5</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>CourseSystem</Project>
+              <File>CourseManagementForm.cs</File>
+              <Line>326</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>20</Id>
+              <SmellType>Literal constants(字面常數)-6</SmellType>
+              <HashCode>LiteralConstants.ClickSaveCourseDataButton.6</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>CourseSystem</Project>
+              <File>CourseManagementForm.cs</File>
+              <Line>257</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>21</Id>
+              <SmellType>Literal constants(字面常數)-6</SmellType>
+              <HashCode>LiteralConstants.ClickSaveCourseDataButton.6</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>CourseSystem</Project>
+              <File>CourseManagementForm.cs</File>
+              <Line>326</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>22</Id>
+              <SmellType>Literal constants(字面常數)-"編輯成功"</SmellType>
+              <HashCode>LiteralConstants.ClickSaveCourseDataButton."編輯成功"</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>CourseSystem</Project>
+              <File>CourseManagementForm.cs</File>
+              <Line>270</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>23</Id>
+              <SmellType>Literal constants(字面常數)-"編輯成功"</SmellType>
+              <HashCode>LiteralConstants.ClickSaveCourseDataButton."編輯成功"</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>CourseSystem</Project>
+              <File>CourseManagementForm.cs</File>
+              <Line>284</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>24</Id>
+              <SmellType>Literal constants(字面常數)-"編輯成功"</SmellType>
+              <HashCode>LiteralConstants.ClickSaveCourseDataButton."編輯成功"</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>CourseSystem</Project>
+              <File>CourseManagementForm.cs</File>
+              <Line>294</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>25</Id>
+              <SmellType>Literal constants(字面常數)-"新增成功"</SmellType>
+              <HashCode>LiteralConstants.ClickSaveCourseDataButton."新增成功"</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>CourseSystem</Project>
+              <File>CourseManagementForm.cs</File>
+              <Line>331</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>26</Id>
+              <SmellType>Literal constants(字面常數)-"新增成功"</SmellType>
+              <HashCode>LiteralConstants.ClickSaveCourseDataButton."新增成功"</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>CourseSystem</Project>
+              <File>CourseManagementForm.cs</File>
+              <Line>337</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>27</Id>
+              <SmellType>Long method(過長函式)</SmellType>
+              <HashCode>LongMethod.CourseManagementForm.AddRowsInClassTimeDataGridView.21</HashCode>
+              <Severity>Warning</Severity>
+              <Weight>21</Weight>
+              <Project>CourseSystem</Project>
+              <File>CourseManagementForm.cs</File>
+              <Line>62</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>28</Id>
+              <SmellType>Long method(過長函式)</SmellType>
+              <HashCode>LongMethod.CourseManagementForm.LoadContext.28Tuple&lt;int,int,int&gt; department;CourseInfo course;</HashCode>
+              <Severity>Warning</Severity>
+              <Weight>28</Weight>
+              <Project>CourseSystem</Project>
+              <File>CourseManagementForm.cs</File>
+              <Line>95</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>29</Id>
+              <SmellType>Long method(過長函式)</SmellType>
+              <HashCode>LongMethod.CourseManagementForm.ClickSaveCourseDataButton.111object sender;EventArgs e;</HashCode>
+              <Severity>Red</Severity>
+              <Weight>111</Weight>
+              <Project>CourseSystem</Project>
+              <File>CourseManagementForm.cs</File>
+              <Line>231</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>30</Id>
+              <SmellType>Feature Envy(依戀情節)</SmellType>
+              <HashCode>288 目前物件 CourseSystem.CourseManagementForm，使用物件的方法或屬性次數：0次，Envy到對象物件 CourseSystem.CourseManagementFormPresentationModel，使用物件方法或屬性次數：3次，使用到的方法或屬性為以下：CourseSystem.CourseManagementFormPresentationModel.GetSelectedCourseList 以及 CourseSystem.CourseManagementFormPresentationModel.GetCourseDepartmentBySelectedIndex(int) 以及 CourseSystem.CourseManagementFormPresentationModel.GetCourseDepartmentBySelectedIndex(int)</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>CourseSystem</Project>
+              <File>D:\Desktop\110-1\WindowsProgramming\WindowsProgrammingHomework\CourseSystem\CourseSystem\View\CourseManagementForm.cs</File>
+              <Line>288</Line>
+              <StartLine>288</StartLine>
+              <StartCol>37</StartCol>
+              <EndLine>288</EndLine>
+              <EndCol>118</EndCol>
+              <Comment>目前物件 CourseSystem.CourseManagementForm，使用物件的方法或屬性次數：0次，Envy到對象物件 CourseSystem.CourseManagementFormPresentationModel，使用物件方法或屬性次數：3次，使用到的方法或屬性為以下：CourseSystem.CourseManagementFormPresentationModel.GetSelectedCourseList 以及 CourseSystem.CourseManagementFormPresentationModel.GetCourseDepartmentBySelectedIndex(int) 以及 CourseSystem.CourseManagementFormPresentationModel.GetCourseDepartmentBySelectedIndex(int)</Comment>
               <Auto>false</Auto>
             </Smell>
           </Reviews>
@@ -309,7 +773,7 @@
               </AnalysisFile>
             </AnalysisFiles>
           </AnalysisFileManager>
-          <ProductionLoc>3263</ProductionLoc>
+          <ProductionLoc>3695</ProductionLoc>
           <TestLoc>0</TestLoc>
         </CodeReview>
       </Data>
