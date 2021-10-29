@@ -104,7 +104,7 @@ namespace CourseSystem
         }
 
         //CheckCourseList
-        public string CheckCourseList(List<CourseInfo> selectedCourseList, List<CourseInfo> checkedCourseList)
+        public string CheckCourseList(List<CourseInfo> checkedCourseList, List<CourseInfo> selectedCourseList)
         {
             string sameNumberMessage = "";
             string sameNameMessage = "";

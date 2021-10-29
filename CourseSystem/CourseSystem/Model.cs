@@ -139,6 +139,20 @@ namespace CourseSystem
         }
 
         //remove
+        public void RemoveCourseFromComputerScience3(int index)
+        {
+            _courseTabDictionary.Add(_computerScience3CourseList[index].Number, (int)Department.ComputerScience3);
+            _computerScience3CourseList.RemoveAt(index);
+        }
+
+        //remove
+        public void RemoveCourseFromElectronicEngineering3(int index)
+        {
+            _courseTabDictionary.Add(_electronicEngineering3CourseList[index].Number, (int)Department.ElectronicEngineering3);
+            _electronicEngineering3CourseList.RemoveAt(index);
+        }
+
+        //remove
         public void RemoveCourseFromSelectionResult(int index)
         {
             if (_courseTabDictionary[_selectedCourseList[index].Number] == (int)Department.ComputerScience3)
@@ -281,9 +295,24 @@ namespace CourseSystem
         }
 
         //AddIntoSelectedCourseList
-        public void AddIntoSelectedCourseList(CourseInfo course)
+        public void AddIntoSelectedCourseList(CourseInfo course, int department)
         {
             _selectedCourseList.Add(course);
+            _courseTabDictionary.Add(course.Number, department);
+            SortAll();
+        }
+
+        //AddIntoComputerScience3CourseList
+        public void AddIntoComputerScience3CourseList(CourseInfo course)
+        {
+            _computerScience3CourseList.Add(course);
+            SortAll();
+        }
+
+        //AddIntoElectronicEngineering3CourseList
+        public void AddIntoElectronicEngineering3CourseList(CourseInfo course)
+        {
+            _electronicEngineering3CourseList.Add(course);
             SortAll();
         }
     }

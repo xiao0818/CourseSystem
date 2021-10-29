@@ -182,7 +182,7 @@ namespace CourseSystem
             List<CourseInfo> checkedCourseList = new List<CourseInfo>();
             checkedCourseList = TakeOutComputerScience3CheckedCourseList(checkedCourseList);
             checkedCourseList = TakeOutElectronicEngineering3CheckedCourseList(checkedCourseList);
-            string checkedMessage = _courseSelectingFormPresentationModel.CheckCourseList(selectedCourseList, checkedCourseList);
+            string checkedMessage = _courseSelectingFormPresentationModel.CheckCourseList(checkedCourseList, selectedCourseList);
             SubmitCourseSelectionResult(checkedMessage, selectedCourseList);
         }
 
