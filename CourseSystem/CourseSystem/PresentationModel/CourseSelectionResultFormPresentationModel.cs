@@ -9,10 +9,13 @@ namespace CourseSystem
 {
     public class CourseSelectionResultFormPresentationModel
     {
+        public event PresentationModelChangedEventHandler PresentationModelChanged;
+        public delegate void PresentationModelChangedEventHandler();
         Model _model;
         public CourseSelectionResultFormPresentationModel(Model model)
         {
             _model = model;
+            _model.ModelChanged += UpdataCourseSelectionResultForm;
         }
 
         //GetResultDataGridViewRowList
@@ -51,6 +54,27 @@ namespace CourseSystem
         public void RemoveCourseFromSelectionResult(int index)
         {
             _model.RemoveCourseFromSelectionResult(index);
+        }
+
+        //UpdataCourseSelectionResultForm
+        public void UpdataCourseSelectionResultForm()
+        {
+            NotifyObserver();
+        }
+
+        //UpdateAllForm
+        public void UpdateAllForm()
+        {
+            _model.UpdateAllForm();
+        }
+
+        //NotifyObservers
+        public void NotifyObserver()
+        {
+            if (PresentationModelChanged != null)
+            {
+                PresentationModelChanged();
+            }
         }
     }
 }

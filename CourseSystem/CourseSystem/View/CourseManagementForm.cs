@@ -25,6 +25,7 @@ namespace CourseSystem
         {
             _courseManagementFormPresentationModel = courseManagementFormPresentationModel;
             _startUpForm = startUpForm;
+            _courseManagementFormPresentationModel.PresentationModelChanged += LoadManagementForm;
             InitializeComponent();
         }
 
@@ -39,7 +40,7 @@ namespace CourseSystem
         //LoadCourseManagementForm
         private void LoadCourseManagementForm(object sender, EventArgs e)
         {
-            ReloadManagementForm();
+            LoadManagementForm();
         }
 
         //LoadListBox
@@ -167,8 +168,8 @@ namespace CourseSystem
             _classTimeDataGridView.Enabled = enable;
         }
 
-        //ReloadManagementForm
-        public void ReloadManagementForm()
+        //LoadManagementForm
+        public void LoadManagementForm()
         {
             LoadListBox();
             SetAllObjectInGroupBoxEmpty();
@@ -291,7 +292,7 @@ namespace CourseSystem
             {
                 SaveAddCourse();
             }
-            _startUpForm.ReloadAllForm();
+            UpdateAllForm();
         }
 
         //SaveModifyCourse
@@ -413,6 +414,12 @@ namespace CourseSystem
                 }
             }
             return count;
+        }
+
+        //UpdateAllForm
+        public void UpdateAllForm()
+        {
+            _courseManagementFormPresentationModel.UpdateAllForm();
         }
     }
 }

@@ -8,12 +8,15 @@ namespace CourseSystem
 {
     public class CourseManagementFormPresentationModel
     {
+        public event PresentationModelChangedEventHandler PresentationModelChanged;
+        public delegate void PresentationModelChangedEventHandler();
         Model _model;
         bool _isSaveCourseDataButton;
         bool _isAddCourseDataButton;
         public CourseManagementFormPresentationModel(Model model)
         {
             _model = model;
+            _model.ModelChanged += UpdataCourseManagementForm;
             _isAddCourseDataButton = true;
             _isSaveCourseDataButton = false;
         }
@@ -177,6 +180,27 @@ namespace CourseSystem
         {
             _isSaveCourseDataButton = false;
             _isAddCourseDataButton = false;
+        }
+
+        //UpdataCourseSelectionResultForm
+        public void UpdataCourseManagementForm()
+        {
+            NotifyObserver();
+        }
+
+        //UpdateAllForm
+        public void UpdateAllForm()
+        {
+            _model.UpdateAllForm();
+        }
+
+        //NotifyObservers
+        public void NotifyObserver()
+        {
+            if (PresentationModelChanged != null)
+            {
+                PresentationModelChanged();
+            }
         }
     }
 }

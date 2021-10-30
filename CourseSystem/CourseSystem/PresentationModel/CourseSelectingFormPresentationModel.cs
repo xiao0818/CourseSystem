@@ -8,12 +8,15 @@ namespace CourseSystem
 {
     public class CourseSelectingFormPresentationModel
     {
+        public event PresentationModelChangedEventHandler PresentationModelChanged;
+        public delegate void PresentationModelChangedEventHandler();
         Model _model;
         bool _isCheckButtonEnabled = true;
         bool _isSubmitButtonEnabled = false;
         public CourseSelectingFormPresentationModel(Model model)
         {
             _model = model;
+            _model.ModelChanged += UpdataCourseSelectingForm;
         }
 
         //get
@@ -141,6 +144,27 @@ namespace CourseSystem
         public void AddSelectedCourse(CourseInfo selectingCourse)
         {
             _model.AddSelectedCourse(selectingCourse);
+        }
+
+        //UpdataCourseSelectingForm
+        public void UpdataCourseSelectingForm()
+        {
+            NotifyObserver();
+        }
+
+        //UpdateAllForm
+        public void UpdateAllForm()
+        {
+            _model.UpdateAllForm();
+        }
+
+        //NotifyObservers
+        public void NotifyObserver()
+        {
+            if (PresentationModelChanged != null)
+            {
+                PresentationModelChanged();
+            }
         }
     }
 }

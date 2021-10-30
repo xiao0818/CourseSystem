@@ -18,7 +18,8 @@ namespace CourseSystem
         public CourseSelectingForm(StartUpForm startUpForm, CourseSelectingFormPresentationModel courseSelectingFormPresentationModel, CourseSelectionResultFormPresentationModel courseSelectionResultFormPresentationModel)
         {
             _courseSelectingFormPresentationModel = courseSelectingFormPresentationModel;
-            _courseSelectionResultForm = new CourseSelectionResultForm(this, courseSelectionResultFormPresentationModel, startUpForm);
+            _courseSelectionResultForm = new CourseSelectionResultForm(this, courseSelectionResultFormPresentationModel);
+            _courseSelectingFormPresentationModel.PresentationModelChanged += LoadForm;
             _startUpForm = startUpForm;
             InitializeComponent();
         }
@@ -182,6 +183,7 @@ namespace CourseSystem
             checkedCourseList = TakeOutElectronicEngineering3CheckedCourseList(checkedCourseList);
             string checkedMessage = _courseSelectingFormPresentationModel.CheckCourseList(checkedCourseList, selectedCourseList);
             SubmitCourseSelectionResult(checkedMessage);
+            UpdateAllForm();
         }
 
         //Submit
@@ -192,9 +194,6 @@ namespace CourseSystem
                 SubmitComputerScience3DataGridView();
                 SubmitElectronicEngineering3DataGridView();
                 MessageBox.Show("加選成功");
-                //LoadForm();
-                //_courseSelectionResultForm.LoadCourseResultDataGridView();
-                _startUpForm.ReloadAllForm();
                 _courseSelectingFormPresentationModel.ResetSubmitButton();
                 _submitButton.Enabled = _courseSelectingFormPresentationModel.IsSubmitButtonEnabled;
                 
@@ -262,12 +261,11 @@ namespace CourseSystem
             e.Cancel = true;
             this.Hide();
         }
-
-        //ReloadSelectingFormAndSelectionResultForm
-        public void ReloadSelectingFormAndSelectionResultForm()
+        
+        //UpdateAllForm
+        public void UpdateAllForm()
         {
-            LoadForm();
-            _courseSelectionResultForm.LoadCourseResultDataGridView();
+            _courseSelectingFormPresentationModel.UpdateAllForm();
         }
     }
 }
