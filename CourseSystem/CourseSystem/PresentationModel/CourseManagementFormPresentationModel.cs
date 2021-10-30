@@ -9,9 +9,13 @@ namespace CourseSystem
     public class CourseManagementFormPresentationModel
     {
         Model _model;
+        bool _isSaveCourseDataButton;
+        bool _isAddCourseDataButton;
         public CourseManagementFormPresentationModel(Model model)
         {
             _model = model;
+            _isAddCourseDataButton = true;
+            _isSaveCourseDataButton = false;
         }
 
         //Get
@@ -129,6 +133,59 @@ namespace CourseSystem
         public void RemoveCourseFromTabDictionary(int index)
         {
             _model.RemoveCourseFromTabDictionary(index);
+        }
+
+        //IsSaveCourseDataButton
+        public bool IsSaveCourseDataButton
+        {
+            get
+            {
+                return _isSaveCourseDataButton;
+            }
+        }
+
+        //IsAddCourseDataButton
+        public bool IsAddCourseDataButton
+        {
+            get
+            {
+                return _isAddCourseDataButton;
+            }
+        }
+
+        //ResetAllButton
+        public void ResetAllButton()
+        {
+            _isSaveCourseDataButton = false;
+            _isAddCourseDataButton = true;
+        }
+
+        //SelectListBox
+        public void SelectListBox()
+        {
+            _isSaveCourseDataButton = false;
+            _isAddCourseDataButton = true;
+        }
+
+        //ClickAddButton
+        public void ClickAddButton()
+        {
+            _isSaveCourseDataButton = false;
+            _isAddCourseDataButton = false;
+        }
+
+        //ChangeTextSuccessfully
+        public void ChangeContentSuccessfully()
+        {
+            _isSaveCourseDataButton = true;
+            _isAddCourseDataButton = false;
+        }
+
+        //ChangeTextUnsuccessfully
+        public void ChangeContentUnsuccessfully()
+        {
+            _isSaveCourseDataButton = false;
+            _isAddCourseDataButton = false;
         }
     }
 }

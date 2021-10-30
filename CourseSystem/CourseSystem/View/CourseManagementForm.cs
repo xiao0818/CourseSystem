@@ -33,8 +33,12 @@ namespace CourseSystem
         private void LoadCourseManagementForm(object sender, EventArgs e)
         {
             LoadListBox();
+            SetAllObjectInGroupBoxEmpty();
             AddRowsInClassTimeDataGridView();
-            _saveCourseDataButton.Enabled = false;
+            SetAllObjectInGroupBoxUnenabled();
+            _courseManagementFormPresentationModel.ResetAllButton();
+            _saveCourseDataButton.Enabled = _courseManagementFormPresentationModel.IsSaveCourseDataButton;
+            _addCourseDataButton.Enabled = _courseManagementFormPresentationModel.IsAddCourseDataButton;
         }
 
         //LoadListBox
@@ -89,7 +93,9 @@ namespace CourseSystem
             CourseInfo course = _courseManagementFormPresentationModel.GetCourseInfoBySelectedIndex(_courseListBox.SelectedIndex);
             Tuple<int, int, int> department = _courseManagementFormPresentationModel.GetCourseDepartmentBySelectedIndex(_courseListBox.SelectedIndex);
             LoadContext(department, course);
-            _addCourseButton.Enabled = true;
+            _courseManagementFormPresentationModel.SelectListBox();
+            _addCourseDataButton.Enabled = _courseManagementFormPresentationModel.IsAddCourseDataButton;
+            _saveCourseDataButton.Enabled = _courseManagementFormPresentationModel.IsSaveCourseDataButton;
         }
 
         //LoadContext
@@ -120,7 +126,6 @@ namespace CourseSystem
                 _classTimeDataGridView.Rows[TranslateClassTimeToIndex(time.Item2)].Cells[time.Item1 + 1].Value = Enabled;
             }
             SetAllObjectInGroupBoxEnabled();
-            _saveCourseDataButton.Enabled = false;
         }
 
         //TranslateClassTimeToIndex
@@ -157,13 +162,34 @@ namespace CourseSystem
             _classTimeDataGridView.Enabled = true;
         }
 
+        //SetAllObjectInGroupBoxUnenabled
+        private void SetAllObjectInGroupBoxUnenabled()
+        {
+            _courseEnabledComboBox.Enabled = false;
+            _courseNumberTextBox.Enabled = false;
+            _courseNameTextBox.Enabled = false;
+            _courseStageTextBox.Enabled = false;
+            _courseCreditTextBox.Enabled = false;
+            _courseTeacherTextBox.Enabled = false;
+            _courseTypeSelectionComboBox.Enabled = false;
+            _courseTeachingAssistantTextBox.Enabled = false;
+            _courseLanguageTextBox.Enabled = false;
+            _courseNoteTextBox.Enabled = false;
+            _courseClassTimeSelectionComboBox.Enabled = false;
+            _courseClassSelectionComboBox.Enabled = false;
+            _classTimeDataGridView.Enabled = false;
+        }
+
         //ReloadManagementForm
         public void ReloadManagementForm()
         {
             LoadListBox();
             SetAllObjectInGroupBoxEmpty();
             AddRowsInClassTimeDataGridView();
-            _saveCourseDataButton.Enabled = false;
+            SetAllObjectInGroupBoxUnenabled();
+            _courseManagementFormPresentationModel.ResetAllButton();
+            _saveCourseDataButton.Enabled = _courseManagementFormPresentationModel.IsSaveCourseDataButton;
+            _addCourseDataButton.Enabled = _courseManagementFormPresentationModel.IsAddCourseDataButton;
         }
 
         //SetAllObjectInGroupBoxEmpty
@@ -188,7 +214,7 @@ namespace CourseSystem
         {
             _classDataGroupBox.Text = "新增課程";
             _saveCourseDataButton.Text = "新增";
-            _addCourseButton.Enabled = false;
+            _addCourseDataButton.Enabled = false;
             SetAllObjectInGroupBoxEmpty();
             AddRowsInClassTimeDataGridView();
             SetAllObjectInGroupBoxEnabled();
@@ -197,6 +223,9 @@ namespace CourseSystem
             _courseEnabledComboBox.SelectedIndex = 0;
             _courseTypeSelectionComboBox.SelectedIndex = 0;
             _saveCourseDataButton.Enabled = false;
+            _courseManagementFormPresentationModel.ClickAddButton();
+            _saveCourseDataButton.Enabled = _courseManagementFormPresentationModel.IsSaveCourseDataButton;
+            _addCourseDataButton.Enabled = _courseManagementFormPresentationModel.IsAddCourseDataButton;
         }
 
         //ClickCellClassTimeDataGridView
@@ -237,6 +266,7 @@ namespace CourseSystem
         //ClickSaveCourseDataButton
         private void ClickSaveCourseDataButton(object sender, EventArgs e)
         {
+            _classTimeDataGridView.EndEdit();
             if (_classDataGroupBox.Text == "編輯課程")
             {
                 CourseInfo course = _courseManagementFormPresentationModel.GetCourseInfoBySelectedIndex(_courseListBox.SelectedIndex);
@@ -366,17 +396,22 @@ namespace CourseSystem
             if (count.ToString() != _courseClassTimeSelectionComboBox.Text || _courseNumberTextBox.Text == "" || _courseNameTextBox.Text == "" || _courseStageTextBox.Text == "" || _courseCreditTextBox.Text == "" ||
                 _courseTeacherTextBox.Text == "" || _courseTypeSelectionComboBox.Text == "" || _courseClassTimeSelectionComboBox.Text == "" || _courseClassSelectionComboBox.Text == "")
             {
-                _saveCourseDataButton.Enabled = false;
+                _courseManagementFormPresentationModel.ChangeContentUnsuccessfully();
+                _saveCourseDataButton.Enabled = _courseManagementFormPresentationModel.IsSaveCourseDataButton;
+                _addCourseDataButton.Enabled = _courseManagementFormPresentationModel.IsAddCourseDataButton;
             }
             else
             {
-                _saveCourseDataButton.Enabled = true;
+                _courseManagementFormPresentationModel.ChangeContentSuccessfully();
+                _saveCourseDataButton.Enabled = _courseManagementFormPresentationModel.IsSaveCourseDataButton;
+                _addCourseDataButton.Enabled = _courseManagementFormPresentationModel.IsAddCourseDataButton;
             }
         }
 
         //ChangedCellValueClassTimeDataGridView
         private void ChangedCellValueClassTimeDataGridView(object sender, DataGridViewCellEventArgs e)
         {
+            _classTimeDataGridView.EndEdit();
             int count = 0;
             const int DAY_PER_WEEK = 7;
             for (int day = 0; day < DAY_PER_WEEK; day++)
@@ -392,11 +427,15 @@ namespace CourseSystem
             if (count.ToString() != _courseClassTimeSelectionComboBox.Text || _courseNumberTextBox.Text == "" || _courseNameTextBox.Text == "" || _courseStageTextBox.Text == "" || _courseCreditTextBox.Text == "" ||
                 _courseTeacherTextBox.Text == "" || _courseTypeSelectionComboBox.Text == "" || _courseClassTimeSelectionComboBox.Text == "" || _courseClassSelectionComboBox.Text == "")
             {
-                _saveCourseDataButton.Enabled = false;
+                _courseManagementFormPresentationModel.ChangeContentUnsuccessfully();
+                _saveCourseDataButton.Enabled = _courseManagementFormPresentationModel.IsSaveCourseDataButton;
+                _addCourseDataButton.Enabled = _courseManagementFormPresentationModel.IsAddCourseDataButton;
             }
             else
             {
-                _saveCourseDataButton.Enabled = true;
+                _courseManagementFormPresentationModel.ChangeContentSuccessfully();
+                _saveCourseDataButton.Enabled = _courseManagementFormPresentationModel.IsSaveCourseDataButton;
+                _addCourseDataButton.Enabled = _courseManagementFormPresentationModel.IsAddCourseDataButton;
             }
         }
     }

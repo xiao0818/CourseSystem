@@ -65,7 +65,7 @@ namespace CourseSystem
             this._courseNumberLabel = new System.Windows.Forms.Label();
             this._courseEnabledComboBox = new System.Windows.Forms.ComboBox();
             this._saveCourseDataButton = new System.Windows.Forms.Button();
-            this._addCourseButton = new System.Windows.Forms.Button();
+            this._addCourseDataButton = new System.Windows.Forms.Button();
             this._courseListBox = new System.Windows.Forms.ListBox();
             this._classManagementTabPage = new System.Windows.Forms.TabPage();
             this._comingSoonLabel = new System.Windows.Forms.Label();
@@ -91,7 +91,7 @@ namespace CourseSystem
             // 
             this._courseManagementTabPage.Controls.Add(this._classDataGroupBox);
             this._courseManagementTabPage.Controls.Add(this._saveCourseDataButton);
-            this._courseManagementTabPage.Controls.Add(this._addCourseButton);
+            this._courseManagementTabPage.Controls.Add(this._addCourseDataButton);
             this._courseManagementTabPage.Controls.Add(this._courseListBox);
             this._courseManagementTabPage.Location = new System.Drawing.Point(4, 22);
             this._courseManagementTabPage.Name = "_courseManagementTabPage";
@@ -463,13 +463,13 @@ namespace CourseSystem
             // 
             // _addCourseButton
             // 
-            this._addCourseButton.Location = new System.Drawing.Point(0, 371);
-            this._addCourseButton.Name = "_addCourseButton";
-            this._addCourseButton.Size = new System.Drawing.Size(174, 53);
-            this._addCourseButton.TabIndex = 1;
-            this._addCourseButton.Text = "新增課程";
-            this._addCourseButton.UseVisualStyleBackColor = true;
-            this._addCourseButton.Click += new System.EventHandler(this.ClickAddCourseButton);
+            this._addCourseDataButton.Location = new System.Drawing.Point(0, 371);
+            this._addCourseDataButton.Name = "_addCourseButton";
+            this._addCourseDataButton.Size = new System.Drawing.Size(174, 53);
+            this._addCourseDataButton.TabIndex = 1;
+            this._addCourseDataButton.Text = "新增課程";
+            this._addCourseDataButton.UseVisualStyleBackColor = true;
+            this._addCourseDataButton.Click += new System.EventHandler(this.ClickAddCourseButton);
             // 
             // _courseListBox
             // 
@@ -532,7 +532,7 @@ namespace CourseSystem
         private System.Windows.Forms.TabPage _courseManagementTabPage;
         private System.Windows.Forms.TabPage _classManagementTabPage;
         private System.Windows.Forms.Label _comingSoonLabel;
-        private System.Windows.Forms.Button _addCourseButton;
+        private System.Windows.Forms.Button _addCourseDataButton;
         private System.Windows.Forms.ListBox _courseListBox;
         private System.Windows.Forms.Button _saveCourseDataButton;
         private System.Windows.Forms.GroupBox _classDataGroupBox;
