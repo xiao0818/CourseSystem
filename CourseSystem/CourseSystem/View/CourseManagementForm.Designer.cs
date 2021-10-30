@@ -33,14 +33,14 @@ namespace CourseSystem
             this._courseManagementTabPage = new System.Windows.Forms.TabPage();
             this._classDataGroupBox = new System.Windows.Forms.GroupBox();
             this._classTimeDataGridView = new System.Windows.Forms.DataGridView();
-            this.classTimeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.classTime0Column = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.classTime1Column = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.classTime2Column = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.classTime3Column = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.classTime4Column = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.classTime5Column = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.classTime6Column = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this._classTimeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this._classTime0Column = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this._classTime1Column = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this._classTime2Column = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this._classTime3Column = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this._classTime4Column = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this._classTime5Column = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this._classTime6Column = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this._courseClassSelectionComboBox = new System.Windows.Forms.ComboBox();
             this._courseSelectionLabel = new System.Windows.Forms.Label();
             this._courseClassTimeSelectionComboBox = new System.Windows.Forms.ComboBox();
@@ -140,14 +140,14 @@ namespace CourseSystem
             this._classTimeDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this._classTimeDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this._classTimeDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.classTimeColumn,
-            this.classTime0Column,
-            this.classTime1Column,
-            this.classTime2Column,
-            this.classTime3Column,
-            this.classTime4Column,
-            this.classTime5Column,
-            this.classTime6Column});
+            this._classTimeColumn,
+            this._classTime0Column,
+            this._classTime1Column,
+            this._classTime2Column,
+            this._classTime3Column,
+            this._classTime4Column,
+            this._classTime5Column,
+            this._classTime6Column});
             this._classTimeDataGridView.Enabled = false;
             this._classTimeDataGridView.Location = new System.Drawing.Point(8, 152);
             this._classTimeDataGridView.Name = "_classTimeDataGridView";
@@ -161,59 +161,59 @@ namespace CourseSystem
             // 
             // classTimeColumn
             // 
-            this.classTimeColumn.HeaderText = "節數";
-            this.classTimeColumn.MinimumWidth = 8;
-            this.classTimeColumn.Name = "classTimeColumn";
-            this.classTimeColumn.ReadOnly = true;
+            this._classTimeColumn.HeaderText = "節數";
+            this._classTimeColumn.MinimumWidth = 8;
+            this._classTimeColumn.Name = "classTimeColumn";
+            this._classTimeColumn.ReadOnly = true;
             // 
             // classTime0Column
             // 
-            this.classTime0Column.HeaderText = "日";
-            this.classTime0Column.MinimumWidth = 8;
-            this.classTime0Column.Name = "classTime0Column";
-            this.classTime0Column.ReadOnly = true;
+            this._classTime0Column.HeaderText = "日";
+            this._classTime0Column.MinimumWidth = 8;
+            this._classTime0Column.Name = "classTime0Column";
+            this._classTime0Column.ReadOnly = true;
             // 
             // classTime1Column
             // 
-            this.classTime1Column.HeaderText = "一";
-            this.classTime1Column.MinimumWidth = 8;
-            this.classTime1Column.Name = "classTime1Column";
-            this.classTime1Column.ReadOnly = true;
+            this._classTime1Column.HeaderText = "一";
+            this._classTime1Column.MinimumWidth = 8;
+            this._classTime1Column.Name = "classTime1Column";
+            this._classTime1Column.ReadOnly = true;
             // 
             // classTime2Column
             // 
-            this.classTime2Column.HeaderText = "二";
-            this.classTime2Column.MinimumWidth = 8;
-            this.classTime2Column.Name = "classTime2Column";
-            this.classTime2Column.ReadOnly = true;
+            this._classTime2Column.HeaderText = "二";
+            this._classTime2Column.MinimumWidth = 8;
+            this._classTime2Column.Name = "classTime2Column";
+            this._classTime2Column.ReadOnly = true;
             // 
             // classTime3Column
             // 
-            this.classTime3Column.HeaderText = "三";
-            this.classTime3Column.MinimumWidth = 8;
-            this.classTime3Column.Name = "classTime3Column";
-            this.classTime3Column.ReadOnly = true;
+            this._classTime3Column.HeaderText = "三";
+            this._classTime3Column.MinimumWidth = 8;
+            this._classTime3Column.Name = "classTime3Column";
+            this._classTime3Column.ReadOnly = true;
             // 
             // classTime4Column
             // 
-            this.classTime4Column.HeaderText = "四";
-            this.classTime4Column.MinimumWidth = 8;
-            this.classTime4Column.Name = "classTime4Column";
-            this.classTime4Column.ReadOnly = true;
+            this._classTime4Column.HeaderText = "四";
+            this._classTime4Column.MinimumWidth = 8;
+            this._classTime4Column.Name = "classTime4Column";
+            this._classTime4Column.ReadOnly = true;
             // 
             // classTime5Column
             // 
-            this.classTime5Column.HeaderText = "五";
-            this.classTime5Column.MinimumWidth = 8;
-            this.classTime5Column.Name = "classTime5Column";
-            this.classTime5Column.ReadOnly = true;
+            this._classTime5Column.HeaderText = "五";
+            this._classTime5Column.MinimumWidth = 8;
+            this._classTime5Column.Name = "classTime5Column";
+            this._classTime5Column.ReadOnly = true;
             // 
             // classTime6Column
             // 
-            this.classTime6Column.HeaderText = "六";
-            this.classTime6Column.MinimumWidth = 8;
-            this.classTime6Column.Name = "classTime6Column";
-            this.classTime6Column.ReadOnly = true;
+            this._classTime6Column.HeaderText = "六";
+            this._classTime6Column.MinimumWidth = 8;
+            this._classTime6Column.Name = "classTime6Column";
+            this._classTime6Column.ReadOnly = true;
             // 
             // _courseClassSelectionComboBox
             // 
@@ -568,13 +568,5 @@ namespace CourseSystem
         private System.Windows.Forms.DataGridViewCheckBoxColumn _classTime4Column;
         private System.Windows.Forms.DataGridViewCheckBoxColumn _classTime5Column;
         private System.Windows.Forms.DataGridViewCheckBoxColumn _classTime6Column;
-        private System.Windows.Forms.DataGridViewTextBoxColumn classTimeColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn classTime0Column;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn classTime1Column;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn classTime2Column;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn classTime3Column;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn classTime4Column;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn classTime5Column;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn classTime6Column;
     }
 }

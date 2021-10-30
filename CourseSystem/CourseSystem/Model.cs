@@ -17,7 +17,7 @@ namespace CourseSystem
         private Dictionary<string, int> _courseTabDictionary;
         const string STRUCTURE = "//body/table";
         const string FRONT_QUOTE = "「";
-        const string SEPARATER = " ";
+        const string SPACE = " ";
         const string BACK_QUOTE = "」";
         public Model()
         {
@@ -212,7 +212,7 @@ namespace CourseSystem
                 }
                 if (count > 1)
                 {
-                    sameNumberMessage = sameNumberMessage + FRONT_QUOTE + checkedCourse.Number + SEPARATER + checkedCourse.Name + BACK_QUOTE;
+                    sameNumberMessage = sameNumberMessage + FRONT_QUOTE + checkedCourse.Number + SPACE + checkedCourse.Name + BACK_QUOTE;
                 }
             }
             return sameNumberMessage;
@@ -233,7 +233,7 @@ namespace CourseSystem
                 }
                 if (count > 1)
                 {
-                    sameNameMessage = sameNameMessage + FRONT_QUOTE + checkedCourse.Number + SEPARATER + checkedCourse.Name + BACK_QUOTE;
+                    sameNameMessage = sameNameMessage + FRONT_QUOTE + checkedCourse.Number + SPACE + checkedCourse.Name + BACK_QUOTE;
                 }
             }
             return sameNameMessage;
@@ -254,7 +254,7 @@ namespace CourseSystem
                 }
                 if (count > 1)
                 {
-                    sameTimeMessage = sameTimeMessage + FRONT_QUOTE + checkedCourse.Number + SEPARATER + checkedCourse.Name + BACK_QUOTE;
+                    sameTimeMessage = sameTimeMessage + FRONT_QUOTE + checkedCourse.Number + SPACE + checkedCourse.Name + BACK_QUOTE;
                 }
             }
             return sameTimeMessage;
@@ -282,15 +282,15 @@ namespace CourseSystem
         {
             if (selectedIndex < _computerScience3CourseList.Count)
             {
-                return Tuple.Create(0, (int)Department.ComputerScience3, selectedIndex);
+                return Tuple.Create((int)ListName.ComputerScience3, (int)Department.ComputerScience3, selectedIndex);
             }
             else if (selectedIndex - _computerScience3CourseList.Count < _electronicEngineering3CourseList.Count)
             {
-                return Tuple.Create(1, (int)Department.ElectronicEngineering3, selectedIndex - _computerScience3CourseList.Count);
+                return Tuple.Create((int)ListName.ElectronicEngineering3, (int)Department.ElectronicEngineering3, selectedIndex - _computerScience3CourseList.Count);
             }
             else
             {
-                return Tuple.Create(2, _courseTabDictionary[_selectedCourseList[selectedIndex - _computerScience3CourseList.Count - _electronicEngineering3CourseList.Count].Number], selectedIndex - _computerScience3CourseList.Count - _electronicEngineering3CourseList.Count);
+                return Tuple.Create((int)ListName.SelectedList, _courseTabDictionary[_selectedCourseList[selectedIndex - _computerScience3CourseList.Count - _electronicEngineering3CourseList.Count].Number], selectedIndex - _computerScience3CourseList.Count - _electronicEngineering3CourseList.Count);
             }
         }
 

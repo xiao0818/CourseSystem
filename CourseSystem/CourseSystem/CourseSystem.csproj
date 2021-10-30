@@ -52,6 +52,8 @@
   <ItemGroup>
     <Compile Include="Class\CourseInfo.cs" />
     <Compile Include="Class\CourseInfoHeaderText.cs" />
+    <Compile Include="Class\Day.cs" />
+    <Compile Include="Class\ListName.cs" />
     <Compile Include="PresentationModel\CourseManagementFormPresentationModel.cs" />
     <Compile Include="View\CourseManagementForm.cs">
       <SubType>Form</SubType>

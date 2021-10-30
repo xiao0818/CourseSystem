@@ -175,14 +175,14 @@ namespace CourseSystem
         }
 
         //ChangeTextSuccessfully
-        public void ChangeContentSuccessfully()
+        public void ChangeContentEnabled()
         {
             _isSaveCourseDataButton = true;
             _isAddCourseDataButton = false;
         }
 
         //ChangeTextUnsuccessfully
-        public void ChangeContentUnsuccessfully()
+        public void ChangeContentNotEnabled()
         {
             _isSaveCourseDataButton = false;
             _isAddCourseDataButton = false;
