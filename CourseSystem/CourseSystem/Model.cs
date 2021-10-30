@@ -124,7 +124,6 @@ namespace CourseSystem
         {
             _selectedCourseList = selectedCourseList;
             SortAll();
-            //NotifyObserver();
         }
 
         //remove
@@ -132,7 +131,6 @@ namespace CourseSystem
         {
             _courseTabDictionary.Add(_computerScience3CourseList[index].Number, (int)Department.ComputerScience3);
             _computerScience3CourseList.RemoveAt(index);
-            //NotifyObserver();
         }
 
         //remove
@@ -140,7 +138,6 @@ namespace CourseSystem
         {
             _courseTabDictionary.Add(_electronicEngineering3CourseList[index].Number, (int)Department.ElectronicEngineering3);
             _electronicEngineering3CourseList.RemoveAt(index);
-            //NotifyObserver();
         }
 
         //remove
@@ -148,7 +145,6 @@ namespace CourseSystem
         {
             _courseTabDictionary.Add(_computerScience3CourseList[index].Number, (int)Department.ComputerScience3);
             _computerScience3CourseList.RemoveAt(index);
-            //NotifyObserver();
         }
 
         //remove
@@ -156,7 +152,6 @@ namespace CourseSystem
         {
             _courseTabDictionary.Add(_electronicEngineering3CourseList[index].Number, (int)Department.ElectronicEngineering3);
             _electronicEngineering3CourseList.RemoveAt(index);
-            //NotifyObserver();
         }
 
         //remove
@@ -173,7 +168,6 @@ namespace CourseSystem
             _courseTabDictionary.Remove(_selectedCourseList[index].Number);
             _selectedCourseList.RemoveAt(index);
             SortAll();
-            //NotifyObserver();
         }
 
         //GetNumber
@@ -308,7 +302,6 @@ namespace CourseSystem
             _selectedCourseList.Add(course);
             _courseTabDictionary.Add(course.Number, department);
             SortAll();
-            //NotifyObserver();
         }
 
         //AddIntoComputerScience3CourseList
@@ -316,7 +309,6 @@ namespace CourseSystem
         {
             _computerScience3CourseList.Add(course);
             SortAll();
-            //NotifyObserver();
         }
 
         //AddIntoElectronicEngineering3CourseList
@@ -324,14 +316,12 @@ namespace CourseSystem
         {
             _electronicEngineering3CourseList.Add(course);
             SortAll();
-            //NotifyObserver();
         }
 
         //RemoveCourseFromTabDictionary
         public void RemoveCourseFromTabDictionary(int index)
         {
             _courseTabDictionary.Remove(_selectedCourseList[index].Number);
-            //NotifyObserver();
         }
 
         //AddSelectedCourse
@@ -339,7 +329,6 @@ namespace CourseSystem
         {
             _selectedCourseList.Add(selectingCourse);
             SortAll();
-            //NotifyObserver();
         }
 
         //UpdateAllForm
