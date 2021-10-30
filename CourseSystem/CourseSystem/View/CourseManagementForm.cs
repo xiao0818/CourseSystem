@@ -85,6 +85,7 @@ namespace CourseSystem
         private void ChangedSelectedIndexCourseListBox(object sender, EventArgs e)
         {
             _classDataGroupBox.Text = "編輯課程";
+            _saveCourseDataButton.Text = "儲存";
             CourseInfo course = _courseManagementFormPresentationModel.GetCourseInfoBySelectedIndex(_courseListBox.SelectedIndex);
             Tuple<int, int, int> department = _courseManagementFormPresentationModel.GetCourseDepartmentBySelectedIndex(_courseListBox.SelectedIndex);
             LoadContext(department, course);
@@ -104,14 +105,14 @@ namespace CourseSystem
             _courseTeachingAssistantTextBox.Text = course.TeachingAssistant;
             _courseLanguageTextBox.Text = course.Language;
             _courseNoteTextBox.Text = course.Note;
-            _classTimeSelectionComboBox.Text = course.Hour;
+            _courseClassTimeSelectionComboBox.Text = course.Hour;
             if (department.Item2 == 0)
             {
-                _courseSelectionComboBox.Text = "資工三";
+                _courseClassSelectionComboBox.Text = "資工三";
             }
             else if (department.Item2 == 1)
             {
-                _courseSelectionComboBox.Text = "電子三甲";
+                _courseClassSelectionComboBox.Text = "電子三甲";
             }
             AddRowsInClassTimeDataGridView();
             foreach (Tuple<int, string> time in course.GetCourseClassTime())
@@ -119,6 +120,7 @@ namespace CourseSystem
                 _classTimeDataGridView.Rows[TranslateClassTimeToIndex(time.Item2)].Cells[time.Item1 + 1].Value = Enabled;
             }
             SetAllObjectInGroupBoxEnabled();
+            _saveCourseDataButton.Enabled = false;
         }
 
         //TranslateClassTimeToIndex
@@ -150,8 +152,8 @@ namespace CourseSystem
             _courseTeachingAssistantTextBox.Enabled = true;
             _courseLanguageTextBox.Enabled = true;
             _courseNoteTextBox.Enabled = true;
-            _classTimeSelectionComboBox.Enabled = true;
-            _courseSelectionComboBox.Enabled = true;
+            _courseClassTimeSelectionComboBox.Enabled = true;
+            _courseClassSelectionComboBox.Enabled = true;
             _classTimeDataGridView.Enabled = true;
         }
 
@@ -177,18 +179,23 @@ namespace CourseSystem
             _courseTeachingAssistantTextBox.Text = "";
             _courseLanguageTextBox.Text = "";
             _courseNoteTextBox.Text = "";
-            _classTimeSelectionComboBox.SelectedIndex = -1;
-            _courseSelectionComboBox.SelectedIndex = -1;
+            _courseClassTimeSelectionComboBox.SelectedIndex = -1;
+            _courseClassSelectionComboBox.SelectedIndex = -1;
         }
 
         //ClickAddCourseButton
         private void ClickAddCourseButton(object sender, EventArgs e)
         {
             _classDataGroupBox.Text = "新增課程";
+            _saveCourseDataButton.Text = "新增";
             _addCourseButton.Enabled = false;
             SetAllObjectInGroupBoxEmpty();
             AddRowsInClassTimeDataGridView();
             SetAllObjectInGroupBoxEnabled();
+            _courseClassSelectionComboBox.SelectedIndex = 0;
+            _courseClassTimeSelectionComboBox.SelectedIndex = 0;
+            _courseEnabledComboBox.SelectedIndex = 0;
+            _courseTypeSelectionComboBox.SelectedIndex = 0;
             _saveCourseDataButton.Enabled = false;
         }
 
@@ -253,17 +260,17 @@ namespace CourseSystem
                     }
                 }
                 CourseInfo newCourse = new CourseInfo(
-                    _courseNumberTextBox.Text, _courseNameTextBox.Text, _courseStageTextBox.Text, _courseCreditTextBox.Text, _classTimeSelectionComboBox.Text, _courseTypeSelectionComboBox.Text, _courseTeacherTextBox.Text,
+                    _courseNumberTextBox.Text, _courseNameTextBox.Text, _courseStageTextBox.Text, _courseCreditTextBox.Text, _courseClassTimeSelectionComboBox.Text, _courseTypeSelectionComboBox.Text, _courseTeacherTextBox.Text,
                     ClassTimeStringList[0].Trim(), ClassTimeStringList[1].Trim(), ClassTimeStringList[2].Trim(), ClassTimeStringList[3].Trim(), ClassTimeStringList[4].Trim(), ClassTimeStringList[5].Trim(), ClassTimeStringList[6].Trim(), course.Classroom,
                     course.NumberOfStudent, course.NumberOfDropStudent, _courseTeachingAssistantTextBox.Text, _courseLanguageTextBox.Text, course.Outline, _courseNoteTextBox.Text, course.AttachStudent, course.Experiment);
                 if (department.Item1 == (int)Department.ComputerScience3)
                 {
                     _courseManagementFormPresentationModel.RemoveCourseFromComputerScience3(department.Item3);
-                    if (_courseSelectionComboBox.SelectedIndex == (int)Department.ComputerScience3)
+                    if (_courseClassSelectionComboBox.SelectedIndex == (int)Department.ComputerScience3)
                     {
                         _courseManagementFormPresentationModel.AddIntoComputerScience3CourseList(newCourse);
                     }
-                    else if (_courseSelectionComboBox.SelectedIndex == (int)Department.ElectronicEngineering3)
+                    else if (_courseClassSelectionComboBox.SelectedIndex == (int)Department.ElectronicEngineering3)
                     {
                         _courseManagementFormPresentationModel.AddIntoElectronicEngineering3CourseList(newCourse);
                     }
@@ -273,11 +280,11 @@ namespace CourseSystem
                 else if (department.Item1 == (int)Department.ElectronicEngineering3)
                 {
                     _courseManagementFormPresentationModel.RemoveCourseFromElectronicEngineering3(department.Item3);
-                    if (_courseSelectionComboBox.SelectedIndex == (int)Department.ComputerScience3)
+                    if (_courseClassSelectionComboBox.SelectedIndex == (int)Department.ComputerScience3)
                     {
                         _courseManagementFormPresentationModel.AddIntoComputerScience3CourseList(newCourse);
                     }
-                    else if (_courseSelectionComboBox.SelectedIndex == (int)Department.ElectronicEngineering3)
+                    else if (_courseClassSelectionComboBox.SelectedIndex == (int)Department.ElectronicEngineering3)
                     {
                         _courseManagementFormPresentationModel.AddIntoElectronicEngineering3CourseList(newCourse);
                     }
@@ -322,16 +329,16 @@ namespace CourseSystem
                     }
                 }
                 CourseInfo course = new CourseInfo(
-                    _courseNumberTextBox.Text, _courseNameTextBox.Text, _courseStageTextBox.Text, _courseCreditTextBox.Text, _classTimeSelectionComboBox.Text, _courseTypeSelectionComboBox.Text, _courseTeacherTextBox.Text,
+                    _courseNumberTextBox.Text, _courseNameTextBox.Text, _courseStageTextBox.Text, _courseCreditTextBox.Text, _courseClassTimeSelectionComboBox.Text, _courseTypeSelectionComboBox.Text, _courseTeacherTextBox.Text,
                     ClassTimeStringList[0].Trim(), ClassTimeStringList[1].Trim(), ClassTimeStringList[2].Trim(), ClassTimeStringList[3].Trim(), ClassTimeStringList[4].Trim(), ClassTimeStringList[5].Trim(), ClassTimeStringList[6].Trim(), "",
                     "", "", _courseTeachingAssistantTextBox.Text, _courseLanguageTextBox.Text, "", _courseNoteTextBox.Text, "", "");
-                if (_courseSelectionComboBox.Text == Department.ComputerScience3.ToString())
+                if (_courseClassSelectionComboBox.Text == Department.ComputerScience3.ToString())
                 {
                     _courseManagementFormPresentationModel.AddIntoComputerScience3CourseList(course);
                     MessageBox.Show("新增成功");
                     _startUpForm.ReloadAllForm();
                 }
-                else if (_courseSelectionComboBox.Text == Department.ElectronicEngineering3.ToString())
+                else if (_courseClassSelectionComboBox.Text == Department.ElectronicEngineering3.ToString())
                 {
                     _courseManagementFormPresentationModel.AddIntoComputerScience3CourseList(course);
                     MessageBox.Show("新增成功");
@@ -343,7 +350,53 @@ namespace CourseSystem
         //ChangedText
         private void ChangedText(object sender, EventArgs e)
         {
-            _saveCourseDataButton.Enabled = true;
+            int count = 0;
+            const int DAY_PER_WEEK = 7;
+            for (int day = 0; day < DAY_PER_WEEK; day++)
+            {
+                foreach (DataGridViewRow row in _classTimeDataGridView.Rows)
+                {
+                    if (Convert.ToBoolean(row.Cells[day + 1].Value) == true)
+                    {
+                        count++;
+                    }
+                }
+            }
+            if (count.ToString() != _courseClassTimeSelectionComboBox.Text || _courseNumberTextBox.Text == "" || _courseNameTextBox.Text == "" || _courseStageTextBox.Text == "" || _courseCreditTextBox.Text == "" ||
+                _courseTeacherTextBox.Text == "" || _courseTypeSelectionComboBox.Text == "" || _courseClassTimeSelectionComboBox.Text == "" || _courseClassSelectionComboBox.Text == "")
+            {
+                _saveCourseDataButton.Enabled = false;
+            }
+            else
+            {
+                _saveCourseDataButton.Enabled = true;
+            }
+        }
+
+        //ChangedCellValueClassTimeDataGridView
+        private void ChangedCellValueClassTimeDataGridView(object sender, DataGridViewCellEventArgs e)
+        {
+            int count = 0;
+            const int DAY_PER_WEEK = 7;
+            for (int day = 0; day < DAY_PER_WEEK; day++)
+            {
+                foreach (DataGridViewRow row in _classTimeDataGridView.Rows)
+                {
+                    if (Convert.ToBoolean(row.Cells[day + 1].Value) == true)
+                    {
+                        count++;
+                    }
+                }
+            }
+            if (count.ToString() != _courseClassTimeSelectionComboBox.Text || _courseNumberTextBox.Text == "" || _courseNameTextBox.Text == "" || _courseStageTextBox.Text == "" || _courseCreditTextBox.Text == "" ||
+                _courseTeacherTextBox.Text == "" || _courseTypeSelectionComboBox.Text == "" || _courseClassTimeSelectionComboBox.Text == "" || _courseClassSelectionComboBox.Text == "")
+            {
+                _saveCourseDataButton.Enabled = false;
+            }
+            else
+            {
+                _saveCourseDataButton.Enabled = true;
+            }
         }
     }
 }
