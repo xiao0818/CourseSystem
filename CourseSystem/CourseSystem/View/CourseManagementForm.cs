@@ -255,12 +255,10 @@ namespace CourseSystem
         //TakeOutClassTimeFromDataGridView
         private List<string> TakeOutClassTimeFromDataGridView(DataGridViewRowCollection rows)
         {
-            List<string> classTimeStringList = new List<string>
-                {
-                    "", "", "", "", "", "", ""
-                };
+            List<string> classTimeStringList = new List<string>();
             for (int day = 0; day < DAY_PER_WEEK; day++)
             {
+                classTimeStringList.Add("");
                 foreach (DataGridViewRow row in _classTimeDataGridView.Rows)
                 {
                     if (Convert.ToBoolean(row.Cells[day + 1].Value) == true)

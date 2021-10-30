@@ -188,112 +188,80 @@
           <Reviews>
             <Smell>
               <Id>1</Id>
-              <SmellType>ICS(空白與空行-9)</SmellType>
-              <HashCode>SpacingAndNewLine9</HashCode>
-              <Severity>Red</Severity>
-              <Weight>1</Weight>
-              <Project>CourseSystem</Project>
-              <File>CourseManagementForm.cs</File>
-              <Line>260</Line>
-              <StartLine>0</StartLine>
-              <StartCol>0</StartCol>
-              <EndLine>0</EndLine>
-              <EndCol>0</EndCol>
-              <Comment>ICS(空白與空行-9) 陣列初始化的左大括號後面，右大括號前面</Comment>
-              <Auto>false</Auto>
-            </Smell>
-            <Smell>
-              <Id>2</Id>
-              <SmellType>ICS(空白與空行-9)</SmellType>
-              <HashCode>SpacingAndNewLine9</HashCode>
-              <Severity>Red</Severity>
-              <Weight>1</Weight>
-              <Project>CourseSystem</Project>
-              <File>CourseManagementForm.cs</File>
-              <Line>261</Line>
-              <StartLine>0</StartLine>
-              <StartCol>0</StartCol>
-              <EndLine>0</EndLine>
-              <EndCol>0</EndCol>
-              <Comment>ICS(空白與空行-9) 陣列初始化的左大括號後面，右大括號前面</Comment>
-              <Auto>false</Auto>
-            </Smell>
-            <Smell>
-              <Id>3</Id>
               <SmellType>Feature Envy(依戀情節)</SmellType>
-              <HashCode>338 目前物件 CourseSystem.CourseManagementForm，使用物件的方法或屬性次數：0次，Envy到對象物件 CourseSystem.CourseManagementFormPresentationModel，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：CourseSystem.CourseManagementFormPresentationModel.GetSelectedCourseList 以及 CourseSystem.CourseManagementFormPresentationModel.CheckCourseList(CourseSystem.CourseInfo, System.Collections.Generic.List&lt;CourseSystem.CourseInfo&gt;)</HashCode>
+              <HashCode>336 目前物件 CourseSystem.CourseManagementForm，使用物件的方法或屬性次數：0次，Envy到對象物件 CourseSystem.CourseManagementFormPresentationModel，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：CourseSystem.CourseManagementFormPresentationModel.GetSelectedCourseList 以及 CourseSystem.CourseManagementFormPresentationModel.CheckCourseList(CourseSystem.CourseInfo, System.Collections.Generic.List&lt;CourseSystem.CourseInfo&gt;)</HashCode>
               <Severity>Warning</Severity>
               <Weight>1</Weight>
               <Project>CourseSystem</Project>
               <File>D:\Desktop\110-1\WindowsProgramming\WindowsProgrammingHomework\CourseSystem\CourseSystem\View\CourseManagementForm.cs</File>
-              <Line>338</Line>
-              <StartLine>338</StartLine>
+              <Line>336</Line>
+              <StartLine>336</StartLine>
               <StartCol>19</StartCol>
-              <EndLine>338</EndLine>
+              <EndLine>336</EndLine>
               <EndCol>121</EndCol>
               <Comment>目前物件 CourseSystem.CourseManagementForm，使用物件的方法或屬性次數：0次，Envy到對象物件 CourseSystem.CourseManagementFormPresentationModel，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：CourseSystem.CourseManagementFormPresentationModel.GetSelectedCourseList 以及 CourseSystem.CourseManagementFormPresentationModel.CheckCourseList(CourseSystem.CourseInfo, System.Collections.Generic.List&lt;CourseSystem.CourseInfo&gt;)</Comment>
               <Auto>false</Auto>
             </Smell>
             <Smell>
-              <Id>4</Id>
+              <Id>2</Id>
               <SmellType>Feature Envy(依戀情節)</SmellType>
-              <HashCode>339 目前物件 CourseSystem.CourseManagementForm，使用物件的方法或屬性次數：0次，Envy到對象物件 CourseSystem.CourseManagementFormPresentationModel，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：CourseSystem.CourseManagementFormPresentationModel.GetSelectedCourseList 以及 CourseSystem.CourseManagementFormPresentationModel.CheckCourseList(CourseSystem.CourseInfo, System.Collections.Generic.List&lt;CourseSystem.CourseInfo&gt;)</HashCode>
+              <HashCode>337 目前物件 CourseSystem.CourseManagementForm，使用物件的方法或屬性次數：0次，Envy到對象物件 CourseSystem.CourseManagementFormPresentationModel，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：CourseSystem.CourseManagementFormPresentationModel.GetSelectedCourseList 以及 CourseSystem.CourseManagementFormPresentationModel.CheckCourseList(CourseSystem.CourseInfo, System.Collections.Generic.List&lt;CourseSystem.CourseInfo&gt;)</HashCode>
               <Severity>Warning</Severity>
               <Weight>1</Weight>
               <Project>CourseSystem</Project>
               <File>D:\Desktop\110-1\WindowsProgramming\WindowsProgrammingHomework\CourseSystem\CourseSystem\View\CourseManagementForm.cs</File>
-              <Line>339</Line>
-              <StartLine>339</StartLine>
+              <Line>337</Line>
+              <StartLine>337</StartLine>
               <StartCol>16</StartCol>
-              <EndLine>339</EndLine>
+              <EndLine>337</EndLine>
               <EndCol>36</EndCol>
               <Comment>目前物件 CourseSystem.CourseManagementForm，使用物件的方法或屬性次數：0次，Envy到對象物件 CourseSystem.CourseManagementFormPresentationModel，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：CourseSystem.CourseManagementFormPresentationModel.GetSelectedCourseList 以及 CourseSystem.CourseManagementFormPresentationModel.CheckCourseList(CourseSystem.CourseInfo, System.Collections.Generic.List&lt;CourseSystem.CourseInfo&gt;)</Comment>
               <Auto>false</Auto>
             </Smell>
             <Smell>
-              <Id>5</Id>
+              <Id>3</Id>
               <SmellType>Feature Envy(依戀情節)</SmellType>
-              <HashCode>343 目前物件 CourseSystem.CourseManagementForm，使用物件的方法或屬性次數：0次，Envy到對象物件 CourseSystem.CourseManagementFormPresentationModel，使用物件方法或屬性次數：3次，使用到的方法或屬性為以下：CourseSystem.CourseManagementFormPresentationModel.AddIntoSelectedCourseList(CourseSystem.CourseInfo, int) 以及 CourseSystem.CourseManagementFormPresentationModel.GetSelectedCourseList 以及 CourseSystem.CourseManagementFormPresentationModel.CheckCourseList(CourseSystem.CourseInfo, System.Collections.Generic.List&lt;CourseSystem.CourseInfo&gt;)</HashCode>
+              <HashCode>341 目前物件 CourseSystem.CourseManagementForm，使用物件的方法或屬性次數：0次，Envy到對象物件 CourseSystem.CourseManagementFormPresentationModel，使用物件方法或屬性次數：3次，使用到的方法或屬性為以下：CourseSystem.CourseManagementFormPresentationModel.AddIntoSelectedCourseList(CourseSystem.CourseInfo, int) 以及 CourseSystem.CourseManagementFormPresentationModel.GetSelectedCourseList 以及 CourseSystem.CourseManagementFormPresentationModel.CheckCourseList(CourseSystem.CourseInfo, System.Collections.Generic.List&lt;CourseSystem.CourseInfo&gt;)</HashCode>
               <Severity>Red</Severity>
               <Weight>1</Weight>
               <Project>CourseSystem</Project>
               <File>D:\Desktop\110-1\WindowsProgramming\WindowsProgrammingHomework\CourseSystem\CourseSystem\View\CourseManagementForm.cs</File>
-              <Line>343</Line>
-              <StartLine>342</StartLine>
+              <Line>341</Line>
+              <StartLine>340</StartLine>
               <StartCol>0</StartCol>
-              <EndLine>343</EndLine>
+              <EndLine>341</EndLine>
               <EndCol>0</EndCol>
               <Comment>目前物件 CourseSystem.CourseManagementForm，使用物件的方法或屬性次數：0次，Envy到對象物件 CourseSystem.CourseManagementFormPresentationModel，使用物件方法或屬性次數：3次，使用到的方法或屬性為以下：CourseSystem.CourseManagementFormPresentationModel.AddIntoSelectedCourseList(CourseSystem.CourseInfo, int) 以及 CourseSystem.CourseManagementFormPresentationModel.GetSelectedCourseList 以及 CourseSystem.CourseManagementFormPresentationModel.CheckCourseList(CourseSystem.CourseInfo, System.Collections.Generic.List&lt;CourseSystem.CourseInfo&gt;)</Comment>
               <Auto>false</Auto>
             </Smell>
             <Smell>
-              <Id>6</Id>
+              <Id>4</Id>
               <SmellType>Feature Envy(依戀情節)</SmellType>
-              <HashCode>347 目前物件 CourseSystem.CourseManagementForm，使用物件的方法或屬性次數：1次，Envy到對象物件 CourseSystem.CourseManagementFormPresentationModel，使用物件方法或屬性次數：6次，使用到的方法或屬性為以下：CourseSystem.CourseManagementFormPresentationModel.GetSelectedCourseList 以及 CourseSystem.CourseManagementFormPresentationModel.CheckCourseList(CourseSystem.CourseInfo, System.Collections.Generic.List&lt;CourseSystem.CourseInfo&gt;) 以及 CourseSystem.CourseManagementFormPresentationModel.GetSelectedCourseList 以及 CourseSystem.CourseManagementFormPresentationModel.CheckCourseList(CourseSystem.CourseInfo, System.Collections.Generic.List&lt;CourseSystem.CourseInfo&gt;) 以及 CourseSystem.CourseManagementFormPresentationModel.GetSelectedCourseList 以及 CourseSystem.CourseManagementFormPresentationModel.CheckCourseList(CourseSystem.CourseInfo, System.Collections.Generic.List&lt;CourseSystem.CourseInfo&gt;)</HashCode>
+              <HashCode>345 目前物件 CourseSystem.CourseManagementForm，使用物件的方法或屬性次數：1次，Envy到對象物件 CourseSystem.CourseManagementFormPresentationModel，使用物件方法或屬性次數：6次，使用到的方法或屬性為以下：CourseSystem.CourseManagementFormPresentationModel.GetSelectedCourseList 以及 CourseSystem.CourseManagementFormPresentationModel.CheckCourseList(CourseSystem.CourseInfo, System.Collections.Generic.List&lt;CourseSystem.CourseInfo&gt;) 以及 CourseSystem.CourseManagementFormPresentationModel.GetSelectedCourseList 以及 CourseSystem.CourseManagementFormPresentationModel.CheckCourseList(CourseSystem.CourseInfo, System.Collections.Generic.List&lt;CourseSystem.CourseInfo&gt;) 以及 CourseSystem.CourseManagementFormPresentationModel.GetSelectedCourseList 以及 CourseSystem.CourseManagementFormPresentationModel.CheckCourseList(CourseSystem.CourseInfo, System.Collections.Generic.List&lt;CourseSystem.CourseInfo&gt;)</HashCode>
               <Severity>Red</Severity>
               <Weight>1</Weight>
               <Project>CourseSystem</Project>
               <File>D:\Desktop\110-1\WindowsProgramming\WindowsProgrammingHomework\CourseSystem\CourseSystem\View\CourseManagementForm.cs</File>
-              <Line>347</Line>
-              <StartLine>346</StartLine>
+              <Line>345</Line>
+              <StartLine>344</StartLine>
               <StartCol>0</StartCol>
-              <EndLine>347</EndLine>
+              <EndLine>345</EndLine>
               <EndCol>0</EndCol>
               <Comment>目前物件 CourseSystem.CourseManagementForm，使用物件的方法或屬性次數：1次，Envy到對象物件 CourseSystem.CourseManagementFormPresentationModel，使用物件方法或屬性次數：6次，使用到的方法或屬性為以下：CourseSystem.CourseManagementFormPresentationModel.GetSelectedCourseList 以及 CourseSystem.CourseManagementFormPresentationModel.CheckCourseList(CourseSystem.CourseInfo, System.Collections.Generic.List&lt;CourseSystem.CourseInfo&gt;) 以及 CourseSystem.CourseManagementFormPresentationModel.GetSelectedCourseList 以及 CourseSystem.CourseManagementFormPresentationModel.CheckCourseList(CourseSystem.CourseInfo, System.Collections.Generic.List&lt;CourseSystem.CourseInfo&gt;) 以及 CourseSystem.CourseManagementFormPresentationModel.GetSelectedCourseList 以及 CourseSystem.CourseManagementFormPresentationModel.CheckCourseList(CourseSystem.CourseInfo, System.Collections.Generic.List&lt;CourseSystem.CourseInfo&gt;)</Comment>
               <Auto>false</Auto>
             </Smell>
             <Smell>
-              <Id>7</Id>
+              <Id>5</Id>
               <SmellType>Feature Envy(依戀情節)</SmellType>
-              <HashCode>348 目前物件 CourseSystem.CourseManagementForm，使用物件的方法或屬性次數：0次，Envy到對象物件 CourseSystem.CourseManagementFormPresentationModel，使用物件方法或屬性次數：3次，使用到的方法或屬性為以下：CourseSystem.CourseManagementFormPresentationModel.AddIntoSelectedCourseList(CourseSystem.CourseInfo, int) 以及 CourseSystem.CourseManagementFormPresentationModel.GetSelectedCourseList 以及 CourseSystem.CourseManagementFormPresentationModel.CheckCourseList(CourseSystem.CourseInfo, System.Collections.Generic.List&lt;CourseSystem.CourseInfo&gt;)</HashCode>
+              <HashCode>346 目前物件 CourseSystem.CourseManagementForm，使用物件的方法或屬性次數：0次，Envy到對象物件 CourseSystem.CourseManagementFormPresentationModel，使用物件方法或屬性次數：3次，使用到的方法或屬性為以下：CourseSystem.CourseManagementFormPresentationModel.AddIntoSelectedCourseList(CourseSystem.CourseInfo, int) 以及 CourseSystem.CourseManagementFormPresentationModel.GetSelectedCourseList 以及 CourseSystem.CourseManagementFormPresentationModel.CheckCourseList(CourseSystem.CourseInfo, System.Collections.Generic.List&lt;CourseSystem.CourseInfo&gt;)</HashCode>
               <Severity>Red</Severity>
               <Weight>1</Weight>
               <Project>CourseSystem</Project>
               <File>D:\Desktop\110-1\WindowsProgramming\WindowsProgrammingHomework\CourseSystem\CourseSystem\View\CourseManagementForm.cs</File>
-              <Line>348</Line>
-              <StartLine>347</StartLine>
+              <Line>346</Line>
+              <StartLine>345</StartLine>
               <StartCol>0</StartCol>
-              <EndLine>348</EndLine>
+              <EndLine>346</EndLine>
               <EndCol>0</EndCol>
               <Comment>目前物件 CourseSystem.CourseManagementForm，使用物件的方法或屬性次數：0次，Envy到對象物件 CourseSystem.CourseManagementFormPresentationModel，使用物件方法或屬性次數：3次，使用到的方法或屬性為以下：CourseSystem.CourseManagementFormPresentationModel.AddIntoSelectedCourseList(CourseSystem.CourseInfo, int) 以及 CourseSystem.CourseManagementFormPresentationModel.GetSelectedCourseList 以及 CourseSystem.CourseManagementFormPresentationModel.CheckCourseList(CourseSystem.CourseInfo, System.Collections.Generic.List&lt;CourseSystem.CourseInfo&gt;)</Comment>
               <Auto>false</Auto>
@@ -415,7 +383,7 @@
               </AnalysisFile>
             </AnalysisFiles>
           </AnalysisFileManager>
-          <ProductionLoc>3878</ProductionLoc>
+          <ProductionLoc>3876</ProductionLoc>
           <TestLoc>0</TestLoc>
         </CodeReview>
       </Data>
