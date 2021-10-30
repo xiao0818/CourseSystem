@@ -95,8 +95,9 @@ namespace CourseSystem
             string sameNumberMessage = "";
             string sameNameMessage = "";
             string sameTimeMessage = "";
-            selectedCourseList.Add(selectedCourse);
-            List<CourseInfo> allCourseList = selectedCourseList;
+            List<CourseInfo> selectingCourseList = new List<CourseInfo>();
+            selectingCourseList.Add(selectedCourse);
+            List<CourseInfo> allCourseList = selectedCourseList.Concat(selectingCourseList).ToList();
             sameNumberMessage = _model.CheckSameNumber(allCourseList, selectedCourseList, sameNumberMessage);
             sameNameMessage = _model.CheckSameName(allCourseList, selectedCourseList, sameNameMessage);
             sameTimeMessage = _model.CheckSameTime(allCourseList, selectedCourseList, sameTimeMessage);

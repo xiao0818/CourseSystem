@@ -241,7 +241,6 @@ namespace CourseSystem
             {
                 CourseInfo course = _courseManagementFormPresentationModel.GetCourseInfoBySelectedIndex(_courseListBox.SelectedIndex);
                 Tuple<int, int, int> department = _courseManagementFormPresentationModel.GetCourseDepartmentBySelectedIndex(_courseListBox.SelectedIndex);
-                //開課班級
                 List<string> ClassTimeStringList = new List<string>
                 {
                     "" ,"" ,"" ,"" ,"" ,"" ,""
@@ -294,18 +293,20 @@ namespace CourseSystem
                 else
                 {
                     List<CourseInfo> selectedCourseList = _courseManagementFormPresentationModel.GetSelectedCourseList;
+                    _courseManagementFormPresentationModel.RemoveCourseFromTabDictionary(department.Item3);
                     selectedCourseList.RemoveAt(department.Item3);
                     string checkedMessage = _courseManagementFormPresentationModel.CheckCourseList(newCourse, selectedCourseList);
                     if (checkedMessage == "")
                     {
                         MessageBox.Show("編輯成功");
-                        _courseManagementFormPresentationModel.RemoveCourseFromTabDictionary(department.Item3);
-                        _courseManagementFormPresentationModel.AddIntoSelectedCourseList(newCourse, department.Item1);
+                        _courseManagementFormPresentationModel.AddIntoSelectedCourseList(newCourse, _courseClassSelectionComboBox.SelectedIndex);
                         _startUpForm.ReloadAllForm();
                     }
                     else
                     {
-                        MessageBox.Show("編輯失敗" + checkedMessage);
+                        MessageBox.Show("編輯失敗\n此編輯會導致已選課程發生:" + checkedMessage);
+                        _courseManagementFormPresentationModel.AddIntoSelectedCourseList(course, department.Item2);
+                        _startUpForm.ReloadAllForm();
                     }
                 }
             }
