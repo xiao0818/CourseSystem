@@ -9,7 +9,7 @@ namespace CourseSystem
 {
     public class Model
     {
-        public event ModelChangedEventHandler ModelChanged;
+        public event ModelChangedEventHandler _modelChanged;
         public delegate void ModelChangedEventHandler();
         const string WEB_COMPUTER_SCIENCE_3 = "https://aps.ntut.edu.tw/course/tw/Subj.jsp?format=-4&year=110&sem=1&code=2433";
         const string WEB_ELECTRONIC_ENGINEERING_3_A = "https://aps.ntut.edu.tw/course/tw/Subj.jsp?format=-4&year=110&sem=1&code=2423";
@@ -23,6 +23,7 @@ namespace CourseSystem
         const string BACK_QUOTE = "」";
         public Model()
         {
+            _modelChanged += SortAll;
             _computerScience3CourseList = GetCourseInfo(WEB_COMPUTER_SCIENCE_3);
             _electronicEngineering3CourseList = GetCourseInfo(WEB_ELECTRONIC_ENGINEERING_3_A);
             _selectedCourseList = new List<CourseInfo>();
@@ -77,19 +78,9 @@ namespace CourseSystem
         private CourseInfo GetNewCourseInfo(HtmlNodeCollection nodeTableDatas)
         {
             return new CourseInfo(
-                        nodeTableDatas[(int)CourseInfoHeaderText.Number].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.Name].InnerText.Trim(),
-                        nodeTableDatas[(int)CourseInfoHeaderText.Stage].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.Credit].InnerText.Trim(),
-                        nodeTableDatas[(int)CourseInfoHeaderText.Hour].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.CourseType].InnerText.Trim(),
-                        nodeTableDatas[(int)CourseInfoHeaderText.Teacher].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.ClassTime0].InnerText.Trim(),
-                        nodeTableDatas[(int)CourseInfoHeaderText.ClassTime1].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.ClassTime2].InnerText.Trim(),
-                        nodeTableDatas[(int)CourseInfoHeaderText.ClassTime3].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.ClassTime4].InnerText.Trim(),
-                        nodeTableDatas[(int)CourseInfoHeaderText.ClassTime5].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.ClassTime6].InnerText.Trim(),
-                        nodeTableDatas[(int)CourseInfoHeaderText.Classroom].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.NumberOfStudent].InnerText.Trim(),
-                        nodeTableDatas[(int)CourseInfoHeaderText.NumberOfDropStudent].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.TeachingAssistant].InnerText.Trim(),
-                        nodeTableDatas[(int)CourseInfoHeaderText.Language].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.Outline].InnerText.Trim(),
-                        nodeTableDatas[(int)CourseInfoHeaderText.Note].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.AttachStudent].InnerText.Trim(),
-                        nodeTableDatas[(int)CourseInfoHeaderText.Experiment].InnerText.Trim()
-                        );
+                        nodeTableDatas[(int)CourseInfoHeaderText.Number].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.Name].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.Stage].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.Credit].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.Hour].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.CourseType].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.Teacher].InnerText.Trim(),
+                        nodeTableDatas[(int)CourseInfoHeaderText.ClassTime0].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.ClassTime1].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.ClassTime2].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.ClassTime3].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.ClassTime4].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.ClassTime5].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.ClassTime6].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.Classroom].InnerText.Trim(),
+                        nodeTableDatas[(int)CourseInfoHeaderText.NumberOfStudent].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.NumberOfDropStudent].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.TeachingAssistant].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.Language].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.Outline].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.Note].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.AttachStudent].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.Experiment].InnerText.Trim());
         }
 
         //Get
@@ -120,10 +111,12 @@ namespace CourseSystem
         }
 
         //update
-        public void SetSelectedCourseList(List<CourseInfo> selectedCourseList)
+        public List<CourseInfo> SetSelectedCourseList
         {
-            _selectedCourseList = selectedCourseList;
-            SortAll();
+            set
+            {
+                _selectedCourseList = value;
+            }
         }
 
         //remove
@@ -167,7 +160,6 @@ namespace CourseSystem
             }
             _courseTabDictionary.Remove(_selectedCourseList[index].Number);
             _selectedCourseList.RemoveAt(index);
-            SortAll();
         }
 
         //GetNumber
@@ -301,21 +293,18 @@ namespace CourseSystem
         {
             _selectedCourseList.Add(course);
             _courseTabDictionary.Add(course.Number, department);
-            SortAll();
         }
 
         //AddIntoComputerScience3CourseList
         public void AddIntoComputerScience3CourseList(CourseInfo course)
         {
             _computerScience3CourseList.Add(course);
-            SortAll();
         }
 
         //AddIntoElectronicEngineering3CourseList
         public void AddIntoElectronicEngineering3CourseList(CourseInfo course)
         {
             _electronicEngineering3CourseList.Add(course);
-            SortAll();
         }
 
         //RemoveCourseFromTabDictionary
@@ -328,11 +317,10 @@ namespace CourseSystem
         public void AddSelectedCourse(CourseInfo selectingCourse)
         {
             _selectedCourseList.Add(selectingCourse);
-            SortAll();
         }
 
         //UpdateAllForm
-        public void UpdateAllForm()
+        public void ReloadAllForm()
         {
             NotifyObserver();
         }
@@ -340,9 +328,9 @@ namespace CourseSystem
         //NotifyObservers
         public void NotifyObserver()
         {
-            if (ModelChanged != null)
+            if (_modelChanged != null)
             {
-                ModelChanged();
+                _modelChanged();
             }
         }
     }

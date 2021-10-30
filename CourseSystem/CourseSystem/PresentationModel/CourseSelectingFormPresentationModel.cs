@@ -8,7 +8,7 @@ namespace CourseSystem
 {
     public class CourseSelectingFormPresentationModel
     {
-        public event PresentationModelChangedEventHandler PresentationModelChanged;
+        public event PresentationModelChangedEventHandler _presentationModelChanged;
         public delegate void PresentationModelChangedEventHandler();
         Model _model;
         bool _isCheckButtonEnabled = true;
@@ -16,7 +16,7 @@ namespace CourseSystem
         public CourseSelectingFormPresentationModel(Model model)
         {
             _model = model;
-            _model.ModelChanged += UpdataCourseSelectingForm;
+            _model._modelChanged += ReloadCourseSelectingForm;
         }
 
         //get
@@ -38,12 +38,6 @@ namespace CourseSystem
         public void RemoveFromElectronicEngineering3(int index)
         {
             _model.RemoveFromElectronicEngineering3(index);
-        }
-        
-        //set
-        public void SetSelectedCourseList(List<CourseInfo> selectedCourseList)
-        {
-            _model.SetSelectedCourseList(selectedCourseList);
         }
 
         //Get
@@ -147,23 +141,23 @@ namespace CourseSystem
         }
 
         //UpdataCourseSelectingForm
-        public void UpdataCourseSelectingForm()
+        public void ReloadCourseSelectingForm()
         {
             NotifyObserver();
         }
 
         //UpdateAllForm
-        public void UpdateAllForm()
+        public void ReloadAllForm()
         {
-            _model.UpdateAllForm();
+            _model.ReloadAllForm();
         }
 
         //NotifyObservers
         public void NotifyObserver()
         {
-            if (PresentationModelChanged != null)
+            if (_presentationModelChanged != null)
             {
-                PresentationModelChanged();
+                _presentationModelChanged();
             }
         }
     }

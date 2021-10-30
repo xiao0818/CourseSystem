@@ -9,13 +9,13 @@ namespace CourseSystem
 {
     public class CourseSelectionResultFormPresentationModel
     {
-        public event PresentationModelChangedEventHandler PresentationModelChanged;
+        public event PresentationModelChangedEventHandler _presentationModelChanged;
         public delegate void PresentationModelChangedEventHandler();
         Model _model;
         public CourseSelectionResultFormPresentationModel(Model model)
         {
             _model = model;
-            _model.ModelChanged += UpdataCourseSelectionResultForm;
+            _model._modelChanged += ReloadCourseSelectionResultForm;
         }
 
         //GetResultDataGridViewRowList
@@ -57,23 +57,23 @@ namespace CourseSystem
         }
 
         //UpdataCourseSelectionResultForm
-        public void UpdataCourseSelectionResultForm()
+        public void ReloadCourseSelectionResultForm()
         {
             NotifyObserver();
         }
 
         //UpdateAllForm
-        public void UpdateAllForm()
+        public void ReloadAllForm()
         {
-            _model.UpdateAllForm();
+            _model.ReloadAllForm();
         }
 
         //NotifyObservers
         public void NotifyObserver()
         {
-            if (PresentationModelChanged != null)
+            if (_presentationModelChanged != null)
             {
-                PresentationModelChanged();
+                _presentationModelChanged();
             }
         }
     }

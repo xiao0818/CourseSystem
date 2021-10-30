@@ -18,7 +18,7 @@ namespace CourseSystem
         {
             _courseSelectionResultFormPresentationModel = courseSelectionResultFormPresentationModel;
             _courseSelectingForm = courseSelectingForm;
-            _courseSelectionResultFormPresentationModel.PresentationModelChanged += LoadCourseResultDataGridView;
+            _courseSelectionResultFormPresentationModel._presentationModelChanged += LoadCourseResultDataGridView;
             InitializeComponent();
         }
 
@@ -60,7 +60,7 @@ namespace CourseSystem
         //UpdateAllForm
         public void UpdateAllForm()
         {
-            _courseSelectionResultFormPresentationModel.UpdateAllForm();
+            _courseSelectionResultFormPresentationModel.ReloadAllForm();
         }
     }
 }

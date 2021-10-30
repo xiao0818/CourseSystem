@@ -25,7 +25,7 @@ namespace CourseSystem
         {
             _courseManagementFormPresentationModel = courseManagementFormPresentationModel;
             _startUpForm = startUpForm;
-            _courseManagementFormPresentationModel.PresentationModelChanged += LoadManagementForm;
+            _courseManagementFormPresentationModel._presentationModelChanged += LoadManagementForm;
             InitializeComponent();
         }
 
@@ -419,7 +419,7 @@ namespace CourseSystem
         //UpdateAllForm
         public void UpdateAllForm()
         {
-            _courseManagementFormPresentationModel.UpdateAllForm();
+            _courseManagementFormPresentationModel.ReloadAllForm();
         }
     }
 }

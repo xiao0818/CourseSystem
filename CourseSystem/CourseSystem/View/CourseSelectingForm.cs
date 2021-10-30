@@ -19,7 +19,7 @@ namespace CourseSystem
         {
             _courseSelectingFormPresentationModel = courseSelectingFormPresentationModel;
             _courseSelectionResultForm = new CourseSelectionResultForm(this, courseSelectionResultFormPresentationModel);
-            _courseSelectingFormPresentationModel.PresentationModelChanged += LoadForm;
+            _courseSelectingFormPresentationModel._presentationModelChanged += LoadForm;
             _startUpForm = startUpForm;
             InitializeComponent();
         }
@@ -265,7 +265,7 @@ namespace CourseSystem
         //UpdateAllForm
         public void UpdateAllForm()
         {
-            _courseSelectingFormPresentationModel.UpdateAllForm();
+            _courseSelectingFormPresentationModel.ReloadAllForm();
         }
     }
 }

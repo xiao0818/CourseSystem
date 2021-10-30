@@ -8,7 +8,7 @@ namespace CourseSystem
 {
     public class CourseManagementFormPresentationModel
     {
-        public event PresentationModelChangedEventHandler PresentationModelChanged;
+        public event PresentationModelChangedEventHandler _presentationModelChanged;
         public delegate void PresentationModelChangedEventHandler();
         Model _model;
         bool _isSaveCourseDataButton;
@@ -16,7 +16,7 @@ namespace CourseSystem
         public CourseManagementFormPresentationModel(Model model)
         {
             _model = model;
-            _model.ModelChanged += UpdataCourseManagementForm;
+            _model._modelChanged += ReloadCourseManagementForm;
             _isAddCourseDataButton = true;
             _isSaveCourseDataButton = false;
         }
@@ -183,23 +183,23 @@ namespace CourseSystem
         }
 
         //UpdataCourseSelectionResultForm
-        public void UpdataCourseManagementForm()
+        public void ReloadCourseManagementForm()
         {
             NotifyObserver();
         }
 
         //UpdateAllForm
-        public void UpdateAllForm()
+        public void ReloadAllForm()
         {
-            _model.UpdateAllForm();
+            _model.ReloadAllForm();
         }
 
         //NotifyObservers
         public void NotifyObserver()
         {
-            if (PresentationModelChanged != null)
+            if (_presentationModelChanged != null)
             {
-                PresentationModelChanged();
+                _presentationModelChanged();
             }
         }
     }
