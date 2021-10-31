@@ -65,9 +65,18 @@ namespace CourseSystem
         }
 
         //CheckDataGridViewCheckBox
-        private void CheckDataGridViewCheckBox(DataGridView dataGridView)
+        private void CheckDataGridViewCheckBox(DataGridView FirstDataGridView, DataGridView secondDataGridView)
         {
-            foreach (DataGridViewRow row in dataGridView.Rows)
+            _courseSelectingFormPresentationModel.ResetSubmitButton();
+            foreach (DataGridViewRow row in FirstDataGridView.Rows)
+            {
+                if (Convert.ToBoolean(row.Cells[0].Value) == true)
+                {
+                    _courseSelectingFormPresentationModel.HasEnabledCheckBox();
+                    break;
+                }
+            }
+            foreach (DataGridViewRow row in secondDataGridView.Rows)
             {
                 if (Convert.ToBoolean(row.Cells[0].Value) == true)
                 {
@@ -81,8 +90,7 @@ namespace CourseSystem
         private void ChangedCellValueAllDataGridView(object sender, DataGridViewCellEventArgs e)
         {
             EndEditDataGridView();
-            CheckDataGridViewCheckBox(_computerScience3DataGridView);
-            CheckDataGridViewCheckBox(_electronicEngineering3DataGridView);
+            CheckDataGridViewCheckBox(_computerScience3DataGridView, _electronicEngineering3DataGridView);
             _submitButton.Enabled = _courseSelectingFormPresentationModel.IsSubmitButtonEnabled;
         }
 
