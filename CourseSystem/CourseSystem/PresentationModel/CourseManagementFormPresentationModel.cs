@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace CourseSystem
 {
@@ -13,6 +14,11 @@ namespace CourseSystem
         Model _model;
         bool _isSaveCourseDataButton;
         bool _isAddCourseDataButton;
+        const int DAY_PER_WEEK = 7;
+        const string SPACE = " ";
+        const string MODIFY_SUCCESSFUL = "編輯成功";
+        const string MODIFY_NOT_SUCCESSFUL = "編輯失敗";
+        const string ERROR_MESSAGE = "\n此編輯會導致已選課程發生:";
         public CourseManagementFormPresentationModel(Model model)
         {
             _model = model;
@@ -180,6 +186,83 @@ namespace CourseSystem
         {
             _isSaveCourseDataButton = false;
             _isAddCourseDataButton = false;
+        }
+
+        //TakeOutClassTimeFromDataGridView
+        public List<string> TakeOutClassTimeFromDataGridView(DataGridViewRowCollection rows)
+        {
+            List<string> classTimeStringList = new List<string>();
+            for (int day = 0; day < DAY_PER_WEEK; day++)
+            {
+                classTimeStringList.Add("");
+                foreach (DataGridViewRow row in rows)
+                {
+                    if (Convert.ToBoolean(row.Cells[day + 1].Value) == true)
+                    {
+                        classTimeStringList[day] = classTimeStringList[day] + row.Cells[0].Value + SPACE;
+                    }
+                    classTimeStringList[day] = classTimeStringList[day];
+                }
+            }
+            return classTimeStringList;
+        }
+
+        //GetClassTimeTotal
+        public int GetClassTimeTotal(DataGridViewRowCollection rows)
+        {
+            int count = 0;
+            for (int day = 0; day < DAY_PER_WEEK; day++)
+            {
+                foreach (DataGridViewRow row in rows)
+                {
+                    if (Convert.ToBoolean(row.Cells[day + 1].Value) == true)
+                    {
+                        count++;
+                    }
+                }
+            }
+            return count;
+        }
+
+        //SaveModifyCoursePartOne
+        public void SaveModifyCoursePartOne(Tuple<int, int, int> department, CourseInfo newCourse, int listNameIndex)
+        {
+            if (department.Item1 == (int)ListName.ComputerScience3)
+            {
+                RemoveCourseFromComputerScience3(department.Item3);
+            }
+            else if (department.Item1 == (int)ListName.ElectronicEngineering3)
+            {
+                RemoveCourseFromElectronicEngineering3(department.Item3);
+            }
+            if (listNameIndex == (int)ListName.ComputerScience3)
+            {
+                AddIntoComputerScience3CourseList(newCourse);
+            }
+            else if (listNameIndex == (int)ListName.ElectronicEngineering3)
+            {
+                AddIntoElectronicEngineering3CourseList(newCourse);
+            }
+            MessageBox.Show(MODIFY_SUCCESSFUL);
+        }
+
+        //SaveModifyCoursePartTwo
+        public void SaveModifyCoursePartTwo(Tuple<int, int, int> department, CourseInfo newCourse, CourseInfo course, int listNameIndex)
+        {
+            List<CourseInfo> selectedCourseList = GetSelectedCourseList;
+            RemoveCourseFromTabDictionary(department.Item3);
+            selectedCourseList.RemoveAt(department.Item3);
+            string checkedMessage = CheckCourseList(newCourse, selectedCourseList);
+            if (checkedMessage == "")
+            {
+                MessageBox.Show(MODIFY_SUCCESSFUL);
+                AddIntoSelectedCourseList(newCourse, listNameIndex);
+            }
+            else
+            {
+                MessageBox.Show(MODIFY_NOT_SUCCESSFUL + ERROR_MESSAGE + checkedMessage);
+                AddIntoSelectedCourseList(course, department.Item2);
+            }
         }
 
         //UpdataCourseSelectionResultForm
