@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace CourseSystem
 {
@@ -138,6 +139,49 @@ namespace CourseSystem
         public void AddSelectedCourse(CourseInfo selectingCourse)
         {
             _model.AddSelectedCourse(selectingCourse);
+        }
+
+        //CheckDataGridViewCheckBox
+        public void CheckDataGridViewCheckBox(DataGridView firstDataGridView, DataGridView secondDataGridView)
+        {
+            ResetSubmitButton();
+            foreach (DataGridViewRow row in firstDataGridView.Rows)
+            {
+                if (Convert.ToBoolean(row.Cells[0].Value) == true)
+                {
+                    HasEnabledCheckBox();
+                    break;
+                }
+            }
+            foreach (DataGridViewRow row in secondDataGridView.Rows)
+            {
+                if (Convert.ToBoolean(row.Cells[0].Value) == true)
+                {
+                    HasEnabledCheckBox();
+                    break;
+                }
+            }
+        }
+
+        //TakeOutCheckedCourseListFromDataGridView
+        public List<CourseInfo> TakeOutCheckedCourseListFromDataGridView(List<CourseInfo> checkedCourseList, DataGridView dataGridView)
+        {
+            int numberOfCourse = dataGridView.RowCount;
+            for (int index = 0; index < numberOfCourse; index++)
+            {
+                DataGridViewRow row = dataGridView.Rows[numberOfCourse - index - 1];
+                if (Convert.ToBoolean(row.Cells[0].Value) == true)
+                {
+                    CourseInfo selectedCourse = new CourseInfo
+                    (
+                        row.Cells[(int)CourseInfoHeaderText.Number + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.Name + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.Stage + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.Credit + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.Hour + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.CourseType + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.Teacher + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.ClassTime0 + 1].Value.ToString(),
+                        row.Cells[(int)CourseInfoHeaderText.ClassTime1 + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.ClassTime2 + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.ClassTime3 + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.ClassTime4 + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.ClassTime5 + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.ClassTime6 + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.Classroom + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.NumberOfStudent + 1].Value.ToString(),
+                        row.Cells[(int)CourseInfoHeaderText.NumberOfDropStudent + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.TeachingAssistant + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.Language + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.Outline + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.Note + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.AttachStudent + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.Experiment + 1].Value.ToString()
+                    );
+                    checkedCourseList.Add(selectedCourse);
+                }
+            }
+            return checkedCourseList;
         }
 
         //UpdataCourseSelectingForm

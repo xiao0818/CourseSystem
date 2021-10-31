@@ -64,33 +64,11 @@ namespace CourseSystem
             _electronicEngineering3DataGridView.EndEdit();
         }
 
-        //CheckDataGridViewCheckBox
-        private void CheckDataGridViewCheckBox(DataGridView FirstDataGridView, DataGridView secondDataGridView)
-        {
-            _courseSelectingFormPresentationModel.ResetSubmitButton();
-            foreach (DataGridViewRow row in FirstDataGridView.Rows)
-            {
-                if (Convert.ToBoolean(row.Cells[0].Value) == true)
-                {
-                    _courseSelectingFormPresentationModel.HasEnabledCheckBox();
-                    break;
-                }
-            }
-            foreach (DataGridViewRow row in secondDataGridView.Rows)
-            {
-                if (Convert.ToBoolean(row.Cells[0].Value) == true)
-                {
-                    _courseSelectingFormPresentationModel.HasEnabledCheckBox();
-                    break;
-                }
-            }
-        }
-
         //ChangedCellValueAllDataGridView
         private void ChangedCellValueAllDataGridView(object sender, DataGridViewCellEventArgs e)
         {
             EndEditDataGridView();
-            CheckDataGridViewCheckBox(_computerScience3DataGridView, _electronicEngineering3DataGridView);
+            _courseSelectingFormPresentationModel.CheckDataGridViewCheckBox(_computerScience3DataGridView, _electronicEngineering3DataGridView);
             _submitButton.Enabled = _courseSelectingFormPresentationModel.IsSubmitButtonEnabled;
         }
 
@@ -187,11 +165,17 @@ namespace CourseSystem
         {
             List<CourseInfo> selectedCourseList = GetSelectedCourseList(_courseSelectingFormPresentationModel.GetSelectedCourseList);
             List<CourseInfo> checkedCourseList = new List<CourseInfo>();
-            checkedCourseList = TakeOutComputerScience3CheckedCourseList(checkedCourseList);
-            checkedCourseList = TakeOutElectronicEngineering3CheckedCourseList(checkedCourseList);
+            checkedCourseList = TakeOutCheckedCourseListFromDataGridView(checkedCourseList, _computerScience3DataGridView);
+            checkedCourseList = TakeOutCheckedCourseListFromDataGridView(checkedCourseList, _electronicEngineering3DataGridView);
             string checkedMessage = _courseSelectingFormPresentationModel.CheckCourseList(checkedCourseList, selectedCourseList);
             SubmitCourseSelectionResult(checkedMessage);
             UpdateAllForm();
+        }
+
+        //TakeOutCheckedCourseListFromDataGridView(checkedCourseList, _computerScience3DataGridView)
+        private List<CourseInfo> TakeOutCheckedCourseListFromDataGridView(List<CourseInfo> checkedCourseList, DataGridView dataGridView)
+        {
+            return _courseSelectingFormPresentationModel.TakeOutCheckedCourseListFromDataGridView(checkedCourseList, _computerScience3DataGridView);
         }
 
         //Submit
@@ -210,48 +194,6 @@ namespace CourseSystem
             {
                 MessageBox.Show("加選失敗" + checkedMessage);
             }
-        }
-
-        //TakeOutComputerScience3CheckedCourseList
-        private List<CourseInfo> TakeOutComputerScience3CheckedCourseList(List<CourseInfo> checkedCourseList)
-        {
-            int numberOfCourse = _computerScience3DataGridView.RowCount;
-            for (int index = 0; index < numberOfCourse; index++)
-            {
-                DataGridViewRow row = _computerScience3DataGridView.Rows[numberOfCourse - index - 1];
-                if (Convert.ToBoolean(row.Cells[0].Value) == true)
-                {
-                    CourseInfo selectedCourse = new CourseInfo
-                    (
-                        row.Cells[(int)CourseInfoHeaderText.Number + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.Name + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.Stage + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.Credit + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.Hour + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.CourseType + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.Teacher + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.ClassTime0 + 1].Value.ToString(),
-                        row.Cells[(int)CourseInfoHeaderText.ClassTime1 + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.ClassTime2 + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.ClassTime3 + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.ClassTime4 + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.ClassTime5 + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.ClassTime6 + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.Classroom + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.NumberOfStudent + 1].Value.ToString(),
-                        row.Cells[(int)CourseInfoHeaderText.NumberOfDropStudent + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.TeachingAssistant + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.Language + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.Outline + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.Note + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.AttachStudent + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.Experiment + 1].Value.ToString()
-                    );
-                    checkedCourseList.Add(selectedCourse);
-                }
-            }
-            return checkedCourseList;
-        }
-
-        //TakeOutElectronicEngineering3CheckedCourseList
-        private List<CourseInfo> TakeOutElectronicEngineering3CheckedCourseList(List<CourseInfo> checkedCourseList)
-        {
-            int numberOfCourse = _electronicEngineering3DataGridView.RowCount;
-            for (int index = 0; index < numberOfCourse; index++)
-            {
-                DataGridViewRow row = _electronicEngineering3DataGridView.Rows[numberOfCourse - index - 1];
-                if (Convert.ToBoolean(row.Cells[0].Value) == true)
-                {
-                    CourseInfo selectedCourse = new CourseInfo
-                    (
-                        row.Cells[(int)CourseInfoHeaderText.Number + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.Name + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.Stage + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.Credit + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.Hour + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.CourseType + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.Teacher + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.ClassTime0 + 1].Value.ToString(),
-                        row.Cells[(int)CourseInfoHeaderText.ClassTime1 + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.ClassTime2 + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.ClassTime3 + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.ClassTime4 + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.ClassTime5 + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.ClassTime6 + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.Classroom + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.NumberOfStudent + 1].Value.ToString(),
-                        row.Cells[(int)CourseInfoHeaderText.NumberOfDropStudent + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.TeachingAssistant + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.Language + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.Outline + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.Note + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.AttachStudent + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.Experiment + 1].Value.ToString()
-                    );
-                    checkedCourseList.Add(selectedCourse);
-                }
-            }
-            return checkedCourseList;
         }
 
         //ResetCheckButton()
