@@ -310,12 +310,12 @@ namespace CourseSystem
                 _courseNumberTextBox.Text, _courseNameTextBox.Text, _courseStageTextBox.Text, _courseCreditTextBox.Text, _courseClassTimeSelectionComboBox.Text, _courseTypeSelectionComboBox.Text, _courseTeacherTextBox.Text,
                 classTimeStringList[0].Trim(), classTimeStringList[1].Trim(), classTimeStringList[2].Trim(), classTimeStringList[3].Trim(), classTimeStringList[4].Trim(), classTimeStringList[5].Trim(), classTimeStringList[6].Trim(), "",
                 "", "", _courseTeachingAssistantTextBox.Text, _courseLanguageTextBox.Text, "", _courseNoteTextBox.Text, "", "");
-            if (_courseClassSelectionComboBox.Text == Department.ComputerScience3.ToString())
+            if (_courseClassSelectionComboBox.SelectedIndex == (int)Department.ComputerScience3)
             {
                 _courseManagementFormPresentationModel.AddIntoComputerScience3CourseList(course);
                 MessageBox.Show(ADD_SUCCESSFUL);
             }
-            else if (_courseClassSelectionComboBox.Text == Department.ElectronicEngineering3.ToString())
+            else if (_courseClassSelectionComboBox.SelectedIndex == (int)Department.ElectronicEngineering3)
             {
                 _courseManagementFormPresentationModel.AddIntoComputerScience3CourseList(course);
                 MessageBox.Show(ADD_SUCCESSFUL);
