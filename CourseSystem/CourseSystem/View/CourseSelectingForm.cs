@@ -175,7 +175,7 @@ namespace CourseSystem
         //TakeOutCheckedCourseListFromDataGridView(checkedCourseList, _computerScience3DataGridView)
         private List<CourseInfo> TakeOutCheckedCourseListFromDataGridView(List<CourseInfo> checkedCourseList, DataGridView dataGridView)
         {
-            return _courseSelectingFormPresentationModel.TakeOutCheckedCourseListFromDataGridView(checkedCourseList, _computerScience3DataGridView);
+            return _courseSelectingFormPresentationModel.TakeOutCheckedCourseListFromDataGridView(checkedCourseList, dataGridView);
         }
 
         //Submit
