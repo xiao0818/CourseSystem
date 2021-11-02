@@ -68,8 +68,30 @@ namespace CourseSystem
         private void ChangedCellValueAllDataGridView(object sender, DataGridViewCellEventArgs e)
         {
             EndEditDataGridView();
-            _courseSelectingFormPresentationModel.CheckDataGridViewCheckBox(_computerScience3DataGridView, _electronicEngineering3DataGridView);
+            CheckDataGridViewCheckBox();
             _submitButton.Enabled = _courseSelectingFormPresentationModel.IsSubmitButtonEnabled;
+        }
+
+        //CheckDataGridViewCheckBox
+        private void CheckDataGridViewCheckBox()
+        {
+            _courseSelectingFormPresentationModel.ResetSubmitButton();
+            foreach (DataGridViewRow row in _computerScience3DataGridView.Rows)
+            {
+                if (Convert.ToBoolean(row.Cells[0].Value) == true)
+                {
+                    _courseSelectingFormPresentationModel.HasEnabledCheckBox();
+                    break;
+                }
+            }
+            foreach (DataGridViewRow row in _electronicEngineering3DataGridView.Rows)
+            {
+                if (Convert.ToBoolean(row.Cells[0].Value) == true)
+                {
+                    _courseSelectingFormPresentationModel.HasEnabledCheckBox();
+                    break;
+                }
+            }
         }
 
         //ClickCellComputerScienceThirdDataGridView
@@ -172,10 +194,25 @@ namespace CourseSystem
             UpdateAllForm();
         }
 
-        //TakeOutCheckedCourseListFromDataGridView(checkedCourseList, _computerScience3DataGridView)
-        private List<CourseInfo> TakeOutCheckedCourseListFromDataGridView(List<CourseInfo> checkedCourseList, DataGridView dataGridView)
+        //TakeOutCheckedCourseListFromDataGridView
+        public List<CourseInfo> TakeOutCheckedCourseListFromDataGridView(List<CourseInfo> checkedCourseList, DataGridView dataGridView)
         {
-            return _courseSelectingFormPresentationModel.TakeOutCheckedCourseListFromDataGridView(checkedCourseList, dataGridView);
+            int numberOfCourse = dataGridView.RowCount;
+            for (int index = 0; index < numberOfCourse; index++)
+            {
+                DataGridViewRow row = dataGridView.Rows[numberOfCourse - index - 1];
+                if (Convert.ToBoolean(row.Cells[0].Value) == true)
+                {
+                    CourseInfo selectedCourse = new CourseInfo
+                    (
+                        row.Cells[(int)CourseInfoHeaderText.Number + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.Name + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.Stage + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.Credit + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.Hour + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.CourseType + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.Teacher + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.ClassTime0 + 1].Value.ToString(),
+                        row.Cells[(int)CourseInfoHeaderText.ClassTime1 + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.ClassTime2 + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.ClassTime3 + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.ClassTime4 + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.ClassTime5 + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.ClassTime6 + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.Classroom + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.NumberOfStudent + 1].Value.ToString(),
+                        row.Cells[(int)CourseInfoHeaderText.NumberOfDropStudent + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.TeachingAssistant + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.Language + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.Outline + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.Note + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.AttachStudent + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.Experiment + 1].Value.ToString()
+                    );
+                    checkedCourseList.Add(selectedCourse);
+                }
+            }
+            return checkedCourseList;
         }
 
         //Submit

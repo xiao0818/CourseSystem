@@ -14,6 +14,8 @@ namespace CourseSystem
     {
         CourseManagementFormPresentationModel _courseManagementFormPresentationModel;
         StartUpForm _startUpForm;
+        const int DAY_PER_WEEK = 7;
+        const string SPACE = " ";
         const string CLASS_TIME_CHAR = "1234N56789ABCD";
         const string DOT = ".";
         const string MODIFY_COURSE = "編輯課程";
@@ -269,7 +271,7 @@ namespace CourseSystem
         {
             CourseInfo course = _courseManagementFormPresentationModel.GetCourseInfoBySelectedIndex(_courseListBox.SelectedIndex);
             Tuple<int, int, int> department = GetCourseDepartmentBySelectedIndex(_courseListBox.SelectedIndex);
-            List<string> classTimeStringList = _courseManagementFormPresentationModel.TakeOutClassTimeFromDataGridView(_classTimeDataGridView.Rows);
+            List<string> classTimeStringList = TakeOutClassTimeFromDataGridView(_classTimeDataGridView.Rows);
             CourseInfo newCourse = new CourseInfo(
                 _courseNumberTextBox.Text, _courseNameTextBox.Text, _courseStageTextBox.Text, _courseCreditTextBox.Text, _courseClassTimeSelectionComboBox.Text, _courseTypeSelectionComboBox.Text, _courseTeacherTextBox.Text,
                 classTimeStringList[(int)Day.Sunday].Trim(), classTimeStringList[(int)Day.Monday].Trim(), classTimeStringList[(int)Day.Tuesday].Trim(), classTimeStringList[(int)Day.Wednesday].Trim(), classTimeStringList[(int)Day.Thursday].Trim(), classTimeStringList[(int)Day.Friday].Trim(), classTimeStringList[(int)Day.Saturday].Trim(), course.Classroom,
@@ -305,7 +307,7 @@ namespace CourseSystem
         //SaveAddCourse
         private void SaveAddCourse()
         {
-            List<string> classTimeStringList = _courseManagementFormPresentationModel.TakeOutClassTimeFromDataGridView(_classTimeDataGridView.Rows);
+            List<string> classTimeStringList = TakeOutClassTimeFromDataGridView(_classTimeDataGridView.Rows);
             CourseInfo course = new CourseInfo(
                 _courseNumberTextBox.Text, _courseNameTextBox.Text, _courseStageTextBox.Text, _courseCreditTextBox.Text, _courseClassTimeSelectionComboBox.Text, _courseTypeSelectionComboBox.Text, _courseTeacherTextBox.Text,
                 classTimeStringList[0].Trim(), classTimeStringList[1].Trim(), classTimeStringList[2].Trim(), classTimeStringList[3].Trim(), classTimeStringList[4].Trim(), classTimeStringList[5].Trim(), classTimeStringList[6].Trim(), "",
@@ -352,10 +354,40 @@ namespace CourseSystem
             _addCourseDataButton.Enabled = _courseManagementFormPresentationModel.IsAddCourseDataButton;
         }
 
+        //TakeOutClassTimeFromDataGridView
+        private List<string> TakeOutClassTimeFromDataGridView(DataGridViewRowCollection rows)
+        {
+            List<string> classTimeStringList = new List<string>();
+            for (int day = 0; day < DAY_PER_WEEK; day++)
+            {
+                classTimeStringList.Add("");
+                foreach (DataGridViewRow row in rows)
+                {
+                    if (Convert.ToBoolean(row.Cells[day + 1].Value) == true)
+                    {
+                        classTimeStringList[day] = classTimeStringList[day] + row.Cells[0].Value + SPACE;
+                    }
+                    classTimeStringList[day] = classTimeStringList[day];
+                }
+            }
+            return classTimeStringList;
+        }
+
         //GetClassTimeTotal
         private int GetClassTimeTotal(DataGridViewRowCollection rows)
         {
-            return _courseManagementFormPresentationModel.GetClassTimeTotal(_classTimeDataGridView.Rows);
+            int count = 0;
+            for (int day = 0; day < DAY_PER_WEEK; day++)
+            {
+                foreach (DataGridViewRow row in rows)
+                {
+                    if (Convert.ToBoolean(row.Cells[day + 1].Value) == true)
+                    {
+                        count++;
+                    }
+                }
+            }
+            return count;
         }
 
         //UpdateAllForm

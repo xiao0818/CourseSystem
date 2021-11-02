@@ -14,8 +14,6 @@ namespace CourseSystem
         Model _model;
         bool _isSaveCourseDataButton;
         bool _isAddCourseDataButton;
-        const int DAY_PER_WEEK = 7;
-        const string SPACE = " ";
         const string MODIFY_SUCCESSFUL = "編輯成功";
         const string MODIFY_NOT_SUCCESSFUL = "編輯失敗";
         const string ERROR_MESSAGE = "\n此編輯會導致已選課程發生:";
@@ -186,42 +184,6 @@ namespace CourseSystem
         {
             _isSaveCourseDataButton = false;
             _isAddCourseDataButton = false;
-        }
-
-        //TakeOutClassTimeFromDataGridView
-        public List<string> TakeOutClassTimeFromDataGridView(DataGridViewRowCollection rows)
-        {
-            List<string> classTimeStringList = new List<string>();
-            for (int day = 0; day < DAY_PER_WEEK; day++)
-            {
-                classTimeStringList.Add("");
-                foreach (DataGridViewRow row in rows)
-                {
-                    if (Convert.ToBoolean(row.Cells[day + 1].Value) == true)
-                    {
-                        classTimeStringList[day] = classTimeStringList[day] + row.Cells[0].Value + SPACE;
-                    }
-                    classTimeStringList[day] = classTimeStringList[day];
-                }
-            }
-            return classTimeStringList;
-        }
-
-        //GetClassTimeTotal
-        public int GetClassTimeTotal(DataGridViewRowCollection rows)
-        {
-            int count = 0;
-            for (int day = 0; day < DAY_PER_WEEK; day++)
-            {
-                foreach (DataGridViewRow row in rows)
-                {
-                    if (Convert.ToBoolean(row.Cells[day + 1].Value) == true)
-                    {
-                        count++;
-                    }
-                }
-            }
-            return count;
         }
 
         //SaveModifyCoursePartOne
