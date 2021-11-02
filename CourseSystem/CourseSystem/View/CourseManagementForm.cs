@@ -299,7 +299,7 @@ namespace CourseSystem
         }
 
         //SaveModifyCoursePartTwo
-        public void SaveModifyCoursePartTwo(Tuple<int, int, int> department, CourseInfo newCourse, CourseInfo course, int listNameIndex)
+        private void SaveModifyCoursePartTwo(Tuple<int, int, int> department, CourseInfo newCourse, CourseInfo course, int listNameIndex)
         {
             _courseManagementFormPresentationModel.SaveModifyCoursePartTwo(department, newCourse, course, _courseClassSelectionComboBox.SelectedIndex);
         }

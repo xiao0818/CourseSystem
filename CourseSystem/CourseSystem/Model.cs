@@ -110,15 +110,6 @@ namespace CourseSystem
             }
         }
 
-        //update
-        public List<CourseInfo> SetSelectedCourseList
-        {
-            set
-            {
-                _selectedCourseList = value;
-            }
-        }
-
         //remove
         public void RemoveFromComputerScience3(int index)
         {

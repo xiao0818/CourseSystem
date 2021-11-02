@@ -195,7 +195,7 @@ namespace CourseSystem
         }
 
         //TakeOutCheckedCourseListFromDataGridView
-        public List<CourseInfo> TakeOutCheckedCourseListFromDataGridView(List<CourseInfo> checkedCourseList, DataGridView dataGridView)
+        private List<CourseInfo> TakeOutCheckedCourseListFromDataGridView(List<CourseInfo> checkedCourseList, DataGridView dataGridView)
         {
             int numberOfCourse = dataGridView.RowCount;
             for (int index = 0; index < numberOfCourse; index++)

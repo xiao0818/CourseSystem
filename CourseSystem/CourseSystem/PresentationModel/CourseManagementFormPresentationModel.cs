@@ -65,7 +65,7 @@ namespace CourseSystem
         }
 
         //AddIntoSelectedCourseList
-        public void AddIntoSelectedCourseList(CourseInfo course, int department)
+        private void AddIntoSelectedCourseList(CourseInfo course, int department)
         {
             _model.AddIntoSelectedCourseList(course, department);
         }
@@ -77,31 +77,25 @@ namespace CourseSystem
         }
 
         //AddIntoElectronicEngineering3CourseList
-        public void AddIntoElectronicEngineering3CourseList(CourseInfo course)
+        private void AddIntoElectronicEngineering3CourseList(CourseInfo course)
         {
             _model.AddIntoElectronicEngineering3CourseList(course);
         }
 
         //remove
-        public void RemoveCourseFromComputerScience3(int index)
+        private void RemoveCourseFromComputerScience3(int index)
         {
             _model.RemoveCourseFromComputerScience3(index);
         }
 
         //remove
-        public void RemoveCourseFromElectronicEngineering3(int index)
+        private void RemoveCourseFromElectronicEngineering3(int index)
         {
             _model.RemoveCourseFromElectronicEngineering3(index);
         }
 
-        //Remove
-        public void RemoveCourseFromSelectionResult(int index)
-        {
-            _model.RemoveCourseFromSelectionResult(index);
-        }
-
         //CheckCourseList
-        public string CheckCourseList(CourseInfo selectedCourse, List<CourseInfo> selectedCourseList)
+        private string CheckCourseList(CourseInfo selectedCourse, List<CourseInfo> selectedCourseList)
         {
             string sameNumberMessage = "";
             string sameNameMessage = "";
@@ -128,7 +122,7 @@ namespace CourseSystem
         }
 
         //RemoveCourseFromTabDictionary
-        public void RemoveCourseFromTabDictionary(int index)
+        private void RemoveCourseFromTabDictionary(int index)
         {
             _model.RemoveCourseFromTabDictionary(index);
         }
