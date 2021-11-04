@@ -18,9 +18,6 @@ namespace CourseSystem
         private List<CourseInfo> _selectedCourseList;
         private Dictionary<string, int> _courseTabDictionary;
         const string STRUCTURE = "//body/table";
-        const string FRONT_QUOTE = "「";
-        const string SPACE = " ";
-        const string BACK_QUOTE = "」";
         public Model()
         {
             _modelChanged += SortAll;
