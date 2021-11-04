@@ -182,6 +182,40 @@ namespace CourseSystem
             });
         }
 
+        //CheckCourseList
+        public string CheckCourseList(List<CourseInfo> checkedCourseList, List<CourseInfo> selectedCourseList)
+        {
+            string sameNumberMessage = "";
+            string sameNameMessage = "";
+            string sameTimeMessage = "";
+            List<CourseInfo> allCourseList = selectedCourseList.Concat(checkedCourseList).ToList();
+            sameNumberMessage = CheckSameNumber(allCourseList, checkedCourseList, sameNumberMessage);
+            sameNameMessage = CheckSameName(allCourseList, checkedCourseList, sameNameMessage);
+            sameTimeMessage = CheckSameTime(allCourseList, checkedCourseList, sameTimeMessage);
+            return GetSubmitResultMessage(sameNumberMessage, sameNameMessage, sameTimeMessage);
+        }
+
+        //GetSubmitResultMessage
+        private string GetSubmitResultMessage(string sameNumberMessage, string sameNameMessage, string sameTimeMessage)
+        {
+            const string SAME_NUMBER_MESSAGE = "\n課號相同:";
+            const string SAME_NAME_MESSAGE = "\n課程名稱相同:";
+            const string SAME_TIME_MESSAGE = "\n衝堂:";
+            if (sameNumberMessage != "")
+            {
+                sameNumberMessage = SAME_NUMBER_MESSAGE + sameNumberMessage;
+            }
+            if (sameNameMessage != "")
+            {
+                sameNameMessage = SAME_NAME_MESSAGE + sameNameMessage;
+            }
+            if (sameTimeMessage != "")
+            {
+                sameTimeMessage = SAME_TIME_MESSAGE + sameTimeMessage;
+            }
+            return sameNumberMessage + sameNameMessage + sameTimeMessage;
+        }
+
         //CheckSameNumber
         public string CheckSameNumber(List<CourseInfo> selectedCourseList, List<CourseInfo> checkedCourseList, string sameNumberMessage)
         {

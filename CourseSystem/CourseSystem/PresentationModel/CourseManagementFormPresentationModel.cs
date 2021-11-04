@@ -97,28 +97,9 @@ namespace CourseSystem
         //CheckCourseList
         private string CheckCourseList(CourseInfo selectedCourse, List<CourseInfo> selectedCourseList)
         {
-            string sameNumberMessage = "";
-            string sameNameMessage = "";
-            string sameTimeMessage = "";
             List<CourseInfo> selectingCourseList = new List<CourseInfo>();
             selectingCourseList.Add(selectedCourse);
-            List<CourseInfo> allCourseList = selectedCourseList.Concat(selectingCourseList).ToList();
-            sameNumberMessage = _model.CheckSameNumber(allCourseList, selectedCourseList, sameNumberMessage);
-            sameNameMessage = _model.CheckSameName(allCourseList, selectedCourseList, sameNameMessage);
-            sameTimeMessage = _model.CheckSameTime(allCourseList, selectedCourseList, sameTimeMessage);
-            return GetSubmitResultMessage(sameNumberMessage, sameNameMessage, sameTimeMessage);
-        }
-
-        //GetSubmitResultMessage
-        private string GetSubmitResultMessage(string sameNumberMessage, string sameNameMessage, string sameTimeMessage)
-        {
-            const string SAME_NUMBER_MESSAGE = "\n課號相同:";
-            const string SAME_NAME_MESSAGE = "\n課程名稱相同:";
-            const string SAME_TIME_MESSAGE = "\n衝堂:";
-            sameNumberMessage = sameNumberMessage != "" ? SAME_NUMBER_MESSAGE + sameNumberMessage : "";
-            sameNameMessage = sameNameMessage != "" ? SAME_NAME_MESSAGE + sameNameMessage : "";
-            sameTimeMessage = sameTimeMessage != "" ? SAME_TIME_MESSAGE + sameTimeMessage : "";
-            return sameNumberMessage + sameNameMessage + sameTimeMessage;
+            return _model.CheckCourseList(selectingCourseList, selectedCourseList);
         }
 
         //RemoveCourseFromTabDictionary
