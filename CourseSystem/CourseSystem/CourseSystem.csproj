@@ -55,6 +55,7 @@
     <Compile Include="Class\Day.cs" />
     <Compile Include="Class\ListName.cs" />
     <Compile Include="PresentationModel\CourseManagementFormPresentationModel.cs" />
+    <Compile Include="PresentationModel\PresentationModel.cs" />
     <Compile Include="View\CourseManagementForm.cs">
       <SubType>Form</SubType>
     </Compile>

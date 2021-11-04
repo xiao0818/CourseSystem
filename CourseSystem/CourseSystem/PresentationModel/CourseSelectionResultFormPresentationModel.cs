@@ -11,18 +11,18 @@ namespace CourseSystem
     {
         public event PresentationModelChangedEventHandler _presentationModelChanged;
         public delegate void PresentationModelChangedEventHandler();
-        Model _model;
-        public CourseSelectionResultFormPresentationModel(Model model)
+        PresentationModel _presentationModel;
+        public CourseSelectionResultFormPresentationModel(PresentationModel presentationModel)
         {
-            _model = model;
-            _model._modelChanged += ReloadCourseSelectionResultForm;
+            _presentationModel = presentationModel;
+            _presentationModel._presentationModelChanged += ReloadCourseSelectionResultForm;
         }
 
         //GetResultDataGridViewRowList
         public List<DataGridViewRow> GetResultDataGridViewRowList()
         {
             List<DataGridViewRow> rows = new List<DataGridViewRow>();
-            List<CourseInfo> courseList = _model.GetSelectedCourseList;
+            List<CourseInfo> courseList = _presentationModel.GetSelectedCourseList;
             foreach (CourseInfo course in courseList)
             {
                 DataGridViewRow row = GetRowFromInfo(course);
@@ -53,7 +53,7 @@ namespace CourseSystem
         //Remove
         public void RemoveCourseFromSelectionResult(int index)
         {
-            _model.RemoveCourseFromSelectionResult(index);
+            _presentationModel.RemoveCourseFromSelectionResult(index);
         }
 
         //UpdataCourseSelectionResultForm
@@ -65,7 +65,7 @@ namespace CourseSystem
         //UpdateAllForm
         public void ReloadAllForm()
         {
-            _model.ReloadAllForm();
+            _presentationModel.ReloadAllForm();
         }
 
         //NotifyObservers

@@ -11,16 +11,16 @@ namespace CourseSystem
     {
         public event PresentationModelChangedEventHandler _presentationModelChanged;
         public delegate void PresentationModelChangedEventHandler();
-        Model _model;
+        PresentationModel _presentationModel;
         bool _isSaveCourseDataButton;
         bool _isAddCourseDataButton;
         const string MODIFY_SUCCESSFUL = "編輯成功";
         const string MODIFY_NOT_SUCCESSFUL = "編輯失敗";
         const string ERROR_MESSAGE = "\n此編輯會導致已選課程發生:";
-        public CourseManagementFormPresentationModel(Model model)
+        public CourseManagementFormPresentationModel(PresentationModel presentationModel)
         {
-            _model = model;
-            _model._modelChanged += ReloadCourseManagementForm;
+            _presentationModel = presentationModel;
+            _presentationModel._presentationModelChanged += ReloadCourseManagementForm;
             _isAddCourseDataButton = true;
             _isSaveCourseDataButton = false;
         }
@@ -30,7 +30,7 @@ namespace CourseSystem
         {
             get
             {
-                return _model.GetComputerScience3CourseList;
+                return _presentationModel.GetComputerScience3CourseList;
             }
         }
 
@@ -39,7 +39,7 @@ namespace CourseSystem
         {
             get
             {
-                return _model.GetElectronicEngineering3CourseList;
+                return _presentationModel.GetElectronicEngineering3CourseList;
             }
         }
 
@@ -48,50 +48,50 @@ namespace CourseSystem
         {
             get
             {
-                return _model.GetSelectedCourseList;
+                return _presentationModel.GetSelectedCourseList;
             }
         }
 
         //GetCourseInfoBySelectedIndex
         public CourseInfo GetCourseInfoBySelectedIndex(int selectedIndex)
         {
-            return _model.GetCourseInfoBySelectedIndex(selectedIndex);
+            return _presentationModel.GetCourseInfoBySelectedIndex(selectedIndex);
         }
 
         //GetCourseDepartmentBySelectedIndex
         public Tuple<int, int, int> GetCourseDepartmentBySelectedIndex(int selectedIndex)
         {
-            return _model.GetCourseDepartmentBySelectedIndex(selectedIndex);
+            return _presentationModel.GetCourseDepartmentBySelectedIndex(selectedIndex);
         }
 
         //AddIntoSelectedCourseList
         private void AddIntoSelectedCourseList(CourseInfo course, int department)
         {
-            _model.AddIntoSelectedCourseList(course, department);
+            _presentationModel.AddIntoSelectedCourseList(course, department);
         }
 
         //AddIntoComputerScience3CourseList
         public void AddIntoComputerScience3CourseList(CourseInfo course)
         {
-            _model.AddIntoComputerScience3CourseList(course);
+            _presentationModel.AddIntoComputerScience3CourseList(course);
         }
 
         //AddIntoElectronicEngineering3CourseList
         private void AddIntoElectronicEngineering3CourseList(CourseInfo course)
         {
-            _model.AddIntoElectronicEngineering3CourseList(course);
+            _presentationModel.AddIntoElectronicEngineering3CourseList(course);
         }
 
         //remove
         private void RemoveCourseFromComputerScience3(int index)
         {
-            _model.RemoveCourseFromComputerScience3(index);
+            _presentationModel.RemoveCourseFromComputerScience3(index);
         }
 
         //remove
         private void RemoveCourseFromElectronicEngineering3(int index)
         {
-            _model.RemoveCourseFromElectronicEngineering3(index);
+            _presentationModel.RemoveCourseFromElectronicEngineering3(index);
         }
 
         //CheckCourseList
@@ -99,13 +99,13 @@ namespace CourseSystem
         {
             List<CourseInfo> selectingCourseList = new List<CourseInfo>();
             selectingCourseList.Add(selectedCourse);
-            return _model.CheckCourseList(selectingCourseList, selectedCourseList);
+            return _presentationModel.CheckCourseList(selectingCourseList, selectedCourseList);
         }
 
         //RemoveCourseFromTabDictionary
         private void RemoveCourseFromTabDictionary(int index)
         {
-            _model.RemoveCourseFromTabDictionary(index);
+            _presentationModel.RemoveCourseFromTabDictionary(index);
         }
 
         //IsSaveCourseDataButton
@@ -211,7 +211,7 @@ namespace CourseSystem
         //UpdateAllForm
         public void ReloadAllForm()
         {
-            _model.ReloadAllForm();
+            _presentationModel.ReloadAllForm();
         }
 
         //NotifyObservers

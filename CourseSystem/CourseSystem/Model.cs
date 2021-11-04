@@ -159,12 +159,6 @@ namespace CourseSystem
             return courseInfo.Number;
         }
 
-        //GetName
-        private string GetName(CourseInfo courseInfo)
-        {
-            return courseInfo.Name;
-        }
-
         //sort
         private void SortAll()
         {
@@ -180,103 +174,6 @@ namespace CourseSystem
             {
                 return x.Number.CompareTo(GetNumber(y));
             });
-        }
-
-        //CheckCourseList
-        public string CheckCourseList(List<CourseInfo> checkedCourseList, List<CourseInfo> selectedCourseList)
-        {
-            string sameNumberMessage = "";
-            string sameNameMessage = "";
-            string sameTimeMessage = "";
-            List<CourseInfo> allCourseList = selectedCourseList.Concat(checkedCourseList).ToList();
-            sameNumberMessage = CheckSameNumber(allCourseList, checkedCourseList, sameNumberMessage);
-            sameNameMessage = CheckSameName(allCourseList, checkedCourseList, sameNameMessage);
-            sameTimeMessage = CheckSameTime(allCourseList, checkedCourseList, sameTimeMessage);
-            return GetSubmitResultMessage(sameNumberMessage, sameNameMessage, sameTimeMessage);
-        }
-
-        //GetSubmitResultMessage
-        private string GetSubmitResultMessage(string sameNumberMessage, string sameNameMessage, string sameTimeMessage)
-        {
-            const string SAME_NUMBER_MESSAGE = "\n課號相同:";
-            const string SAME_NAME_MESSAGE = "\n課程名稱相同:";
-            const string SAME_TIME_MESSAGE = "\n衝堂:";
-            if (sameNumberMessage != "")
-            {
-                sameNumberMessage = SAME_NUMBER_MESSAGE + sameNumberMessage;
-            }
-            if (sameNameMessage != "")
-            {
-                sameNameMessage = SAME_NAME_MESSAGE + sameNameMessage;
-            }
-            if (sameTimeMessage != "")
-            {
-                sameTimeMessage = SAME_TIME_MESSAGE + sameTimeMessage;
-            }
-            return sameNumberMessage + sameNameMessage + sameTimeMessage;
-        }
-
-        //CheckSameNumber
-        public string CheckSameNumber(List<CourseInfo> selectedCourseList, List<CourseInfo> checkedCourseList, string sameNumberMessage)
-        {
-            foreach (CourseInfo checkedCourse in checkedCourseList)
-            {
-                int count = 0;
-                foreach (CourseInfo selectedCourse in selectedCourseList)
-                {
-                    if (GetNumber(checkedCourse) == GetNumber(selectedCourse))
-                    {
-                        count++;
-                    }
-                }
-                if (count > 1)
-                {
-                    sameNumberMessage = sameNumberMessage + FRONT_QUOTE + checkedCourse.Number + SPACE + checkedCourse.Name + BACK_QUOTE;
-                }
-            }
-            return sameNumberMessage;
-        }
-
-        //CheckSameName
-        public string CheckSameName(List<CourseInfo> selectedCourseList, List<CourseInfo> checkedCourseList, string sameNameMessage)
-        {
-            foreach (CourseInfo checkedCourse in checkedCourseList)
-            {
-                int count = 0;
-                foreach (CourseInfo selectedCourse in selectedCourseList)
-                {
-                    if (GetName(checkedCourse) == GetName(selectedCourse))
-                    {
-                        count++;
-                    }
-                }
-                if (count > 1)
-                {
-                    sameNameMessage = sameNameMessage + FRONT_QUOTE + checkedCourse.Number + SPACE + checkedCourse.Name + BACK_QUOTE;
-                }
-            }
-            return sameNameMessage;
-        }
-
-        //CheckSameTime
-        public string CheckSameTime(List<CourseInfo> selectedCourseList, List<CourseInfo> checkedCourseList, string sameTimeMessage)
-        {
-            foreach (CourseInfo checkedCourse in checkedCourseList)
-            {
-                int count = 0;
-                foreach (CourseInfo selectedCourse in selectedCourseList)
-                {
-                    if (checkedCourse.GetCourseClassTime().Intersect(selectedCourse.GetCourseClassTime()).Count() > 0)
-                    {
-                        count++;
-                    }
-                }
-                if (count > 1)
-                {
-                    sameTimeMessage = sameTimeMessage + FRONT_QUOTE + checkedCourse.Number + SPACE + checkedCourse.Name + BACK_QUOTE;
-                }
-            }
-            return sameTimeMessage;
         }
 
         //GetCourseInfoBySelectedIndex(_courseListBox.SelectedIndex)

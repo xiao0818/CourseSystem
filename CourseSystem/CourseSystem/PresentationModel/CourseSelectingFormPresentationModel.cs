@@ -11,13 +11,13 @@ namespace CourseSystem
     {
         public event PresentationModelChangedEventHandler _presentationModelChanged;
         public delegate void PresentationModelChangedEventHandler();
-        Model _model;
+        PresentationModel _presentationModel;
         bool _isCheckButtonEnabled = true;
         bool _isSubmitButtonEnabled = false;
-        public CourseSelectingFormPresentationModel(Model model)
+        public CourseSelectingFormPresentationModel(PresentationModel presentationModel)
         {
-            _model = model;
-            _model._modelChanged += ReloadCourseSelectingForm;
+            _presentationModel = presentationModel;
+            _presentationModel._presentationModelChanged += ReloadCourseSelectingForm;
         }
 
         //get
@@ -25,20 +25,20 @@ namespace CourseSystem
         {
             get
             {
-                return _model.GetSelectedCourseList;
+                return _presentationModel.GetSelectedCourseList;
             }
         }
 
         //remove
         public void RemoveFromComputerScience3(int index)
         {
-            _model.RemoveFromComputerScience3(index);
+            _presentationModel.RemoveFromComputerScience3(index);
         }
 
         //remove
         public void RemoveFromElectronicEngineering3(int index)
         {
-            _model.RemoveFromElectronicEngineering3(index);
+            _presentationModel.RemoveFromElectronicEngineering3(index);
         }
 
         //Get
@@ -46,7 +46,7 @@ namespace CourseSystem
         {
             get
             {
-                return _model.GetComputerScience3CourseList;
+                return _presentationModel.GetComputerScience3CourseList;
             }
         }
 
@@ -55,7 +55,7 @@ namespace CourseSystem
         {
             get
             {
-                return _model.GetElectronicEngineering3CourseList;
+                return _presentationModel.GetElectronicEngineering3CourseList;
             }
         }
 
@@ -104,13 +104,13 @@ namespace CourseSystem
         //CheckCourseList
         public string CheckCourseList(List<CourseInfo> checkedCourseList, List<CourseInfo> selectedCourseList)
         {
-            return _model.CheckCourseList(checkedCourseList, selectedCourseList);
+            return _presentationModel.CheckCourseList(checkedCourseList, selectedCourseList);
         }
 
         //AddSelectedCourse
         public void AddSelectedCourse(CourseInfo selectingCourse)
         {
-            _model.AddSelectedCourse(selectingCourse);
+            _presentationModel.AddSelectedCourse(selectingCourse);
         }
 
         //UpdataCourseSelectingForm
@@ -122,7 +122,7 @@ namespace CourseSystem
         //UpdateAllForm
         public void ReloadAllForm()
         {
-            _model.ReloadAllForm();
+            _presentationModel.ReloadAllForm();
         }
 
         //NotifyObservers
