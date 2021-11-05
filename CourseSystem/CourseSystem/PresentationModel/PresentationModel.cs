@@ -48,15 +48,9 @@ namespace CourseSystem
         }
 
         //remove
-        public void RemoveFromComputerScience3(int index)
+        public void RemoveFromCourseList(int index, int rowIndex)
         {
-            _model.RemoveFromComputerScience3(index);
-        }
-
-        //remove
-        public void RemoveFromElectronicEngineering3(int index)
-        {
-            _model.RemoveFromElectronicEngineering3(index);
+            _model.RemoveFromCourseList(index, rowIndex);
         }
 
         //remove
