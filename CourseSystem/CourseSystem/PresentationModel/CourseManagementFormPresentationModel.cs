@@ -26,20 +26,11 @@ namespace CourseSystem
         }
 
         //Get
-        public List<CourseInfo> GetComputerScience3CourseList
+        public List<List<CourseInfo>> GetCourseListCollection
         {
             get
             {
-                return _presentationModel.GetComputerScience3CourseList;
-            }
-        }
-
-        //Get
-        public List<CourseInfo> GetElectronicEngineering3CourseList
-        {
-            get
-            {
-                return _presentationModel.GetElectronicEngineering3CourseList;
+                return _presentationModel.GetCourseListCollection;
             }
         }
 
@@ -71,27 +62,15 @@ namespace CourseSystem
         }
 
         //AddIntoComputerScience3CourseList
-        public void AddIntoComputerScience3CourseList(CourseInfo course)
+        public void AddIntoCourseList(CourseInfo course, int selectedIndex)
         {
-            _presentationModel.AddIntoComputerScience3CourseList(course);
-        }
-
-        //AddIntoElectronicEngineering3CourseList
-        private void AddIntoElectronicEngineering3CourseList(CourseInfo course)
-        {
-            _presentationModel.AddIntoElectronicEngineering3CourseList(course);
+            _presentationModel.AddIntoCourseList(course, selectedIndex);
         }
 
         //remove
-        private void RemoveCourseFromComputerScience3(int index)
+        private void RemoveCourseFromCourseList(int classIndex, int index)
         {
-            _presentationModel.RemoveCourseFromComputerScience3(index);
-        }
-
-        //remove
-        private void RemoveCourseFromElectronicEngineering3(int index)
-        {
-            _presentationModel.RemoveCourseFromElectronicEngineering3(index);
+            _presentationModel.RemoveCourseFromCourseList(classIndex, index);
         }
 
         //CheckCourseList
@@ -164,22 +143,8 @@ namespace CourseSystem
         //SaveModifyCoursePartOne
         public void SaveModifyCoursePartOne(Tuple<int, int, int> department, CourseInfo newCourse, int listNameIndex)
         {
-            if (department.Item1 == (int)ListName.ComputerScience3)
-            {
-                RemoveCourseFromComputerScience3(department.Item3);
-            }
-            else if (department.Item1 == (int)ListName.ElectronicEngineering3)
-            {
-                RemoveCourseFromElectronicEngineering3(department.Item3);
-            }
-            if (listNameIndex == (int)ListName.ComputerScience3)
-            {
-                AddIntoComputerScience3CourseList(newCourse);
-            }
-            else if (listNameIndex == (int)ListName.ElectronicEngineering3)
-            {
-                AddIntoElectronicEngineering3CourseList(newCourse);
-            }
+            RemoveCourseFromCourseList(department.Item1, department.Item3);
+            AddIntoCourseList(newCourse, listNameIndex);
             MessageBox.Show(MODIFY_SUCCESSFUL);
         }
 

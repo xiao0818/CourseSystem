@@ -46,16 +46,14 @@ namespace CourseSystem
         private void LoadListBox()
         {
             _courseListBox.Items.Clear();
-            List<CourseInfo> computerScience3CourseList = _courseManagementFormPresentationModel.GetComputerScience3CourseList;
-            List<CourseInfo> electronicEngineering3CourseList = _courseManagementFormPresentationModel.GetElectronicEngineering3CourseList;
+            List<List<CourseInfo>> courseListCollection = _courseManagementFormPresentationModel.GetCourseListCollection;
             List<CourseInfo> selectedCourseList = _courseManagementFormPresentationModel.GetSelectedCourseList;
-            foreach (CourseInfo course in computerScience3CourseList)
+            foreach (List<CourseInfo> courseList in courseListCollection)
             {
-                _courseListBox.Items.Add(course.Name);
-            }
-            foreach (CourseInfo course in electronicEngineering3CourseList)
-            {
-                _courseListBox.Items.Add(course.Name);
+                foreach (CourseInfo course in courseList)
+                {
+                    _courseListBox.Items.Add(course.Name);
+                }
             }
             foreach (CourseInfo course in selectedCourseList)
             {
@@ -102,20 +100,39 @@ namespace CourseSystem
         private void LoadContext(Tuple<int, int, int> department, CourseInfo course)
         {
             LoadTextBoxAndComboBox(course);
-            if (department.Item2 == 0)
-            {
-                _courseClassSelectionComboBox.Text = "資工三";
-            }
-            else if (department.Item2 == 1)
-            {
-                _courseClassSelectionComboBox.Text = "電子三甲";
-            }
+            LoadClassComboBox(department);
             AddRowsInClassTimeDataGridView();
             foreach (Tuple<int, string> time in course.GetCourseClassTime())
             {
                 _classTimeDataGridView.Rows[TranslateClassTimeToIndex(time.Item2)].Cells[time.Item1 + 1].Value = Enabled;
             }
             SetAllObjectInGroupBoxEnabled(true);
+        }
+
+        //LoadClassComboBox
+        private void LoadClassComboBox(Tuple<int, int, int> department)
+        {
+            switch (department.Item2)
+            {
+                case 0:
+                    _courseClassSelectionComboBox.Text = "資工三";
+                    break;
+                case 1:
+                    _courseClassSelectionComboBox.Text = "電子三甲";
+                    break;
+                case 2:
+                    _courseClassSelectionComboBox.Text = "資工所";
+                    break;
+                case 3:
+                    _courseClassSelectionComboBox.Text = "資工四";
+                    break;
+                case 4:
+                    _courseClassSelectionComboBox.Text = "資工二";
+                    break;
+                case 5:
+                    _courseClassSelectionComboBox.Text = "資工一";
+                    break;
+            }
         }
 
         //LoadTextBoxAndComboBox
@@ -276,13 +293,13 @@ namespace CourseSystem
                 _courseNumberTextBox.Text, _courseNameTextBox.Text, _courseStageTextBox.Text, _courseCreditTextBox.Text, _courseClassTimeSelectionComboBox.Text, _courseTypeSelectionComboBox.Text, _courseTeacherTextBox.Text,
                 classTimeStringList[(int)Day.Sunday].Trim(), classTimeStringList[(int)Day.Monday].Trim(), classTimeStringList[(int)Day.Tuesday].Trim(), classTimeStringList[(int)Day.Wednesday].Trim(), classTimeStringList[(int)Day.Thursday].Trim(), classTimeStringList[(int)Day.Friday].Trim(), classTimeStringList[(int)Day.Saturday].Trim(), course.Classroom,
                 course.NumberOfStudent, course.NumberOfDropStudent, _courseTeachingAssistantTextBox.Text, _courseLanguageTextBox.Text, course.Outline, _courseNoteTextBox.Text, course.AttachStudent, course.Experiment);
-            if (department.Item1 == (int)ListName.ComputerScience3 || department.Item1 == (int)ListName.ElectronicEngineering3)
+            if (department.Item1 != (int)ListName.SelectedList)
             {
-                SaveModifyCoursePartOne(department, newCourse, _courseClassSelectionComboBox.SelectedIndex);
+                SaveModifyCoursePartOne(department, newCourse);
             }
-            else if (department.Item1 == (int)ListName.SelectedList)
+            else
             {
-                SaveModifyCoursePartTwo(department, newCourse, course, _courseClassSelectionComboBox.SelectedIndex);
+                SaveModifyCoursePartTwo(department, newCourse, course);
             }
         }
 
@@ -293,13 +310,13 @@ namespace CourseSystem
         }
 
         //SaveModifyCoursePartOne
-        public void SaveModifyCoursePartOne(Tuple<int, int, int> department, CourseInfo newCourse, int listNameIndex)
+        public void SaveModifyCoursePartOne(Tuple<int, int, int> department, CourseInfo newCourse)
         {
             _courseManagementFormPresentationModel.SaveModifyCoursePartOne(department, newCourse, _courseClassSelectionComboBox.SelectedIndex);
         }
 
         //SaveModifyCoursePartTwo
-        private void SaveModifyCoursePartTwo(Tuple<int, int, int> department, CourseInfo newCourse, CourseInfo course, int listNameIndex)
+        private void SaveModifyCoursePartTwo(Tuple<int, int, int> department, CourseInfo newCourse, CourseInfo course)
         {
             _courseManagementFormPresentationModel.SaveModifyCoursePartTwo(department, newCourse, course, _courseClassSelectionComboBox.SelectedIndex);
         }
@@ -312,16 +329,8 @@ namespace CourseSystem
                 _courseNumberTextBox.Text, _courseNameTextBox.Text, _courseStageTextBox.Text, _courseCreditTextBox.Text, _courseClassTimeSelectionComboBox.Text, _courseTypeSelectionComboBox.Text, _courseTeacherTextBox.Text,
                 classTimeStringList[0].Trim(), classTimeStringList[1].Trim(), classTimeStringList[2].Trim(), classTimeStringList[3].Trim(), classTimeStringList[4].Trim(), classTimeStringList[5].Trim(), classTimeStringList[6].Trim(), "",
                 "", "", _courseTeachingAssistantTextBox.Text, _courseLanguageTextBox.Text, "", _courseNoteTextBox.Text, "", "");
-            if (_courseClassSelectionComboBox.SelectedIndex == (int)Department.ComputerScience3)
-            {
-                _courseManagementFormPresentationModel.AddIntoComputerScience3CourseList(course);
-                MessageBox.Show(ADD_SUCCESSFUL);
-            }
-            else if (_courseClassSelectionComboBox.SelectedIndex == (int)Department.ElectronicEngineering3)
-            {
-                _courseManagementFormPresentationModel.AddIntoComputerScience3CourseList(course);
-                MessageBox.Show(ADD_SUCCESSFUL);
-            }
+            _courseManagementFormPresentationModel.AddIntoCourseList(course, _courseClassSelectionComboBox.SelectedIndex);
+            MessageBox.Show(ADD_SUCCESSFUL);
         }
 
         //ChangedText

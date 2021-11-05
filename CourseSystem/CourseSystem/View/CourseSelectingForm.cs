@@ -36,14 +36,8 @@ namespace CourseSystem
         public void LoadForm()
         {
             _courseDataGridView.Rows.Clear();
-            if (_index == (int)Department.ComputerScience3)
-            {
-                LoadDataGridView(_courseSelectingFormPresentationModel.GetComputerScience3CourseList, _courseDataGridView);
-            }
-            else if (_index == (int)Department.ElectronicEngineering3)
-            {
-                LoadDataGridView(_courseSelectingFormPresentationModel.GetElectronicEngineering3CourseList, _courseDataGridView);
-            }
+            List<CourseInfo> courseList = _courseSelectingFormPresentationModel.GetCourseList(_index);
+            LoadDataGridView(courseList, _courseDataGridView);
         }
 
         //LoadDataGridView
@@ -132,7 +126,7 @@ namespace CourseSystem
                         row.Cells[(int)CourseInfoHeaderText.NumberOfDropStudent + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.TeachingAssistant + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.Language + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.Outline + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.Note + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.AttachStudent + 1].Value.ToString(), row.Cells[(int)CourseInfoHeaderText.Experiment + 1].Value.ToString()
                     );
                     _courseSelectingFormPresentationModel.AddSelectedCourse(selectingCourse);
-                    _courseSelectingFormPresentationModel.RemoveFromCourseList(index, row.Index);
+                    _courseSelectingFormPresentationModel.RemoveFromCourseList(_index, row.Index);
                 }
             }
         }
@@ -218,7 +212,7 @@ namespace CourseSystem
         private void SelectedIndexChangedSelectingTabControl(object sender, EventArgs e)
         {
             _selectingTabControl.SelectedTab.Controls.Add(this._courseDataGridView);
-            _index = _selectingTabControl.TabPages.IndexOf(_selectingTabControl.SelectedTab);
+            _index = _selectingTabControl.SelectedIndex;
             LoadForm();
         }
     }

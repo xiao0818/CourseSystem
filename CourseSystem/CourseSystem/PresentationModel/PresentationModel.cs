@@ -20,21 +20,18 @@ namespace CourseSystem
             _model._modelChanged += ReloadForm;
         }
 
-        //Get
-        public List<CourseInfo> GetComputerScience3CourseList
+        //get
+        public List<CourseInfo> GetCourseList(int index)
         {
-            get
-            {
-                return _model.GetComputerScience3CourseList;
-            }
+            return _model.GetCourseList(index);
         }
 
         //Get
-        public List<CourseInfo> GetElectronicEngineering3CourseList
+        public List<List<CourseInfo>> GetCourseListCollection
         {
             get
             {
-                return _model.GetElectronicEngineering3CourseList;
+                return _model.GetCourseListCollection;
             }
         }
 
@@ -54,15 +51,9 @@ namespace CourseSystem
         }
 
         //remove
-        public void RemoveCourseFromComputerScience3(int index)
+        public void RemoveCourseFromCourseList(int classIndex, int index)
         {
-            _model.RemoveCourseFromComputerScience3(index);
-        }
-
-        //remove
-        public void RemoveCourseFromElectronicEngineering3(int index)
-        {
-            _model.RemoveCourseFromElectronicEngineering3(index);
+            _model.RemoveCourseFromCourseList(classIndex, index);
         }
 
         //remove
@@ -199,15 +190,9 @@ namespace CourseSystem
         }
 
         //AddIntoComputerScience3CourseList
-        public void AddIntoComputerScience3CourseList(CourseInfo course)
+        public void AddIntoCourseList(CourseInfo course, int selectedIndex)
         {
-            _model.AddIntoComputerScience3CourseList(course);
-        }
-
-        //AddIntoElectronicEngineering3CourseList
-        public void AddIntoElectronicEngineering3CourseList(CourseInfo course)
-        {
-            _model.AddIntoElectronicEngineering3CourseList(course);
+            _model.AddIntoCourseList(course, selectedIndex);
         }
 
         //RemoveCourseFromTabDictionary

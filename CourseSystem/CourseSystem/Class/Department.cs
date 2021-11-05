@@ -9,6 +9,10 @@ namespace CourseSystem
     public enum Department
     {
         ComputerScience3,
-        ElectronicEngineering3
+        ElectronicEngineering3,
+        ComputerScience5,
+        ComputerScience4,
+        ComputerScience2,
+        ComputerScience1
     }
 }

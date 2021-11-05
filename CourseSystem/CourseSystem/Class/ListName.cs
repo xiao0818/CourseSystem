@@ -10,6 +10,10 @@ namespace CourseSystem
     {
         ComputerScience3,
         ElectronicEngineering3,
+        ComputerScience5,
+        ComputerScience4,
+        ComputerScience2,
+        ComputerScience1,
         SelectedList
     }
 }

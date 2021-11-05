@@ -21,6 +21,12 @@ namespace CourseSystem
         }
 
         //get
+        public List<CourseInfo> GetCourseList(int index)
+        {
+            return _presentationModel.GetCourseList(index);
+        }
+
+        //get
         public List<CourseInfo> GetSelectedCourseList
         {
             get
@@ -33,24 +39,6 @@ namespace CourseSystem
         public void RemoveFromCourseList(int index, int rowIndex)
         {
             _presentationModel.RemoveFromCourseList(index, rowIndex);
-        }
-
-        //Get
-        public List<CourseInfo> GetComputerScience3CourseList
-        {
-            get
-            {
-                return _presentationModel.GetComputerScience3CourseList;
-            }
-        }
-
-        //Get
-        public List<CourseInfo> GetElectronicEngineering3CourseList
-        {
-            get
-            {
-                return _presentationModel.GetElectronicEngineering3CourseList;
-            }
         }
 
         //ResetCheckButton
