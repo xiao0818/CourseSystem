@@ -127,23 +127,9 @@ namespace CourseSystem
         }
 
         //remove
-        public void RemoveCourseFromElectronicEngineering3(int index)
-        {
-            _courseTabDictionary.Add(_courseListCollection[(int)Department.ElectronicEngineering3][index].Number, (int)Department.ElectronicEngineering3);
-            _courseListCollection[(int)Department.ElectronicEngineering3].RemoveAt(index);
-        }
-
-        //remove
         public void RemoveCourseFromSelectionResult(int index)
         {
-            if (_courseTabDictionary[_selectedCourseList[index].Number] == (int)Department.ComputerScience3)
-            {
-                _courseListCollection[(int)Department.ComputerScience3].Add(_selectedCourseList[index]);
-            }
-            if (_courseTabDictionary[_selectedCourseList[index].Number] == (int)Department.ElectronicEngineering3)
-            {
-                _courseListCollection[(int)Department.ElectronicEngineering3].Add(_selectedCourseList[index]);
-            }
+            _courseListCollection[_courseTabDictionary[_selectedCourseList[index].Number]].Add(_selectedCourseList[index]);
             _courseTabDictionary.Remove(_selectedCourseList[index].Number);
             _selectedCourseList.RemoveAt(index);
         }
@@ -161,48 +147,49 @@ namespace CourseSystem
             {
                 return x.Number.CompareTo(GetNumber(y));
             });
-            _courseListCollection[(int)Department.ComputerScience3].Sort(delegate (CourseInfo x, CourseInfo y)
+            int index = 0;
+            foreach (List<CourseInfo> courseList in _courseListCollection)
             {
-                return x.Number.CompareTo(GetNumber(y));
-            });
-            _courseListCollection[(int)Department.ElectronicEngineering3].Sort(delegate (CourseInfo x, CourseInfo y)
-            {
-                return x.Number.CompareTo(GetNumber(y));
-            });
+                _courseListCollection[index].Sort(delegate (CourseInfo x, CourseInfo y)
+                {
+                    return x.Number.CompareTo(GetNumber(y));
+                });
+                index++;
+            }
         }
 
         //GetCourseInfoBySelectedIndex(_courseListBox.SelectedIndex)
         public CourseInfo GetCourseInfoBySelectedIndex(int selectedIndex)
         {
-            if (selectedIndex < _courseListCollection[(int)Department.ComputerScience3].Count)
+            int currentIndex = 0;
+            int classIndex = 0;
+            foreach (List<CourseInfo> courseList in _courseListCollection)
             {
-                return _courseListCollection[(int)Department.ComputerScience3][selectedIndex];
+                if (selectedIndex < currentIndex + courseList.Count)
+                {
+                    return _courseListCollection[classIndex][selectedIndex - currentIndex];
+                }
+                currentIndex += courseList.Count;
+                classIndex++;
             }
-            else if (selectedIndex - _courseListCollection[(int)Department.ComputerScience3].Count < _courseListCollection[(int)Department.ElectronicEngineering3].Count)
-            {
-                return _courseListCollection[(int)Department.ElectronicEngineering3][selectedIndex - _courseListCollection[(int)Department.ComputerScience3].Count];
-            }
-            else
-            {
-                return _selectedCourseList[selectedIndex - _courseListCollection[(int)Department.ComputerScience3].Count - _courseListCollection[(int)Department.ElectronicEngineering3].Count];
-            }
+            return _selectedCourseList[selectedIndex - currentIndex];
         }
 
         //GetCourseDepartmentBySelectedIndex(_courseListBox.SelectedIndex)
         public Tuple<int, int, int> GetCourseDepartmentBySelectedIndex(int selectedIndex)
         {
-            if (selectedIndex < _courseListCollection[(int)Department.ComputerScience3].Count)
+            int currentIndex = 0;
+            int classIndex = 0;
+            foreach (List<CourseInfo> courseList in _courseListCollection)
             {
-                return Tuple.Create((int)ListName.ComputerScience3, (int)Department.ComputerScience3, selectedIndex);
+                if (selectedIndex < currentIndex + courseList.Count)
+                {
+                    return Tuple.Create(classIndex, classIndex, selectedIndex);
+                }
+                currentIndex += courseList.Count;
+                classIndex++;
             }
-            else if (selectedIndex - _courseListCollection[(int)Department.ComputerScience3].Count < _courseListCollection[(int)Department.ElectronicEngineering3].Count)
-            {
-                return Tuple.Create((int)ListName.ElectronicEngineering3, (int)Department.ElectronicEngineering3, selectedIndex - _courseListCollection[(int)Department.ComputerScience3].Count);
-            }
-            else
-            {
-                return Tuple.Create((int)ListName.SelectedList, _courseTabDictionary[_selectedCourseList[selectedIndex - _courseListCollection[(int)Department.ComputerScience3].Count - _courseListCollection[(int)Department.ElectronicEngineering3].Count].Number], selectedIndex - _courseListCollection[(int)Department.ComputerScience3].Count - _courseListCollection[(int)Department.ElectronicEngineering3].Count);
-            }
+            return Tuple.Create((int)ListName.SelectedList, _courseTabDictionary[_selectedCourseList[selectedIndex - currentIndex].Number], selectedIndex - currentIndex);
         }
 
         //AddIntoSelectedCourseList
