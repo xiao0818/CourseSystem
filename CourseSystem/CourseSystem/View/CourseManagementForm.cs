@@ -20,21 +20,8 @@ namespace CourseSystem
         const string DOT = ".";
         const string MODIFY_COURSE = "編輯課程";
         const string ADD_SUCCESSFUL = "新增成功";
-        List<string> _classNameList = new List<string>();
-        const string COMPUTER_SCIENCE_3_NAME = "資工三";
-        const string ELECTRONIC_ENGINEERING_3_NAME = "電子三甲";
-        const string COMPUTER_SCIENCE_5_NAME = "資工所";
-        const string COMPUTER_SCIENCE_4_NAME = "資工四";
-        const string COMPUTER_SCIENCE_2_NAME = "資工二";
-        const string COMPUTER_SCIENCE_1_NAME = "資工一";
         public CourseManagementForm(StartUpForm startUpForm, CourseManagementFormPresentationModel courseManagementFormPresentationModel)
         {
-            _classNameList.Add(COMPUTER_SCIENCE_3_NAME);
-            _classNameList.Add(ELECTRONIC_ENGINEERING_3_NAME);
-            _classNameList.Add(COMPUTER_SCIENCE_5_NAME);
-            _classNameList.Add(COMPUTER_SCIENCE_4_NAME);
-            _classNameList.Add(COMPUTER_SCIENCE_2_NAME);
-            _classNameList.Add(COMPUTER_SCIENCE_1_NAME);
             _courseManagementFormPresentationModel = courseManagementFormPresentationModel;
             _startUpForm = startUpForm;
             _courseManagementFormPresentationModel._presentationModelChanged += LoadManagementForm;
@@ -125,7 +112,8 @@ namespace CourseSystem
         //LoadClassComboBox
         private void LoadClassComboBox(Tuple<int, int, int> department)
         {
-            _courseClassSelectionComboBox.Text = _classNameList[department.Item2];
+            List<string> classNameList = _courseManagementFormPresentationModel.GetClassNameList;
+            _courseClassSelectionComboBox.Text = classNameList[department.Item2];
         }
 
         //LoadTextBoxAndComboBox

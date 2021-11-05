@@ -35,6 +35,15 @@ namespace CourseSystem
             }
         }
 
+        //Get
+        public List<string> GetClassNameList
+        {
+            get
+            {
+                return _presentationModel.GetClassNameList;
+            }
+        }
+
         //remove
         public void RemoveFromCourseList(int index, int rowIndex)
         {

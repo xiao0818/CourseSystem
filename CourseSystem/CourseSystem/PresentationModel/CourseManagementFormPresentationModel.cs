@@ -43,6 +43,15 @@ namespace CourseSystem
             }
         }
 
+        //Get
+        public List<string> GetClassNameList
+        {
+            get
+            {
+                return _presentationModel.GetClassNameList;
+            }
+        }
+
         //GetCourseInfoBySelectedIndex
         public CourseInfo GetCourseInfoBySelectedIndex(int selectedIndex)
         {

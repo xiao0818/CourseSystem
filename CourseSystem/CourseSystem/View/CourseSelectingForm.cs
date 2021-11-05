@@ -24,6 +24,23 @@ namespace CourseSystem
             _startUpForm = startUpForm;
             _index = 0;
             InitializeComponent();
+            _selectingTabControl.TabPages.Add(AddTabPage(_courseSelectingFormPresentationModel.GetClassNameList[(int)Department.ComputerScience3]));
+            _selectingTabControl.TabPages.Add(AddTabPage(_courseSelectingFormPresentationModel.GetClassNameList[(int)Department.ElectronicEngineering3]));
+            _selectingTabControl.SelectedTab.Controls.Add(this._courseDataGridView);
+        }
+
+        //AddTabPage
+        private TabPage AddTabPage(string text)
+        {
+            TabPage tabPage = new TabPage();
+            tabPage.Location = new System.Drawing.Point(4, 28);
+            tabPage.Margin = new System.Windows.Forms.Padding(4);
+            tabPage.Padding = new System.Windows.Forms.Padding(4);
+            tabPage.Size = new System.Drawing.Size(1192, 511);
+            tabPage.TabIndex = 0;
+            tabPage.Text = text;
+            tabPage.UseVisualStyleBackColor = true;
+            return tabPage;
         }
 
         //載入視窗

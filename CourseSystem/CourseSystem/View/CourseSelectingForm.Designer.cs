@@ -90,8 +90,6 @@ namespace CourseSystem
             // 
             // _selectingTabControl
             // 
-            this._selectingTabControl.Controls.Add(this._computerScience3TabPage);
-            this._selectingTabControl.Controls.Add(this._electronicEngineering3TabPage);
             this._selectingTabControl.Dock = System.Windows.Forms.DockStyle.Top;
             this._selectingTabControl.Location = new System.Drawing.Point(0, 0);
             this._selectingTabControl.Margin = new System.Windows.Forms.Padding(4);
@@ -100,18 +98,6 @@ namespace CourseSystem
             this._selectingTabControl.Size = new System.Drawing.Size(1200, 543);
             this._selectingTabControl.TabIndex = 3;
             this._selectingTabControl.SelectedIndexChanged += new System.EventHandler(this.SelectedIndexChangedSelectingTabControl);
-            // 
-            // _computerScience3TabPage
-            // 
-            this._computerScience3TabPage.Controls.Add(this._courseDataGridView);
-            this._computerScience3TabPage.Location = new System.Drawing.Point(4, 28);
-            this._computerScience3TabPage.Margin = new System.Windows.Forms.Padding(4);
-            this._computerScience3TabPage.Name = "_computerScience3TabPage";
-            this._computerScience3TabPage.Padding = new System.Windows.Forms.Padding(4);
-            this._computerScience3TabPage.Size = new System.Drawing.Size(1192, 511);
-            this._computerScience3TabPage.TabIndex = 0;
-            this._computerScience3TabPage.Text = "資工三";
-            this._computerScience3TabPage.UseVisualStyleBackColor = true;
             // 
             // _courseDataGridView
             // 
@@ -396,18 +382,7 @@ namespace CourseSystem
             this._courseExperiment.ReadOnly = true;
             this._courseExperiment.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this._courseExperiment.Width = 61;
-            // 
-            // _electronicEngineer3TabPage
-            // 
-            this._electronicEngineering3TabPage.Location = new System.Drawing.Point(4, 28);
-            this._electronicEngineering3TabPage.Margin = new System.Windows.Forms.Padding(4);
-            this._electronicEngineering3TabPage.Name = "_electronicEngineer3TabPage";
-            this._electronicEngineering3TabPage.Padding = new System.Windows.Forms.Padding(4);
-            this._electronicEngineering3TabPage.Size = new System.Drawing.Size(1192, 511);
-            this._electronicEngineering3TabPage.TabIndex = 1;
-            this._electronicEngineering3TabPage.Text = "電子三甲";
-            this._electronicEngineering3TabPage.UseVisualStyleBackColor = true;
-            // 
+            //
             // CourseSelectingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
