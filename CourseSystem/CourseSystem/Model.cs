@@ -18,7 +18,9 @@ namespace CourseSystem
         const string WEB_COMPUTER_SCIENCE_2 = "https://aps.ntut.edu.tw/course/tw/Subj.jsp?format=-4&year=110&sem=1&code=2550";
         const string WEB_COMPUTER_SCIENCE_1 = "https://aps.ntut.edu.tw/course/tw/Subj.jsp?format=-4&year=110&sem=1&code=2676";
         private List<CourseInfo> _selectedCourseList;
-        private Dictionary<string, int> _courseTabDictionary;
+        private List<CourseInfo> _notEnabledCourseList;
+        private Dictionary<string, int> _selectedCourseTabDictionary;
+        private Dictionary<string, int> _notEnabledCourseTabDictionary;
         const string STRUCTURE = "//body/table";
         private List<List<CourseInfo>> _courseListCollection;
         public Model()
@@ -32,8 +34,10 @@ namespace CourseSystem
             _courseListCollection.Add(new List<CourseInfo>());
             _courseListCollection.Add(new List<CourseInfo>());
             _selectedCourseList = new List<CourseInfo>();
+            _notEnabledCourseList = new List<CourseInfo>();
             SortAll();
-            _courseTabDictionary = new Dictionary<string, int>();
+            _selectedCourseTabDictionary = new Dictionary<string, int>();
+            _notEnabledCourseTabDictionary = new Dictionary<string, int>();
         }
 
         //爬蟲網頁資料
@@ -106,6 +110,15 @@ namespace CourseSystem
             }
         }
 
+        //Get
+        public List<CourseInfo> GetNotEnabledCourseList
+        {
+            get
+            {
+                return _notEnabledCourseList;
+            }
+        }
+
         //get
         public List<CourseInfo> GetCourseList(int index)
         {
@@ -115,22 +128,22 @@ namespace CourseSystem
         //remove
         public void RemoveFromCourseList(int index, int rowIndex)
         {
-            _courseTabDictionary.Add(_courseListCollection[index][rowIndex].Number, index);
+            _selectedCourseTabDictionary.Add(_courseListCollection[index][rowIndex].Number, index);
             _courseListCollection[index].RemoveAt(rowIndex);
         }
 
         //remove
         public void RemoveCourseFromCourseList(int classIndex, int index)
         {
-            _courseTabDictionary.Add(_courseListCollection[classIndex][index].Number, classIndex);
+            _selectedCourseTabDictionary.Add(_courseListCollection[classIndex][index].Number, classIndex);
             _courseListCollection[classIndex].RemoveAt(index);
         }
 
         //remove
         public void RemoveCourseFromSelectionResult(int index)
         {
-            _courseListCollection[_courseTabDictionary[_selectedCourseList[index].Number]].Add(_selectedCourseList[index]);
-            _courseTabDictionary.Remove(_selectedCourseList[index].Number);
+            _courseListCollection[_selectedCourseTabDictionary[_selectedCourseList[index].Number]].Add(_selectedCourseList[index]);
+            _selectedCourseTabDictionary.Remove(_selectedCourseList[index].Number);
             _selectedCourseList.RemoveAt(index);
         }
 
@@ -172,7 +185,11 @@ namespace CourseSystem
                 currentIndex += courseList.Count;
                 classIndex++;
             }
-            return _selectedCourseList[selectedIndex - currentIndex];
+            if (selectedIndex < currentIndex + _selectedCourseList.Count)
+            {
+                return _selectedCourseList[selectedIndex - currentIndex];
+            }
+            return _notEnabledCourseList[selectedIndex - currentIndex - _selectedCourseList.Count];
         }
 
         //GetCourseDepartmentBySelectedIndex(_courseListBox.SelectedIndex)
@@ -189,14 +206,18 @@ namespace CourseSystem
                 currentIndex += courseList.Count;
                 classIndex++;
             }
-            return Tuple.Create((int)ListName.SelectedList, _courseTabDictionary[_selectedCourseList[selectedIndex - currentIndex].Number], selectedIndex - currentIndex);
+            if (selectedIndex < currentIndex + _selectedCourseList.Count)
+            {
+                return Tuple.Create((int)ListName.SelectedList, _selectedCourseTabDictionary[_selectedCourseList[selectedIndex - currentIndex].Number], selectedIndex - currentIndex);
+            }
+            return Tuple.Create((int)ListName.NotEnabledList, _notEnabledCourseTabDictionary[_selectedCourseList[selectedIndex - currentIndex - _selectedCourseList.Count].Number], selectedIndex - currentIndex - _selectedCourseList.Count);
         }
 
         //AddIntoSelectedCourseList
         public void AddIntoSelectedCourseList(CourseInfo course, int department)
         {
             _selectedCourseList.Add(course);
-            _courseTabDictionary.Add(course.Number, department);
+            _selectedCourseTabDictionary.Add(course.Number, department);
         }
 
         //AddIntoComputerScience3CourseList
@@ -208,7 +229,7 @@ namespace CourseSystem
         //RemoveCourseFromTabDictionary
         public void RemoveCourseFromTabDictionary(int index)
         {
-            _courseTabDictionary.Remove(_selectedCourseList[index].Number);
+            _selectedCourseTabDictionary.Remove(_selectedCourseList[index].Number);
         }
 
         //AddSelectedCourse

@@ -14,6 +14,7 @@ namespace CourseSystem
         ComputerScience4,
         ComputerScience2,
         ComputerScience1,
-        SelectedList
+        SelectedList,
+        NotEnabledList
     }
 }

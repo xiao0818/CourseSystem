@@ -33,9 +33,6 @@ namespace CourseSystem
         private TabPage AddTabPage(string text)
         {
             TabPage tabPage = new TabPage();
-            tabPage.Location = new System.Drawing.Point(4, 28);
-            tabPage.Margin = new System.Windows.Forms.Padding(4);
-            tabPage.Padding = new System.Windows.Forms.Padding(4);
             tabPage.Size = new System.Drawing.Size(1192, 511);
             tabPage.TabIndex = 0;
             tabPage.Text = text;

@@ -44,6 +44,15 @@ namespace CourseSystem
         }
 
         //Get
+        public List<CourseInfo> GetNotEnabledCourseList
+        {
+            get
+            {
+                return _presentationModel.GetNotEnabledCourseList;
+            }
+        }
+
+        //Get
         public List<string> GetClassNameList
         {
             get

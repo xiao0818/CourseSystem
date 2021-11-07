@@ -46,16 +46,18 @@ namespace CourseSystem
         private void LoadListBox()
         {
             _courseListBox.Items.Clear();
-            List<List<CourseInfo>> courseListCollection = _courseManagementFormPresentationModel.GetCourseListCollection;
-            List<CourseInfo> selectedCourseList = _courseManagementFormPresentationModel.GetSelectedCourseList;
-            foreach (List<CourseInfo> courseList in courseListCollection)
+            foreach (List<CourseInfo> courseList in _courseManagementFormPresentationModel.GetCourseListCollection)
             {
                 foreach (CourseInfo course in courseList)
                 {
                     _courseListBox.Items.Add(course.Name);
                 }
             }
-            foreach (CourseInfo course in selectedCourseList)
+            foreach (CourseInfo course in _courseManagementFormPresentationModel.GetSelectedCourseList)
+            {
+                _courseListBox.Items.Add(course.Name);
+            }
+            foreach(CourseInfo course in _courseManagementFormPresentationModel.GetNotEnabledCourseList)
             {
                 _courseListBox.Items.Add(course.Name);
             }
@@ -101,6 +103,7 @@ namespace CourseSystem
         {
             LoadTextBoxAndComboBox(course);
             LoadClassComboBox(department);
+            LoadEnabledComboBox(department);
             AddRowsInClassTimeDataGridView();
             foreach (Tuple<int, string> time in course.GetCourseClassTime())
             {
@@ -116,10 +119,19 @@ namespace CourseSystem
             _courseClassSelectionComboBox.Text = classNameList[department.Item2];
         }
 
+        //LoadEnabledComboBox
+        private void LoadEnabledComboBox(Tuple<int, int, int> department)
+        {
+            if (department.Item1 == (int)ListName.NotEnabledList)
+            {
+                _courseEnabledComboBox.Text = "停開";
+            }
+            _courseEnabledComboBox.Text = "開課";
+        }
+
         //LoadTextBoxAndComboBox
         private void LoadTextBoxAndComboBox(CourseInfo course)
         {
-            _courseEnabledComboBox.Text = "開課";
             _courseNumberTextBox.Text = course.Number;
             _courseNameTextBox.Text = course.Name;
             _courseStageTextBox.Text = course.Stage;
@@ -384,6 +396,12 @@ namespace CourseSystem
         public void UpdateAllForm()
         {
             _courseManagementFormPresentationModel.ReloadAllForm();
+        }
+
+        //ClickLoadComputerScienceButton
+        private void ClickLoadComputerScienceButton(object sender, EventArgs e)
+        {
+
         }
     }
 }
