@@ -293,33 +293,11 @@ namespace CourseSystem
                 course.NumberOfStudent, course.NumberOfDropStudent, _courseTeachingAssistantTextBox.Text, _courseLanguageTextBox.Text, course.Outline, _courseNoteTextBox.Text, course.AttachStudent, course.Experiment);
             if (_courseEnabledComboBox.Text == ENABLED)
             {
-                if (department.Item1 != (int)ListName.SelectedList && department.Item1 != (int)ListName.NotEnabledList)
-                {
-                    _courseManagementFormPresentationModel.SaveModifyCoursePartOne(department, newCourse, _courseClassSelectionComboBox.SelectedIndex);
-                }
-                else if (department.Item1 == (int)ListName.SelectedList)
-                {
-                    _courseManagementFormPresentationModel.SaveModifyCoursePartTwo(department, newCourse, course, _courseClassSelectionComboBox.SelectedIndex);
-                }
-                else if (department.Item1 == (int)ListName.NotEnabledList)
-                {
-                    _courseManagementFormPresentationModel.SaveModifyCoursePartThree(department, newCourse, course, _courseClassSelectionComboBox.SelectedIndex);
-                }
+                _courseManagementFormPresentationModel.SaveModifyCourseMainForEnabled(department, newCourse, course, _courseClassSelectionComboBox.SelectedIndex);
             }
             else
             {
-                if (department.Item1 != (int)ListName.SelectedList && department.Item1 != (int)ListName.NotEnabledList)
-                {
-                    _courseManagementFormPresentationModel.SaveModifyCoursePartFour(department, newCourse, _courseClassSelectionComboBox.SelectedIndex);
-                }
-                else if (department.Item1 == (int)ListName.SelectedList)
-                {
-                    _courseManagementFormPresentationModel.SaveModifyCoursePartFive(department, newCourse, _courseClassSelectionComboBox.SelectedIndex);
-                }
-                else if (department.Item1 == (int)ListName.NotEnabledList)
-                {
-                    _courseManagementFormPresentationModel.SaveModifyCoursePartSix(department, newCourse, _courseClassSelectionComboBox.SelectedIndex);
-                }
+                _courseManagementFormPresentationModel.SaveModifyCourseMainForNotEnabled(department, newCourse, _courseClassSelectionComboBox.SelectedIndex);
             }
         }
 

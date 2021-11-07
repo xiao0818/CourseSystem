@@ -93,6 +93,12 @@ namespace CourseSystem
             _model.RemoveCourseFromSelectionResult(index);
         }
 
+        //remove
+        public void RemoveCourseFromSelectedList(int index)
+        {
+            _model.RemoveCourseFromSelectedList(index);
+        }
+
         //CheckCourseList
         public string CheckCourseList(List<CourseInfo> checkedCourseList, List<CourseInfo> selectedCourseList)
         {

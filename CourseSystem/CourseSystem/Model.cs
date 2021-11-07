@@ -146,6 +146,12 @@ namespace CourseSystem
             _selectedCourseList.RemoveAt(index);
         }
 
+        //remove
+        public void RemoveCourseFromSelectedList(int index)
+        {
+            _selectedCourseList.RemoveAt(index);
+        }
+
         //GetNumber
         private string GetNumber(CourseInfo courseInfo)
         {
