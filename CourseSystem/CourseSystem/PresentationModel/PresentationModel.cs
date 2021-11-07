@@ -76,9 +76,9 @@ namespace CourseSystem
         }
 
         //remove
-        public void RemoveFromCourseList(int index, int rowIndex)
+        public void RemoveFromCourseListAndAddInToSelectedTab(int index, int rowIndex)
         {
-            _model.RemoveFromCourseList(index, rowIndex);
+            _model.RemoveFromCourseListAndAddInToSelectedTab(index, rowIndex);
         }
 
         //remove
@@ -215,9 +215,9 @@ namespace CourseSystem
         }
 
         //AddIntoSelectedCourseList
-        public void AddIntoSelectedCourseList(CourseInfo course, int department)
+        public void AddIntoSelectedCourseListAndCourseTab(CourseInfo course, int department)
         {
-            _model.AddIntoSelectedCourseList(course, department);
+            _model.AddIntoSelectedCourseListAndCourseTab(course, department);
         }
 
         //AddIntoComputerScience3CourseList

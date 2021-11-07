@@ -45,9 +45,9 @@ namespace CourseSystem
         }
 
         //remove
-        public void RemoveFromCourseList(int index, int rowIndex)
+        public void RemoveFromCourseListAndAddInToSelectedTab(int index, int rowIndex)
         {
-            _presentationModel.RemoveFromCourseList(index, rowIndex);
+            _presentationModel.RemoveFromCourseListAndAddInToSelectedTab(index, rowIndex);
         }
 
         //ResetCheckButton

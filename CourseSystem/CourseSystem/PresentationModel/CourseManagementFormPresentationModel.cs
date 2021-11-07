@@ -74,9 +74,9 @@ namespace CourseSystem
         }
 
         //AddIntoSelectedCourseList
-        private void AddIntoSelectedCourseList(CourseInfo course, int department)
+        private void AddIntoSelectedCourseListAndCourseTab(CourseInfo course, int department)
         {
-            _presentationModel.AddIntoSelectedCourseList(course, department);
+            _presentationModel.AddIntoSelectedCourseListAndCourseTab(course, department);
         }
 
         //AddIntoComputerScience3CourseList
@@ -176,12 +176,12 @@ namespace CourseSystem
             if (checkedMessage == "")
             {
                 MessageBox.Show(MODIFY_SUCCESSFUL);
-                AddIntoSelectedCourseList(newCourse, listNameIndex);
+                AddIntoSelectedCourseListAndCourseTab(newCourse, listNameIndex);
             }
             else
             {
                 MessageBox.Show(MODIFY_NOT_SUCCESSFUL + ERROR_MESSAGE + checkedMessage);
-                AddIntoSelectedCourseList(course, department.Item2);
+                AddIntoSelectedCourseListAndCourseTab(course, department.Item2);
             }
         }
 

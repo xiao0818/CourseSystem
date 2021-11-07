@@ -126,7 +126,7 @@ namespace CourseSystem
         }
 
         //remove
-        public void RemoveFromCourseList(int index, int rowIndex)
+        public void RemoveFromCourseListAndAddInToSelectedTab(int index, int rowIndex)
         {
             _selectedCourseTabDictionary.Add(_courseListCollection[index][rowIndex].Number, index);
             _courseListCollection[index].RemoveAt(rowIndex);
@@ -135,7 +135,6 @@ namespace CourseSystem
         //remove
         public void RemoveCourseFromCourseList(int classIndex, int index)
         {
-            //_selectedCourseTabDictionary.Add(_courseListCollection[classIndex][index].Number, classIndex);
             _courseListCollection[classIndex].RemoveAt(index);
         }
 
@@ -214,13 +213,13 @@ namespace CourseSystem
         }
 
         //AddIntoSelectedCourseList
-        public void AddIntoSelectedCourseList(CourseInfo course, int department)
+        public void AddIntoSelectedCourseListAndCourseTab(CourseInfo course, int department)
         {
             _selectedCourseList.Add(course);
             _selectedCourseTabDictionary.Add(course.Number, department);
         }
 
-        //AddIntoComputerScience3CourseList
+        //AddInto\CourseList
         public void AddIntoCourseList(CourseInfo course, int selectedIndex)
         {
             _courseListCollection[selectedIndex].Add(course);
