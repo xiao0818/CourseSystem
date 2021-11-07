@@ -135,7 +135,7 @@ namespace CourseSystem
         //remove
         public void RemoveCourseFromCourseList(int classIndex, int index)
         {
-            _selectedCourseTabDictionary.Add(_courseListCollection[classIndex][index].Number, classIndex);
+            //_selectedCourseTabDictionary.Add(_courseListCollection[classIndex][index].Number, classIndex);
             _courseListCollection[classIndex].RemoveAt(index);
         }
 
@@ -201,7 +201,7 @@ namespace CourseSystem
             {
                 if (selectedIndex < currentIndex + courseList.Count)
                 {
-                    return Tuple.Create(classIndex, classIndex, selectedIndex);
+                    return Tuple.Create(classIndex, classIndex, selectedIndex - currentIndex);
                 }
                 currentIndex += courseList.Count;
                 classIndex++;
