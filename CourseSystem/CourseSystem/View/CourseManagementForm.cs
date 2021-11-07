@@ -57,7 +57,7 @@ namespace CourseSystem
             {
                 _courseListBox.Items.Add(course.Name);
             }
-            foreach(CourseInfo course in _courseManagementFormPresentationModel.GetNotEnabledCourseList)
+            foreach (CourseInfo course in _courseManagementFormPresentationModel.GetNotEnabledCourseList)
             {
                 _courseListBox.Items.Add(course.Name);
             }

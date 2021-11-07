@@ -185,7 +185,24 @@
     <div class="data">
       <Data id="ReviewPalData">
         <CodeReview xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-          <Reviews />
+          <Reviews>
+            <Smell>
+              <Id>1</Id>
+              <SmellType>ICS(空白與空行-3)</SmellType>
+              <HashCode>SpacingAndNewLine3</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>CourseSystem</Project>
+              <File>CourseManagementForm.cs</File>
+              <Line>60</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(空白與空行-3) for, foreach, while, switch, if 等關鍵字與左括號之間加一個空白</Comment>
+              <Auto>false</Auto>
+            </Smell>
+          </Reviews>
           <HashCodeIgnoreList />
           <HashCodeRequestIgnoreList />
           <AnalysisFileManager>
@@ -322,7 +339,7 @@
               </AnalysisFile>
             </AnalysisFiles>
           </AnalysisFileManager>
-          <ProductionLoc>3698</ProductionLoc>
+          <ProductionLoc>3736</ProductionLoc>
           <TestLoc>0</TestLoc>
         </CodeReview>
       </Data>
