@@ -128,7 +128,10 @@ namespace CourseSystem
             {
                 _courseEnabledComboBox.Text = NOT_ENABLED;
             }
-            _courseEnabledComboBox.Text = ENABLED;
+            else
+            {
+                _courseEnabledComboBox.Text = ENABLED;
+            }
         }
 
         //LoadTextBoxAndComboBox
@@ -288,17 +291,35 @@ namespace CourseSystem
                 _courseNumberTextBox.Text, _courseNameTextBox.Text, _courseStageTextBox.Text, _courseCreditTextBox.Text, _courseClassTimeSelectionComboBox.Text, _courseTypeSelectionComboBox.Text, _courseTeacherTextBox.Text,
                 classTimeStringList[(int)Day.Sunday].Trim(), classTimeStringList[(int)Day.Monday].Trim(), classTimeStringList[(int)Day.Tuesday].Trim(), classTimeStringList[(int)Day.Wednesday].Trim(), classTimeStringList[(int)Day.Thursday].Trim(), classTimeStringList[(int)Day.Friday].Trim(), classTimeStringList[(int)Day.Saturday].Trim(), course.Classroom,
                 course.NumberOfStudent, course.NumberOfDropStudent, _courseTeachingAssistantTextBox.Text, _courseLanguageTextBox.Text, course.Outline, _courseNoteTextBox.Text, course.AttachStudent, course.Experiment);
-            if (department.Item1 != (int)ListName.SelectedList && department.Item1 != (int)ListName.NotEnabledList)
+            if (_courseEnabledComboBox.Text == ENABLED)
             {
-                SaveModifyCoursePartOne(department, newCourse);
+                if (department.Item1 != (int)ListName.SelectedList && department.Item1 != (int)ListName.NotEnabledList)
+                {
+                    _courseManagementFormPresentationModel.SaveModifyCoursePartOne(department, newCourse, _courseClassSelectionComboBox.SelectedIndex);
+                }
+                else if (department.Item1 == (int)ListName.SelectedList)
+                {
+                    _courseManagementFormPresentationModel.SaveModifyCoursePartTwo(department, newCourse, course, _courseClassSelectionComboBox.SelectedIndex);
+                }
+                else if (department.Item1 == (int)ListName.NotEnabledList)
+                {
+                    _courseManagementFormPresentationModel.SaveModifyCoursePartThree(department, newCourse, course, _courseClassSelectionComboBox.SelectedIndex);
+                }
             }
-            else if (department.Item1 == (int)ListName.SelectedList)
+            else
             {
-                SaveModifyCoursePartTwo(department, newCourse, course);
-            }
-            else if (department.Item1 == (int)ListName.NotEnabledList)
-            {
-                SaveModifyCoursePartThree(department, newCourse);
+                if (department.Item1 != (int)ListName.SelectedList && department.Item1 != (int)ListName.NotEnabledList)
+                {
+                    _courseManagementFormPresentationModel.SaveModifyCoursePartFour(department, newCourse, _courseClassSelectionComboBox.SelectedIndex);
+                }
+                else if (department.Item1 == (int)ListName.SelectedList)
+                {
+                    _courseManagementFormPresentationModel.SaveModifyCoursePartFive(department, newCourse, _courseClassSelectionComboBox.SelectedIndex);
+                }
+                else if (department.Item1 == (int)ListName.NotEnabledList)
+                {
+                    _courseManagementFormPresentationModel.SaveModifyCoursePartSix(department, newCourse, _courseClassSelectionComboBox.SelectedIndex);
+                }
             }
         }
 
@@ -306,24 +327,6 @@ namespace CourseSystem
         private Tuple<int, int, int> GetCourseDepartmentBySelectedIndex(int selectedIndex)
         {
             return _courseManagementFormPresentationModel.GetCourseDepartmentBySelectedIndex(selectedIndex);
-        }
-
-        //SaveModifyCoursePartOne
-        public void SaveModifyCoursePartOne(Tuple<int, int, int> department, CourseInfo newCourse)
-        {
-            _courseManagementFormPresentationModel.SaveModifyCoursePartOne(department, newCourse, _courseClassSelectionComboBox.SelectedIndex);
-        }
-
-        //SaveModifyCoursePartTwo
-        private void SaveModifyCoursePartTwo(Tuple<int, int, int> department, CourseInfo newCourse, CourseInfo course)
-        {
-            _courseManagementFormPresentationModel.SaveModifyCoursePartTwo(department, newCourse, course, _courseClassSelectionComboBox.SelectedIndex);
-        }
-
-        //SaveModifyCoursePartTwo
-        private void SaveModifyCoursePartThree(Tuple<int, int, int> department, CourseInfo newCourse)
-        {
-            _courseManagementFormPresentationModel.SaveModifyCoursePartThree(department, newCourse, _courseClassSelectionComboBox.SelectedIndex);
         }
 
         //SaveAddCourse
