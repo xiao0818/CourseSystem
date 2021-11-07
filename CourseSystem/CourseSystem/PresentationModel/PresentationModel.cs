@@ -214,22 +214,34 @@ namespace CourseSystem
             return _model.GetCourseDepartmentBySelectedIndex(selectedIndex);
         }
 
-        //AddIntoSelectedCourseList
+        //AddIntoSelectedCourseListAndCourseTab
         public void AddIntoSelectedCourseListAndCourseTab(CourseInfo course, int department)
         {
             _model.AddIntoSelectedCourseListAndCourseTab(course, department);
         }
 
-        //AddIntoComputerScience3CourseList
+        //AddIntoNotEnabledCourseListAndCourseTab
+        public void AddIntoNotEnabledCourseListAndCourseTab(CourseInfo course, int department)
+        {
+            _model.AddIntoNotEnabledCourseListAndCourseTab(course, department);
+        }
+
+        //AddIntoCourseList
         public void AddIntoCourseList(CourseInfo course, int selectedIndex)
         {
             _model.AddIntoCourseList(course, selectedIndex);
         }
 
-        //RemoveCourseFromTabDictionary
-        public void RemoveCourseFromTabDictionary(int index)
+        //RemoveCourseFromSelectedTabDictionary
+        public void RemoveCourseFromSelectedTabDictionary(int index)
         {
-            _model.RemoveCourseFromTabDictionary(index);
+            _model.RemoveCourseFromSelectedTabDictionary(index);
+        }
+
+        //RemoveCourseFromNotEnabledTabDictionary
+        public void RemoveCourseFromNotEnabledTabDictionary(int index)
+        {
+            _model.RemoveCourseFromNotEnabledTabDictionary(index);
         }
 
         //AddSelectedCourse

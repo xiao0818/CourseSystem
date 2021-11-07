@@ -209,7 +209,7 @@ namespace CourseSystem
             {
                 return Tuple.Create((int)ListName.SelectedList, _selectedCourseTabDictionary[_selectedCourseList[selectedIndex - currentIndex].Number], selectedIndex - currentIndex);
             }
-            return Tuple.Create((int)ListName.NotEnabledList, _notEnabledCourseTabDictionary[_selectedCourseList[selectedIndex - currentIndex - _selectedCourseList.Count].Number], selectedIndex - currentIndex - _selectedCourseList.Count);
+            return Tuple.Create((int)ListName.NotEnabledList, _notEnabledCourseTabDictionary[_notEnabledCourseList[selectedIndex - currentIndex - _selectedCourseList.Count].Number], selectedIndex - currentIndex - _selectedCourseList.Count);
         }
 
         //AddIntoSelectedCourseList
@@ -219,16 +219,29 @@ namespace CourseSystem
             _selectedCourseTabDictionary.Add(course.Number, department);
         }
 
+        //AddIntoSelectedCourseList
+        public void AddIntoNotEnabledCourseListAndCourseTab(CourseInfo course, int department)
+        {
+            _notEnabledCourseList.Add(course);
+            _notEnabledCourseTabDictionary.Add(course.Number, department);
+        }
+
         //AddInto\CourseList
         public void AddIntoCourseList(CourseInfo course, int selectedIndex)
         {
             _courseListCollection[selectedIndex].Add(course);
         }
 
-        //RemoveCourseFromTabDictionary
-        public void RemoveCourseFromTabDictionary(int index)
+        //RemoveCourseFromSelectedTabDictionary
+        public void RemoveCourseFromSelectedTabDictionary(int index)
         {
             _selectedCourseTabDictionary.Remove(_selectedCourseList[index].Number);
+        }
+
+        //RemoveCourseFromNotEnabledTabDictionary
+        public void RemoveCourseFromNotEnabledTabDictionary(int index)
+        {
+            _notEnabledCourseTabDictionary.Remove(_notEnabledCourseList[index].Number);
         }
 
         //AddSelectedCourse

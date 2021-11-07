@@ -79,6 +79,12 @@ namespace CourseSystem
             _presentationModel.AddIntoSelectedCourseListAndCourseTab(course, department);
         }
 
+        //AddIntoNotEnabledCourseListAndCourseTab
+        public void AddIntoNotEnabledCourseListAndCourseTab(CourseInfo course, int department)
+        {
+            _presentationModel.AddIntoNotEnabledCourseListAndCourseTab(course, department);
+        }
+
         //AddIntoComputerScience3CourseList
         public void AddIntoCourseList(CourseInfo course, int selectedIndex)
         {
@@ -99,10 +105,16 @@ namespace CourseSystem
             return _presentationModel.CheckCourseList(selectingCourseList, selectedCourseList);
         }
 
-        //RemoveCourseFromTabDictionary
-        private void RemoveCourseFromTabDictionary(int index)
+        //RemoveCourseFromSelectedTabDictionary
+        private void RemoveCourseFromSelectedTabDictionary(int index)
         {
-            _presentationModel.RemoveCourseFromTabDictionary(index);
+            _presentationModel.RemoveCourseFromSelectedTabDictionary(index);
+        }
+
+        //RemoveCourseFromNotEnabledTabDictionary
+        private void RemoveCourseFromNotEnabledTabDictionary(int index)
+        {
+            _presentationModel.RemoveCourseFromNotEnabledTabDictionary(index);
         }
 
         //IsSaveCourseDataButton
@@ -170,7 +182,7 @@ namespace CourseSystem
         public void SaveModifyCoursePartTwo(Tuple<int, int, int> department, CourseInfo newCourse, CourseInfo course, int listNameIndex)
         {
             List<CourseInfo> selectedCourseList = GetSelectedCourseList;
-            RemoveCourseFromTabDictionary(department.Item3);
+            RemoveCourseFromSelectedTabDictionary(department.Item3);
             selectedCourseList.RemoveAt(department.Item3);
             string checkedMessage = CheckCourseList(newCourse, selectedCourseList);
             if (checkedMessage == "")
@@ -183,6 +195,16 @@ namespace CourseSystem
                 MessageBox.Show(MODIFY_NOT_SUCCESSFUL + ERROR_MESSAGE + checkedMessage);
                 AddIntoSelectedCourseListAndCourseTab(course, department.Item2);
             }
+        }
+
+        //SaveModifyCoursePartThree
+        public void SaveModifyCoursePartThree(Tuple<int, int, int> department, CourseInfo newCourse, int listNameIndex)
+        {
+            List<CourseInfo> notEnabledCourseList = GetNotEnabledCourseList;
+            RemoveCourseFromNotEnabledTabDictionary(department.Item3);
+            notEnabledCourseList.RemoveAt(department.Item3);
+            AddIntoNotEnabledCourseListAndCourseTab(newCourse, listNameIndex);
+            MessageBox.Show(MODIFY_SUCCESSFUL);
         }
 
         //UpdataCourseSelectionResultForm

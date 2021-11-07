@@ -188,18 +188,18 @@
           <Reviews>
             <Smell>
               <Id>1</Id>
-              <SmellType>ICS(空白與空行-3)</SmellType>
-              <HashCode>SpacingAndNewLine3</HashCode>
-              <Severity>Red</Severity>
-              <Weight>1</Weight>
+              <SmellType>Long method(過長函式)</SmellType>
+              <HashCode>LongMethod.CourseManagementForm.SaveModifyCourse.22</HashCode>
+              <Severity>Warning</Severity>
+              <Weight>22</Weight>
               <Project>CourseSystem</Project>
               <File>CourseManagementForm.cs</File>
-              <Line>60</Line>
+              <Line>282</Line>
               <StartLine>0</StartLine>
               <StartCol>0</StartCol>
               <EndLine>0</EndLine>
               <EndCol>0</EndCol>
-              <Comment>ICS(空白與空行-3) for, foreach, while, switch, if 等關鍵字與左括號之間加一個空白</Comment>
+              <Comment />
               <Auto>false</Auto>
             </Smell>
           </Reviews>
@@ -339,7 +339,7 @@
               </AnalysisFile>
             </AnalysisFiles>
           </AnalysisFileManager>
-          <ProductionLoc>3736</ProductionLoc>
+          <ProductionLoc>3802</ProductionLoc>
           <TestLoc>0</TestLoc>
         </CodeReview>
       </Data>

@@ -20,6 +20,8 @@ namespace CourseSystem
         const string DOT = ".";
         const string MODIFY_COURSE = "編輯課程";
         const string ADD_SUCCESSFUL = "新增成功";
+        const string ENABLED = "開課";
+        const string NOT_ENABLED = "停開";
         public CourseManagementForm(StartUpForm startUpForm, CourseManagementFormPresentationModel courseManagementFormPresentationModel)
         {
             _courseManagementFormPresentationModel = courseManagementFormPresentationModel;
@@ -124,9 +126,9 @@ namespace CourseSystem
         {
             if (department.Item1 == (int)ListName.NotEnabledList)
             {
-                _courseEnabledComboBox.Text = "停開";
+                _courseEnabledComboBox.Text = NOT_ENABLED;
             }
-            _courseEnabledComboBox.Text = "開課";
+            _courseEnabledComboBox.Text = ENABLED;
         }
 
         //LoadTextBoxAndComboBox
@@ -286,13 +288,17 @@ namespace CourseSystem
                 _courseNumberTextBox.Text, _courseNameTextBox.Text, _courseStageTextBox.Text, _courseCreditTextBox.Text, _courseClassTimeSelectionComboBox.Text, _courseTypeSelectionComboBox.Text, _courseTeacherTextBox.Text,
                 classTimeStringList[(int)Day.Sunday].Trim(), classTimeStringList[(int)Day.Monday].Trim(), classTimeStringList[(int)Day.Tuesday].Trim(), classTimeStringList[(int)Day.Wednesday].Trim(), classTimeStringList[(int)Day.Thursday].Trim(), classTimeStringList[(int)Day.Friday].Trim(), classTimeStringList[(int)Day.Saturday].Trim(), course.Classroom,
                 course.NumberOfStudent, course.NumberOfDropStudent, _courseTeachingAssistantTextBox.Text, _courseLanguageTextBox.Text, course.Outline, _courseNoteTextBox.Text, course.AttachStudent, course.Experiment);
-            if (department.Item1 != (int)ListName.SelectedList)
+            if (department.Item1 != (int)ListName.SelectedList && department.Item1 != (int)ListName.NotEnabledList)
             {
                 SaveModifyCoursePartOne(department, newCourse);
             }
-            else
+            else if (department.Item1 == (int)ListName.SelectedList)
             {
                 SaveModifyCoursePartTwo(department, newCourse, course);
+            }
+            else if (department.Item1 == (int)ListName.NotEnabledList)
+            {
+                SaveModifyCoursePartThree(department, newCourse);
             }
         }
 
@@ -314,6 +320,12 @@ namespace CourseSystem
             _courseManagementFormPresentationModel.SaveModifyCoursePartTwo(department, newCourse, course, _courseClassSelectionComboBox.SelectedIndex);
         }
 
+        //SaveModifyCoursePartTwo
+        private void SaveModifyCoursePartThree(Tuple<int, int, int> department, CourseInfo newCourse)
+        {
+            _courseManagementFormPresentationModel.SaveModifyCoursePartThree(department, newCourse, _courseClassSelectionComboBox.SelectedIndex);
+        }
+
         //SaveAddCourse
         private void SaveAddCourse()
         {
@@ -322,7 +334,14 @@ namespace CourseSystem
                 _courseNumberTextBox.Text, _courseNameTextBox.Text, _courseStageTextBox.Text, _courseCreditTextBox.Text, _courseClassTimeSelectionComboBox.Text, _courseTypeSelectionComboBox.Text, _courseTeacherTextBox.Text,
                 classTimeStringList[0].Trim(), classTimeStringList[1].Trim(), classTimeStringList[2].Trim(), classTimeStringList[3].Trim(), classTimeStringList[4].Trim(), classTimeStringList[5].Trim(), classTimeStringList[6].Trim(), "",
                 "", "", _courseTeachingAssistantTextBox.Text, _courseLanguageTextBox.Text, "", _courseNoteTextBox.Text, "", "");
-            _courseManagementFormPresentationModel.AddIntoCourseList(course, _courseClassSelectionComboBox.SelectedIndex);
+            if (_courseEnabledComboBox.Text == ENABLED)
+            {
+                _courseManagementFormPresentationModel.AddIntoCourseList(course, _courseClassSelectionComboBox.SelectedIndex);
+            }
+            else if (_courseEnabledComboBox.Text == NOT_ENABLED)
+            {
+                _courseManagementFormPresentationModel.AddIntoNotEnabledCourseListAndCourseTab(course, _courseClassSelectionComboBox.SelectedIndex);
+            }
             MessageBox.Show(ADD_SUCCESSFUL);
         }
 
