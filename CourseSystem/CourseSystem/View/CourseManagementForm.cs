@@ -12,6 +12,7 @@ namespace CourseSystem
 {
     public partial class CourseManagementForm : Form
     {
+        ImportCourseProgressForm _importCourseProgressForm;
         CourseManagementFormPresentationModel _courseManagementFormPresentationModel;
         StartUpForm _startUpForm;
         const int DAY_PER_WEEK = 7;
@@ -22,9 +23,10 @@ namespace CourseSystem
         const string ADD_SUCCESSFUL = "新增成功";
         const string ENABLED = "開課";
         const string NOT_ENABLED = "停開";
-        public CourseManagementForm(StartUpForm startUpForm, CourseManagementFormPresentationModel courseManagementFormPresentationModel)
+        public CourseManagementForm(StartUpForm startUpForm, CourseManagementFormPresentationModel courseManagementFormPresentationModel, ImportCourseProgressFormPresentationModel importCourseProgressFormPresentationModel)
         {
             _courseManagementFormPresentationModel = courseManagementFormPresentationModel;
+            _importCourseProgressForm = new ImportCourseProgressForm(importCourseProgressFormPresentationModel, this);
             _startUpForm = startUpForm;
             _courseManagementFormPresentationModel._presentationModelChanged += LoadManagementForm;
             InitializeComponent();
@@ -392,16 +394,17 @@ namespace CourseSystem
             return count;
         }
 
-        //UpdateAllForm
-        public void UpdateAllForm()
-        {
-            _courseManagementFormPresentationModel.ReloadAllForm();
-        }
-
         //ClickLoadComputerScienceButton
         private void ClickLoadComputerScienceButton(object sender, EventArgs e)
         {
+            _importCourseProgressForm.Show();
             _courseManagementFormPresentationModel.ClickLoadComputerScienceCourseTabButton();
+            _courseManagementFormPresentationModel.ReloadAllForm();
+        }
+
+        //UpdateAllForm
+        public void UpdateAllForm()
+        {
             _courseManagementFormPresentationModel.ReloadAllForm();
         }
     }

@@ -122,6 +122,12 @@ namespace CourseSystem
             _presentationModel.FinishLoadComputerScienceCourseTabButton();
         }
 
+        //UploadImportProcessing
+        public void UploadImportProcessing(int processing)
+        {
+            _presentationModel.UploadImportProcessing(processing);
+        }
+
         //UpdataCourseSelectingForm
         public void ReloadCourseSelectingForm()
         {

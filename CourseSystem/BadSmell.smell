@@ -185,7 +185,88 @@
     <div class="data">
       <Data id="ReviewPalData">
         <CodeReview xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-          <Reviews />
+          <Reviews>
+            <Smell>
+              <Id>1</Id>
+              <SmellType>ICS(函式-3)</SmellType>
+              <HashCode>Method3.CourseSelectingFormPresentationModel.GetIsLoadComputerScienceCourseTab</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>CourseSystem</Project>
+              <File>CourseSelectingFormPresentationModel.cs</File>
+              <Line>114</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(函式-3) Getter 除了取得 bool 值使用 IsXXX()之外，其餘一律使用 GetXXX()</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>2</Id>
+              <SmellType>ICS(變數-1)</SmellType>
+              <HashCode>Variable1.ImportCourseProgressForm.label1</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>CourseSystem</Project>
+              <File>ImportCourseProgressForm.Designer.cs</File>
+              <Line>69</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(變數-1) Class 成員變數以底線開始，底線後第一個字母小寫，若由多個單字組成，從第二個單字開始，每個單字的第一個字母大寫，其餘小寫。 不以底線區隔單字</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>3</Id>
+              <SmellType>ICS(變數-1)</SmellType>
+              <HashCode>Variable1.ImportCourseProgressForm.progressBar1</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>CourseSystem</Project>
+              <File>ImportCourseProgressForm.Designer.cs</File>
+              <Line>70</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>ICS(變數-1) Class 成員變數以底線開始，底線後第一個字母小寫，若由多個單字組成，從第二個單字開始，每個單字的第一個字母大寫，其餘小寫。 不以底線區隔單字</Comment>
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>4</Id>
+              <SmellType>Unresolved warnings(忽視警告)-The event 'ImportCourseProgressFormPresentationModel._presentationModelChanged' is never used</SmellType>
+              <HashCode>CourseSystem\CourseSystem.ImportCourseProgressFormPresentationModel.cs.Unresolved warnings(忽視警告)-The event 'ImportCourseProgressFormPresentationModel._presentationModelChanged' is never used.11</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>CourseSystem\CourseSystem</Project>
+              <File>ImportCourseProgressFormPresentationModel.cs</File>
+              <Line>11</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>5</Id>
+              <SmellType>Feature Envy(依戀情節)</SmellType>
+              <HashCode>55 目前物件 CourseSystem.CourseSelectingForm，使用物件的方法或屬性次數：0次，Envy到對象物件 CourseSystem.CourseSelectingFormPresentationModel，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：CourseSystem.CourseSelectingFormPresentationModel.FinishLoadComputerScienceCourseTabButton() 以及 CourseSystem.CourseSelectingFormPresentationModel.GetIsLoadComputerScienceCourseTab()</HashCode>
+              <Severity>Warning</Severity>
+              <Weight>1</Weight>
+              <Project>CourseSystem</Project>
+              <File>D:\Desktop\110-1\WindowsProgramming\WindowsProgrammingHomework\CourseSystem\CourseSystem\View\CourseSelectingForm.cs</File>
+              <Line>55</Line>
+              <StartLine>54</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>55</EndLine>
+              <EndCol>0</EndCol>
+              <Comment>目前物件 CourseSystem.CourseSelectingForm，使用物件的方法或屬性次數：0次，Envy到對象物件 CourseSystem.CourseSelectingFormPresentationModel，使用物件方法或屬性次數：2次，使用到的方法或屬性為以下：CourseSystem.CourseSelectingFormPresentationModel.FinishLoadComputerScienceCourseTabButton() 以及 CourseSystem.CourseSelectingFormPresentationModel.GetIsLoadComputerScienceCourseTab()</Comment>
+              <Auto>false</Auto>
+            </Smell>
+          </Reviews>
           <HashCodeIgnoreList />
           <HashCodeRequestIgnoreList />
           <AnalysisFileManager>
@@ -322,7 +403,7 @@
               </AnalysisFile>
             </AnalysisFiles>
           </AnalysisFileManager>
-          <ProductionLoc>3870</ProductionLoc>
+          <ProductionLoc>4003</ProductionLoc>
           <TestLoc>0</TestLoc>
         </CodeReview>
       </Data>

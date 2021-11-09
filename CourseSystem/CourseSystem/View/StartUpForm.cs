@@ -17,6 +17,7 @@ namespace CourseSystem
         CourseManagementFormPresentationModel _courseManagementFormPresentationModel;
         CourseSelectingFormPresentationModel _courseSelectingFormPresentationModel;
         CourseSelectionResultFormPresentationModel _courseSelectionResultFormPresentationModel;
+        ImportCourseProgressFormPresentationModel _importCourseProgressFormPresentationModel;
         StartUpFormPresentationModel _startUpFormPresentationModel;
         CourseSelectingForm _courseSelectingForm;
         CourseManagementForm _courseManagementForm;
@@ -27,9 +28,10 @@ namespace CourseSystem
             _courseManagementFormPresentationModel = new CourseManagementFormPresentationModel(_presentationModel);
             _courseSelectingFormPresentationModel = new CourseSelectingFormPresentationModel(_presentationModel);
             _courseSelectionResultFormPresentationModel = new CourseSelectionResultFormPresentationModel(_presentationModel);
+            _importCourseProgressFormPresentationModel = new ImportCourseProgressFormPresentationModel(_presentationModel);
             _startUpFormPresentationModel = new StartUpFormPresentationModel();
             _courseSelectingForm = new CourseSelectingForm(this, _courseSelectingFormPresentationModel, _courseSelectionResultFormPresentationModel);
-            _courseManagementForm = new CourseManagementForm(this, _courseManagementFormPresentationModel);
+            _courseManagementForm = new CourseManagementForm(this, _courseManagementFormPresentationModel, _importCourseProgressFormPresentationModel);
             InitializeComponent();
         }
 

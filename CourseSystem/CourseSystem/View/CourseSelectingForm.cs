@@ -53,6 +53,8 @@ namespace CourseSystem
             if (_courseSelectingFormPresentationModel.GetIsLoadComputerScienceCourseTab() == true)
             {
                 _courseSelectingFormPresentationModel.FinishLoadComputerScienceCourseTabButton();
+                _courseSelectingFormPresentationModel.UploadImportProcessing(0);
+                UpdateAllForm();
                 LoadComputerScienceCourseTab((int)Department.ComputerScience3);
                 LoadComputerScienceCourseTab((int)Department.ComputerScience5);
                 LoadComputerScienceCourseTab((int)Department.ComputerScience4);
@@ -63,6 +65,7 @@ namespace CourseSystem
             List<CourseInfo> courseList = _courseSelectingFormPresentationModel.GetCourseList(_index);
             LoadDataGridView(courseList, _courseDataGridView);
         }
+
         //LoadComputerScienceCourseTab
         private void LoadComputerScienceCourseTab(int departmentIndex)
         {
@@ -80,8 +83,9 @@ namespace CourseSystem
                 _selectingTabControl.TabPages.Add(AddTabPage(_courseSelectingFormPresentationModel.GetClassNameList[departmentIndex]));
             }
             _courseSelectingFormPresentationModel.UpdateCourseListInfo(departmentIndex);
+            _courseSelectingFormPresentationModel.UploadImportProcessing(departmentIndex*20);
             UpdateAllForm();
-            Thread.Sleep(1000);
+            //Thread.Sleep(500);
         }
 
         //LoadDataGridView

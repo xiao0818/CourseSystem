@@ -14,7 +14,28 @@ namespace CourseSystem
         public ImportCourseProgressFormPresentationModel(PresentationModel presentationModel)
         {
             _presentationModel = presentationModel;
-            //_presentationModel._presentationModelChanged += ReloadCourseSelectionResultForm;
+            _presentationModel._presentationModelChanged += ReloadImportCourseProgressForm;
+        }
+
+        //GetImportCourseProgerss
+        public int GetImportCourseProgerss()
+        {
+            return _presentationModel.GetImportCourseProgerss();
+        }
+
+        //UpdataCourseSelectionResultForm
+        public void ReloadImportCourseProgressForm()
+        {
+            NotifyObserver();
+        }
+
+        //NotifyObservers
+        public void NotifyObserver()
+        {
+            if (_presentationModelChanged != null)
+            {
+                _presentationModelChanged();
+            }
         }
     }
 }
