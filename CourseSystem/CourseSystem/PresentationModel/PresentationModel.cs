@@ -21,6 +21,7 @@ namespace CourseSystem
         const string COMPUTER_SCIENCE_4_NAME = "資工四";
         const string COMPUTER_SCIENCE_2_NAME = "資工二";
         const string COMPUTER_SCIENCE_1_NAME = "資工一";
+        bool _isLoadComputerScienceCourseTab;
         public PresentationModel(Model model)
         {
             _classNameList.Add(COMPUTER_SCIENCE_3_NAME);
@@ -31,6 +32,13 @@ namespace CourseSystem
             _classNameList.Add(COMPUTER_SCIENCE_1_NAME);
             _model = model;
             _model._modelChanged += ReloadForm;
+            _isLoadComputerScienceCourseTab = false;
+        }
+
+        //UpdateCourseListInfo
+        public void UpdateCourseListInfo(int departmentIndex)
+        {
+            _model.UpdateCourseListInfo(departmentIndex);
         }
 
         //get
@@ -254,6 +262,26 @@ namespace CourseSystem
         public void AddSelectedCourse(CourseInfo selectingCourse)
         {
             _model.AddSelectedCourse(selectingCourse);
+        }
+
+        //ClickLoadComputerScienceCourseTabButton
+        public void ClickLoadComputerScienceCourseTabButton()
+        {
+            _isLoadComputerScienceCourseTab = true;
+        }
+
+        public bool IsLoadComputerScienceCourseTab
+        {
+            get
+            {
+                return _isLoadComputerScienceCourseTab;
+            }
+        }
+
+        //FinishLoadComputerScienceCourseTabButton
+        public void FinishLoadComputerScienceCourseTabButton()
+        {
+            _isLoadComputerScienceCourseTab = false;
         }
 
         //ReloadForm

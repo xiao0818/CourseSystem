@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -49,9 +50,38 @@ namespace CourseSystem
         //load
         public void LoadForm()
         {
+            if (_courseSelectingFormPresentationModel.GetIsLoadComputerScienceCourseTab() == true)
+            {
+                _courseSelectingFormPresentationModel.FinishLoadComputerScienceCourseTabButton();
+                LoadComputerScienceCourseTab((int)Department.ComputerScience3);
+                LoadComputerScienceCourseTab((int)Department.ComputerScience5);
+                LoadComputerScienceCourseTab((int)Department.ComputerScience4);
+                LoadComputerScienceCourseTab((int)Department.ComputerScience2);
+                LoadComputerScienceCourseTab((int)Department.ComputerScience1);
+            }
             _courseDataGridView.Rows.Clear();
             List<CourseInfo> courseList = _courseSelectingFormPresentationModel.GetCourseList(_index);
             LoadDataGridView(courseList, _courseDataGridView);
+        }
+        //LoadComputerScienceCourseTab
+        private void LoadComputerScienceCourseTab(int departmentIndex)
+        {
+            int count = 0;
+            string tabText = _courseSelectingFormPresentationModel.GetClassNameList[departmentIndex];
+            foreach (TabPage tabPage in _selectingTabControl.TabPages)
+            {
+                if (tabText == tabPage.Text)
+                {
+                    count++;
+                }
+            }
+            if (count == 0)
+            {
+                _selectingTabControl.TabPages.Add(AddTabPage(_courseSelectingFormPresentationModel.GetClassNameList[departmentIndex]));
+            }
+            _courseSelectingFormPresentationModel.UpdateCourseListInfo(departmentIndex);
+            UpdateAllForm();
+            Thread.Sleep(1000);
         }
 
         //LoadDataGridView

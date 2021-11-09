@@ -401,7 +401,8 @@ namespace CourseSystem
         //ClickLoadComputerScienceButton
         private void ClickLoadComputerScienceButton(object sender, EventArgs e)
         {
-
+            _courseManagementFormPresentationModel.ClickLoadComputerScienceCourseTabButton();
+            _courseManagementFormPresentationModel.ReloadAllForm();
         }
     }
 }

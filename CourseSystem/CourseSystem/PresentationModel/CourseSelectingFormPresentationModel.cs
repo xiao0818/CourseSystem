@@ -20,6 +20,12 @@ namespace CourseSystem
             _presentationModel._presentationModelChanged += ReloadCourseSelectingForm;
         }
 
+        //UpdateCourseListInfo
+        public void UpdateCourseListInfo(int departmentIndex)
+        {
+            _presentationModel.UpdateCourseListInfo(departmentIndex);
+        }
+
         //get
         public List<CourseInfo> GetCourseList(int index)
         {
@@ -102,6 +108,18 @@ namespace CourseSystem
         public void AddSelectedCourse(CourseInfo selectingCourse)
         {
             _presentationModel.AddSelectedCourse(selectingCourse);
+        }
+
+        //GetIsLoadComputerScienceCourseTab
+        public bool GetIsLoadComputerScienceCourseTab()
+        {
+            return _presentationModel.IsLoadComputerScienceCourseTab;
+        }
+
+        //FinishLoadComputerScienceCourseTabButton
+        public void FinishLoadComputerScienceCourseTabButton()
+        {
+            _presentationModel.FinishLoadComputerScienceCourseTabButton();
         }
 
         //UpdataCourseSelectingForm

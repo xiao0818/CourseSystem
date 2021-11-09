@@ -282,6 +282,12 @@ namespace CourseSystem
             MessageBox.Show(MODIFY_SUCCESSFUL);
         }
 
+        //ClickLoadComputerScienceCourseTabButton
+        public void ClickLoadComputerScienceCourseTabButton()
+        {
+            _presentationModel.ClickLoadComputerScienceCourseTabButton();
+        }
+
         //UpdataCourseSelectionResultForm
         public void ReloadCourseManagementForm()
         {

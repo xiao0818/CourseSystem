@@ -17,6 +17,7 @@ namespace CourseSystem
         const string WEB_COMPUTER_SCIENCE_4 = "https://aps.ntut.edu.tw/course/tw/Subj.jsp?format=-4&year=110&sem=1&code=2314";
         const string WEB_COMPUTER_SCIENCE_2 = "https://aps.ntut.edu.tw/course/tw/Subj.jsp?format=-4&year=110&sem=1&code=2550";
         const string WEB_COMPUTER_SCIENCE_1 = "https://aps.ntut.edu.tw/course/tw/Subj.jsp?format=-4&year=110&sem=1&code=2676";
+        private List<string> _courseWebList;
         private List<CourseInfo> _selectedCourseList;
         private List<CourseInfo> _notEnabledCourseList;
         private Dictionary<string, int> _selectedCourseTabDictionary;
@@ -26,9 +27,16 @@ namespace CourseSystem
         public Model()
         {
             _modelChanged += SortAll;
+            _courseWebList = new List<string>();
+            _courseWebList.Add(WEB_COMPUTER_SCIENCE_3);
+            _courseWebList.Add(WEB_ELECTRONIC_ENGINEERING_3_A);
+            _courseWebList.Add(WEB_COMPUTER_SCIENCE_5);
+            _courseWebList.Add(WEB_COMPUTER_SCIENCE_4);
+            _courseWebList.Add(WEB_COMPUTER_SCIENCE_2);
+            _courseWebList.Add(WEB_COMPUTER_SCIENCE_1);
             _courseListCollection = new List<List<CourseInfo>>();
-            _courseListCollection.Add(GetCourseInfo(WEB_COMPUTER_SCIENCE_3));
-            _courseListCollection.Add(GetCourseInfo(WEB_ELECTRONIC_ENGINEERING_3_A));
+            _courseListCollection.Add(GetCourseInfo(_courseWebList[(int)Department.ComputerScience3]));
+            _courseListCollection.Add(GetCourseInfo(_courseWebList[(int)Department.ElectronicEngineering3]));
             _courseListCollection.Add(new List<CourseInfo>());
             _courseListCollection.Add(new List<CourseInfo>());
             _courseListCollection.Add(new List<CourseInfo>());
@@ -90,6 +98,13 @@ namespace CourseSystem
                         nodeTableDatas[(int)CourseInfoHeaderText.Number].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.Name].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.Stage].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.Credit].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.Hour].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.CourseType].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.Teacher].InnerText.Trim(),
                         nodeTableDatas[(int)CourseInfoHeaderText.ClassTime0].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.ClassTime1].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.ClassTime2].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.ClassTime3].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.ClassTime4].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.ClassTime5].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.ClassTime6].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.Classroom].InnerText.Trim(),
                         nodeTableDatas[(int)CourseInfoHeaderText.NumberOfStudent].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.NumberOfDropStudent].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.TeachingAssistant].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.Language].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.Outline].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.Note].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.AttachStudent].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.Experiment].InnerText.Trim());
+        }
+
+        //UpdateCourseListInfo
+        public void UpdateCourseListInfo(int departmentIndex)
+        {
+            _courseListCollection[departmentIndex].Clear();
+            _courseListCollection[departmentIndex].AddRange(_courseListCollection[departmentIndex].Union(GetCourseInfo(_courseWebList[departmentIndex])).ToList<CourseInfo>());
         }
 
         //Get

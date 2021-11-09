@@ -33,7 +33,6 @@ namespace CourseSystem
             this._submitButton = new System.Windows.Forms.Button();
             this._checkButton = new System.Windows.Forms.Button();
             this._selectingTabControl = new System.Windows.Forms.TabControl();
-            this._computerScience3TabPage = new System.Windows.Forms.TabPage();
             this._courseDataGridView = new System.Windows.Forms.DataGridView();
             this._courseCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this._courseNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,9 +58,7 @@ namespace CourseSystem
             this._courseNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this._courseAttachStudent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this._courseExperiment = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this._electronicEngineering3TabPage = new System.Windows.Forms.TabPage();
             this._selectingTabControl.SuspendLayout();
-            this._computerScience3TabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._courseDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -400,7 +397,6 @@ namespace CourseSystem
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ClosingFormCourseSelectingForm);
             this.Load += new System.EventHandler(this.LoadSelectCourseForm);
             this._selectingTabControl.ResumeLayout(false);
-            this._computerScience3TabPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this._courseDataGridView)).EndInit();
             this.ResumeLayout(false);
 
@@ -410,9 +406,7 @@ namespace CourseSystem
         private System.Windows.Forms.Button _submitButton;
         private System.Windows.Forms.Button _checkButton;
         private System.Windows.Forms.TabControl _selectingTabControl;
-        private System.Windows.Forms.TabPage _computerScience3TabPage;
         private System.Windows.Forms.DataGridView _courseDataGridView;
-        private System.Windows.Forms.TabPage _electronicEngineering3TabPage;
         private System.Windows.Forms.DataGridViewCheckBoxColumn _courseCheckBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn _courseNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn _courseName;

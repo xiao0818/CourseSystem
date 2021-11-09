@@ -112,6 +112,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\ImportCourseProgressForm.resx">
+      <DependentUpon>ImportCourseProgressForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\StartUpForm.resx">
       <DependentUpon>StartUpForm.cs</DependentUpon>
     </EmbeddedResource>

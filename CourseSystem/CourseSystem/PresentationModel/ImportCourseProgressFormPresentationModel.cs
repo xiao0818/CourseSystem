@@ -6,7 +6,15 @@ using System.Threading.Tasks;
 
 namespace CourseSystem
 {
-    class ImportCourseProgressFormPresentationModel
+    public class ImportCourseProgressFormPresentationModel
     {
+        public event PresentationModelChangedEventHandler _presentationModelChanged;
+        public delegate void PresentationModelChangedEventHandler();
+        PresentationModel _presentationModel;
+        public ImportCourseProgressFormPresentationModel(PresentationModel presentationModel)
+        {
+            _presentationModel = presentationModel;
+            //_presentationModel._presentationModelChanged += ReloadCourseSelectionResultForm;
+        }
     }
 }
