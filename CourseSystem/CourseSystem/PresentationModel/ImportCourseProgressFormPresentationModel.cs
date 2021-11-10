@@ -25,9 +25,9 @@ namespace CourseSystem
         }
 
         //WaitNSeconds
-        public void WaitNSeconds(int second)
+        public void WaitSeconds(int second)
         {
-            _presentationModel.WaitNSeconds(second);
+            _presentationModel.WaitSeconds(second);
         }
 
         //UpdataCourseSelectionResultForm

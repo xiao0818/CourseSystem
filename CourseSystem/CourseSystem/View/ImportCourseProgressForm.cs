@@ -15,6 +15,7 @@ namespace CourseSystem
     {
         ImportCourseProgressFormPresentationModel _importCourseProgressFormPresentationModel;
         CourseManagementForm _courseManagementForm;
+        int _times;
         public ImportCourseProgressForm(ImportCourseProgressFormPresentationModel importCourseProgressFormPresentationModel, CourseManagementForm courseManagementForm)
         {
             _courseManagementForm = courseManagementForm;
@@ -23,6 +24,7 @@ namespace CourseSystem
             InitializeComponent();
             _progressBar.Step = 20;
             _progressBar.Minimum = 0;
+            _times = 0;
         }
 
         //LoadProgressingBar
@@ -34,7 +36,7 @@ namespace CourseSystem
             this.Refresh();
             if (_progressBar.Value == 100)
             {
-                _importCourseProgressFormPresentationModel.WaitNSeconds(1);
+                _importCourseProgressFormPresentationModel.WaitSeconds(1);
                 this.Close();
             }
         }
@@ -50,9 +52,9 @@ namespace CourseSystem
         }
 
         //ShownImportCourseProgressForm
-        private void ShownImportCourseProgressForm(object sender, EventArgs e)
+        private void ShowImportCourseProgressForm(object sender, EventArgs e)
         {
-            _importCourseProgressFormPresentationModel.WaitNSeconds(1);
+            _importCourseProgressFormPresentationModel.WaitSeconds(1);
             _importCourseProgressFormPresentationModel.ClickLoadComputerScienceCourseTabButton();
         }
 
@@ -61,6 +63,7 @@ namespace CourseSystem
         {
             _progressBar.Value = 0;
             _progressLabel.Text = "正在匯入課程....0%";
+            _times = 0;
         }
     }
 }

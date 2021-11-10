@@ -286,11 +286,14 @@ namespace CourseSystem
         }
 
         //WaitNSeconds
-        public void WaitNSeconds(int second)
+        public void WaitSeconds(int second)
         {
-            if (second < 1) return;
-            DateTime _desired = DateTime.Now.AddSeconds(second);
-            while (DateTime.Now < _desired)
+            if (second < 1)
+            {
+                return;
+            }
+            DateTime desired = DateTime.Now.AddSeconds(second);
+            while (DateTime.Now < desired)
             {
                 System.Windows.Forms.Application.DoEvents();
             }

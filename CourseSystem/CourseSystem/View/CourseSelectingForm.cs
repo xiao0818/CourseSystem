@@ -49,11 +49,10 @@ namespace CourseSystem
         //load
         public void LoadForm()
         {
-            if (_courseSelectingFormPresentationModel.GetIsLoadComputerScienceCourseTab() == true)
+            if (_courseSelectingFormPresentationModel.IsLoadComputerScienceCourseTab == true)
             {
                 _courseSelectingFormPresentationModel.FinishLoadComputerScienceCourseTabButton();
-                //UpdateAllForm();
-                //LoadComputerScienceCourseTab((int)Department.ComputerScience3);
+                LoadComputerScienceCourseTab((int)Department.ComputerScience3);
                 LoadComputerScienceCourseTab((int)Department.ComputerScience5);
                 LoadComputerScienceCourseTab((int)Department.ComputerScience4);
                 LoadComputerScienceCourseTab((int)Department.ComputerScience2);
@@ -81,8 +80,8 @@ namespace CourseSystem
                 _selectingTabControl.TabPages.Add(AddTabPage(_courseSelectingFormPresentationModel.GetClassNameList[departmentIndex]));
                 _courseSelectingFormPresentationModel.UpdateCourseListInfo(departmentIndex);
             }
+            _courseSelectingFormPresentationModel.WaitSeconds(2);
             UpdateAllForm();
-            _courseSelectingFormPresentationModel.WaitNSeconds(1);
         }
 
         //LoadDataGridView

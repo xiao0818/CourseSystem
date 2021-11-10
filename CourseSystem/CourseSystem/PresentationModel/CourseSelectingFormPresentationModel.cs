@@ -111,9 +111,12 @@ namespace CourseSystem
         }
 
         //GetIsLoadComputerScienceCourseTab
-        public bool GetIsLoadComputerScienceCourseTab()
+        public bool IsLoadComputerScienceCourseTab
         {
-            return _presentationModel.IsLoadComputerScienceCourseTab;
+            get
+            {
+                return _presentationModel.IsLoadComputerScienceCourseTab;
+            }
         }
 
         //FinishLoadComputerScienceCourseTabButton
@@ -123,9 +126,9 @@ namespace CourseSystem
         }
 
         //WaitNSeconds
-        public void WaitNSeconds(int second)
+        public void WaitSeconds(int second)
         {
-            _presentationModel.WaitNSeconds(second);
+            _presentationModel.WaitSeconds(second);
         }
 
         //UpdataCourseSelectingForm

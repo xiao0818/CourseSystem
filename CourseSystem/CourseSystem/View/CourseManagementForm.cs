@@ -398,7 +398,7 @@ namespace CourseSystem
         //ClickLoadComputerScienceButton
         private void ClickLoadComputerScienceButton(object sender, EventArgs e)
         {
-            if(_courseClassSelectionComboBox.Items.Count == 2)
+            if (_courseClassSelectionComboBox.Items.Count == 2)
             {
                 _courseClassSelectionComboBox.Items.Add(_courseManagementFormPresentationModel.GetClassNameList[(int)Department.ComputerScience5]);
                 _courseClassSelectionComboBox.Items.Add(_courseManagementFormPresentationModel.GetClassNameList[(int)Department.ComputerScience4]);

@@ -61,7 +61,7 @@ namespace CourseSystem
             this.Text = "ImportCourseProgressForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ClosingImportCourseProgressForm);
             this.Load += new System.EventHandler(this.LoadImportCourseProgressForm);
-            this.Shown += new System.EventHandler(this.ShownImportCourseProgressForm);
+            this.Shown += new System.EventHandler(this.ShowImportCourseProgressForm);
             this.ResumeLayout(false);
             this.PerformLayout();
 
