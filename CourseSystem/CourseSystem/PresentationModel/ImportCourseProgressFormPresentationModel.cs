@@ -17,10 +17,10 @@ namespace CourseSystem
             _presentationModel._presentationModelChanged += ReloadImportCourseProgressForm;
         }
 
-        //GetImportCourseProgerss
-        public int GetImportCourseProgerss()
+        //WaitNSeconds
+        public void WaitNSeconds(int second)
         {
-            return _presentationModel.GetImportCourseProgerss();
+            _presentationModel.WaitNSeconds(second);
         }
 
         //UpdataCourseSelectionResultForm

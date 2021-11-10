@@ -397,9 +397,18 @@ namespace CourseSystem
         //ClickLoadComputerScienceButton
         private void ClickLoadComputerScienceButton(object sender, EventArgs e)
         {
+            //_startUpForm.EnabledAllForm(true);
             _importCourseProgressForm.Show();
             _courseManagementFormPresentationModel.ClickLoadComputerScienceCourseTabButton();
+            _loadComputerScienceButton.Enabled = _courseManagementFormPresentationModel.IsLoadComputerScienceCourseButton;
             _courseManagementFormPresentationModel.ReloadAllForm();
+        }
+
+        //FinishLoadComputerScienceCourse
+        public void FinishLoadComputerScienceCourse()
+        {
+            _courseManagementFormPresentationModel.FinishLoadComputerScienceCourse();
+            _loadComputerScienceButton.Enabled = _courseManagementFormPresentationModel.IsLoadComputerScienceCourseButton;
         }
 
         //UpdateAllForm

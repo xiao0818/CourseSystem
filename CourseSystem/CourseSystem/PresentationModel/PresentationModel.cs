@@ -22,7 +22,6 @@ namespace CourseSystem
         const string COMPUTER_SCIENCE_2_NAME = "資工二";
         const string COMPUTER_SCIENCE_1_NAME = "資工一";
         bool _isLoadComputerScienceCourseTab;
-        int _processing;
         public PresentationModel(Model model)
         {
             _classNameList.Add(COMPUTER_SCIENCE_3_NAME);
@@ -34,7 +33,6 @@ namespace CourseSystem
             _model = model;
             _model._modelChanged += ReloadForm;
             _isLoadComputerScienceCourseTab = false;
-            _processing = 0;
         }
 
         //UpdateCourseListInfo
@@ -286,16 +284,15 @@ namespace CourseSystem
             _isLoadComputerScienceCourseTab = false;
         }
 
-        //UploadImportProcessing
-        public void UploadImportProcessing(int processing)
+        //WaitNSeconds
+        public void WaitNSeconds(int second)
         {
-            _processing = processing;
-        }
-
-        //GetImportCourseProgerss
-        public int GetImportCourseProgerss()
-        {
-            return _processing;
+            if (second < 1) return;
+            DateTime _desired = DateTime.Now.AddSeconds(second);
+            while (DateTime.Now < _desired)
+            {
+                System.Windows.Forms.Application.DoEvents();
+            }
         }
 
         //ReloadForm

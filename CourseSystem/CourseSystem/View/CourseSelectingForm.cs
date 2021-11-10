@@ -6,7 +6,6 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CourseSystem
@@ -53,9 +52,8 @@ namespace CourseSystem
             if (_courseSelectingFormPresentationModel.GetIsLoadComputerScienceCourseTab() == true)
             {
                 _courseSelectingFormPresentationModel.FinishLoadComputerScienceCourseTabButton();
-                _courseSelectingFormPresentationModel.UploadImportProcessing(0);
-                UpdateAllForm();
-                LoadComputerScienceCourseTab((int)Department.ComputerScience3);
+                //UpdateAllForm();
+                //LoadComputerScienceCourseTab((int)Department.ComputerScience3);
                 LoadComputerScienceCourseTab((int)Department.ComputerScience5);
                 LoadComputerScienceCourseTab((int)Department.ComputerScience4);
                 LoadComputerScienceCourseTab((int)Department.ComputerScience2);
@@ -81,11 +79,10 @@ namespace CourseSystem
             if (count == 0)
             {
                 _selectingTabControl.TabPages.Add(AddTabPage(_courseSelectingFormPresentationModel.GetClassNameList[departmentIndex]));
+                _courseSelectingFormPresentationModel.UpdateCourseListInfo(departmentIndex);
             }
-            _courseSelectingFormPresentationModel.UpdateCourseListInfo(departmentIndex);
-            _courseSelectingFormPresentationModel.UploadImportProcessing(departmentIndex*20);
             UpdateAllForm();
-            //Thread.Sleep(500);
+            _courseSelectingFormPresentationModel.WaitNSeconds(1);
         }
 
         //LoadDataGridView

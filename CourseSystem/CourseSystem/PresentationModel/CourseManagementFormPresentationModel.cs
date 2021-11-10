@@ -14,6 +14,7 @@ namespace CourseSystem
         PresentationModel _presentationModel;
         bool _isSaveCourseDataButton;
         bool _isAddCourseDataButton;
+        bool _isLoadComputerScienceCourseButton;
         const string MODIFY_SUCCESSFUL = "編輯成功";
         const string MODIFY_NOT_SUCCESSFUL = "編輯失敗";
         const string ERROR_MESSAGE = "\n此編輯會導致已選課程發生:";
@@ -23,6 +24,7 @@ namespace CourseSystem
             _presentationModel._presentationModelChanged += ReloadCourseManagementForm;
             _isAddCourseDataButton = true;
             _isSaveCourseDataButton = false;
+            _isLoadComputerScienceCourseButton = true;
         }
 
         //Get
@@ -132,6 +134,15 @@ namespace CourseSystem
             get
             {
                 return _isAddCourseDataButton;
+            }
+        }
+
+        //IsAddCourseDataButton
+        public bool IsLoadComputerScienceCourseButton
+        {
+            get
+            {
+                return _isLoadComputerScienceCourseButton;
             }
         }
 
@@ -285,8 +296,17 @@ namespace CourseSystem
         //ClickLoadComputerScienceCourseTabButton
         public void ClickLoadComputerScienceCourseTabButton()
         {
+            _isLoadComputerScienceCourseButton = false;
             _presentationModel.ClickLoadComputerScienceCourseTabButton();
         }
+
+        //FinishLoadComputerScienceCourse
+        public void FinishLoadComputerScienceCourse()
+        {
+            _isLoadComputerScienceCourseButton = true;
+        }
+
+        //IsLoadComputerScienceCourseButton
 
         //UpdataCourseSelectionResultForm
         public void ReloadCourseManagementForm()
