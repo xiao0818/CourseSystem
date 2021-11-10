@@ -17,6 +17,13 @@ namespace CourseSystem
             _presentationModel._presentationModelChanged += ReloadImportCourseProgressForm;
         }
 
+        //ClickLoadComputerScienceCourseTabButton
+        public void ClickLoadComputerScienceCourseTabButton()
+        {
+            
+            _presentationModel.ClickLoadComputerScienceCourseTabButton();
+        }
+
         //WaitNSeconds
         public void WaitNSeconds(int second)
         {

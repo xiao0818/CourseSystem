@@ -47,7 +47,20 @@ namespace CourseSystem
             _progressBar.Value = 0;
             _progressLabel.Text = "正在匯入課程....0%";
             _courseManagementForm.FinishLoadComputerScienceCourse();
-            //_importCourseProgressFormPresentationModel.EnabledAllForm();
+        }
+
+        //ShownImportCourseProgressForm
+        private void ShownImportCourseProgressForm(object sender, EventArgs e)
+        {
+            _importCourseProgressFormPresentationModel.WaitNSeconds(1);
+            _importCourseProgressFormPresentationModel.ClickLoadComputerScienceCourseTabButton();
+        }
+
+        //LoadImportCourseProgressForm
+        private void LoadImportCourseProgressForm(object sender, EventArgs e)
+        {
+            _progressBar.Value = 0;
+            _progressLabel.Text = "正在匯入課程....0%";
         }
     }
 }

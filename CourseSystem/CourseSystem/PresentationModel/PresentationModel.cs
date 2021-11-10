@@ -268,6 +268,7 @@ namespace CourseSystem
         public void ClickLoadComputerScienceCourseTabButton()
         {
             _isLoadComputerScienceCourseTab = true;
+            ReloadAllForm();
         }
 
         public bool IsLoadComputerScienceCourseTab

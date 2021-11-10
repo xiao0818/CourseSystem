@@ -194,6 +194,7 @@ namespace CourseSystem
             _courseManagementFormPresentationModel.ResetAllButton();
             _saveCourseDataButton.Enabled = _courseManagementFormPresentationModel.IsSaveCourseDataButton;
             _addCourseDataButton.Enabled = _courseManagementFormPresentationModel.IsAddCourseDataButton;
+            _loadComputerScienceButton.Enabled = _courseManagementFormPresentationModel.IsLoadComputerScienceCourseButton;
             _classTimeDataGridView.ClearSelection();
         }
 
@@ -397,10 +398,15 @@ namespace CourseSystem
         //ClickLoadComputerScienceButton
         private void ClickLoadComputerScienceButton(object sender, EventArgs e)
         {
-            //_startUpForm.EnabledAllForm(true);
-            _importCourseProgressForm.Show();
+            if(_courseClassSelectionComboBox.Items.Count == 2)
+            {
+                _courseClassSelectionComboBox.Items.Add(_courseManagementFormPresentationModel.GetClassNameList[(int)Department.ComputerScience5]);
+                _courseClassSelectionComboBox.Items.Add(_courseManagementFormPresentationModel.GetClassNameList[(int)Department.ComputerScience4]);
+                _courseClassSelectionComboBox.Items.Add(_courseManagementFormPresentationModel.GetClassNameList[(int)Department.ComputerScience2]);
+                _courseClassSelectionComboBox.Items.Add(_courseManagementFormPresentationModel.GetClassNameList[(int)Department.ComputerScience1]);
+            }
             _courseManagementFormPresentationModel.ClickLoadComputerScienceCourseTabButton();
-            _loadComputerScienceButton.Enabled = _courseManagementFormPresentationModel.IsLoadComputerScienceCourseButton;
+            _importCourseProgressForm.ShowDialog();
             _courseManagementFormPresentationModel.ReloadAllForm();
         }
 

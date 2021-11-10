@@ -297,7 +297,6 @@ namespace CourseSystem
         public void ClickLoadComputerScienceCourseTabButton()
         {
             _isLoadComputerScienceCourseButton = false;
-            _presentationModel.ClickLoadComputerScienceCourseTabButton();
         }
 
         //FinishLoadComputerScienceCourse
@@ -305,8 +304,6 @@ namespace CourseSystem
         {
             _isLoadComputerScienceCourseButton = true;
         }
-
-        //IsLoadComputerScienceCourseButton
 
         //UpdataCourseSelectionResultForm
         public void ReloadCourseManagementForm()
