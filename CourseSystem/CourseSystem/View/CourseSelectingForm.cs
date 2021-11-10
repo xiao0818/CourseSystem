@@ -78,9 +78,9 @@ namespace CourseSystem
             if (count == 0)
             {
                 _selectingTabControl.TabPages.Add(AddTabPage(_courseSelectingFormPresentationModel.GetClassNameList[departmentIndex]));
-                _courseSelectingFormPresentationModel.UpdateCourseListInfo(departmentIndex);
             }
-            _courseSelectingFormPresentationModel.WaitSeconds(2);
+            _courseSelectingFormPresentationModel.UpdateCourseListInfo(departmentIndex);
+            _courseSelectingFormPresentationModel.WaitSeconds(1);
             UpdateAllForm();
         }
 
