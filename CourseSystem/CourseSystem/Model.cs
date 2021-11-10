@@ -103,44 +103,39 @@ namespace CourseSystem
         //UpdateCourseListInfo
         public void UpdateCourseListInfo(int departmentIndex)
         {
-            List<CourseInfo> originalCourse = _courseListCollection[departmentIndex].ToList<CourseInfo>();
-            List<CourseInfo> newCourse = GetCourseInfo(_courseWebList[departmentIndex]);
+            List<CourseInfo> newCourseList = GetCourseInfo(_courseWebList[departmentIndex]);
             int numberOfNewCourseList = 0;
             for (int courseIndex = 0; courseIndex < _courseListCollection[departmentIndex].Count(); courseIndex++)
             {
-                numberOfNewCourseList = newCourse.Count();
+                numberOfNewCourseList = newCourseList.Count();
                 for (int index = 0; index < numberOfNewCourseList; index++)
                 {
-                    if (_courseListCollection[departmentIndex][courseIndex].Number == newCourse[numberOfNewCourseList - index - 1].Number)
+                    if (_courseListCollection[departmentIndex][courseIndex].Number == newCourseList[numberOfNewCourseList - index - 1].Number)
                     {
-                        newCourse.RemoveAt(numberOfNewCourseList - index - 1);
+                        newCourseList.RemoveAt(numberOfNewCourseList - index - 1);
                     }
                 }
             }
-            numberOfNewCourseList = newCourse.Count();
+            newCourseList = DeleteDuplicateCourse(newCourseList, departmentIndex, _selectedCourseTabDictionary);
+            newCourseList = DeleteDuplicateCourse(newCourseList, departmentIndex, _notEnabledCourseTabDictionary);
+            _courseListCollection[departmentIndex] = _courseListCollection[departmentIndex].Union(newCourseList).ToList<CourseInfo>();
+        }
+
+        //DeleteDuplicateCourse
+        private List<CourseInfo> DeleteDuplicateCourse(List<CourseInfo> newCourseList, int departmentIndex, Dictionary<string, int> tabDictionary)
+        {
+            int numberOfNewCourseList = newCourseList.Count();
             for (int index = 0; index < numberOfNewCourseList; index++)
             {
-                if (_selectedCourseTabDictionary.ContainsKey(newCourse[numberOfNewCourseList - index - 1].Number))
+                if (tabDictionary.ContainsKey(GetNumber(newCourseList[numberOfNewCourseList - index - 1])))
                 {
-                    if (_selectedCourseTabDictionary[newCourse[numberOfNewCourseList - index - 1].Number] == departmentIndex)
+                    if (tabDictionary[GetNumber(newCourseList[numberOfNewCourseList - index - 1])] == departmentIndex)
                     {
-                        newCourse.RemoveAt(numberOfNewCourseList - index - 1);
+                        newCourseList.RemoveAt(numberOfNewCourseList - index - 1);
                     }
                 }
             }
-            numberOfNewCourseList = newCourse.Count();
-            for (int index = 0; index < numberOfNewCourseList; index++)
-            {
-                if (_notEnabledCourseTabDictionary.ContainsKey(newCourse[numberOfNewCourseList - index - 1].Number))
-                {
-                    if (_notEnabledCourseTabDictionary[newCourse[numberOfNewCourseList - index - 1].Number] == departmentIndex)
-                    {
-                        newCourse.RemoveAt(numberOfNewCourseList - index - 1);
-                    }
-                }
-            }
-            _courseListCollection[departmentIndex].Clear();
-            _courseListCollection[departmentIndex].AddRange(originalCourse.Union(newCourse).ToList<CourseInfo>());
+            return newCourseList;
         }
 
         //Get

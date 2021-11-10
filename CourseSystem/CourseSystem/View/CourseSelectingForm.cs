@@ -51,7 +51,7 @@ namespace CourseSystem
         {
             if (_courseSelectingFormPresentationModel.IsLoadComputerScienceCourseTab == true)
             {
-                _courseSelectingFormPresentationModel.FinishLoadComputerScienceCourseTabButton();
+                FinishLoadComputerScienceCourseTabButton();
                 LoadComputerScienceCourseTab((int)Department.ComputerScience3);
                 LoadComputerScienceCourseTab((int)Department.ComputerScience5);
                 LoadComputerScienceCourseTab((int)Department.ComputerScience4);
@@ -61,6 +61,12 @@ namespace CourseSystem
             _courseDataGridView.Rows.Clear();
             List<CourseInfo> courseList = _courseSelectingFormPresentationModel.GetCourseList(_index);
             LoadDataGridView(courseList, _courseDataGridView);
+        }
+
+        //FinishLoadComputerScienceCourseTabButton
+        private void FinishLoadComputerScienceCourseTabButton()
+        {
+            _courseSelectingFormPresentationModel.FinishLoadComputerScienceCourseTabButton();
         }
 
         //LoadComputerScienceCourseTab

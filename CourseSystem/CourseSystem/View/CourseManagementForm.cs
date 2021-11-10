@@ -398,13 +398,13 @@ namespace CourseSystem
         //ClickLoadComputerScienceButton
         private void ClickLoadComputerScienceButton(object sender, EventArgs e)
         {
-            if (_courseClassSelectionComboBox.Items.Count == 2)
-            {
-                _courseClassSelectionComboBox.Items.Add(_courseManagementFormPresentationModel.GetClassNameList[(int)Department.ComputerScience5]);
-                _courseClassSelectionComboBox.Items.Add(_courseManagementFormPresentationModel.GetClassNameList[(int)Department.ComputerScience4]);
-                _courseClassSelectionComboBox.Items.Add(_courseManagementFormPresentationModel.GetClassNameList[(int)Department.ComputerScience2]);
-                _courseClassSelectionComboBox.Items.Add(_courseManagementFormPresentationModel.GetClassNameList[(int)Department.ComputerScience1]);
-            }
+            _courseClassSelectionComboBox.Items.Clear();
+            _courseClassSelectionComboBox.Items.Add(_courseManagementFormPresentationModel.GetClassNameList[(int)Department.ComputerScience3]);
+            _courseClassSelectionComboBox.Items.Add(_courseManagementFormPresentationModel.GetClassNameList[(int)Department.ElectronicEngineering3]);
+            _courseClassSelectionComboBox.Items.Add(_courseManagementFormPresentationModel.GetClassNameList[(int)Department.ComputerScience5]);
+            _courseClassSelectionComboBox.Items.Add(_courseManagementFormPresentationModel.GetClassNameList[(int)Department.ComputerScience4]);
+            _courseClassSelectionComboBox.Items.Add(_courseManagementFormPresentationModel.GetClassNameList[(int)Department.ComputerScience2]);
+            _courseClassSelectionComboBox.Items.Add(_courseManagementFormPresentationModel.GetClassNameList[(int)Department.ComputerScience1]);
             _courseManagementFormPresentationModel.ClickLoadComputerScienceCourseTabButton();
             _importCourseProgressForm.ShowDialog();
             _courseManagementFormPresentationModel.ReloadAllForm();

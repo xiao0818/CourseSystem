@@ -6,7 +6,6 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CourseSystem
@@ -15,7 +14,8 @@ namespace CourseSystem
     {
         ImportCourseProgressFormPresentationModel _importCourseProgressFormPresentationModel;
         CourseManagementForm _courseManagementForm;
-        int _times;
+        const string FRONT_CONTENT = "正在匯入課程....";
+        const string PERCENT = "%";
         public ImportCourseProgressForm(ImportCourseProgressFormPresentationModel importCourseProgressFormPresentationModel, CourseManagementForm courseManagementForm)
         {
             _courseManagementForm = courseManagementForm;
@@ -24,7 +24,6 @@ namespace CourseSystem
             InitializeComponent();
             _progressBar.Step = 20;
             _progressBar.Minimum = 0;
-            _times = 0;
         }
 
         //LoadProgressingBar
@@ -32,7 +31,7 @@ namespace CourseSystem
         {
             _progressBar.PerformStep();
             _progressBar.Update();
-            _progressLabel.Text = "正在匯入課程...." + _progressBar.Value + "%";
+            _progressLabel.Text = FRONT_CONTENT + _progressBar.Value + PERCENT;
             this.Refresh();
             if (_progressBar.Value == 100)
             {
@@ -47,7 +46,7 @@ namespace CourseSystem
             e.Cancel = true;
             this.Hide();
             _progressBar.Value = 0;
-            _progressLabel.Text = "正在匯入課程....0%";
+            _progressLabel.Text = FRONT_CONTENT + _progressBar.Value + PERCENT;
             _courseManagementForm.FinishLoadComputerScienceCourse();
         }
 
@@ -62,8 +61,7 @@ namespace CourseSystem
         private void LoadImportCourseProgressForm(object sender, EventArgs e)
         {
             _progressBar.Value = 0;
-            _progressLabel.Text = "正在匯入課程....0%";
-            _times = 0;
+            _progressLabel.Text = FRONT_CONTENT + _progressBar.Value + PERCENT;
         }
     }
 }
