@@ -309,7 +309,7 @@ namespace CourseSystem
         }
 
         //NotifyObservers
-        public void NotifyObserver()
+        private void NotifyObserver()
         {
             if (_modelChanged != null)
             {

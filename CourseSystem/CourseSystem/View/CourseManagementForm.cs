@@ -185,7 +185,7 @@ namespace CourseSystem
         }
 
         //LoadManagementForm
-        public void LoadManagementForm()
+        private void LoadManagementForm()
         {
             LoadListBox();
             SetAllObjectInGroupBoxEmpty();
@@ -418,7 +418,7 @@ namespace CourseSystem
         }
 
         //UpdateAllForm
-        public void UpdateAllForm()
+        private void UpdateAllForm()
         {
             _courseManagementFormPresentationModel.ReloadAllForm();
         }

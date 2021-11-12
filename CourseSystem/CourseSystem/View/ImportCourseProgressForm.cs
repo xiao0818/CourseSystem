@@ -27,7 +27,7 @@ namespace CourseSystem
         }
 
         //LoadProgressingBar
-        public void LoadProgressBar()
+        private void LoadProgressBar()
         {
             _progressBar.PerformStep();
             _progressBar.Update();

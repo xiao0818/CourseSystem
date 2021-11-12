@@ -29,7 +29,7 @@ namespace CourseSystem
         }
 
         //LoadCourseResultDataGridView
-        public void LoadCourseResultDataGridView()
+        private void LoadCourseResultDataGridView()
         {
             _courseResultDataGridView.Rows.Clear();
             List<DataGridViewRow> rows = _courseSelectionResultFormPresentationModel.GetResultDataGridViewRowList();
@@ -58,7 +58,7 @@ namespace CourseSystem
         }
 
         //UpdateAllForm
-        public void UpdateAllForm()
+        private void UpdateAllForm()
         {
             _courseSelectionResultFormPresentationModel.ReloadAllForm();
         }

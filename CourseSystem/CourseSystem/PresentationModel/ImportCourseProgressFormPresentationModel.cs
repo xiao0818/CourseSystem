@@ -31,13 +31,13 @@ namespace CourseSystem
         }
 
         //UpdataCourseSelectionResultForm
-        public void ReloadImportCourseProgressForm()
+        private void ReloadImportCourseProgressForm()
         {
             NotifyObserver();
         }
 
         //NotifyObservers
-        public void NotifyObserver()
+        private void NotifyObserver()
         {
             if (_presentationModelChanged != null)
             {

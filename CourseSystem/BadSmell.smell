@@ -185,7 +185,264 @@
     <div class="data">
       <Data id="ReviewPalData">
         <CodeReview xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-          <Reviews />
+          <Reviews>
+            <Smell>
+              <Id>1</Id>
+              <SmellType>Unresolved warnings(忽視警告)-The method "ModelTest" lack of comments</SmellType>
+              <HashCode>CourseSystemTests\CourseSystemTests.ModelTests.cs.Unresolved warnings(忽視警告)-The method "ModelTest" lack of comments.14</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>CourseSystemTests\CourseSystemTests</Project>
+              <File>ModelTests.cs</File>
+              <Line>14</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>2</Id>
+              <SmellType>Unresolved warnings(忽視警告)-The method "UpdateCourseListInfoTest" lack of comments</SmellType>
+              <HashCode>CourseSystemTests\CourseSystemTests.ModelTests.cs.Unresolved warnings(忽視警告)-The method "UpdateCourseListInfoTest" lack of comments.20</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>CourseSystemTests\CourseSystemTests</Project>
+              <File>ModelTests.cs</File>
+              <Line>20</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>3</Id>
+              <SmellType>Unresolved warnings(忽視警告)-The method "GetCourseListTest" lack of comments</SmellType>
+              <HashCode>CourseSystemTests\CourseSystemTests.ModelTests.cs.Unresolved warnings(忽視警告)-The method "GetCourseListTest" lack of comments.26</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>CourseSystemTests\CourseSystemTests</Project>
+              <File>ModelTests.cs</File>
+              <Line>26</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>4</Id>
+              <SmellType>Unresolved warnings(忽視警告)-The method "RemoveFromCourseListAndAddInToSelectedTabTest" lack of comments</SmellType>
+              <HashCode>CourseSystemTests\CourseSystemTests.ModelTests.cs.Unresolved warnings(忽視警告)-The method "RemoveFromCourseListAndAddInToSelectedTabTest" lack of comments.32</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>CourseSystemTests\CourseSystemTests</Project>
+              <File>ModelTests.cs</File>
+              <Line>32</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>5</Id>
+              <SmellType>Unresolved warnings(忽視警告)-The method "RemoveCourseFromCourseListTest" lack of comments</SmellType>
+              <HashCode>CourseSystemTests\CourseSystemTests.ModelTests.cs.Unresolved warnings(忽視警告)-The method "RemoveCourseFromCourseListTest" lack of comments.38</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>CourseSystemTests\CourseSystemTests</Project>
+              <File>ModelTests.cs</File>
+              <Line>38</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>6</Id>
+              <SmellType>Unresolved warnings(忽視警告)-The method "RemoveCourseFromSelectionResultTest" lack of comments</SmellType>
+              <HashCode>CourseSystemTests\CourseSystemTests.ModelTests.cs.Unresolved warnings(忽視警告)-The method "RemoveCourseFromSelectionResultTest" lack of comments.44</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>CourseSystemTests\CourseSystemTests</Project>
+              <File>ModelTests.cs</File>
+              <Line>44</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>7</Id>
+              <SmellType>Unresolved warnings(忽視警告)-The method "RemoveCourseFromSelectedListTest" lack of comments</SmellType>
+              <HashCode>CourseSystemTests\CourseSystemTests.ModelTests.cs.Unresolved warnings(忽視警告)-The method "RemoveCourseFromSelectedListTest" lack of comments.50</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>CourseSystemTests\CourseSystemTests</Project>
+              <File>ModelTests.cs</File>
+              <Line>50</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>8</Id>
+              <SmellType>Unresolved warnings(忽視警告)-The method "GetCourseInfoBySelectedIndexTest" lack of comments</SmellType>
+              <HashCode>CourseSystemTests\CourseSystemTests.ModelTests.cs.Unresolved warnings(忽視警告)-The method "GetCourseInfoBySelectedIndexTest" lack of comments.56</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>CourseSystemTests\CourseSystemTests</Project>
+              <File>ModelTests.cs</File>
+              <Line>56</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>9</Id>
+              <SmellType>Unresolved warnings(忽視警告)-The method "GetCourseDepartmentBySelectedIndexTest" lack of comments</SmellType>
+              <HashCode>CourseSystemTests\CourseSystemTests.ModelTests.cs.Unresolved warnings(忽視警告)-The method "GetCourseDepartmentBySelectedIndexTest" lack of comments.62</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>CourseSystemTests\CourseSystemTests</Project>
+              <File>ModelTests.cs</File>
+              <Line>62</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>10</Id>
+              <SmellType>Unresolved warnings(忽視警告)-The method "AddIntoSelectedCourseListAndCourseTabTest" lack of comments</SmellType>
+              <HashCode>CourseSystemTests\CourseSystemTests.ModelTests.cs.Unresolved warnings(忽視警告)-The method "AddIntoSelectedCourseListAndCourseTabTest" lack of comments.68</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>CourseSystemTests\CourseSystemTests</Project>
+              <File>ModelTests.cs</File>
+              <Line>68</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>11</Id>
+              <SmellType>Unresolved warnings(忽視警告)-The method "AddIntoNotEnabledCourseListAndCourseTabTest" lack of comments</SmellType>
+              <HashCode>CourseSystemTests\CourseSystemTests.ModelTests.cs.Unresolved warnings(忽視警告)-The method "AddIntoNotEnabledCourseListAndCourseTabTest" lack of comments.74</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>CourseSystemTests\CourseSystemTests</Project>
+              <File>ModelTests.cs</File>
+              <Line>74</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>12</Id>
+              <SmellType>Unresolved warnings(忽視警告)-The method "AddIntoCourseListTest" lack of comments</SmellType>
+              <HashCode>CourseSystemTests\CourseSystemTests.ModelTests.cs.Unresolved warnings(忽視警告)-The method "AddIntoCourseListTest" lack of comments.80</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>CourseSystemTests\CourseSystemTests</Project>
+              <File>ModelTests.cs</File>
+              <Line>80</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>13</Id>
+              <SmellType>Unresolved warnings(忽視警告)-The method "RemoveCourseFromSelectedTabDictionaryTest" lack of comments</SmellType>
+              <HashCode>CourseSystemTests\CourseSystemTests.ModelTests.cs.Unresolved warnings(忽視警告)-The method "RemoveCourseFromSelectedTabDictionaryTest" lack of comments.86</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>CourseSystemTests\CourseSystemTests</Project>
+              <File>ModelTests.cs</File>
+              <Line>86</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>14</Id>
+              <SmellType>Unresolved warnings(忽視警告)-The method "RemoveCourseFromNotEnabledTabDictionaryTest" lack of comments</SmellType>
+              <HashCode>CourseSystemTests\CourseSystemTests.ModelTests.cs.Unresolved warnings(忽視警告)-The method "RemoveCourseFromNotEnabledTabDictionaryTest" lack of comments.92</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>CourseSystemTests\CourseSystemTests</Project>
+              <File>ModelTests.cs</File>
+              <Line>92</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>15</Id>
+              <SmellType>Unresolved warnings(忽視警告)-The method "AddSelectedCourseTest" lack of comments</SmellType>
+              <HashCode>CourseSystemTests\CourseSystemTests.ModelTests.cs.Unresolved warnings(忽視警告)-The method "AddSelectedCourseTest" lack of comments.98</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>CourseSystemTests\CourseSystemTests</Project>
+              <File>ModelTests.cs</File>
+              <Line>98</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>16</Id>
+              <SmellType>Unresolved warnings(忽視警告)-The method "ReloadAllFormTest" lack of comments</SmellType>
+              <HashCode>CourseSystemTests\CourseSystemTests.ModelTests.cs.Unresolved warnings(忽視警告)-The method "ReloadAllFormTest" lack of comments.104</HashCode>
+              <Severity>Red</Severity>
+              <Weight>1</Weight>
+              <Project>CourseSystemTests\CourseSystemTests</Project>
+              <File>ModelTests.cs</File>
+              <Line>104</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+          </Reviews>
           <HashCodeIgnoreList />
           <HashCodeRequestIgnoreList />
           <AnalysisFileManager>
@@ -320,10 +577,20 @@
                 <ProjectName>CourseSystem</ProjectName>
                 <AnalysisFileType>Designer</AnalysisFileType>
               </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>ModelTests.cs</RelativePath>
+                <ProjectName>CourseSystemTests</ProjectName>
+                <AnalysisFileType>Test</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
+                <RelativePath>Properties\AssemblyInfo.cs</RelativePath>
+                <ProjectName>CourseSystemTests</ProjectName>
+                <AnalysisFileType>Model</AnalysisFileType>
+              </AnalysisFile>
             </AnalysisFiles>
           </AnalysisFileManager>
-          <ProductionLoc>4178</ProductionLoc>
-          <TestLoc>0</TestLoc>
+          <ProductionLoc>4215</ProductionLoc>
+          <TestLoc>110</TestLoc>
         </CodeReview>
       </Data>
     </div>

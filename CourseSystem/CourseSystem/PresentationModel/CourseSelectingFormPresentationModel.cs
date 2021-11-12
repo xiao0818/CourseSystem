@@ -132,7 +132,7 @@ namespace CourseSystem
         }
 
         //UpdataCourseSelectingForm
-        public void ReloadCourseSelectingForm()
+        private void ReloadCourseSelectingForm()
         {
             NotifyObserver();
         }
@@ -144,7 +144,7 @@ namespace CourseSystem
         }
 
         //NotifyObservers
-        public void NotifyObserver()
+        private void NotifyObserver()
         {
             if (_presentationModelChanged != null)
             {

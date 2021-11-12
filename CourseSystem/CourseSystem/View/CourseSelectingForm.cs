@@ -47,7 +47,7 @@ namespace CourseSystem
         }
 
         //load
-        public void LoadForm()
+        private void LoadForm()
         {
             if (_courseSelectingFormPresentationModel.IsLoadComputerScienceCourseTab == true)
             {
@@ -253,7 +253,7 @@ namespace CourseSystem
         }
         
         //UpdateAllForm
-        public void UpdateAllForm()
+        private void UpdateAllForm()
         {
             _courseSelectingFormPresentationModel.ReloadAllForm();
         }

@@ -154,7 +154,7 @@ namespace CourseSystem
         }
 
         //CheckSameNumber
-        public string CheckSameNumber(List<CourseInfo> selectedCourseList, List<CourseInfo> checkedCourseList, string sameNumberMessage)
+        private string CheckSameNumber(List<CourseInfo> selectedCourseList, List<CourseInfo> checkedCourseList, string sameNumberMessage)
         {
             foreach (CourseInfo checkedCourse in checkedCourseList)
             {
@@ -175,7 +175,7 @@ namespace CourseSystem
         }
 
         //CheckSameName
-        public string CheckSameName(List<CourseInfo> selectedCourseList, List<CourseInfo> checkedCourseList, string sameNameMessage)
+        private string CheckSameName(List<CourseInfo> selectedCourseList, List<CourseInfo> checkedCourseList, string sameNameMessage)
         {
             foreach (CourseInfo checkedCourse in checkedCourseList)
             {
@@ -196,7 +196,7 @@ namespace CourseSystem
         }
 
         //CheckSameTime
-        public string CheckSameTime(List<CourseInfo> selectedCourseList, List<CourseInfo> checkedCourseList, string sameTimeMessage)
+        private string CheckSameTime(List<CourseInfo> selectedCourseList, List<CourseInfo> checkedCourseList, string sameTimeMessage)
         {
             foreach (CourseInfo checkedCourse in checkedCourseList)
             {
@@ -271,6 +271,7 @@ namespace CourseSystem
             ReloadAllForm();
         }
 
+        //IsLoadComputerScienceCourseTab
         public bool IsLoadComputerScienceCourseTab
         {
             get
@@ -300,7 +301,7 @@ namespace CourseSystem
         }
 
         //ReloadForm
-        public void ReloadForm()
+        private void ReloadForm()
         {
             NotifyObserver();
         }
@@ -312,7 +313,7 @@ namespace CourseSystem
         }
 
         //NotifyObservers
-        public void NotifyObserver()
+        private void NotifyObserver()
         {
             if (_presentationModelChanged != null)
             {
