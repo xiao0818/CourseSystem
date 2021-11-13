@@ -14,6 +14,7 @@ namespace CourseSystem
         const string MODIFY_SUCCESSFUL = "編輯成功";
         const string MODIFY_NOT_SUCCESSFUL = "編輯失敗";
         const string ERROR_MESSAGE = "\n此編輯會導致已選課程發生:";
+        const int COUNT_OF_TAB = 6;
         public CourseManagementFormPresentationModel(PresentationModel presentationModel)
         {
             _presentationModel = presentationModel;
@@ -219,21 +220,18 @@ namespace CourseSystem
             string checkedMessage = CheckCourseList(newCourse, selectedCourseList);
             if (checkedMessage == "")
             {
-                AddIntoSelectedCourseListAndCourseTab(newCourse, listNameIndex % 6);
+                AddIntoSelectedCourseListAndCourseTab(newCourse, listNameIndex % COUNT_OF_TAB);
                 return MODIFY_SUCCESSFUL;
+            }
+            else if (department.Item1 == (int)ListName.SelectedList)
+            {
+                AddIntoSelectedCourseListAndCourseTab(course, department.Item2);
             }
             else
             {
-                if (department.Item1 == (int)ListName.SelectedList)
-                {
-                    AddIntoSelectedCourseListAndCourseTab(course, department.Item2);
-                }
-                else
-                {
-                    AddIntoNotEnabledCourseListAndCourseTab(course, department.Item2);
-                }
-                return MODIFY_NOT_SUCCESSFUL + ERROR_MESSAGE + checkedMessage;
+                AddIntoNotEnabledCourseListAndCourseTab(course, department.Item2);
             }
+            return MODIFY_NOT_SUCCESSFUL + ERROR_MESSAGE + checkedMessage;
         }
 
         //SaveModifyCoursePartOne
@@ -258,14 +256,14 @@ namespace CourseSystem
             List<CourseInfo> notEnabledCourseList = GetNotEnabledCourseList;
             RemoveCourseFromNotEnabledTabDictionary(department.Item3);
             notEnabledCourseList.RemoveAt(department.Item3);
-            if (department.Item2 < 6)
+            if (department.Item2 < COUNT_OF_TAB)
             {
                 AddIntoCourseList(newCourse, listNameIndex);
                 return MODIFY_SUCCESSFUL;
             }
             else
             {
-                return SaveModifyForSelectedCheck(department, newCourse, course, listNameIndex + 6);
+                return SaveModifyForSelectedCheck(department, newCourse, course, listNameIndex + COUNT_OF_TAB);
             }
         }
 
@@ -283,7 +281,7 @@ namespace CourseSystem
             List<CourseInfo> selectedCourseList = GetSelectedCourseList;
             RemoveCourseFromSelectedTabDictionary(department.Item3);
             selectedCourseList.RemoveAt(department.Item3);
-            AddIntoNotEnabledCourseListAndCourseTab(newCourse, listNameIndex + 6);
+            AddIntoNotEnabledCourseListAndCourseTab(newCourse, listNameIndex + COUNT_OF_TAB);
             return MODIFY_SUCCESSFUL;
         }
 
@@ -293,13 +291,13 @@ namespace CourseSystem
             List<CourseInfo> notEnabledCourseList = GetNotEnabledCourseList;
             RemoveCourseFromNotEnabledTabDictionary(department.Item3);
             notEnabledCourseList.RemoveAt(department.Item3);
-            if (department.Item2 < 6)
+            if (department.Item2 < COUNT_OF_TAB)
             {
                 AddIntoNotEnabledCourseListAndCourseTab(newCourse, listNameIndex);
             }
             else
             {
-                AddIntoNotEnabledCourseListAndCourseTab(newCourse, listNameIndex + 6);
+                AddIntoNotEnabledCourseListAndCourseTab(newCourse, listNameIndex + COUNT_OF_TAB);
             }
             return MODIFY_SUCCESSFUL;
         }

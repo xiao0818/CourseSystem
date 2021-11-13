@@ -23,6 +23,7 @@ namespace CourseSystem
         const string ADD_SUCCESSFUL = "新增成功";
         const string ENABLED = "開課";
         const string NOT_ENABLED = "停開";
+        const int COUNT_OF_TAB = 6;
         public CourseManagementForm(StartUpForm startUpForm, CourseManagementFormPresentationModel courseManagementFormPresentationModel, ImportCourseProgressFormPresentationModel importCourseProgressFormPresentationModel)
         {
             _courseManagementFormPresentationModel = courseManagementFormPresentationModel;
@@ -120,7 +121,7 @@ namespace CourseSystem
         private void LoadClassComboBox(Tuple<int, int, int> department)
         {
             List<string> classNameList = _courseManagementFormPresentationModel.GetClassNameList;
-            _courseClassSelectionComboBox.Text = classNameList[department.Item2 % 6];
+            _courseClassSelectionComboBox.Text = classNameList[department.Item2 % COUNT_OF_TAB];
         }
 
         //LoadEnabledComboBox
