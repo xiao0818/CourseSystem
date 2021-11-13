@@ -9,19 +9,10 @@ using System.Threading.Tasks;
 namespace CourseSystem.Tests
 {
     [TestClass()]
-    public class ModelTests
+    public class PresentationModelTests
     {
-        Model model;
-
-        //Initialize
-        [TestInitialize()]
-        public void SetUp()
-        {
-            model = new Model();
-        }
-
         [TestMethod()]
-        public void ModelTest()
+        public void PresentationModelTest()
         {
             Assert.Fail();
         }
@@ -58,6 +49,12 @@ namespace CourseSystem.Tests
 
         [TestMethod()]
         public void RemoveCourseFromSelectedListTest()
+        {
+            Assert.Fail();
+        }
+
+        [TestMethod()]
+        public void CheckCourseListTest()
         {
             Assert.Fail();
         }
@@ -106,6 +103,24 @@ namespace CourseSystem.Tests
 
         [TestMethod()]
         public void AddSelectedCourseTest()
+        {
+            Assert.Fail();
+        }
+
+        [TestMethod()]
+        public void ClickLoadComputerScienceCourseTabButtonTest()
+        {
+            Assert.Fail();
+        }
+
+        [TestMethod()]
+        public void FinishLoadComputerScienceCourseTabButtonTest()
+        {
+            Assert.Fail();
+        }
+
+        [TestMethod()]
+        public void WaitSecondsTest()
         {
             Assert.Fail();
         }

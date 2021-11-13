@@ -9,19 +9,10 @@ using System.Threading.Tasks;
 namespace CourseSystem.Tests
 {
     [TestClass()]
-    public class ModelTests
+    public class CourseSelectingFormPresentationModelTests
     {
-        Model model;
-
-        //Initialize
-        [TestInitialize()]
-        public void SetUp()
-        {
-            model = new Model();
-        }
-
         [TestMethod()]
-        public void ModelTest()
+        public void CourseSelectingFormPresentationModelTest()
         {
             Assert.Fail();
         }
@@ -45,67 +36,49 @@ namespace CourseSystem.Tests
         }
 
         [TestMethod()]
-        public void RemoveCourseFromCourseListTest()
+        public void ResetCheckButtonTest()
         {
             Assert.Fail();
         }
 
         [TestMethod()]
-        public void RemoveCourseFromSelectionResultTest()
+        public void ResetSubmitButtonTest()
         {
             Assert.Fail();
         }
 
         [TestMethod()]
-        public void RemoveCourseFromSelectedListTest()
+        public void ClickCheckButtonTest()
         {
             Assert.Fail();
         }
 
         [TestMethod()]
-        public void GetCourseInfoBySelectedIndexTest()
+        public void HasEnabledCheckBoxTest()
         {
             Assert.Fail();
         }
 
         [TestMethod()]
-        public void GetCourseDepartmentBySelectedIndexTest()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void AddIntoSelectedCourseListAndCourseTabTest()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void AddIntoNotEnabledCourseListAndCourseTabTest()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void AddIntoCourseListTest()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void RemoveCourseFromSelectedTabDictionaryTest()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void RemoveCourseFromNotEnabledTabDictionaryTest()
+        public void CheckCourseListTest()
         {
             Assert.Fail();
         }
 
         [TestMethod()]
         public void AddSelectedCourseTest()
+        {
+            Assert.Fail();
+        }
+
+        [TestMethod()]
+        public void FinishLoadComputerScienceCourseTabButtonTest()
+        {
+            Assert.Fail();
+        }
+
+        [TestMethod()]
+        public void WaitSecondsTest()
         {
             Assert.Fail();
         }

@@ -24,6 +24,8 @@ namespace CourseSystem
             _startUpForm = startUpForm;
             _index = 0;
             InitializeComponent();
+            _courseSelectingFormPresentationModel.UpdateCourseListInfo((int)Department.ComputerScience3);
+            _courseSelectingFormPresentationModel.UpdateCourseListInfo((int)Department.ElectronicEngineering3);
             _selectingTabControl.TabPages.Add(AddTabPage(_courseSelectingFormPresentationModel.GetClassNameList[(int)Department.ComputerScience3]));
             _selectingTabControl.TabPages.Add(AddTabPage(_courseSelectingFormPresentationModel.GetClassNameList[(int)Department.ElectronicEngineering3]));
             _selectingTabControl.SelectedTab.Controls.Add(this._courseDataGridView);

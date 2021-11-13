@@ -318,7 +318,7 @@ namespace CourseSystem
         }
 
         //NotifyObservers
-        private void NotifyObserver()
+        public void NotifyObserver()
         {
             if (_presentationModelChanged != null)
             {

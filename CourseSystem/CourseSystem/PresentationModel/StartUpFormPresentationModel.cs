@@ -8,11 +8,13 @@ namespace CourseSystem
 {
     public class StartUpFormPresentationModel
     {
-        bool _isCourseSelectingFormButtonEnabled = true;
-        bool _isCourseManagementFormButtonEnabled = true;
+        bool _isCourseSelectingFormButtonEnabled;
+        bool _isCourseManagementFormButtonEnabled;
 
         public StartUpFormPresentationModel()
         {
+            _isCourseSelectingFormButtonEnabled = true;
+            _isCourseManagementFormButtonEnabled = true;
         }
 
         //IsCourseSelectionButtonEnabled

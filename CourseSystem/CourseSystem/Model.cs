@@ -35,8 +35,8 @@ namespace CourseSystem
             _courseWebList.Add(WEB_COMPUTER_SCIENCE_2);
             _courseWebList.Add(WEB_COMPUTER_SCIENCE_1);
             _courseListCollection = new List<List<CourseInfo>>();
-            _courseListCollection.Add(GetCourseInfo(_courseWebList[(int)Department.ComputerScience3]));
-            _courseListCollection.Add(GetCourseInfo(_courseWebList[(int)Department.ElectronicEngineering3]));
+            _courseListCollection.Add(new List<CourseInfo>());
+            _courseListCollection.Add(new List<CourseInfo>());
             _courseListCollection.Add(new List<CourseInfo>());
             _courseListCollection.Add(new List<CourseInfo>());
             _courseListCollection.Add(new List<CourseInfo>());
@@ -309,7 +309,7 @@ namespace CourseSystem
         }
 
         //NotifyObservers
-        private void NotifyObserver()
+        public void NotifyObserver()
         {
             if (_modelChanged != null)
             {

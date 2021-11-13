@@ -9,55 +9,10 @@ using System.Threading.Tasks;
 namespace CourseSystem.Tests
 {
     [TestClass()]
-    public class ModelTests
+    public class CourseManagementFormPresentationModelTests
     {
-        Model model;
-
-        //Initialize
-        [TestInitialize()]
-        public void SetUp()
-        {
-            model = new Model();
-        }
-
         [TestMethod()]
-        public void ModelTest()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void UpdateCourseListInfoTest()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void GetCourseListTest()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void RemoveFromCourseListAndAddInToSelectedTabTest()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void RemoveCourseFromCourseListTest()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void RemoveCourseFromSelectionResultTest()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void RemoveCourseFromSelectedListTest()
+        public void CourseManagementFormPresentationModelTest()
         {
             Assert.Fail();
         }
@@ -75,12 +30,6 @@ namespace CourseSystem.Tests
         }
 
         [TestMethod()]
-        public void AddIntoSelectedCourseListAndCourseTabTest()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
         public void AddIntoNotEnabledCourseListAndCourseTabTest()
         {
             Assert.Fail();
@@ -93,19 +42,55 @@ namespace CourseSystem.Tests
         }
 
         [TestMethod()]
-        public void RemoveCourseFromSelectedTabDictionaryTest()
+        public void ResetAllButtonTest()
         {
             Assert.Fail();
         }
 
         [TestMethod()]
-        public void RemoveCourseFromNotEnabledTabDictionaryTest()
+        public void SelectListBoxTest()
         {
             Assert.Fail();
         }
 
         [TestMethod()]
-        public void AddSelectedCourseTest()
+        public void ClickAddButtonTest()
+        {
+            Assert.Fail();
+        }
+
+        [TestMethod()]
+        public void ChangeContentEnabledTest()
+        {
+            Assert.Fail();
+        }
+
+        [TestMethod()]
+        public void ChangeContentNotEnabledTest()
+        {
+            Assert.Fail();
+        }
+
+        [TestMethod()]
+        public void SaveModifyCourseMainForEnabledTest()
+        {
+            Assert.Fail();
+        }
+
+        [TestMethod()]
+        public void SaveModifyCourseMainForNotEnabledTest()
+        {
+            Assert.Fail();
+        }
+
+        [TestMethod()]
+        public void ClickLoadComputerScienceCourseTabButtonTest()
+        {
+            Assert.Fail();
+        }
+
+        [TestMethod()]
+        public void FinishLoadComputerScienceCourseTest()
         {
             Assert.Fail();
         }
