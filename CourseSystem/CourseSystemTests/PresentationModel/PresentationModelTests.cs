@@ -11,131 +11,257 @@ namespace CourseSystem.Tests
     [TestClass()]
     public class PresentationModelTests
     {
+        Model model;
+        PresentationModel presentationModel;
+        CourseInfo windowsProgrammingCourseInfo = new CourseInfo("291710", "視窗程式設計", "1", "3.0", "3", "★", "陳偉凱", "", "", "", "", "3 4 6", "", "", "二教206(e)\n二教205(e)", "43", "15", "", "", "", "查詢", "", "");
+
+        //Initialize
+        [TestInitialize]
+        public void SetUp()
+        {
+            model = new Model();
+            presentationModel = new PresentationModel(model);
+        }
+
+        //PresentationModelTest
         [TestMethod()]
         public void PresentationModelTest()
         {
-            Assert.Fail();
+            Assert.IsFalse(presentationModel.IsLoadComputerScienceCourseTab);
         }
 
+        //UpdateCourseListInfoTest
         [TestMethod()]
         public void UpdateCourseListInfoTest()
         {
-            Assert.Fail();
+            presentationModel.UpdateCourseListInfo((int)Department.ComputerScience3);
+            int count = presentationModel.GetCourseList((int)Department.ComputerScience3).Count();
+            Assert.AreNotEqual(0, presentationModel.GetCourseList((int)Department.ComputerScience3).Count());
+            presentationModel.UpdateCourseListInfo((int)Department.ComputerScience3);
+            Assert.AreEqual(count, presentationModel.GetCourseList((int)Department.ComputerScience3).Count());
         }
 
+        //GetCourseListTest
         [TestMethod()]
         public void GetCourseListTest()
         {
-            Assert.Fail();
+            Assert.AreEqual(0, presentationModel.GetCourseList((int)Department.ComputerScience3).Count());
         }
 
+        //RemoveFromCourseListAndAddInToSelectedTabTest
         [TestMethod()]
         public void RemoveFromCourseListAndAddInToSelectedTabTest()
         {
-            Assert.Fail();
+            presentationModel.AddIntoCourseList(windowsProgrammingCourseInfo, (int)Department.ComputerScience3);
+            presentationModel.RemoveFromCourseListAndAddInToSelectedTab((int)Department.ComputerScience3, 0);
+            Assert.AreEqual(0, presentationModel.GetCourseList((int)Department.ComputerScience3).Count());
         }
 
+        //RemoveCourseFromCourseListTest
         [TestMethod()]
         public void RemoveCourseFromCourseListTest()
         {
-            Assert.Fail();
+            presentationModel.AddIntoCourseList(windowsProgrammingCourseInfo, (int)Department.ComputerScience3);
+            presentationModel.RemoveCourseFromCourseList((int)Department.ComputerScience3, 0);
+            Assert.AreEqual(0, presentationModel.GetCourseList((int)Department.ComputerScience3).Count());
         }
 
+        //RemoveCourseFromSelectionResultTest
         [TestMethod()]
         public void RemoveCourseFromSelectionResultTest()
         {
-            Assert.Fail();
+            presentationModel.AddIntoSelectedCourseListAndCourseTab(windowsProgrammingCourseInfo, (int)Department.ComputerScience3);
+            presentationModel.RemoveCourseFromSelectionResult(0);
+            Assert.AreEqual(0, presentationModel.GetSelectedCourseList.Count());
+            Assert.AreEqual(windowsProgrammingCourseInfo, presentationModel.GetCourseList((int)Department.ComputerScience3)[0]);
+            Assert.AreEqual(1, presentationModel.GetCourseList((int)Department.ComputerScience3).Count());
         }
 
+        //RemoveCourseFromSelectedListTest
         [TestMethod()]
         public void RemoveCourseFromSelectedListTest()
         {
-            Assert.Fail();
+            presentationModel.AddIntoSelectedCourseListAndCourseTab(windowsProgrammingCourseInfo, (int)Department.ComputerScience3);
+            presentationModel.RemoveCourseFromSelectedList(0);
+            Assert.AreEqual(0, presentationModel.GetSelectedCourseList.Count());
         }
 
+        //CheckCourseListSuccessTest
         [TestMethod()]
-        public void CheckCourseListTest()
+        public void CheckCourseListSuccessTest()
         {
-            Assert.Fail();
+            List<CourseInfo> emptyList = new List<CourseInfo>();
+            List<CourseInfo> courseList = new List<CourseInfo>();
+            courseList.Add(windowsProgrammingCourseInfo);
+            Assert.AreEqual("", presentationModel.CheckCourseList(courseList, emptyList));
         }
 
+        //CheckCourseListFailTest
         [TestMethod()]
-        public void GetCourseInfoBySelectedIndexTest()
+        public void CheckCourseListFailTest()
         {
-            Assert.Fail();
+            List<CourseInfo> courseList = new List<CourseInfo>();
+            courseList.Add(windowsProgrammingCourseInfo);
+            Assert.AreEqual("\n課號相同:「291710 視窗程式設計」\n課程名稱相同:「291710 視窗程式設計」\n衝堂:「291710 視窗程式設計」", presentationModel.CheckCourseList(courseList, courseList));
         }
 
+        //GetCourseInfoBySelectedIndexForCourseTest
         [TestMethod()]
-        public void GetCourseDepartmentBySelectedIndexTest()
+        public void GetCourseInfoBySelectedIndexForCourseTest()
         {
-            Assert.Fail();
+            presentationModel.AddIntoCourseList(windowsProgrammingCourseInfo, (int)Department.ComputerScience3);
+            Assert.AreEqual(windowsProgrammingCourseInfo, presentationModel.GetCourseInfoBySelectedIndex(0));
         }
 
+        //GetCourseInfoBySelectedIndexForSelectedCourseTest
+        [TestMethod()]
+        public void GetCourseInfoBySelectedIndexForSelectedCourseTest()
+        {
+            presentationModel.AddIntoSelectedCourseListAndCourseTab(windowsProgrammingCourseInfo, (int)Department.ComputerScience3);
+            Assert.AreEqual(windowsProgrammingCourseInfo, presentationModel.GetCourseInfoBySelectedIndex(0));
+        }
+
+        //GetCourseInfoBySelectedIndexForNotEnabledCourseTest
+        [TestMethod()]
+        public void GetCourseInfoBySelectedIndexForNotEnabledCourseTest()
+        {
+            presentationModel.AddIntoNotEnabledCourseListAndCourseTab(windowsProgrammingCourseInfo, (int)Department.ComputerScience3);
+            Assert.AreEqual(windowsProgrammingCourseInfo, presentationModel.GetCourseInfoBySelectedIndex(0));
+        }
+
+        //GetCourseDepartmentBySelectedIndexForCourseTest
+        [TestMethod()]
+        public void GetCourseDepartmentBySelectedIndexForCourseTest()
+        {
+            presentationModel.AddIntoCourseList(windowsProgrammingCourseInfo, (int)Department.ComputerScience3);
+            Assert.AreEqual(Tuple.Create((int)ListName.ComputerScience3, (int)Department.ComputerScience3, 0), presentationModel.GetCourseDepartmentBySelectedIndex(0));
+        }
+
+        //GetCourseDepartmentBySelectedIndexForSelectedCourseTest
+        [TestMethod()]
+        public void GetCourseDepartmentBySelectedIndexForSelectedCourseTest()
+        {
+            presentationModel.AddIntoSelectedCourseListAndCourseTab(windowsProgrammingCourseInfo, (int)Department.ComputerScience3);
+            Assert.AreEqual(Tuple.Create((int)ListName.SelectedList, (int)Department.ComputerScience3, 0), presentationModel.GetCourseDepartmentBySelectedIndex(0));
+        }
+
+        //GetCourseDepartmentBySelectedIndexForNotEnabledCourseTest
+        [TestMethod()]
+        public void GetCourseDepartmentBySelectedIndexForNotEnabledCourseTest()
+        {
+            presentationModel.AddIntoNotEnabledCourseListAndCourseTab(windowsProgrammingCourseInfo, (int)Department.ComputerScience3);
+            Assert.AreEqual(Tuple.Create((int)ListName.NotEnabledList, (int)Department.ComputerScience3, 0), presentationModel.GetCourseDepartmentBySelectedIndex(0));
+        }
+
+        //AddIntoSelectedCourseListAndCourseTabTest
         [TestMethod()]
         public void AddIntoSelectedCourseListAndCourseTabTest()
         {
-            Assert.Fail();
+            presentationModel.AddIntoSelectedCourseListAndCourseTab(windowsProgrammingCourseInfo, (int)Department.ComputerScience3);
+            Assert.AreEqual(1, presentationModel.GetSelectedCourseList.Count());
+            Assert.AreEqual(windowsProgrammingCourseInfo, presentationModel.GetSelectedCourseList[0]);
         }
 
+        //AddIntoNotEnabledCourseListAndCourseTabTest
         [TestMethod()]
         public void AddIntoNotEnabledCourseListAndCourseTabTest()
         {
-            Assert.Fail();
+            presentationModel.AddIntoNotEnabledCourseListAndCourseTab(windowsProgrammingCourseInfo, (int)Department.ComputerScience3);
+            Assert.AreEqual(1, presentationModel.GetNotEnabledCourseList.Count());
+            Assert.AreEqual(windowsProgrammingCourseInfo, presentationModel.GetNotEnabledCourseList[0]);
         }
 
+        //AddIntoCourseListTest
         [TestMethod()]
         public void AddIntoCourseListTest()
         {
-            Assert.Fail();
+            presentationModel.AddIntoCourseList(windowsProgrammingCourseInfo, (int)Department.ComputerScience3);
+            Assert.AreEqual(1, presentationModel.GetCourseList((int)Department.ComputerScience3).Count());
+            Assert.AreEqual(windowsProgrammingCourseInfo, presentationModel.GetCourseList((int)Department.ComputerScience3)[0]);
         }
 
-        [TestMethod()]
-        public void RemoveCourseFromSelectedTabDictionaryTest()
-        {
-            Assert.Fail();
-        }
+        ////RemoveCourseFromSelectedTabDictionaryTest
+        //[TestMethod()]
+        //public void RemoveCourseFromSelectedTabDictionaryTest()
+        //{
+        //    Assert.Fail();
+        //}
 
-        [TestMethod()]
-        public void RemoveCourseFromNotEnabledTabDictionaryTest()
-        {
-            Assert.Fail();
-        }
+        ////RemoveCourseFromNotEnabledTabDictionaryTest
+        //[TestMethod()]
+        //public void RemoveCourseFromNotEnabledTabDictionaryTest()
+        //{
+        //    Assert.Fail();
+        //}
 
+        //AddSelectedCourseTest
         [TestMethod()]
         public void AddSelectedCourseTest()
         {
-            Assert.Fail();
+            presentationModel.AddSelectedCourse(windowsProgrammingCourseInfo);
+            Assert.AreEqual(1, presentationModel.GetSelectedCourseList.Count());
+            Assert.AreEqual(windowsProgrammingCourseInfo, presentationModel.GetSelectedCourseList[0]);
         }
 
+        //ClickLoadComputerScienceCourseTabButtonTest
         [TestMethod()]
         public void ClickLoadComputerScienceCourseTabButtonTest()
         {
-            Assert.Fail();
+            presentationModel.ClickLoadComputerScienceCourseTabButton();
+            Assert.IsTrue(presentationModel.IsLoadComputerScienceCourseTab);
         }
 
+        //FinishLoadComputerScienceCourseTabButtonTest
         [TestMethod()]
         public void FinishLoadComputerScienceCourseTabButtonTest()
         {
-            Assert.Fail();
+            presentationModel.ClickLoadComputerScienceCourseTabButton();
+            presentationModel.FinishLoadComputerScienceCourseTabButton();
+            Assert.IsFalse(presentationModel.IsLoadComputerScienceCourseTab);
         }
 
+        //WaitSecondsTest
         [TestMethod()]
         public void WaitSecondsTest()
         {
-            Assert.Fail();
+            DateTime now = DateTime.Now;
+            presentationModel.WaitSeconds(1);
+            Assert.AreEqual(DateTime.Now.Second, now.AddSeconds(1).Second);
         }
 
+        //WaitSecondsTestFail
+        [TestMethod()]
+        public void WaitSecondsTestFail()
+        {
+            DateTime now = DateTime.Now;
+            presentationModel.WaitSeconds(0);
+            Assert.AreEqual(DateTime.Now.Second, now.Second);
+        }
+
+        //ReloadAllFormTest
         [TestMethod()]
         public void ReloadAllFormTest()
         {
-            Assert.Fail();
+            bool isNotifyObserverWork = false;
+            presentationModel._presentationModelChanged += () =>
+            {
+                isNotifyObserverWork = true;
+            };
+            presentationModel.ReloadAllForm();
+            Assert.IsTrue(isNotifyObserverWork);
         }
 
         //NotifyObserverTest
         [TestMethod()]
         public void NotifyObserverTest()
         {
-            Assert.Fail();
+            bool isNotifyObserverWork = false;
+            presentationModel._presentationModelChanged += () =>
+            {
+                isNotifyObserverWork = true;
+            };
+            presentationModel.NotifyObserver();
+            Assert.IsTrue(isNotifyObserverWork);
         }
     }
 }

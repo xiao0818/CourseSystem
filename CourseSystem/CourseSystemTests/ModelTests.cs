@@ -20,107 +20,135 @@ namespace CourseSystem.Tests
             model = new Model();
         }
 
-        [TestMethod()]
-        public void ModelTest()
-        {
-            Assert.Fail();
-        }
+        ////ModelTest
+        //[TestMethod()]
+        //public void ModelTest()
+        //{
+        //    Assert.Fail();
+        //}
 
+        //UpdateCourseListInfoTest
         [TestMethod()]
         public void UpdateCourseListInfoTest()
         {
             Assert.Fail();
         }
 
+        //GetCourseListTest
         [TestMethod()]
         public void GetCourseListTest()
         {
             Assert.Fail();
         }
 
+        //RemoveFromCourseListAndAddInToSelectedTabTest
         [TestMethod()]
         public void RemoveFromCourseListAndAddInToSelectedTabTest()
         {
             Assert.Fail();
         }
 
+        //RemoveCourseFromCourseListTest
         [TestMethod()]
         public void RemoveCourseFromCourseListTest()
         {
             Assert.Fail();
         }
 
+        //RemoveCourseFromSelectionResultTest
         [TestMethod()]
         public void RemoveCourseFromSelectionResultTest()
         {
             Assert.Fail();
         }
 
+        //RemoveCourseFromSelectedListTest
         [TestMethod()]
         public void RemoveCourseFromSelectedListTest()
         {
             Assert.Fail();
         }
 
+        //GetCourseInfoBySelectedIndexTest
         [TestMethod()]
         public void GetCourseInfoBySelectedIndexTest()
         {
             Assert.Fail();
         }
 
+        //GetCourseDepartmentBySelectedIndexTest
         [TestMethod()]
         public void GetCourseDepartmentBySelectedIndexTest()
         {
             Assert.Fail();
         }
 
+        //AddIntoSelectedCourseListAndCourseTabTest
         [TestMethod()]
         public void AddIntoSelectedCourseListAndCourseTabTest()
         {
             Assert.Fail();
         }
 
+        //AddIntoNotEnabledCourseListAndCourseTabTest
         [TestMethod()]
         public void AddIntoNotEnabledCourseListAndCourseTabTest()
         {
             Assert.Fail();
         }
 
+        //AddIntoCourseListTest
         [TestMethod()]
         public void AddIntoCourseListTest()
         {
             Assert.Fail();
         }
 
+        //RemoveCourseFromSelectedTabDictionaryTest
         [TestMethod()]
         public void RemoveCourseFromSelectedTabDictionaryTest()
         {
             Assert.Fail();
         }
 
+        //RemoveCourseFromNotEnabledTabDictionaryTest
         [TestMethod()]
         public void RemoveCourseFromNotEnabledTabDictionaryTest()
         {
             Assert.Fail();
         }
 
+        //AddSelectedCourseTest
         [TestMethod()]
         public void AddSelectedCourseTest()
         {
             Assert.Fail();
         }
 
+        //ReloadAllFormTest
         [TestMethod()]
         public void ReloadAllFormTest()
         {
-            Assert.Fail();
+            bool isNotifyObserverWork = false;
+            model._modelChanged += () =>
+            {
+                isNotifyObserverWork = true;
+            };
+            model.ReloadAllForm();
+            Assert.IsTrue(isNotifyObserverWork);
         }
 
         //NotifyObserverTest
         [TestMethod()]
         public void NotifyObserverTest()
         {
-            Assert.Fail();
+            bool isNotifyObserverWork = false;
+            model._modelChanged += () =>
+            {
+                isNotifyObserverWork = true;
+            };
+            model.NotifyObserver();
+            Assert.IsTrue(isNotifyObserverWork);
         }
     }
 }
