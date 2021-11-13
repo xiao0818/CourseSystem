@@ -43,7 +43,7 @@ namespace CourseSystem
         private List<DataGridViewRow> GetResultDataGridViewRowList()
         {
             List<DataGridViewRow> rows = new List<DataGridViewRow>();
-            List<CourseInfo> courseList = _courseSelectionResultFormPresentationModel.GetSelectedCourseList();
+            List<CourseInfo> courseList = _courseSelectionResultFormPresentationModel.GetSelectedCourseList;
             foreach (CourseInfo course in courseList)
             {
                 DataGridViewRow row = GetRowFromInfo(course);

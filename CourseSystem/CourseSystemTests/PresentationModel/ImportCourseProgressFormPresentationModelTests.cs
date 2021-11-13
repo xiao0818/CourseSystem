@@ -48,6 +48,15 @@ namespace CourseSystem.Tests
             Assert.AreEqual(DateTime.Now.Second, now.AddSeconds(1).Second);
         }
 
+        //WaitSecondsTestFail
+        [TestMethod()]
+        public void WaitSecondsTestFail()
+        {
+            DateTime now = DateTime.Now;
+            importCourseProgressFormPresentationModel.WaitSeconds(0);
+            Assert.AreEqual(DateTime.Now.Second, now.Second);
+        }
+
         //NotifyObserverTest
         [TestMethod()]
         public void NotifyObserverTest()

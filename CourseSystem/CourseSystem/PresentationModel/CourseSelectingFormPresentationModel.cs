@@ -12,12 +12,14 @@ namespace CourseSystem
         public event PresentationModelChangedEventHandler _presentationModelChanged;
         public delegate void PresentationModelChangedEventHandler();
         PresentationModel _presentationModel;
-        bool _isCheckButtonEnabled = true;
-        bool _isSubmitButtonEnabled = false;
+        bool _isCheckButtonEnabled;
+        bool _isSubmitButtonEnabled;
         public CourseSelectingFormPresentationModel(PresentationModel presentationModel)
         {
             _presentationModel = presentationModel;
             _presentationModel._presentationModelChanged += ReloadCourseSelectingForm;
+            _isCheckButtonEnabled = true;
+            _isSubmitButtonEnabled = false;
         }
 
         //UpdateCourseListInfo

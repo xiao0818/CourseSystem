@@ -19,9 +19,12 @@ namespace CourseSystem
         }
 
         //GetSelectedCourseList
-        public List<CourseInfo> GetSelectedCourseList()
+        public List<CourseInfo> GetSelectedCourseList
         {
-            return _presentationModel.GetSelectedCourseList;
+            get
+            {
+                return _presentationModel.GetSelectedCourseList;
+            }
         }
 
         //Remove

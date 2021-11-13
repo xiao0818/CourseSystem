@@ -33,13 +33,6 @@ namespace CourseSystem.Tests
         //}
 
         //GetResultDataGridViewRowListTest
-        [TestMethod()]
-        public void GetSelectedCourseList()
-        {
-            model.AddSelectedCourse(windowsProgrammingCourseInfo);
-            Assert.AreEqual(1, courseSelectionResultFormPresentationModel.GetSelectedCourseList().Count());
-            Assert.AreEqual(windowsProgrammingCourseInfo, courseSelectionResultFormPresentationModel.GetSelectedCourseList()[0]);
-        }
 
         //RemoveCourseFromSelectionResultTest
         [TestMethod()]
@@ -47,7 +40,7 @@ namespace CourseSystem.Tests
         {
             model.AddIntoSelectedCourseListAndCourseTab(windowsProgrammingCourseInfo, (int)Department.ComputerScience3);
             courseSelectionResultFormPresentationModel.RemoveCourseFromSelectionResult(0);
-            Assert.AreEqual(0, courseSelectionResultFormPresentationModel.GetSelectedCourseList().Count());
+            Assert.AreEqual(0, courseSelectionResultFormPresentationModel.GetSelectedCourseList.Count());
             Assert.AreEqual(windowsProgrammingCourseInfo, model.GetCourseList((int)Department.ComputerScience3)[0]);
         }
 
