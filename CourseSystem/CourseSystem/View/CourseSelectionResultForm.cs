@@ -32,11 +32,43 @@ namespace CourseSystem
         private void LoadCourseResultDataGridView()
         {
             _courseResultDataGridView.Rows.Clear();
-            List<DataGridViewRow> rows = _courseSelectionResultFormPresentationModel.GetResultDataGridViewRowList();
+            List<DataGridViewRow> rows = GetResultDataGridViewRowList();
             foreach (DataGridViewRow row in rows)
             {
                 _courseResultDataGridView.Rows.Add(row);
             }
+        }
+
+        //GetResultDataGridViewRowList
+        private List<DataGridViewRow> GetResultDataGridViewRowList()
+        {
+            List<DataGridViewRow> rows = new List<DataGridViewRow>();
+            List<CourseInfo> courseList = _courseSelectionResultFormPresentationModel.GetSelectedCourseList();
+            foreach (CourseInfo course in courseList)
+            {
+                DataGridViewRow row = GetRowFromInfo(course);
+                rows.Add(row);
+            }
+            return rows;
+        }
+
+        //GetRowFromInfo
+        private DataGridViewRow GetRowFromInfo(CourseInfo course)
+        {
+            const string TEXT_OF_BUTTON = "退選";
+            DataGridViewRow row = new DataGridViewRow();
+            foreach (string info in course.GetCourseInfoString)
+            {
+                row.Cells.Add(new DataGridViewTextBoxCell
+                {
+                    Value = info
+                });
+            };
+            row.Cells.Insert(0, new DataGridViewButtonCell
+            {
+                Value = TEXT_OF_BUTTON
+            });
+            return row;
         }
 
         //ClickCellContentCourseResultDataGridView

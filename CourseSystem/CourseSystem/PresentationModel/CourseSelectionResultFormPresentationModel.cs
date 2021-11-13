@@ -18,36 +18,10 @@ namespace CourseSystem
             _presentationModel._presentationModelChanged += ReloadCourseSelectionResultForm;
         }
 
-        //GetResultDataGridViewRowList
-        public List<DataGridViewRow> GetResultDataGridViewRowList()
+        //GetSelectedCourseList
+        public List<CourseInfo> GetSelectedCourseList()
         {
-            List<DataGridViewRow> rows = new List<DataGridViewRow>();
-            List<CourseInfo> courseList = _presentationModel.GetSelectedCourseList;
-            foreach (CourseInfo course in courseList)
-            {
-                DataGridViewRow row = GetRowFromInfo(course);
-                rows.Add(row);
-            }
-            return rows;
-        }
-
-        //GetRowFromInfo
-        private DataGridViewRow GetRowFromInfo(CourseInfo course)
-        {
-            const string TEXT_OF_BUTTON = "退選";
-            DataGridViewRow row = new DataGridViewRow();
-            foreach (string info in course.GetCourseInfoString)
-            {
-                row.Cells.Add(new DataGridViewTextBoxCell
-                {
-                    Value = info
-                });
-            };
-            row.Cells.Insert(0, new DataGridViewButtonCell
-            {
-                Value = TEXT_OF_BUTTON
-            });
-            return row;
+            return _presentationModel.GetSelectedCourseList;
         }
 
         //Remove

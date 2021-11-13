@@ -11,35 +11,70 @@ namespace CourseSystem.Tests
     [TestClass()]
     public class CourseSelectionResultFormPresentationModelTests
     {
-        [TestMethod()]
-        public void CourseSelectionResultFormPresentationModelTest()
+        CourseSelectionResultFormPresentationModel courseSelectionResultFormPresentationModel;
+        PresentationModel presentationModel;
+        Model model;
+        CourseInfo windowsProgrammingCourseInfo = new CourseInfo("291710", "視窗程式設計", "1", "3.0", "3", "★", "陳偉凱", "", "", "", "", "3 4 6", "", "", "二教206(e)\n二教205(e)", "43", "15", "", "", "", "查詢", "", "");
+
+        //Initialize
+        [TestInitialize]
+        public void SetUp()
         {
-            Assert.Fail();
+            model = new Model();
+            presentationModel = new PresentationModel(model);
+            courseSelectionResultFormPresentationModel = new CourseSelectionResultFormPresentationModel(presentationModel);
         }
 
+        ////CourseSelectionResultFormPresentationModelTest
+        //[TestMethod()]
+        //public void CourseSelectionResultFormPresentationModelTest()
+        //{
+        //    Assert.Fail();
+        //}
+
+        //GetResultDataGridViewRowListTest
         [TestMethod()]
-        public void GetResultDataGridViewRowListTest()
+        public void GetSelectedCourseList()
         {
-            Assert.Fail();
+            model.AddSelectedCourse(windowsProgrammingCourseInfo);
+            Assert.AreEqual(1, courseSelectionResultFormPresentationModel.GetSelectedCourseList().Count());
+            Assert.AreEqual(windowsProgrammingCourseInfo, courseSelectionResultFormPresentationModel.GetSelectedCourseList()[0]);
         }
 
+        //RemoveCourseFromSelectionResultTest
         [TestMethod()]
         public void RemoveCourseFromSelectionResultTest()
         {
-            Assert.Fail();
+            model.AddIntoSelectedCourseListAndCourseTab(windowsProgrammingCourseInfo, (int)Department.ComputerScience3);
+            courseSelectionResultFormPresentationModel.RemoveCourseFromSelectionResult(0);
+            Assert.AreEqual(0, courseSelectionResultFormPresentationModel.GetSelectedCourseList().Count());
+            Assert.AreEqual(windowsProgrammingCourseInfo, model.GetCourseList((int)Department.ComputerScience3)[0]);
         }
 
+        //ReloadAllFormTest
         [TestMethod()]
         public void ReloadAllFormTest()
         {
-            Assert.Fail();
+            bool isNotifyObserverWork = false;
+            courseSelectionResultFormPresentationModel._presentationModelChanged += () =>
+            {
+                isNotifyObserverWork = true;
+            };
+            courseSelectionResultFormPresentationModel.ReloadAllForm();
+            Assert.IsTrue(isNotifyObserverWork);
         }
 
         //NotifyObserverTest
         [TestMethod()]
         public void NotifyObserverTest()
         {
-            Assert.Fail();
+            bool isNotifyObserverWork = false;
+            courseSelectionResultFormPresentationModel._presentationModelChanged += () =>
+            {
+                isNotifyObserverWork = true;
+            };
+            courseSelectionResultFormPresentationModel.NotifyObserver();
+            Assert.IsTrue(isNotifyObserverWork);
         }
     }
 }
