@@ -13,6 +13,12 @@ namespace CourseSystem
         ComputerScience5,
         ComputerScience4,
         ComputerScience2,
-        ComputerScience1
+        ComputerScience1,
+        SelectedComputerScience3,
+        SelectedElectronicEngineering3,
+        SelectedComputerScience5,
+        SelectedComputerScience4,
+        SelectedComputerScience2,
+        SelectedComputerScience1
     }
 }

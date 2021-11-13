@@ -120,7 +120,7 @@ namespace CourseSystem
         private void LoadClassComboBox(Tuple<int, int, int> department)
         {
             List<string> classNameList = _courseManagementFormPresentationModel.GetClassNameList;
-            _courseClassSelectionComboBox.Text = classNameList[department.Item2];
+            _courseClassSelectionComboBox.Text = classNameList[department.Item2 % 6];
         }
 
         //LoadEnabledComboBox

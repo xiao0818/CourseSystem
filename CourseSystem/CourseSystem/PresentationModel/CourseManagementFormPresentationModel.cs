@@ -219,12 +219,19 @@ namespace CourseSystem
             string checkedMessage = CheckCourseList(newCourse, selectedCourseList);
             if (checkedMessage == "")
             {
-                AddIntoSelectedCourseListAndCourseTab(newCourse, listNameIndex);
+                AddIntoSelectedCourseListAndCourseTab(newCourse, listNameIndex % 6);
                 return MODIFY_SUCCESSFUL;
             }
             else
             {
-                AddIntoSelectedCourseListAndCourseTab(course, department.Item2);
+                if (department.Item1 == (int)ListName.SelectedList)
+                {
+                    AddIntoSelectedCourseListAndCourseTab(course, department.Item2);
+                }
+                else
+                {
+                    AddIntoNotEnabledCourseListAndCourseTab(course, department.Item2);
+                }
                 return MODIFY_NOT_SUCCESSFUL + ERROR_MESSAGE + checkedMessage;
             }
         }
@@ -251,14 +258,14 @@ namespace CourseSystem
             List<CourseInfo> notEnabledCourseList = GetNotEnabledCourseList;
             RemoveCourseFromNotEnabledTabDictionary(department.Item3);
             notEnabledCourseList.RemoveAt(department.Item3);
-            if (department.Item2 == (int)ListName.SelectedList)
-            {
-                return SaveModifyForSelectedCheck(department, newCourse, course, listNameIndex);
-            }
-            else
+            if (department.Item2 < 6)
             {
                 AddIntoCourseList(newCourse, listNameIndex);
                 return MODIFY_SUCCESSFUL;
+            }
+            else
+            {
+                return SaveModifyForSelectedCheck(department, newCourse, course, listNameIndex + 6);
             }
         }
 
@@ -276,7 +283,7 @@ namespace CourseSystem
             List<CourseInfo> selectedCourseList = GetSelectedCourseList;
             RemoveCourseFromSelectedTabDictionary(department.Item3);
             selectedCourseList.RemoveAt(department.Item3);
-            AddIntoNotEnabledCourseListAndCourseTab(newCourse, listNameIndex);
+            AddIntoNotEnabledCourseListAndCourseTab(newCourse, listNameIndex + 6);
             return MODIFY_SUCCESSFUL;
         }
 
@@ -286,7 +293,14 @@ namespace CourseSystem
             List<CourseInfo> notEnabledCourseList = GetNotEnabledCourseList;
             RemoveCourseFromNotEnabledTabDictionary(department.Item3);
             notEnabledCourseList.RemoveAt(department.Item3);
-            AddIntoNotEnabledCourseListAndCourseTab(newCourse, listNameIndex);
+            if (department.Item2 < 6)
+            {
+                AddIntoNotEnabledCourseListAndCourseTab(newCourse, listNameIndex);
+            }
+            else
+            {
+                AddIntoNotEnabledCourseListAndCourseTab(newCourse, listNameIndex + 6);
+            }
             return MODIFY_SUCCESSFUL;
         }
 
