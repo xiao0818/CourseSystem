@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace CourseSystem
 {
@@ -149,148 +145,149 @@ namespace CourseSystem
         //ResetAllButton
         public void ResetAllButton()
         {
-            _isSaveCourseDataButton = false;
             _isAddCourseDataButton = true;
+            _isSaveCourseDataButton = false;
+            _isLoadComputerScienceCourseButton = true;
         }
 
         //SelectListBox
         public void SelectListBox()
         {
-            _isSaveCourseDataButton = false;
             _isAddCourseDataButton = true;
+            _isSaveCourseDataButton = false;
         }
 
         //ClickAddButton
         public void ClickAddButton()
         {
-            _isSaveCourseDataButton = false;
             _isAddCourseDataButton = false;
+            _isSaveCourseDataButton = false;
         }
 
         //ChangeTextSuccessfully
         public void ChangeContentEnabled()
         {
-            _isSaveCourseDataButton = true;
             _isAddCourseDataButton = false;
+            _isSaveCourseDataButton = true;
         }
 
         //ChangeTextUnsuccessfully
         public void ChangeContentNotEnabled()
         {
-            _isSaveCourseDataButton = false;
             _isAddCourseDataButton = false;
+            _isSaveCourseDataButton = false;
         }
 
         //SaveModifyCourseMainForEnabled
-        public void SaveModifyCourseMainForEnabled(Tuple<int, int, int> department, CourseInfo newCourse, CourseInfo course, int selectedIndex)
+        public string SaveModifyCourseMainForEnabled(Tuple<int, int, int> department, CourseInfo newCourse, CourseInfo course, int selectedIndex)
         {
             if (department.Item1 != (int)ListName.SelectedList && department.Item1 != (int)ListName.NotEnabledList)
             {
-                SaveModifyCoursePartOne(department, newCourse, selectedIndex);
+                return SaveModifyCoursePartOne(department, newCourse, selectedIndex);
             }
             else if (department.Item1 == (int)ListName.SelectedList)
             {
-                SaveModifyCoursePartTwo(department, newCourse, course, selectedIndex);
+                return SaveModifyCoursePartTwo(department, newCourse, course, selectedIndex);
             }
-            else if (department.Item1 == (int)ListName.NotEnabledList)
+            else
             {
-                SaveModifyCoursePartThree(department, newCourse, course, selectedIndex);
+                return SaveModifyCoursePartThree(department, newCourse, course, selectedIndex);
             }
         }
 
         //SaveModifyCourseMainForNotEnabled
-        public void SaveModifyCourseMainForNotEnabled(Tuple<int, int, int> department, CourseInfo newCourse, int selectedIndex)
+        public string SaveModifyCourseMainForNotEnabled(Tuple<int, int, int> department, CourseInfo newCourse, int selectedIndex)
         {
             if (department.Item1 != (int)ListName.SelectedList && department.Item1 != (int)ListName.NotEnabledList)
             {
-                SaveModifyCoursePartFour(department, newCourse, selectedIndex);
+                return SaveModifyCoursePartFour(department, newCourse, selectedIndex);
             }
             else if (department.Item1 == (int)ListName.SelectedList)
             {
-                SaveModifyCoursePartFive(department, newCourse, selectedIndex);
+                return SaveModifyCoursePartFive(department, newCourse, selectedIndex);
             }
-            else if (department.Item1 == (int)ListName.NotEnabledList)
+            else
             {
-                SaveModifyCoursePartSix(department, newCourse, selectedIndex);
+                return SaveModifyCoursePartSix(department, newCourse, selectedIndex);
             }
         }
 
         //SaveModifyForSelectedCheck
-        private void SaveModifyForSelectedCheck(Tuple<int, int, int> department, CourseInfo newCourse, CourseInfo course, int listNameIndex)
+        private string SaveModifyForSelectedCheck(Tuple<int, int, int> department, CourseInfo newCourse, CourseInfo course, int listNameIndex)
         {
             List<CourseInfo> selectedCourseList = GetSelectedCourseList;
             string checkedMessage = CheckCourseList(newCourse, selectedCourseList);
             if (checkedMessage == "")
             {
-                MessageBox.Show(MODIFY_SUCCESSFUL);
                 AddIntoSelectedCourseListAndCourseTab(newCourse, listNameIndex);
+                return MODIFY_SUCCESSFUL;
             }
             else
             {
-                MessageBox.Show(MODIFY_NOT_SUCCESSFUL + ERROR_MESSAGE + checkedMessage);
                 AddIntoSelectedCourseListAndCourseTab(course, department.Item2);
+                return MODIFY_NOT_SUCCESSFUL + ERROR_MESSAGE + checkedMessage;
             }
         }
 
         //SaveModifyCoursePartOne
-        private void SaveModifyCoursePartOne(Tuple<int, int, int> department, CourseInfo newCourse, int listNameIndex)
+        private string SaveModifyCoursePartOne(Tuple<int, int, int> department, CourseInfo newCourse, int listNameIndex)
         {
             RemoveCourseFromCourseList(department.Item1, department.Item3);
             AddIntoCourseList(newCourse, listNameIndex);
-            MessageBox.Show(MODIFY_SUCCESSFUL);
+            return MODIFY_SUCCESSFUL;
         }
 
         //SaveModifyCoursePartTwo
-        private void SaveModifyCoursePartTwo(Tuple<int, int, int> department, CourseInfo newCourse, CourseInfo course, int listNameIndex)
+        private string SaveModifyCoursePartTwo(Tuple<int, int, int> department, CourseInfo newCourse, CourseInfo course, int listNameIndex)
         {
             RemoveCourseFromSelectedTabDictionary(department.Item3);
             _presentationModel.RemoveCourseFromSelectedList(department.Item3);
-            SaveModifyForSelectedCheck(department, newCourse, course, listNameIndex);
+            return SaveModifyForSelectedCheck(department, newCourse, course, listNameIndex);
         }
 
         //SaveModifyCoursePartThree
-        private void SaveModifyCoursePartThree(Tuple<int, int, int> department, CourseInfo newCourse, CourseInfo course, int listNameIndex)
+        private string SaveModifyCoursePartThree(Tuple<int, int, int> department, CourseInfo newCourse, CourseInfo course, int listNameIndex)
         {
             List<CourseInfo> notEnabledCourseList = GetNotEnabledCourseList;
             RemoveCourseFromNotEnabledTabDictionary(department.Item3);
             notEnabledCourseList.RemoveAt(department.Item3);
-            if (department.Item1 == (int)ListName.SelectedList)
+            if (department.Item2 == (int)ListName.SelectedList)
             {
-                SaveModifyForSelectedCheck(department, newCourse, course, listNameIndex);
+                return SaveModifyForSelectedCheck(department, newCourse, course, listNameIndex);
             }
             else
             {
                 AddIntoCourseList(newCourse, listNameIndex);
-                MessageBox.Show(MODIFY_SUCCESSFUL);
+                return MODIFY_SUCCESSFUL;
             }
         }
 
         //SaveModifyCoursePartFour
-        private void SaveModifyCoursePartFour(Tuple<int, int, int> department, CourseInfo newCourse, int listNameIndex)
+        private string SaveModifyCoursePartFour(Tuple<int, int, int> department, CourseInfo newCourse, int listNameIndex)
         {
             RemoveCourseFromCourseList(department.Item1, department.Item3);
             AddIntoNotEnabledCourseListAndCourseTab(newCourse, listNameIndex);
-            MessageBox.Show(MODIFY_SUCCESSFUL);
+            return MODIFY_SUCCESSFUL;
         }
 
         //SaveModifyCoursePartFive
-        private void SaveModifyCoursePartFive(Tuple<int, int, int> department, CourseInfo newCourse, int listNameIndex)
+        private string SaveModifyCoursePartFive(Tuple<int, int, int> department, CourseInfo newCourse, int listNameIndex)
         {
             List<CourseInfo> selectedCourseList = GetSelectedCourseList;
             RemoveCourseFromSelectedTabDictionary(department.Item3);
             selectedCourseList.RemoveAt(department.Item3);
             AddIntoNotEnabledCourseListAndCourseTab(newCourse, listNameIndex);
-            MessageBox.Show(MODIFY_SUCCESSFUL);
+            return MODIFY_SUCCESSFUL;
         }
 
         //SaveModifyCoursePartSix
-        private void SaveModifyCoursePartSix(Tuple<int, int, int> department, CourseInfo newCourse, int listNameIndex)
+        private string SaveModifyCoursePartSix(Tuple<int, int, int> department, CourseInfo newCourse, int listNameIndex)
         {
             List<CourseInfo> notEnabledCourseList = GetNotEnabledCourseList;
             RemoveCourseFromNotEnabledTabDictionary(department.Item3);
             notEnabledCourseList.RemoveAt(department.Item3);
             AddIntoNotEnabledCourseListAndCourseTab(newCourse, listNameIndex);
-            MessageBox.Show(MODIFY_SUCCESSFUL);
+            return MODIFY_SUCCESSFUL;
         }
 
         //ClickLoadComputerScienceCourseTabButton

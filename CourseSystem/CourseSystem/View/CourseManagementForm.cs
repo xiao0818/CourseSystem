@@ -296,11 +296,11 @@ namespace CourseSystem
                 course.NumberOfStudent, course.NumberOfDropStudent, _courseTeachingAssistantTextBox.Text, _courseLanguageTextBox.Text, course.Outline, _courseNoteTextBox.Text, course.AttachStudent, course.Experiment);
             if (_courseEnabledComboBox.Text == ENABLED)
             {
-                _courseManagementFormPresentationModel.SaveModifyCourseMainForEnabled(department, newCourse, course, _courseClassSelectionComboBox.SelectedIndex);
+                MessageBox.Show(_courseManagementFormPresentationModel.SaveModifyCourseMainForEnabled(department, newCourse, course, _courseClassSelectionComboBox.SelectedIndex));
             }
             else
             {
-                _courseManagementFormPresentationModel.SaveModifyCourseMainForNotEnabled(department, newCourse, _courseClassSelectionComboBox.SelectedIndex);
+                MessageBox.Show(_courseManagementFormPresentationModel.SaveModifyCourseMainForNotEnabled(department, newCourse, _courseClassSelectionComboBox.SelectedIndex));
             }
         }
 
