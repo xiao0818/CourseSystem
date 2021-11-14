@@ -321,6 +321,11 @@
                 <AnalysisFileType>Designer</AnalysisFileType>
               </AnalysisFile>
               <AnalysisFile>
+                <RelativePath>Class\CourseInfoTests.cs</RelativePath>
+                <ProjectName>CourseSystemTests</ProjectName>
+                <AnalysisFileType>Test</AnalysisFileType>
+              </AnalysisFile>
+              <AnalysisFile>
                 <RelativePath>ModelTests.cs</RelativePath>
                 <ProjectName>CourseSystemTests</ProjectName>
                 <AnalysisFileType>Test</AnalysisFileType>
@@ -363,7 +368,7 @@
             </AnalysisFiles>
           </AnalysisFileManager>
           <ProductionLoc>4246</ProductionLoc>
-          <TestLoc>1120</TestLoc>
+          <TestLoc>1250</TestLoc>
         </CodeReview>
       </Data>
     </div>

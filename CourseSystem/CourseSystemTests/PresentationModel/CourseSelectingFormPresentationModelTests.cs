@@ -50,13 +50,23 @@ namespace CourseSystem.Tests
             Assert.AreNotEqual(0, courseSelectingFormPresentationModel.GetCourseList((int)Department.ComputerScience3).Count);
         }
 
+        //GetClassNameListTest
+        [TestMethod()]
+        public void GetClassNameListTest()
+        {
+            Assert.AreEqual("資工三", courseSelectingFormPresentationModel.GetClassNameList[0]);
+        }
+
+
         //RemoveFromCourseListAndAddInToSelectedTabTest
         [TestMethod()]
         public void RemoveFromCourseListAndAddInToSelectedTabTest()
         {
             model.AddIntoCourseList(windowsProgrammingCourseInfo, (int)Department.ComputerScience3);
+            courseSelectingFormPresentationModel.AddSelectedCourse(windowsProgrammingCourseInfo);
             courseSelectingFormPresentationModel.RemoveFromCourseListAndAddInToSelectedTab((int)Department.ComputerScience3, 0);
             Assert.AreEqual(0, courseSelectingFormPresentationModel.GetCourseList((int)Department.ComputerScience3).Count);
+            Assert.AreEqual(Tuple.Create((int)ListName.SelectedList, (int)Department.ComputerScience3, 0), presentationModel.GetCourseDepartmentBySelectedIndex(0));
         }
 
         //ResetCheckButtonTest

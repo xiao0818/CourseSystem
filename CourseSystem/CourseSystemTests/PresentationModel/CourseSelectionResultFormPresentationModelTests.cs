@@ -32,8 +32,6 @@ namespace CourseSystem.Tests
         //    Assert.Fail();
         //}
 
-        //GetResultDataGridViewRowListTest
-
         //RemoveCourseFromSelectionResultTest
         [TestMethod()]
         public void RemoveCourseFromSelectionResultTest()
@@ -42,6 +40,7 @@ namespace CourseSystem.Tests
             courseSelectionResultFormPresentationModel.RemoveCourseFromSelectionResult(0);
             Assert.AreEqual(0, courseSelectionResultFormPresentationModel.GetSelectedCourseList.Count());
             Assert.AreEqual(windowsProgrammingCourseInfo, model.GetCourseList((int)Department.ComputerScience3)[0]);
+            Assert.AreEqual(Tuple.Create((int)ListName.ComputerScience3, (int)Department.ComputerScience3, 0), presentationModel.GetCourseDepartmentBySelectedIndex(0));
         }
 
         //ReloadAllFormTest

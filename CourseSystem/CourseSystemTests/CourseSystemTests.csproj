@@ -56,6 +56,7 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="Class\CourseInfoTests.cs" />
     <Compile Include="ModelTests.cs" />
     <Compile Include="PresentationModel\CourseManagementFormPresentationModelTests.cs" />
     <Compile Include="PresentationModel\CourseSelectingFormPresentationModelTests.cs" />
