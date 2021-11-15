@@ -55,6 +55,7 @@ namespace CourseSystem
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(600, 300);
+            this.ControlBox = false;
             this.Controls.Add(this._progressBar);
             this.Controls.Add(this._progressLabel);
             this.Name = "ImportCourseProgressForm";

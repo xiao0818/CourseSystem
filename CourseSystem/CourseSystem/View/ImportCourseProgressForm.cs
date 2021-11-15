@@ -43,8 +43,9 @@ namespace CourseSystem
         //ClosingImportCourseProgressForm
         private void ClosingImportCourseProgressForm(object sender, FormClosingEventArgs e)
         {
-            e.Cancel = true;
-            this.Hide();
+            //e.Cancel = true;
+            //this.Hide();
+            _importCourseProgressFormPresentationModel._presentationModelChanged -= LoadProgressBar;
             _progressBar.Value = 0;
             _progressLabel.Text = FRONT_CONTENT + _progressBar.Value + PERCENT;
             _courseManagementForm.FinishLoadComputerScienceCourse();

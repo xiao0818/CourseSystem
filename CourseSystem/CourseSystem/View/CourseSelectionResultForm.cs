@@ -31,6 +31,7 @@ namespace CourseSystem
         //LoadCourseResultDataGridView
         private void LoadCourseResultDataGridView()
         {
+            this.Refresh();
             _courseResultDataGridView.Rows.Clear();
             List<DataGridViewRow> rows = GetResultDataGridViewRowList();
             foreach (DataGridViewRow row in rows)

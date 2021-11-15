@@ -13,6 +13,7 @@ namespace CourseSystem
     public partial class CourseManagementForm : Form
     {
         ImportCourseProgressForm _importCourseProgressForm;
+        ImportCourseProgressFormPresentationModel _importCourseProgressFormPresentationModel;
         CourseManagementFormPresentationModel _courseManagementFormPresentationModel;
         StartUpForm _startUpForm;
         const int DAY_PER_WEEK = 7;
@@ -27,8 +28,8 @@ namespace CourseSystem
         public CourseManagementForm(StartUpForm startUpForm, CourseManagementFormPresentationModel courseManagementFormPresentationModel, ImportCourseProgressFormPresentationModel importCourseProgressFormPresentationModel)
         {
             _courseManagementFormPresentationModel = courseManagementFormPresentationModel;
-            _importCourseProgressForm = new ImportCourseProgressForm(importCourseProgressFormPresentationModel, this);
             _startUpForm = startUpForm;
+            _importCourseProgressFormPresentationModel = importCourseProgressFormPresentationModel;
             _courseManagementFormPresentationModel._presentationModelChanged += LoadManagementForm;
             InitializeComponent();
         }
@@ -407,6 +408,7 @@ namespace CourseSystem
             _courseClassSelectionComboBox.Items.Add(_courseManagementFormPresentationModel.GetClassNameList[(int)Department.ComputerScience2]);
             _courseClassSelectionComboBox.Items.Add(_courseManagementFormPresentationModel.GetClassNameList[(int)Department.ComputerScience1]);
             _courseManagementFormPresentationModel.ClickLoadComputerScienceCourseTabButton();
+            _importCourseProgressForm = new ImportCourseProgressForm(_importCourseProgressFormPresentationModel, this);
             _importCourseProgressForm.ShowDialog();
             _courseManagementFormPresentationModel.ReloadAllForm();
         }
