@@ -66,7 +66,7 @@ namespace CourseSystem.Tests
             courseSelectingFormPresentationModel.AddSelectedCourse(windowsProgrammingCourseInfo);
             courseSelectingFormPresentationModel.RemoveFromCourseListAndAddInToSelectedTab((int)Department.ComputerScience3, 0);
             Assert.AreEqual(0, courseSelectingFormPresentationModel.GetCourseList((int)Department.ComputerScience3).Count);
-            Assert.AreEqual(Tuple.Create((int)ListName.SelectedList, (int)Department.ComputerScience3, 0), presentationModel.GetCourseDepartmentBySelectedIndex(0));
+            Assert.AreEqual(Tuple.Create((int)Department.SelectedList, (int)Department.ComputerScience3, 0), presentationModel.GetCourseDepartmentBySelectedIndex(0));
         }
 
         //ResetCheckButtonTest

@@ -259,9 +259,9 @@ namespace CourseSystem
             }
             if (selectedIndex < currentIndex + _selectedCourseList.Count)
             {
-                return Tuple.Create((int)ListName.SelectedList, _selectedCourseTabDictionary[_selectedCourseList[selectedIndex - currentIndex].Number], selectedIndex - currentIndex);
+                return Tuple.Create((int)Department.SelectedList, _selectedCourseTabDictionary[_selectedCourseList[selectedIndex - currentIndex].Number], selectedIndex - currentIndex);
             }
-            return Tuple.Create((int)ListName.NotEnabledList, _notEnabledCourseTabDictionary[_notEnabledCourseList[selectedIndex - currentIndex - _selectedCourseList.Count].Number], selectedIndex - currentIndex - _selectedCourseList.Count);
+            return Tuple.Create((int)Department.NotEnabledList, _notEnabledCourseTabDictionary[_notEnabledCourseList[selectedIndex - currentIndex - _selectedCourseList.Count].Number], selectedIndex - currentIndex - _selectedCourseList.Count);
         }
 
         //AddIntoSelectedCourseList

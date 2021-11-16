@@ -8,17 +8,19 @@ namespace CourseSystem
 {
     public enum Department
     {
-        ComputerScience3,
-        ElectronicEngineering3,
-        ComputerScience5,
-        ComputerScience4,
-        ComputerScience2,
-        ComputerScience1,
+        SelectedList = -1,
+        NotEnabledList = -2,
+        ComputerScience3 = 0,
         SelectedComputerScience3,
+        ElectronicEngineering3,
         SelectedElectronicEngineering3,
+        ComputerScience5,
         SelectedComputerScience5,
+        ComputerScience4,
         SelectedComputerScience4,
+        ComputerScience2,
         SelectedComputerScience2,
+        ComputerScience1,
         SelectedComputerScience1
     }
 }

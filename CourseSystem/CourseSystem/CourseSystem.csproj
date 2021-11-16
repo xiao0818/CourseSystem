@@ -53,7 +53,7 @@
     <Compile Include="Class\CourseInfo.cs" />
     <Compile Include="Class\CourseInfoHeaderText.cs" />
     <Compile Include="Class\Day.cs" />
-    <Compile Include="Class\ListName.cs" />
+    <Compile Include="Class\Department.cs" />
     <Compile Include="PresentationModel\CourseManagementFormPresentationModel.cs" />
     <Compile Include="PresentationModel\ImportCourseProgressFormPresentationModel.cs" />
     <Compile Include="PresentationModel\PresentationModel.cs" />
@@ -71,7 +71,6 @@
       <DependentUpon>CourseSelectionResultForm.cs</DependentUpon>
     </Compile>
     <Compile Include="PresentationModel\CourseSelectionResultFormPresentationModel.cs" />
-    <Compile Include="Class\Department.cs" />
     <Compile Include="Model.cs" />
     <Compile Include="View\CourseSelectingForm.cs">
       <SubType>Form</SubType>

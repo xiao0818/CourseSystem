@@ -128,7 +128,7 @@ namespace CourseSystem
         //LoadEnabledComboBox
         private void LoadEnabledComboBox(Tuple<int, int, int> department)
         {
-            if (department.Item1 == (int)ListName.NotEnabledList)
+            if (department.Item1 == (int)Department.NotEnabledList)
             {
                 _courseEnabledComboBox.Text = NOT_ENABLED;
             }
@@ -401,12 +401,12 @@ namespace CourseSystem
         private void ClickLoadComputerScienceButton(object sender, EventArgs e)
         {
             _courseClassSelectionComboBox.Items.Clear();
-            _courseClassSelectionComboBox.Items.Add(_courseManagementFormPresentationModel.GetClassNameList[(int)Department.ComputerScience3]);
-            _courseClassSelectionComboBox.Items.Add(_courseManagementFormPresentationModel.GetClassNameList[(int)Department.ElectronicEngineering3]);
-            _courseClassSelectionComboBox.Items.Add(_courseManagementFormPresentationModel.GetClassNameList[(int)Department.ComputerScience5]);
-            _courseClassSelectionComboBox.Items.Add(_courseManagementFormPresentationModel.GetClassNameList[(int)Department.ComputerScience4]);
-            _courseClassSelectionComboBox.Items.Add(_courseManagementFormPresentationModel.GetClassNameList[(int)Department.ComputerScience2]);
-            _courseClassSelectionComboBox.Items.Add(_courseManagementFormPresentationModel.GetClassNameList[(int)Department.ComputerScience1]);
+            _courseClassSelectionComboBox.Items.Add(_courseManagementFormPresentationModel.GetClassNameList[(int)Department.ComputerScience3 / 2]);
+            _courseClassSelectionComboBox.Items.Add(_courseManagementFormPresentationModel.GetClassNameList[(int)Department.ElectronicEngineering3 / 2]);
+            _courseClassSelectionComboBox.Items.Add(_courseManagementFormPresentationModel.GetClassNameList[(int)Department.ComputerScience5 / 2]);
+            _courseClassSelectionComboBox.Items.Add(_courseManagementFormPresentationModel.GetClassNameList[(int)Department.ComputerScience4 / 2]);
+            _courseClassSelectionComboBox.Items.Add(_courseManagementFormPresentationModel.GetClassNameList[(int)Department.ComputerScience2 / 2]);
+            _courseClassSelectionComboBox.Items.Add(_courseManagementFormPresentationModel.GetClassNameList[(int)Department.ComputerScience1 / 2]);
             _courseManagementFormPresentationModel.ClickLoadComputerScienceCourseTabButton();
             _importCourseProgressForm = new ImportCourseProgressForm(_importCourseProgressFormPresentationModel, this);
             _importCourseProgressForm.ShowDialog();

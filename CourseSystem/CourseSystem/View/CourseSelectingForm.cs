@@ -24,10 +24,10 @@ namespace CourseSystem
             _startUpForm = startUpForm;
             _index = 0;
             InitializeComponent();
-            _courseSelectingFormPresentationModel.UpdateCourseListInfo((int)Department.ComputerScience3);
-            _courseSelectingFormPresentationModel.UpdateCourseListInfo((int)Department.ElectronicEngineering3);
-            _selectingTabControl.TabPages.Add(AddTabPage(_courseSelectingFormPresentationModel.GetClassNameList[(int)Department.ComputerScience3]));
-            _selectingTabControl.TabPages.Add(AddTabPage(_courseSelectingFormPresentationModel.GetClassNameList[(int)Department.ElectronicEngineering3]));
+            _courseSelectingFormPresentationModel.UpdateCourseListInfo((int)Department.ComputerScience3 / 2);
+            _courseSelectingFormPresentationModel.UpdateCourseListInfo((int)Department.ElectronicEngineering3 / 2);
+            _selectingTabControl.TabPages.Add(AddTabPage(_courseSelectingFormPresentationModel.GetClassNameList[(int)Department.ComputerScience3 / 2]));
+            _selectingTabControl.TabPages.Add(AddTabPage(_courseSelectingFormPresentationModel.GetClassNameList[(int)Department.ElectronicEngineering3 / 2]));
             _selectingTabControl.SelectedTab.Controls.Add(this._courseDataGridView);
         }
 
@@ -54,11 +54,11 @@ namespace CourseSystem
             if (_courseSelectingFormPresentationModel.IsLoadComputerScienceCourseTab == true)
             {
                 FinishLoadComputerScienceCourseTabButton();
-                LoadComputerScienceCourseTab((int)Department.ComputerScience3);
-                LoadComputerScienceCourseTab((int)Department.ComputerScience5);
-                LoadComputerScienceCourseTab((int)Department.ComputerScience4);
-                LoadComputerScienceCourseTab((int)Department.ComputerScience2);
-                LoadComputerScienceCourseTab((int)Department.ComputerScience1);
+                LoadComputerScienceCourseTab((int)Department.ComputerScience3 / 2);
+                LoadComputerScienceCourseTab((int)Department.ComputerScience5 / 2);
+                LoadComputerScienceCourseTab((int)Department.ComputerScience4 / 2);
+                LoadComputerScienceCourseTab((int)Department.ComputerScience2 / 2);
+                LoadComputerScienceCourseTab((int)Department.ComputerScience1 / 2);
             }
             _courseDataGridView.Rows.Clear();
             List<CourseInfo> courseList = _courseSelectingFormPresentationModel.GetCourseList(_index);
