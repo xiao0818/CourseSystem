@@ -13,10 +13,10 @@ namespace CourseSystem
         public delegate void ModelChangedEventHandler();
         const string WEB_COMPUTER_SCIENCE_3 = "https://aps.ntut.edu.tw/course/tw/Subj.jsp?format=-4&year=110&sem=1&code=2433";
         const string WEB_ELECTRONIC_ENGINEERING_3_A = "https://aps.ntut.edu.tw/course/tw/Subj.jsp?format=-4&year=110&sem=1&code=2423";
-        const string WEB_COMPUTER_SCIENCE_5 = "https://aps.ntut.edu.tw/course/tw/Subj.jsp?format=-4&year=110&sem=1&code=2701";
-        const string WEB_COMPUTER_SCIENCE_4 = "https://aps.ntut.edu.tw/course/tw/Subj.jsp?format=-4&year=110&sem=1&code=2314";
-        const string WEB_COMPUTER_SCIENCE_2 = "https://aps.ntut.edu.tw/course/tw/Subj.jsp?format=-4&year=110&sem=1&code=2550";
         const string WEB_COMPUTER_SCIENCE_1 = "https://aps.ntut.edu.tw/course/tw/Subj.jsp?format=-4&year=110&sem=1&code=2676";
+        const string WEB_COMPUTER_SCIENCE_2 = "https://aps.ntut.edu.tw/course/tw/Subj.jsp?format=-4&year=110&sem=1&code=2550";
+        const string WEB_COMPUTER_SCIENCE_4 = "https://aps.ntut.edu.tw/course/tw/Subj.jsp?format=-4&year=110&sem=1&code=2314";
+        const string WEB_COMPUTER_SCIENCE_5 = "https://aps.ntut.edu.tw/course/tw/Subj.jsp?format=-4&year=110&sem=1&code=2701";
         private List<string> _courseWebList;
         private List<CourseInfo> _selectedCourseList;
         private List<CourseInfo> _notEnabledCourseList;
@@ -30,10 +30,10 @@ namespace CourseSystem
             _courseWebList = new List<string>();
             _courseWebList.Add(WEB_COMPUTER_SCIENCE_3);
             _courseWebList.Add(WEB_ELECTRONIC_ENGINEERING_3_A);
-            _courseWebList.Add(WEB_COMPUTER_SCIENCE_5);
-            _courseWebList.Add(WEB_COMPUTER_SCIENCE_4);
-            _courseWebList.Add(WEB_COMPUTER_SCIENCE_2);
             _courseWebList.Add(WEB_COMPUTER_SCIENCE_1);
+            _courseWebList.Add(WEB_COMPUTER_SCIENCE_2);
+            _courseWebList.Add(WEB_COMPUTER_SCIENCE_4);
+            _courseWebList.Add(WEB_COMPUTER_SCIENCE_5);
             _courseListCollection = new List<List<CourseInfo>>();
             _courseListCollection.Add(new List<CourseInfo>());
             _courseListCollection.Add(new List<CourseInfo>());

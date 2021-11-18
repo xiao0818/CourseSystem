@@ -17,19 +17,19 @@ namespace CourseSystem
         List<string> _classNameList = new List<string>();
         const string COMPUTER_SCIENCE_3_NAME = "資工三";
         const string ELECTRONIC_ENGINEERING_3_NAME = "電子三甲";
-        const string COMPUTER_SCIENCE_5_NAME = "資工所";
-        const string COMPUTER_SCIENCE_4_NAME = "資工四";
-        const string COMPUTER_SCIENCE_2_NAME = "資工二";
         const string COMPUTER_SCIENCE_1_NAME = "資工一";
+        const string COMPUTER_SCIENCE_2_NAME = "資工二";
+        const string COMPUTER_SCIENCE_4_NAME = "資工四";
+        const string COMPUTER_SCIENCE_5_NAME = "資工所";
         bool _isLoadComputerScienceCourseTab;
         public PresentationModel(Model model)
         {
             _classNameList.Add(COMPUTER_SCIENCE_3_NAME);
             _classNameList.Add(ELECTRONIC_ENGINEERING_3_NAME);
-            _classNameList.Add(COMPUTER_SCIENCE_5_NAME);
-            _classNameList.Add(COMPUTER_SCIENCE_4_NAME);
-            _classNameList.Add(COMPUTER_SCIENCE_2_NAME);
             _classNameList.Add(COMPUTER_SCIENCE_1_NAME);
+            _classNameList.Add(COMPUTER_SCIENCE_2_NAME);
+            _classNameList.Add(COMPUTER_SCIENCE_4_NAME);
+            _classNameList.Add(COMPUTER_SCIENCE_5_NAME);
             _model = model;
             _model._modelChanged += ReloadForm;
             _isLoadComputerScienceCourseTab = false;

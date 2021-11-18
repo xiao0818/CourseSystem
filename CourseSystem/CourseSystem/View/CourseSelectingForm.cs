@@ -26,17 +26,18 @@ namespace CourseSystem
             InitializeComponent();
             _courseSelectingFormPresentationModel.UpdateCourseListInfo((int)Department.ComputerScience3 / 2);
             _courseSelectingFormPresentationModel.UpdateCourseListInfo((int)Department.ElectronicEngineering3 / 2);
-            _selectingTabControl.TabPages.Add(AddTabPage(_courseSelectingFormPresentationModel.GetClassNameList[(int)Department.ComputerScience3 / 2]));
-            _selectingTabControl.TabPages.Add(AddTabPage(_courseSelectingFormPresentationModel.GetClassNameList[(int)Department.ElectronicEngineering3 / 2]));
+            _selectingTabControl.TabPages.Add(AddTabPage(_courseSelectingFormPresentationModel.GetClassNameList[(int)Department.ComputerScience3 / 2], (int)Department.ComputerScience3 / 2));
+            _selectingTabControl.TabPages.Add(AddTabPage(_courseSelectingFormPresentationModel.GetClassNameList[(int)Department.ElectronicEngineering3 / 2], (int)Department.ElectronicEngineering3 / 2));
+            _selectingTabControl.TabPages.Add(AddTabPage(_courseSelectingFormPresentationModel.GetClassNameList[(int)Department.ComputerScience5 / 2], (int)Department.ComputerScience5 / 2));
             _selectingTabControl.SelectedTab.Controls.Add(this._courseDataGridView);
         }
 
         //AddTabPage
-        private TabPage AddTabPage(string text)
+        private TabPage AddTabPage(string text, int index)
         {
             TabPage tabPage = new TabPage();
             tabPage.Size = new System.Drawing.Size(1192, 511);
-            tabPage.TabIndex = 0;
+            tabPage.TabIndex = index;
             tabPage.Text = text;
             tabPage.UseVisualStyleBackColor = true;
             return tabPage;
@@ -55,10 +56,10 @@ namespace CourseSystem
             {
                 FinishLoadComputerScienceCourseTabButton();
                 LoadComputerScienceCourseTab((int)Department.ComputerScience3 / 2);
-                LoadComputerScienceCourseTab((int)Department.ComputerScience5 / 2);
-                LoadComputerScienceCourseTab((int)Department.ComputerScience4 / 2);
-                LoadComputerScienceCourseTab((int)Department.ComputerScience2 / 2);
                 LoadComputerScienceCourseTab((int)Department.ComputerScience1 / 2);
+                LoadComputerScienceCourseTab((int)Department.ComputerScience2 / 2);
+                LoadComputerScienceCourseTab((int)Department.ComputerScience4 / 2);
+                LoadComputerScienceCourseTab((int)Department.ComputerScience5 / 2);
             }
             _courseDataGridView.Rows.Clear();
             List<CourseInfo> courseList = _courseSelectingFormPresentationModel.GetCourseList(_index);
@@ -85,7 +86,7 @@ namespace CourseSystem
             }
             if (count == 0)
             {
-                _selectingTabControl.TabPages.Add(AddTabPage(_courseSelectingFormPresentationModel.GetClassNameList[departmentIndex]));
+                _selectingTabControl.TabPages.Add(AddTabPage(_courseSelectingFormPresentationModel.GetClassNameList[departmentIndex], departmentIndex));
             }
             _courseSelectingFormPresentationModel.UpdateCourseListInfo(departmentIndex);
             _courseSelectingFormPresentationModel.WaitSeconds(1);
