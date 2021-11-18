@@ -72,7 +72,7 @@ namespace CourseSystem
         //AddRowsInClassTimeDataGridView
         private void AddRowsInClassTimeDataGridView()
         {
-            _classTimeDataGridView.Rows.Clear();
+            _courseTimeDataGridView.Rows.Clear();
             foreach (char timeChar in CLASS_TIME_CHAR)
             {
                 DataGridViewRow row = new DataGridViewRow();
@@ -87,14 +87,14 @@ namespace CourseSystem
                 {
                     Value = timeChar
                 });
-                _classTimeDataGridView.Rows.Add(row);
+                _courseTimeDataGridView.Rows.Add(row);
             }
         }
 
         //ChangedSelectedIndexCourseListBox
         private void ChangedSelectedIndexCourseListBox(object sender, EventArgs e)
         {
-            _classDataGroupBox.Text = "編輯課程";
+            _courseDataGroupBox.Text = "編輯課程";
             _saveCourseDataButton.Text = "儲存";
             CourseInfo course = _courseManagementFormPresentationModel.GetCourseInfoBySelectedIndex(_courseListBox.SelectedIndex);
             Tuple<int, int, int> department = GetCourseDepartmentBySelectedIndex(_courseListBox.SelectedIndex);
@@ -113,7 +113,7 @@ namespace CourseSystem
             AddRowsInClassTimeDataGridView();
             foreach (Tuple<int, string> time in course.GetCourseClassTime())
             {
-                _classTimeDataGridView.Rows[TranslateClassTimeToIndex(time.Item2)].Cells[time.Item1 + 1].Value = Enabled;
+                _courseTimeDataGridView.Rows[TranslateClassTimeToIndex(time.Item2)].Cells[time.Item1 + 1].Value = Enabled;
             }
             SetAllObjectInGroupBoxEnabled(true);
         }
@@ -183,7 +183,7 @@ namespace CourseSystem
             _courseNoteTextBox.Enabled = enable;
             _courseClassTimeSelectionComboBox.Enabled = enable;
             _courseClassSelectionComboBox.Enabled = enable;
-            _classTimeDataGridView.Enabled = enable;
+            _courseTimeDataGridView.Enabled = enable;
         }
 
         //LoadManagementForm
@@ -197,7 +197,7 @@ namespace CourseSystem
             _saveCourseDataButton.Enabled = _courseManagementFormPresentationModel.IsSaveCourseDataButton;
             _addCourseDataButton.Enabled = _courseManagementFormPresentationModel.IsAddCourseDataButton;
             _loadComputerScienceButton.Enabled = _courseManagementFormPresentationModel.IsLoadComputerScienceCourseButton;
-            _classTimeDataGridView.ClearSelection();
+            _courseTimeDataGridView.ClearSelection();
         }
 
         //SetAllObjectInGroupBoxEmpty
@@ -220,7 +220,7 @@ namespace CourseSystem
         //ClickAddCourseButton
         private void ClickAddCourseButton(object sender, EventArgs e)
         {
-            _classDataGroupBox.Text = "新增課程";
+            _courseDataGroupBox.Text = "新增課程";
             _saveCourseDataButton.Text = "新增";
             _addCourseDataButton.Enabled = false;
             SetAllObjectInGroupBoxEmpty();
@@ -241,13 +241,13 @@ namespace CourseSystem
         {
             if (e.RowIndex >= 0 && e.ColumnIndex > 0)
             {
-                if (Convert.ToBoolean(_classTimeDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value) == true)
+                if (Convert.ToBoolean(_courseTimeDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value) == true)
                 {
-                    _classTimeDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = false;
+                    _courseTimeDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = false;
                 }
                 else
                 {
-                    _classTimeDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = true;
+                    _courseTimeDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = true;
                 }
             }
         }
@@ -274,8 +274,8 @@ namespace CourseSystem
         //ClickSaveCourseDataButton
         private void ClickSaveCourseDataButton(object sender, EventArgs e)
         {
-            _classTimeDataGridView.EndEdit();
-            if (_classDataGroupBox.Text == MODIFY_COURSE)
+            _courseTimeDataGridView.EndEdit();
+            if (_courseDataGroupBox.Text == MODIFY_COURSE)
             {
                 SaveModifyCourse();
             }
@@ -291,7 +291,7 @@ namespace CourseSystem
         {
             CourseInfo course = _courseManagementFormPresentationModel.GetCourseInfoBySelectedIndex(_courseListBox.SelectedIndex);
             Tuple<int, int, int> department = GetCourseDepartmentBySelectedIndex(_courseListBox.SelectedIndex);
-            List<string> classTimeStringList = TakeOutClassTimeFromDataGridView(_classTimeDataGridView.Rows);
+            List<string> classTimeStringList = TakeOutClassTimeFromDataGridView(_courseTimeDataGridView.Rows);
             CourseInfo newCourse = new CourseInfo(
                 _courseNumberTextBox.Text, _courseNameTextBox.Text, _courseStageTextBox.Text, _courseCreditTextBox.Text, _courseClassTimeSelectionComboBox.Text, _courseTypeSelectionComboBox.Text, _courseTeacherTextBox.Text,
                 classTimeStringList[(int)Day.Sunday].Trim(), classTimeStringList[(int)Day.Monday].Trim(), classTimeStringList[(int)Day.Tuesday].Trim(), classTimeStringList[(int)Day.Wednesday].Trim(), classTimeStringList[(int)Day.Thursday].Trim(), classTimeStringList[(int)Day.Friday].Trim(), classTimeStringList[(int)Day.Saturday].Trim(), course.Classroom,
@@ -315,7 +315,7 @@ namespace CourseSystem
         //SaveAddCourse
         private void SaveAddCourse()
         {
-            List<string> classTimeStringList = TakeOutClassTimeFromDataGridView(_classTimeDataGridView.Rows);
+            List<string> classTimeStringList = TakeOutClassTimeFromDataGridView(_courseTimeDataGridView.Rows);
             CourseInfo course = new CourseInfo(
                 _courseNumberTextBox.Text, _courseNameTextBox.Text, _courseStageTextBox.Text, _courseCreditTextBox.Text, _courseClassTimeSelectionComboBox.Text, _courseTypeSelectionComboBox.Text, _courseTeacherTextBox.Text,
                 classTimeStringList[0].Trim(), classTimeStringList[1].Trim(), classTimeStringList[2].Trim(), classTimeStringList[3].Trim(), classTimeStringList[4].Trim(), classTimeStringList[5].Trim(), classTimeStringList[6].Trim(), "",
@@ -340,14 +340,14 @@ namespace CourseSystem
         //ChangedCellValueClassTimeDataGridView
         private void ChangedCellValueClassTimeDataGridView(object sender, DataGridViewCellEventArgs e)
         {
-            _classTimeDataGridView.EndEdit();
+            _courseTimeDataGridView.EndEdit();
             ChangedGroupBox();
         }
 
         //ChangedGroupBox
         private void ChangedGroupBox()
         {
-            int count = GetClassTimeTotal(_classTimeDataGridView.Rows);
+            int count = GetClassTimeTotal(_courseTimeDataGridView.Rows);
             if (count.ToString() != _courseClassTimeSelectionComboBox.Text || _courseNumberTextBox.Text == "" || _courseNameTextBox.Text == "" || _courseStageTextBox.Text == "" || _courseCreditTextBox.Text == "" ||
                 _courseTeacherTextBox.Text == "" || _courseTypeSelectionComboBox.Text == "" || _courseClassTimeSelectionComboBox.Text == "" || _courseClassSelectionComboBox.Text == "")
             {
