@@ -28,6 +28,8 @@ namespace CourseSystem
         const string COMPUTER_SCIENCE_FOUR = "資工四";
         const string COMPUTER_SCIENCE_FIVE = "資工所";
         const int TAB_SET = 2;
+        const int SELECTED_LIST_TAB = -2;
+        const int NOT_ENABLED_TAB = -1;
         public Model()
         {
             _modelChanged += SortAll;
@@ -207,9 +209,7 @@ namespace CourseSystem
             foreach (List<CourseInfo> courseList in _courseListCollection)
             {
                 if (selectedIndex < currentIndex + courseList.Count)
-                {
                     return _courseListCollection[classIndex][selectedIndex - currentIndex];
-                }
                 currentIndex += courseList.Count;
                 classIndex++;
             }
@@ -228,17 +228,13 @@ namespace CourseSystem
             foreach (List<CourseInfo> courseList in _courseListCollection)
             {
                 if (selectedIndex < currentIndex + courseList.Count)
-                {
                     return Tuple.Create(classIndex, classIndex, selectedIndex - currentIndex);
-                }
                 currentIndex += courseList.Count;
                 classIndex++;
             }
             if (selectedIndex < currentIndex + _selectedCourseList.Count)
-            {
-                return Tuple.Create((int)Department.SelectedList, _selectedCourseTabDictionary[_selectedCourseList[selectedIndex - currentIndex].Number], selectedIndex - currentIndex);
-            }
-            return Tuple.Create((int)Department.NotEnabledList, _notEnabledCourseTabDictionary[_notEnabledCourseList[selectedIndex - currentIndex - _selectedCourseList.Count].Number], selectedIndex - currentIndex - _selectedCourseList.Count);
+                return Tuple.Create(SELECTED_LIST_TAB, _selectedCourseTabDictionary[_selectedCourseList[selectedIndex - currentIndex].Number], selectedIndex - currentIndex);
+            return Tuple.Create(NOT_ENABLED_TAB, _notEnabledCourseTabDictionary[_notEnabledCourseList[selectedIndex - currentIndex - _selectedCourseList.Count].Number], selectedIndex - currentIndex - _selectedCourseList.Count);
         }
 
         //AddIntoSelectedCourseList

@@ -78,7 +78,7 @@ namespace CourseSystem.Tests
             model.AddSelectedCourse(windowsProgrammingCourseInfo);
             model.RemoveFromCourseListAndAddInToSelectedTab((int)Department.ComputerScience3, 0);
             Assert.AreEqual(0, model.GetCourseList((int)Department.ComputerScience3).Count());
-            Assert.AreEqual(Tuple.Create((int)Department.SelectedList, (int)Department.ComputerScience3, 0), model.GetCourseDepartmentBySelectedIndex(0));
+            Assert.AreEqual(Tuple.Create(-2, (int)Department.ComputerScience3, 0), model.GetCourseDepartmentBySelectedIndex(0));
         }
 
         //RemoveCourseFromCourseListTest
@@ -148,7 +148,7 @@ namespace CourseSystem.Tests
         public void GetCourseDepartmentBySelectedIndexForSelectedCourseTest()
         {
             model.AddIntoSelectedCourseListAndCourseTab(windowsProgrammingCourseInfo, (int)Department.ComputerScience3);
-            Assert.AreEqual(Tuple.Create((int)Department.SelectedList, (int)Department.ComputerScience3, 0), model.GetCourseDepartmentBySelectedIndex(0));
+            Assert.AreEqual(Tuple.Create(-2, (int)Department.ComputerScience3, 0), model.GetCourseDepartmentBySelectedIndex(0));
         }
 
         //GetCourseDepartmentBySelectedIndexForNotEnabledCourseTest
@@ -156,7 +156,7 @@ namespace CourseSystem.Tests
         public void GetCourseDepartmentBySelectedIndexForNotEnabledCourseTest()
         {
             model.AddIntoNotEnabledCourseListAndCourseTab(windowsProgrammingCourseInfo, (int)Department.ComputerScience3);
-            Assert.AreEqual(Tuple.Create((int)Department.NotEnabledList, (int)Department.ComputerScience3, 0), model.GetCourseDepartmentBySelectedIndex(0));
+            Assert.AreEqual(Tuple.Create(-1, (int)Department.ComputerScience3, 0), model.GetCourseDepartmentBySelectedIndex(0));
         }
 
         //AddIntoSelectedCourseListAndCourseTabTest
@@ -166,7 +166,7 @@ namespace CourseSystem.Tests
             model.AddIntoSelectedCourseListAndCourseTab(windowsProgrammingCourseInfo, (int)Department.ComputerScience3);
             Assert.AreEqual(1, model.GetSelectedCourseList.Count());
             Assert.AreEqual(windowsProgrammingCourseInfo, model.GetSelectedCourseList[0]);
-            Assert.AreEqual(Tuple.Create((int)Department.SelectedList, (int)Department.ComputerScience3, 0), model.GetCourseDepartmentBySelectedIndex(0));
+            Assert.AreEqual(Tuple.Create(-2, (int)Department.ComputerScience3, 0), model.GetCourseDepartmentBySelectedIndex(0));
         }
 
         //AddIntoNotEnabledCourseListAndCourseTabTest
@@ -176,7 +176,7 @@ namespace CourseSystem.Tests
             model.AddIntoNotEnabledCourseListAndCourseTab(windowsProgrammingCourseInfo, (int)Department.ComputerScience3);
             Assert.AreEqual(1, model.GetNotEnabledCourseList.Count());
             Assert.AreEqual(windowsProgrammingCourseInfo, model.GetNotEnabledCourseList[0]);
-            Assert.AreEqual(Tuple.Create((int)Department.NotEnabledList, (int)Department.ComputerScience3, 0), model.GetCourseDepartmentBySelectedIndex(0));
+            Assert.AreEqual(Tuple.Create(-1, (int)Department.ComputerScience3, 0), model.GetCourseDepartmentBySelectedIndex(0));
         }
 
         //AddIntoCourseListTest
@@ -196,7 +196,7 @@ namespace CourseSystem.Tests
             model.AddIntoSelectedCourseListAndCourseTab(windowsProgrammingCourseInfo, (int)Department.ComputerScience3);
             model.RemoveCourseFromSelectedTabDictionary(0);
             model.AddIntoSelectedCourseListAndCourseTab(windowsProgrammingCourseInfo, (int)Department.ElectronicEngineering3);
-            Assert.AreEqual(Tuple.Create((int)Department.SelectedList, (int)Department.ElectronicEngineering3, 1), model.GetCourseDepartmentBySelectedIndex(1));
+            Assert.AreEqual(Tuple.Create(-2, (int)Department.ElectronicEngineering3, 1), model.GetCourseDepartmentBySelectedIndex(1));
         }
 
         //RemoveCourseFromNotEnabledTabDictionaryTest
@@ -206,7 +206,7 @@ namespace CourseSystem.Tests
             model.AddIntoNotEnabledCourseListAndCourseTab(windowsProgrammingCourseInfo, (int)Department.ComputerScience3);
             model.RemoveCourseFromNotEnabledTabDictionary(0);
             model.AddIntoNotEnabledCourseListAndCourseTab(windowsProgrammingCourseInfo, (int)Department.ElectronicEngineering3);
-            Assert.AreEqual(Tuple.Create((int)Department.NotEnabledList, (int)Department.ElectronicEngineering3, 1), model.GetCourseDepartmentBySelectedIndex(1));
+            Assert.AreEqual(Tuple.Create(-1, (int)Department.ElectronicEngineering3, 1), model.GetCourseDepartmentBySelectedIndex(1));
         }
 
         //AddSelectedCourseTest

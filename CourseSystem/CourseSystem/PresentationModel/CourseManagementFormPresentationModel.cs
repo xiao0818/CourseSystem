@@ -17,6 +17,8 @@ namespace CourseSystem
         const string MODIFY_NOT_SUCCESSFUL = "編輯失敗";
         const string ERROR_MESSAGE = "\n此編輯會導致已選課程發生:";
         const int TAB_SET = 2;
+        const int SELECTED_LIST_TAB = -2;
+        const int NOT_ENABLED_TAB = -1;
         public CourseManagementFormPresentationModel(PresentationModel presentationModel)
         {
             _presentationModel = presentationModel;
@@ -169,13 +171,13 @@ namespace CourseSystem
         //SaveModifyCourseMainForEnabled
         public string SaveModifyCourseMainForEnabled(Tuple<int, int, int> department, CourseInfo newCourse, CourseInfo course, int selectedIndex)
         {
-            if (department.Item1 != (int)Department.SelectedList && department.Item1 != (int)Department.NotEnabledList)
+            if (department.Item1 != SELECTED_LIST_TAB && department.Item1 != NOT_ENABLED_TAB)
             {
                 RemoveCourseFromCourseList(department.Item1, department.Item3);
                 AddIntoCourseList(newCourse, selectedIndex);
                 return MODIFY_SUCCESSFUL;
             }
-            else if (department.Item1 == (int)Department.SelectedList)
+            else if (department.Item1 == SELECTED_LIST_TAB)
             {
                 RemoveCourseFromSelectedTabDictionary(department.Item3);
                 _presentationModel.RemoveCourseFromSelectedList(department.Item3);
@@ -188,12 +190,12 @@ namespace CourseSystem
         //SaveModifyCourseMainForNotEnabled
         public string SaveModifyCourseMainForNotEnabled(Tuple<int, int, int> department, CourseInfo newCourse, int selectedIndex)
         {
-            if (department.Item1 != (int)Department.SelectedList && department.Item1 != (int)Department.NotEnabledList)
+            if (department.Item1 != SELECTED_LIST_TAB && department.Item1 != NOT_ENABLED_TAB)
             {
                 RemoveCourseFromCourseList(department.Item1, department.Item3);
                 AddIntoNotEnabledCourseListAndCourseTab(newCourse, selectedIndex);
             }
-            else if (department.Item1 == (int)Department.SelectedList)
+            else if (department.Item1 == SELECTED_LIST_TAB)
             {
                 List<CourseInfo> selectedCourseList = GetSelectedCourseList;
                 RemoveCourseFromSelectedTabDictionary(department.Item3);
@@ -217,7 +219,7 @@ namespace CourseSystem
                 AddIntoSelectedCourseListAndCourseTab(newCourse, listNameIndex / TAB_SET);
                 return MODIFY_SUCCESSFUL;
             }
-            else if (department.Item1 == (int)Department.SelectedList)
+            else if (department.Item1 == SELECTED_LIST_TAB)
                 AddIntoSelectedCourseListAndCourseTab(course, department.Item2);
             else
                 AddIntoNotEnabledCourseListAndCourseTab(course, department.Item2);
@@ -322,12 +324,6 @@ namespace CourseSystem
         public void ChangeClassButton()
         {
             _isAddClassButton = true;
-        }
-
-        //ClickAddClassButton
-        public void ClickAddClassButton()
-        {
-            _isAddClassButton = false;
         }
 
         //ChangedClassNameTextEnable

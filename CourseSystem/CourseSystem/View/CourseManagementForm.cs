@@ -21,7 +21,8 @@ namespace CourseSystem
         const string NOT_ENABLED = "停開";
         const string ADD_NEW_CLASS = "新增班級";
         const string CLASS = "班級";
-        const int COUNT_OF_TAB = 6;
+        const int TAB_SET = 2;
+        const int NOT_ENABLED_TAB = -1;
         public CourseManagementForm(StartUpForm startUpForm, CourseManagementFormPresentationModel courseManagementFormPresentationModel, ImportCourseProgressFormPresentationModel importCourseProgressFormPresentationModel)
         {
             _courseManagementFormPresentationModel = courseManagementFormPresentationModel;
@@ -111,13 +112,13 @@ namespace CourseSystem
         private void LoadClassComboBox(Tuple<int, int, int> department)
         {
             List<string> classNameList = _courseManagementFormPresentationModel.GetClassNameList;
-            _courseClassSelectionComboBox.Text = classNameList[department.Item2 % COUNT_OF_TAB];
+            _courseClassSelectionComboBox.Text = classNameList[department.Item2 % TAB_SET];
         }
 
         //LoadEnabledComboBox
         private void LoadEnabledComboBox(Tuple<int, int, int> department)
         {
-            if (department.Item1 == (int)Department.NotEnabledList)
+            if (department.Item1 == NOT_ENABLED_TAB)
                 _courseEnabledComboBox.Text = NOT_ENABLED;
             else
                 _courseEnabledComboBox.Text = ENABLED;
@@ -412,7 +413,6 @@ namespace CourseSystem
         private void ClickAddClassButton(object sender, EventArgs e)
         {
             _classGroupBox.Text = ADD_NEW_CLASS;
-            _courseManagementFormPresentationModel.ClickAddClassButton();
             _addClassButton.Enabled = _courseManagementFormPresentationModel.IsAddClassButton;
             _classNameTextBox.ReadOnly = false;
             _classNameTextBox.Text = "";
