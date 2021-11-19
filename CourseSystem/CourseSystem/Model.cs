@@ -30,10 +30,10 @@ namespace CourseSystem
             _courseWebList = new List<string>();
             _courseWebList.Add(WEB_COMPUTER_SCIENCE_3);
             _courseWebList.Add(WEB_ELECTRONIC_ENGINEERING_3_A);
-            _courseWebList.Add(WEB_COMPUTER_SCIENCE_1);
-            _courseWebList.Add(WEB_COMPUTER_SCIENCE_2);
-            _courseWebList.Add(WEB_COMPUTER_SCIENCE_4);
-            _courseWebList.Add(WEB_COMPUTER_SCIENCE_5);
+            //_courseWebList.Add(WEB_COMPUTER_SCIENCE_1);
+            //_courseWebList.Add(WEB_COMPUTER_SCIENCE_2);
+            //_courseWebList.Add(WEB_COMPUTER_SCIENCE_4);
+            //_courseWebList.Add(WEB_COMPUTER_SCIENCE_5);
             _courseListCollection = new List<List<CourseInfo>>();
             _courseListCollection.Add(new List<CourseInfo>());
             _courseListCollection.Add(new List<CourseInfo>());
@@ -47,6 +47,11 @@ namespace CourseSystem
         //爬蟲網頁資料
         private List<CourseInfo> GetCourseInfo(string web)
         {
+            if (web == "")
+            {
+                return new List<CourseInfo>();
+            }
+
             HtmlNodeCollection nodeTableRow = GetFirst(web);
             List<CourseInfo> courseInfo = new List<CourseInfo>();
 
@@ -339,8 +344,26 @@ namespace CourseSystem
         }
 
         //AddClassNameList
-        public void AddClassNameList()
+        public void AddClassNameList(string className)
         {
+            switch (className)
+            {
+                case "資工一":
+                    _courseWebList.Add(WEB_COMPUTER_SCIENCE_1);
+                    break;
+                case "資工二":
+                    _courseWebList.Add(WEB_COMPUTER_SCIENCE_2);
+                    break;
+                case "資工四":
+                    _courseWebList.Add(WEB_COMPUTER_SCIENCE_4);
+                    break;
+                case "資工所":
+                    _courseWebList.Add(WEB_COMPUTER_SCIENCE_5);
+                    break;
+                default:
+                    _courseWebList.Add("");
+                    break;
+            }
             _courseListCollection.Add(new List<CourseInfo>());
             ReloadAllForm();
         }

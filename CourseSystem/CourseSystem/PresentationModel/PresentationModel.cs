@@ -322,11 +322,9 @@ namespace CourseSystem
         //AddClassNameList
         public void AddClassNameList(string className)
         {
-            Console.WriteLine("afjfghkhkfk");
-            _model.AddClassNameList();
             if (!_classNameList.Contains(className))
             {
-                Console.WriteLine("oupu");
+                _model.AddClassNameList(className);
                 _classNameList.Add(className);
             }
             ReloadAllForm();

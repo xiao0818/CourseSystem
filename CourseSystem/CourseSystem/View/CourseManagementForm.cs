@@ -484,15 +484,6 @@ namespace CourseSystem
         private void AddClassName(string className)
         {
             _courseManagementFormPresentationModel.AddClassNameList(className);
-            //if (_courseManagementFormPresentationModel.GetClassNameList.Contains(className) == false)
-            //{
-            //    _courseManagementFormPresentationModel.AddClassNameList(className);
-            //    MessageBox.Show("新增成功");
-            //}
-            //else
-            //{
-            //    MessageBox.Show("新增失敗\n" + className + "已存在");
-            //}
         }
 
         //ClickSaveAddClassButton
