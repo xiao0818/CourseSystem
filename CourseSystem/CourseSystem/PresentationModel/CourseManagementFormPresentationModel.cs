@@ -216,7 +216,7 @@ namespace CourseSystem
             string checkedMessage = _presentationModel.CheckCourseList(selectingCourseList, selectedCourseList);
             if (checkedMessage == "")
             {
-                AddIntoSelectedCourseListAndCourseTab(newCourse, listNameIndex / TAB_SET);
+                AddIntoSelectedCourseListAndCourseTab(newCourse, listNameIndex);
                 return MODIFY_SUCCESSFUL;
             }
             else if (department.Item1 == SELECTED_LIST_TAB)
@@ -235,7 +235,7 @@ namespace CourseSystem
             if (department.Item2 % TAB_SET == 0)
                 AddIntoCourseList(newCourse, listNameIndex);
             else
-                return SaveModifyForSelectedCheck(department, newCourse, course, listNameIndex / TAB_SET + 1);
+                return SaveModifyForSelectedCheck(department, newCourse, course, listNameIndex);
             return MODIFY_SUCCESSFUL;
         }
 
@@ -248,7 +248,7 @@ namespace CourseSystem
             if (department.Item2 % TAB_SET == 0)
                 AddIntoNotEnabledCourseListAndCourseTab(newCourse, listNameIndex);
             else
-                AddIntoNotEnabledCourseListAndCourseTab(newCourse, listNameIndex / TAB_SET + 1);
+                AddIntoNotEnabledCourseListAndCourseTab(newCourse, listNameIndex * TAB_SET + 1);
             return MODIFY_SUCCESSFUL;
         }
 

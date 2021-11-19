@@ -251,7 +251,7 @@ namespace CourseSystem
             _notEnabledCourseTabDictionary.Add(course.Number, department);
         }
 
-        //AddInto\CourseList
+        //AddIntoCourseList
         public void AddIntoCourseList(CourseInfo course, int selectedIndex)
         {
             _courseListCollection[selectedIndex].Add(course);

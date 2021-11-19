@@ -25,7 +25,7 @@ namespace CourseSystem.Tests
         [TestMethod()]
         public void ModelTest()
         {
-            Assert.AreEqual(6, model.GetCourseListCollection.Count());
+            Assert.AreEqual(2, model.GetCourseListCollection.Count());
         }
 
         //UpdateCourseListInfoTest
