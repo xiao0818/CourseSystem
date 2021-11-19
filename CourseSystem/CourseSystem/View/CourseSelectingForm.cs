@@ -17,6 +17,7 @@ namespace CourseSystem
         CourseSelectionResultForm _courseSelectionResultForm;
         StartUpForm _startUpForm;
         int _classNameCount;
+        const int TAB_SET = 2;
         public CourseSelectingForm(StartUpForm startUpForm, CourseSelectingFormPresentationModel courseSelectingFormPresentationModel, CourseSelectionResultFormPresentationModel courseSelectionResultFormPresentationModel)
         {
             _courseSelectingFormPresentationModel = courseSelectingFormPresentationModel;
@@ -25,10 +26,10 @@ namespace CourseSystem
             _startUpForm = startUpForm;
             _index = 0;
             InitializeComponent();
-            _courseSelectingFormPresentationModel.UpdateCourseListInfo((int)Department.ComputerScience3 / 2);
-            _courseSelectingFormPresentationModel.UpdateCourseListInfo((int)Department.ElectronicEngineering3 / 2);
-            _selectingTabControl.TabPages.Add(AddTabPage(_courseSelectingFormPresentationModel.GetClassNameList[(int)Department.ComputerScience3 / 2], (int)Department.ComputerScience3 / 2));
-            _selectingTabControl.TabPages.Add(AddTabPage(_courseSelectingFormPresentationModel.GetClassNameList[(int)Department.ElectronicEngineering3 / 2], (int)Department.ElectronicEngineering3 / 2));
+            _courseSelectingFormPresentationModel.UpdateCourseListInfo((int)Department.ComputerScience3 / TAB_SET);
+            _courseSelectingFormPresentationModel.UpdateCourseListInfo((int)Department.ElectronicEngineering3 / TAB_SET);
+            _selectingTabControl.TabPages.Add(AddTabPage(_courseSelectingFormPresentationModel.GetClassNameList[(int)Department.ComputerScience3 / TAB_SET], (int)Department.ComputerScience3 / TAB_SET));
+            _selectingTabControl.TabPages.Add(AddTabPage(_courseSelectingFormPresentationModel.GetClassNameList[(int)Department.ElectronicEngineering3 / TAB_SET], (int)Department.ElectronicEngineering3 / TAB_SET));
             _selectingTabControl.SelectedTab.Controls.Add(this._courseDataGridView);
             _courseSelectionResultForm.Show();
             _courseSelectionResultForm.Close();

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using HtmlAgilityPack;
 
 namespace CourseSystem
@@ -17,52 +16,38 @@ namespace CourseSystem
         const string WEB_COMPUTER_SCIENCE_2 = "https://aps.ntut.edu.tw/course/tw/Subj.jsp?format=-4&year=110&sem=1&code=2550";
         const string WEB_COMPUTER_SCIENCE_4 = "https://aps.ntut.edu.tw/course/tw/Subj.jsp?format=-4&year=110&sem=1&code=2314";
         const string WEB_COMPUTER_SCIENCE_5 = "https://aps.ntut.edu.tw/course/tw/Subj.jsp?format=-4&year=110&sem=1&code=2701";
-        private List<string> _courseWebList;
-        private List<CourseInfo> _selectedCourseList;
-        private List<CourseInfo> _notEnabledCourseList;
-        private Dictionary<string, int> _selectedCourseTabDictionary;
-        private Dictionary<string, int> _notEnabledCourseTabDictionary;
+        private List<string> _courseWebList = new List<string>();
+        private List<CourseInfo> _selectedCourseList = new List<CourseInfo>();
+        private List<CourseInfo> _notEnabledCourseList = new List<CourseInfo>();
+        private Dictionary<string, int> _selectedCourseTabDictionary = new Dictionary<string, int>();
+        private Dictionary<string, int> _notEnabledCourseTabDictionary = new Dictionary<string, int>();
         const string STRUCTURE = "//body/table";
-        private List<List<CourseInfo>> _courseListCollection;
+        private List<List<CourseInfo>> _courseListCollection = new List<List<CourseInfo>>();
         const string COMPUTER_SCIENCE_ONE = "資工一";
         const string COMPUTER_SCIENCE_TWO = "資工二";
         const string COMPUTER_SCIENCE_FOUR = "資工四";
         const string COMPUTER_SCIENCE_FIVE = "資工所";
+        const int TAB_SET = 2;
         public Model()
         {
             _modelChanged += SortAll;
-            _courseWebList = new List<string>();
             _courseWebList.Add(WEB_COMPUTER_SCIENCE_3);
             _courseWebList.Add(WEB_ELECTRONIC_ENGINEERING_3_A);
-            //_courseWebList.Add(WEB_COMPUTER_SCIENCE_1);
-            //_courseWebList.Add(WEB_COMPUTER_SCIENCE_2);
-            //_courseWebList.Add(WEB_COMPUTER_SCIENCE_4);
-            //_courseWebList.Add(WEB_COMPUTER_SCIENCE_5);
-            _courseListCollection = new List<List<CourseInfo>>();
             _courseListCollection.Add(new List<CourseInfo>());
             _courseListCollection.Add(new List<CourseInfo>());
-            _selectedCourseList = new List<CourseInfo>();
-            _notEnabledCourseList = new List<CourseInfo>();
             SortAll();
-            _selectedCourseTabDictionary = new Dictionary<string, int>();
-            _notEnabledCourseTabDictionary = new Dictionary<string, int>();
         }
 
         //爬蟲網頁資料
         private List<CourseInfo> GetCourseInfo(string web)
         {
             if (web == "")
-            {
                 return new List<CourseInfo>();
-            }
-
             HtmlNodeCollection nodeTableRow = GetFirst(web);
             List<CourseInfo> courseInfo = new List<CourseInfo>();
-
             foreach (var node in nodeTableRow)
             {
                 HtmlNodeCollection nodeTableDatas = node.ChildNodes;
-                // 移除 #text
                 nodeTableDatas.RemoveAt(0);
                 courseInfo.Add(GetNewCourseInfo(nodeTableDatas));
             }
@@ -75,17 +60,11 @@ namespace CourseSystem
             HtmlWeb webClient = new HtmlWeb();
             webClient.OverrideEncoding = Encoding.Default;
             HtmlDocument document = webClient.Load(web);
-
             HtmlNode nodeTable = document.DocumentNode.SelectSingleNode(STRUCTURE);
             HtmlNodeCollection nodeTableRow = nodeTable.ChildNodes;
-
-            // 移除 tbody
             nodeTableRow.RemoveAt(0);
-            // 移除 <tr>資工三
             nodeTableRow.RemoveAt(0);
-            // 移除 table header
             nodeTableRow.RemoveAt(0);
-            // 移除 <tr>小計
             nodeTableRow.RemoveAt(GetCount(nodeTableRow));
             return nodeTableRow;
         }
@@ -99,10 +78,7 @@ namespace CourseSystem
         //GetNewCourseInfo
         private CourseInfo GetNewCourseInfo(HtmlNodeCollection nodeTableDatas)
         {
-            return new CourseInfo(
-                        nodeTableDatas[(int)CourseInfoHeaderText.Number].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.Name].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.Stage].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.Credit].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.Hour].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.CourseType].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.Teacher].InnerText.Trim(),
-                        nodeTableDatas[(int)CourseInfoHeaderText.ClassTime0].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.ClassTime1].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.ClassTime2].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.ClassTime3].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.ClassTime4].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.ClassTime5].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.ClassTime6].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.Classroom].InnerText.Trim(),
-                        nodeTableDatas[(int)CourseInfoHeaderText.NumberOfStudent].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.NumberOfDropStudent].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.TeachingAssistant].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.Language].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.Outline].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.Note].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.AttachStudent].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.Experiment].InnerText.Trim());
+            return new CourseInfo(nodeTableDatas[(int)CourseInfoHeaderText.Number].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.Name].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.Stage].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.Credit].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.Hour].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.CourseType].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.Teacher].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.ClassTime0].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.ClassTime1].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.ClassTime2].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.ClassTime3].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.ClassTime4].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.ClassTime5].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.ClassTime6].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.Classroom].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.NumberOfStudent].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.NumberOfDropStudent].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.TeachingAssistant].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.Language].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.Outline].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.Note].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.AttachStudent].InnerText.Trim(), nodeTableDatas[(int)CourseInfoHeaderText.Experiment].InnerText.Trim());
         }
 
         //UpdateCourseListInfo
@@ -116,9 +92,7 @@ namespace CourseSystem
                 for (int index = 0; index < numberOfNewCourseList; index++)
                 {
                     if (_courseListCollection[departmentIndex][courseIndex].Number == newCourseList[numberOfNewCourseList - index - 1].Number)
-                    {
                         newCourseList.RemoveAt(numberOfNewCourseList - index - 1);
-                    }
                 }
             }
             newCourseList = DeleteDuplicateCourse(newCourseList, departmentIndex, _selectedCourseTabDictionary);
@@ -135,9 +109,7 @@ namespace CourseSystem
                 if (tabDictionary.ContainsKey(GetNumber(newCourseList[numberOfNewCourseList - index - 1])))
                 {
                     if (tabDictionary[GetNumber(newCourseList[numberOfNewCourseList - index - 1])] == departmentIndex)
-                    {
                         newCourseList.RemoveAt(numberOfNewCourseList - index - 1);
-                    }
                 }
             }
             return newCourseList;
@@ -317,9 +289,7 @@ namespace CourseSystem
         public void NotifyObserver()
         {
             if (_modelChanged != null)
-            {
                 _modelChanged();
-            }
         }
 
         //GetClassListForSelectedIndex
@@ -329,17 +299,13 @@ namespace CourseSystem
             courseList = courseList.Union(_courseListCollection[selectedIndex]).ToList();
             for (int index = 0; index < _selectedCourseList.Count(); index++)
             {
-                if (_selectedCourseTabDictionary[GetNumber(_selectedCourseList[index])] == selectedIndex * 2)
-                {
+                if (_selectedCourseTabDictionary[GetNumber(_selectedCourseList[index])] == selectedIndex * TAB_SET)
                     courseList.Add(_selectedCourseList[index]);
-                }
             }
             for (int index = 0; index < _notEnabledCourseList.Count(); index++)
             {
-                if (_notEnabledCourseTabDictionary[GetNumber(_notEnabledCourseList[index])] == selectedIndex * 2 || _notEnabledCourseTabDictionary[GetNumber(_notEnabledCourseList[index])] == selectedIndex * 2 + 1)
-                {
+                if (_notEnabledCourseTabDictionary[GetNumber(_notEnabledCourseList[index])] == selectedIndex * TAB_SET || _notEnabledCourseTabDictionary[GetNumber(_notEnabledCourseList[index])] == selectedIndex * TAB_SET + 1)
                     courseList.Add(_notEnabledCourseList[index]);
-                }
             }
             return courseList;
         }
@@ -348,13 +314,9 @@ namespace CourseSystem
         public void AddClassNameList(string className)
         {
             if (className == COMPUTER_SCIENCE_ONE || className == COMPUTER_SCIENCE_TWO || className == COMPUTER_SCIENCE_FOUR || className == COMPUTER_SCIENCE_FIVE)
-            {
                 AddClassNameListWithKnownName(className);
-            }
             else
-            {
                 _courseWebList.Add("");
-            }
             _courseListCollection.Add(new List<CourseInfo>());
             ReloadAllForm();
         }
@@ -362,21 +324,14 @@ namespace CourseSystem
         //AddClassNameListWithKnownName
         private void AddClassNameListWithKnownName(string className)
         {
-            switch (className)
-            {
-                case COMPUTER_SCIENCE_ONE:
-                    _courseWebList.Add(WEB_COMPUTER_SCIENCE_1);
-                    break;
-                case COMPUTER_SCIENCE_TWO:
-                    _courseWebList.Add(WEB_COMPUTER_SCIENCE_2);
-                    break;
-                case COMPUTER_SCIENCE_FOUR:
-                    _courseWebList.Add(WEB_COMPUTER_SCIENCE_4);
-                    break;
-                case COMPUTER_SCIENCE_FIVE:
-                    _courseWebList.Add(WEB_COMPUTER_SCIENCE_5);
-                    break;
-            }
+            if (className == COMPUTER_SCIENCE_ONE)
+                _courseWebList.Add(WEB_COMPUTER_SCIENCE_1);
+            else if (className == COMPUTER_SCIENCE_TWO)
+                _courseWebList.Add(WEB_COMPUTER_SCIENCE_2);
+            else if (className == COMPUTER_SCIENCE_FOUR)
+                _courseWebList.Add(WEB_COMPUTER_SCIENCE_4);
+            else if (className == COMPUTER_SCIENCE_FIVE)
+                _courseWebList.Add(WEB_COMPUTER_SCIENCE_5);
         }
     }
 }

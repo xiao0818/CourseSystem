@@ -8,19 +8,19 @@ namespace CourseSystem
         public event PresentationModelChangedEventHandler _presentationModelChanged;
         public delegate void PresentationModelChangedEventHandler();
         PresentationModel _presentationModel;
-        bool _isSaveCourseDataButton;
-        bool _isAddCourseDataButton;
-        bool _isLoadComputerScienceCourseButton;
+        bool _isSaveCourseDataButton = false;
+        bool _isAddCourseDataButton = true;
+        bool _isLoadComputerScienceCourseButton = true;
+        bool _isAddClassButton = true;
+        bool _isSaveAddClassButton = false;
         const string MODIFY_SUCCESSFUL = "編輯成功";
         const string MODIFY_NOT_SUCCESSFUL = "編輯失敗";
         const string ERROR_MESSAGE = "\n此編輯會導致已選課程發生:";
+        const int TAB_SET = 2;
         public CourseManagementFormPresentationModel(PresentationModel presentationModel)
         {
             _presentationModel = presentationModel;
             _presentationModel._presentationModelChanged += ReloadCourseManagementForm;
-            _isAddCourseDataButton = true;
-            _isSaveCourseDataButton = false;
-            _isLoadComputerScienceCourseButton = true;
         }
 
         //Get
@@ -95,14 +95,6 @@ namespace CourseSystem
             _presentationModel.RemoveCourseFromCourseList(classIndex, index);
         }
 
-        //CheckCourseList
-        private string CheckCourseList(CourseInfo selectedCourse, List<CourseInfo> selectedCourseList)
-        {
-            List<CourseInfo> selectingCourseList = new List<CourseInfo>();
-            selectingCourseList.Add(selectedCourse);
-            return _presentationModel.CheckCourseList(selectingCourseList, selectedCourseList);
-        }
-
         //RemoveCourseFromSelectedTabDictionary
         private void RemoveCourseFromSelectedTabDictionary(int index)
         {
@@ -145,9 +137,8 @@ namespace CourseSystem
         //ResetAllButton
         public void ResetAllButton()
         {
-            _isAddCourseDataButton = true;
+            _isAddCourseDataButton = _isLoadComputerScienceCourseButton = true;
             _isSaveCourseDataButton = false;
-            _isLoadComputerScienceCourseButton = true;
         }
 
         //SelectListBox
@@ -161,20 +152,17 @@ namespace CourseSystem
         public void ClickAddButton()
         {
             _isAddCourseDataButton = false;
-            _isSaveCourseDataButton = false;
         }
 
         //ChangeTextSuccessfully
         public void ChangeContentEnabled()
         {
-            _isAddCourseDataButton = false;
             _isSaveCourseDataButton = true;
         }
 
         //ChangeTextUnsuccessfully
         public void ChangeContentNotEnabled()
         {
-            _isAddCourseDataButton = false;
             _isSaveCourseDataButton = false;
         }
 
@@ -183,16 +171,18 @@ namespace CourseSystem
         {
             if (department.Item1 != (int)Department.SelectedList && department.Item1 != (int)Department.NotEnabledList)
             {
-                return SaveModifyCoursePartOne(department, newCourse, selectedIndex);
+                RemoveCourseFromCourseList(department.Item1, department.Item3);
+                AddIntoCourseList(newCourse, selectedIndex);
+                return MODIFY_SUCCESSFUL;
             }
             else if (department.Item1 == (int)Department.SelectedList)
             {
-                return SaveModifyCoursePartTwo(department, newCourse, course, selectedIndex);
+                RemoveCourseFromSelectedTabDictionary(department.Item3);
+                _presentationModel.RemoveCourseFromSelectedList(department.Item3);
+                return SaveModifyForSelectedCheck(department, newCourse, course, selectedIndex);
             }
             else
-            {
                 return SaveModifyCoursePartThree(department, newCourse, course, selectedIndex);
-            }
         }
 
         //SaveModifyCourseMainForNotEnabled
@@ -200,53 +190,38 @@ namespace CourseSystem
         {
             if (department.Item1 != (int)Department.SelectedList && department.Item1 != (int)Department.NotEnabledList)
             {
-                return SaveModifyCoursePartFour(department, newCourse, selectedIndex);
+                RemoveCourseFromCourseList(department.Item1, department.Item3);
+                AddIntoNotEnabledCourseListAndCourseTab(newCourse, selectedIndex);
             }
             else if (department.Item1 == (int)Department.SelectedList)
             {
-                return SaveModifyCoursePartFive(department, newCourse, selectedIndex);
+                List<CourseInfo> selectedCourseList = GetSelectedCourseList;
+                RemoveCourseFromSelectedTabDictionary(department.Item3);
+                selectedCourseList.RemoveAt(department.Item3);
+                AddIntoNotEnabledCourseListAndCourseTab(newCourse, selectedIndex / TAB_SET + 1);
             }
             else
-            {
                 return SaveModifyCoursePartSix(department, newCourse, selectedIndex);
-            }
+            return MODIFY_SUCCESSFUL;
         }
 
         //SaveModifyForSelectedCheck
         private string SaveModifyForSelectedCheck(Tuple<int, int, int> department, CourseInfo newCourse, CourseInfo course, int listNameIndex)
         {
             List<CourseInfo> selectedCourseList = GetSelectedCourseList;
-            string checkedMessage = CheckCourseList(newCourse, selectedCourseList);
+            List<CourseInfo> selectingCourseList = new List<CourseInfo>();
+            selectingCourseList.Add(newCourse);
+            string checkedMessage = _presentationModel.CheckCourseList(selectingCourseList, selectedCourseList);
             if (checkedMessage == "")
             {
-                AddIntoSelectedCourseListAndCourseTab(newCourse, listNameIndex / 2);
+                AddIntoSelectedCourseListAndCourseTab(newCourse, listNameIndex / TAB_SET);
                 return MODIFY_SUCCESSFUL;
             }
             else if (department.Item1 == (int)Department.SelectedList)
-            {
                 AddIntoSelectedCourseListAndCourseTab(course, department.Item2);
-            }
             else
-            {
                 AddIntoNotEnabledCourseListAndCourseTab(course, department.Item2);
-            }
             return MODIFY_NOT_SUCCESSFUL + ERROR_MESSAGE + checkedMessage;
-        }
-
-        //SaveModifyCoursePartOne
-        private string SaveModifyCoursePartOne(Tuple<int, int, int> department, CourseInfo newCourse, int listNameIndex)
-        {
-            RemoveCourseFromCourseList(department.Item1, department.Item3);
-            AddIntoCourseList(newCourse, listNameIndex);
-            return MODIFY_SUCCESSFUL;
-        }
-
-        //SaveModifyCoursePartTwo
-        private string SaveModifyCoursePartTwo(Tuple<int, int, int> department, CourseInfo newCourse, CourseInfo course, int listNameIndex)
-        {
-            RemoveCourseFromSelectedTabDictionary(department.Item3);
-            _presentationModel.RemoveCourseFromSelectedList(department.Item3);
-            return SaveModifyForSelectedCheck(department, newCourse, course, listNameIndex);
         }
 
         //SaveModifyCoursePartThree
@@ -255,32 +230,10 @@ namespace CourseSystem
             List<CourseInfo> notEnabledCourseList = GetNotEnabledCourseList;
             RemoveCourseFromNotEnabledTabDictionary(department.Item3);
             notEnabledCourseList.RemoveAt(department.Item3);
-            if (department.Item2 % 2 == 0)
-            {
+            if (department.Item2 % TAB_SET == 0)
                 AddIntoCourseList(newCourse, listNameIndex);
-                return MODIFY_SUCCESSFUL;
-            }
             else
-            {
-                return SaveModifyForSelectedCheck(department, newCourse, course, listNameIndex / 2 + 1);
-            }
-        }
-
-        //SaveModifyCoursePartFour
-        private string SaveModifyCoursePartFour(Tuple<int, int, int> department, CourseInfo newCourse, int listNameIndex)
-        {
-            RemoveCourseFromCourseList(department.Item1, department.Item3);
-            AddIntoNotEnabledCourseListAndCourseTab(newCourse, listNameIndex);
-            return MODIFY_SUCCESSFUL;
-        }
-
-        //SaveModifyCoursePartFive
-        private string SaveModifyCoursePartFive(Tuple<int, int, int> department, CourseInfo newCourse, int listNameIndex)
-        {
-            List<CourseInfo> selectedCourseList = GetSelectedCourseList;
-            RemoveCourseFromSelectedTabDictionary(department.Item3);
-            selectedCourseList.RemoveAt(department.Item3);
-            AddIntoNotEnabledCourseListAndCourseTab(newCourse, listNameIndex / 2 + 1);
+                return SaveModifyForSelectedCheck(department, newCourse, course, listNameIndex / TAB_SET + 1);
             return MODIFY_SUCCESSFUL;
         }
 
@@ -290,14 +243,10 @@ namespace CourseSystem
             List<CourseInfo> notEnabledCourseList = GetNotEnabledCourseList;
             RemoveCourseFromNotEnabledTabDictionary(department.Item3);
             notEnabledCourseList.RemoveAt(department.Item3);
-            if (department.Item2 % 2 == 0)
-            {
+            if (department.Item2 % TAB_SET == 0)
                 AddIntoNotEnabledCourseListAndCourseTab(newCourse, listNameIndex);
-            }
             else
-            {
-                AddIntoNotEnabledCourseListAndCourseTab(newCourse, listNameIndex / 2 + 1);
-            }
+                AddIntoNotEnabledCourseListAndCourseTab(newCourse, listNameIndex / TAB_SET + 1);
             return MODIFY_SUCCESSFUL;
         }
 
@@ -329,9 +278,7 @@ namespace CourseSystem
         public void NotifyObserver()
         {
             if (_presentationModelChanged != null)
-            {
                 _presentationModelChanged();
-            }
         }
 
         //GetClassListForSelectedIndex
@@ -344,6 +291,55 @@ namespace CourseSystem
         public void AddClassNameList(string className)
         {
             _presentationModel.AddClassNameList(className);
+        }
+
+        //IsAddClassButton
+        public bool IsAddClassButton
+        {
+            get
+            {
+                return _isAddClassButton;
+            }
+        }
+
+        //IsAddCourseDataButton
+        public bool IsSaveAddClassButton
+        {
+            get
+            {
+                return _isSaveAddClassButton;
+            }
+        }
+
+        //ResetClassButton
+        public void ResetClassButton()
+        {
+            _isAddClassButton = true;
+            _isSaveAddClassButton = false;
+        }
+
+        //ChangeClassButton
+        public void ChangeClassButton()
+        {
+            _isAddClassButton = true;
+        }
+
+        //ClickAddClassButton
+        public void ClickAddClassButton()
+        {
+            _isAddClassButton = false;
+        }
+
+        //ChangedClassNameTextEnable
+        public void ChangedClassNameTextEnable()
+        {
+            _isSaveAddClassButton = true;
+        }
+
+        //ChangedClassNameTextNotEnable
+        public void ChangedClassNameTextNotEnable()
+        {
+            _isSaveAddClassButton = false;
         }
     }
 }
