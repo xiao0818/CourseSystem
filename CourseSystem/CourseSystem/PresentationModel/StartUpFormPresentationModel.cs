@@ -2,13 +2,11 @@
 {
     public class StartUpFormPresentationModel
     {
-        bool _isCourseSelectingFormButtonEnabled;
-        bool _isCourseManagementFormButtonEnabled;
+        bool _isCourseSelectingFormButtonEnabled = true;
+        bool _isCourseManagementFormButtonEnabled = true;
 
         public StartUpFormPresentationModel()
         {
-            _isCourseSelectingFormButtonEnabled = true;
-            _isCourseManagementFormButtonEnabled = true;
         }
 
         //IsCourseSelectionButtonEnabled

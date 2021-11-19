@@ -12,7 +12,7 @@ namespace CourseSystem
 {
     public partial class CourseSelectingForm : Form
     {
-        int _index;
+        int _index = 0;
         CourseSelectingFormPresentationModel _courseSelectingFormPresentationModel;
         CourseSelectionResultForm _courseSelectionResultForm;
         StartUpForm _startUpForm;
@@ -24,7 +24,6 @@ namespace CourseSystem
             _courseSelectionResultForm = new CourseSelectionResultForm(this, courseSelectionResultFormPresentationModel);
             _courseSelectingFormPresentationModel._presentationModelChanged += LoadForm;
             _startUpForm = startUpForm;
-            _index = 0;
             InitializeComponent();
             _courseSelectingFormPresentationModel.UpdateCourseListInfo((int)Department.ComputerScience3 / TAB_SET);
             _courseSelectingFormPresentationModel.UpdateCourseListInfo((int)Department.ElectronicEngineering3 / TAB_SET);
@@ -68,9 +67,7 @@ namespace CourseSystem
                 _classNameCount = GetClassNameListCount;
             }
             else
-            {
                 LoadNewTab();
-            }
             _courseDataGridView.Rows.Clear();
             List<CourseInfo> courseList = _courseSelectingFormPresentationModel.GetCourseList(_index);
             LoadDataGridView(courseList, _courseDataGridView);
@@ -98,9 +95,7 @@ namespace CourseSystem
             {
                 TabPage tabpage = AddTabPage(className, GetClassNameListCount - 1);
                 if (!_selectingTabControl.TabPages.Contains(tabpage))
-                {
                     _selectingTabControl.TabPages.Add(tabpage);
-                }
             }
             _courseSelectingFormPresentationModel.UpdateCourseListInfo(GetClassNameIndex(className));
             _courseSelectingFormPresentationModel.WaitSeconds(1);
@@ -165,13 +160,9 @@ namespace CourseSystem
             if (e.RowIndex >= 0 && e.ColumnIndex == 0)
             {
                 if (Convert.ToBoolean(_courseDataGridView.Rows[e.RowIndex].Cells[0].Value) == true)
-                {
                     _courseDataGridView.Rows[e.RowIndex].Cells[0].Value = false;
-                }
                 else
-                {
                     _courseDataGridView.Rows[e.RowIndex].Cells[0].Value = true;
-                }
             }
         }
 
@@ -254,9 +245,7 @@ namespace CourseSystem
                 
             }
             else
-            {
                 MessageBox.Show("加選失敗" + checkedMessage);
-            }
         }
 
         //ResetCheckButton()
@@ -299,14 +288,10 @@ namespace CourseSystem
                 foreach (TabPage tabPage in _selectingTabControl.TabPages)
                 {
                     if (tabText == tabPage.Text)
-                    {
                         count++;
-                    }
                 }
                 if (count == 0)
-                {
                     _selectingTabControl.TabPages.Add(AddTabPage(_courseSelectingFormPresentationModel.GetClassNameList[_courseSelectingFormPresentationModel.GetClassNameList.Count() - 1], _courseSelectingFormPresentationModel.GetClassNameList.Count() - 1));
-                }
                 _classNameCount = _courseSelectingFormPresentationModel.GetClassNameList.Count();
             }
         }

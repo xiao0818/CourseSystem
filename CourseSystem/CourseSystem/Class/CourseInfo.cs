@@ -62,9 +62,7 @@ namespace CourseSystem
                     const char SEPARATOR = ' ';
                     string[] classTimeChars = classString.Split(SEPARATOR);
                     foreach (string classTimeChar in classTimeChars)
-                    {
                         classTime.Add(new Tuple<int, string>(day, classTimeChar));
-                    }
                 }
             }
             return classTime;

@@ -35,9 +35,7 @@ namespace CourseSystem
             _courseResultDataGridView.Rows.Clear();
             List<DataGridViewRow> rows = GetResultDataGridViewRowList();
             foreach (DataGridViewRow row in rows)
-            {
                 _courseResultDataGridView.Rows.Add(row);
-            }
         }
 
         //GetResultDataGridViewRowList
@@ -76,9 +74,7 @@ namespace CourseSystem
         private void ClickCellContentCourseResultDataGridView(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && e.ColumnIndex == 0)
-            {
                 _courseSelectionResultFormPresentationModel.RemoveCourseFromSelectionResult(e.RowIndex);
-            }
             UpdateAllForm();
         }
 

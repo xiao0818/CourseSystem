@@ -10,7 +10,7 @@ namespace CourseSystem
         ImportCourseProgressFormPresentationModel _importCourseProgressFormPresentationModel;
         CourseManagementFormPresentationModel _courseManagementFormPresentationModel;
         StartUpForm _startUpForm;
-        int _index;
+        int _index = 0;
         const int DAY_PER_WEEK = 7;
         const string SPACE = " ";
         const string CLASS_TIME_CHAR = "1234N56789ABCD";
@@ -24,7 +24,6 @@ namespace CourseSystem
         const int COUNT_OF_TAB = 6;
         public CourseManagementForm(StartUpForm startUpForm, CourseManagementFormPresentationModel courseManagementFormPresentationModel, ImportCourseProgressFormPresentationModel importCourseProgressFormPresentationModel)
         {
-            _index = 0;
             _courseManagementFormPresentationModel = courseManagementFormPresentationModel;
             _startUpForm = startUpForm;
             _importCourseProgressFormPresentationModel = importCourseProgressFormPresentationModel;

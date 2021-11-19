@@ -15,14 +15,13 @@ namespace CourseSystem
         List<string> _classNameList = new List<string>();
         const string COMPUTER_SCIENCE_3_NAME = "資工三";
         const string ELECTRONIC_ENGINEERING_3_NAME = "電子三甲";
-        bool _isLoadComputerScienceCourseTab;
+        bool _isLoadComputerScienceCourseTab = false;
         public PresentationModel(Model model)
         {
             _classNameList.Add(COMPUTER_SCIENCE_3_NAME);
             _classNameList.Add(ELECTRONIC_ENGINEERING_3_NAME);
             _model = model;
             _model._modelChanged += ReloadForm;
-            _isLoadComputerScienceCourseTab = false;
         }
 
         //UpdateCourseListInfo
@@ -152,14 +151,10 @@ namespace CourseSystem
                 foreach (CourseInfo selectedCourse in selectedCourseList)
                 {
                     if (GetNumber(checkedCourse) == GetNumber(selectedCourse))
-                    {
                         count++;
-                    }
                 }
                 if (count > 1)
-                {
                     sameNumberMessage = sameNumberMessage + FRONT_QUOTE + checkedCourse.Number + SPACE + checkedCourse.Name + BACK_QUOTE;
-                }
             }
             return sameNumberMessage;
         }
@@ -173,14 +168,10 @@ namespace CourseSystem
                 foreach (CourseInfo selectedCourse in selectedCourseList)
                 {
                     if (GetName(checkedCourse) == GetName(selectedCourse))
-                    {
                         count++;
-                    }
                 }
                 if (count > 1)
-                {
                     sameNameMessage = sameNameMessage + FRONT_QUOTE + checkedCourse.Number + SPACE + checkedCourse.Name + BACK_QUOTE;
-                }
             }
             return sameNameMessage;
         }
@@ -194,14 +185,10 @@ namespace CourseSystem
                 foreach (CourseInfo selectedCourse in selectedCourseList)
                 {
                     if (checkedCourse.GetCourseClassTime().Intersect(selectedCourse.GetCourseClassTime()).Count() > 0)
-                    {
                         count++;
-                    }
                 }
                 if (count > 1)
-                {
                     sameTimeMessage = sameTimeMessage + FRONT_QUOTE + checkedCourse.Number + SPACE + checkedCourse.Name + BACK_QUOTE;
-                }
             }
             return sameTimeMessage;
         }
@@ -280,14 +267,10 @@ namespace CourseSystem
         public void WaitSeconds(int second)
         {
             if (second < 1)
-            {
                 return;
-            }
             DateTime desired = DateTime.Now.AddSeconds(second);
             while (DateTime.Now < desired)
-            {
                 System.Windows.Forms.Application.DoEvents();
-            }
         }
 
         //ReloadForm
