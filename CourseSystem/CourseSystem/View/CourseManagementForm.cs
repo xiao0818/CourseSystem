@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CourseSystem
@@ -25,6 +19,7 @@ namespace CourseSystem
         const string ADD_SUCCESSFUL = "新增成功";
         const string ENABLED = "開課";
         const string NOT_ENABLED = "停開";
+        const string ADD_NEW_CLASS = "新增班級";
         const int COUNT_OF_TAB = 6;
         public CourseManagementForm(StartUpForm startUpForm, CourseManagementFormPresentationModel courseManagementFormPresentationModel, ImportCourseProgressFormPresentationModel importCourseProgressFormPresentationModel)
         {
@@ -207,10 +202,6 @@ namespace CourseSystem
             else
             {
                 LoadClassListBox();
-                _classNameTextBox.Text = "";
-                _courseInClassListBox.Items.Clear();
-                _courseInClassListBox.ClearSelected();
-                _classListBox.ClearSelected();
             }
         }
 
@@ -453,6 +444,10 @@ namespace CourseSystem
             {
                 _classListBox.Items.Add(className);
             }
+            _classNameTextBox.Text = "";
+            _courseInClassListBox.Items.Clear();
+            _courseInClassListBox.ClearSelected();
+            _classListBox.ClearSelected();
         }
 
         //ChangedSelectedIndexClassListBox
@@ -495,7 +490,7 @@ namespace CourseSystem
         //ClickAddClassButton
         private void ClickAddClassButton(object sender, EventArgs e)
         {
-            _classGroupBox.Text = "新增班級";
+            _classGroupBox.Text = ADD_NEW_CLASS;
             _addClassButton.Enabled = false;
             _saveAddClassButton.Enabled = false;
             _classNameTextBox.ReadOnly = false;
@@ -503,10 +498,10 @@ namespace CourseSystem
             _courseInClassListBox.Items.Clear();
         }
 
-        //TextChangedClassNameTextBox
-        private void TextChangedClassNameTextBox(object sender, EventArgs e)
+        //ChangedTextClassNameTextBox
+        private void ChangedTextClassNameTextBox(object sender, EventArgs e)
         {
-            if (_classNameTextBox.Text != "" && _classGroupBox.Text == "新增班級" && !_courseManagementFormPresentationModel.GetClassNameList.Contains(_classNameTextBox.Text))
+            if (_classNameTextBox.Text != "" && _classGroupBox.Text == ADD_NEW_CLASS && !_courseManagementFormPresentationModel.GetClassNameList.Contains(_classNameTextBox.Text))
             {
                 _saveAddClassButton.Enabled = true;
             }

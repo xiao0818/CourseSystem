@@ -24,6 +24,10 @@ namespace CourseSystem
         private Dictionary<string, int> _notEnabledCourseTabDictionary;
         const string STRUCTURE = "//body/table";
         private List<List<CourseInfo>> _courseListCollection;
+        const string COMPUTER_SCIENCE_ONE = "資工一";
+        const string COMPUTER_SCIENCE_TWO = "資工二";
+        const string COMPUTER_SCIENCE_FOUR = "資工四";
+        const string COMPUTER_SCIENCE_FIVE = "資工所";
         public Model()
         {
             _modelChanged += SortAll;
@@ -322,10 +326,7 @@ namespace CourseSystem
         public List<CourseInfo> GetClassListForSelectedIndex(int selectedIndex)
         {
             List<CourseInfo> courseList = new List<CourseInfo>();
-            foreach (CourseInfo course in _courseListCollection[selectedIndex])
-            {
-                courseList.Add(course);
-            }
+            courseList = courseList.Union(_courseListCollection[selectedIndex]).ToList();
             for (int index = 0; index < _selectedCourseList.Count(); index++)
             {
                 if (_selectedCourseTabDictionary[GetNumber(_selectedCourseList[index])] == selectedIndex * 2)
@@ -346,26 +347,36 @@ namespace CourseSystem
         //AddClassNameList
         public void AddClassNameList(string className)
         {
-            switch (className)
+            if (className == COMPUTER_SCIENCE_ONE || className == COMPUTER_SCIENCE_TWO || className == COMPUTER_SCIENCE_FOUR || className == COMPUTER_SCIENCE_FIVE)
             {
-                case "資工一":
-                    _courseWebList.Add(WEB_COMPUTER_SCIENCE_1);
-                    break;
-                case "資工二":
-                    _courseWebList.Add(WEB_COMPUTER_SCIENCE_2);
-                    break;
-                case "資工四":
-                    _courseWebList.Add(WEB_COMPUTER_SCIENCE_4);
-                    break;
-                case "資工所":
-                    _courseWebList.Add(WEB_COMPUTER_SCIENCE_5);
-                    break;
-                default:
-                    _courseWebList.Add("");
-                    break;
+                AddClassNameListWithKnownName(className);
+            }
+            else
+            {
+                _courseWebList.Add("");
             }
             _courseListCollection.Add(new List<CourseInfo>());
             ReloadAllForm();
+        }
+
+        //AddClassNameListWithKnownName
+        private void AddClassNameListWithKnownName(string className)
+        {
+            switch (className)
+            {
+                case COMPUTER_SCIENCE_ONE:
+                    _courseWebList.Add(WEB_COMPUTER_SCIENCE_1);
+                    break;
+                case COMPUTER_SCIENCE_TWO:
+                    _courseWebList.Add(WEB_COMPUTER_SCIENCE_2);
+                    break;
+                case COMPUTER_SCIENCE_FOUR:
+                    _courseWebList.Add(WEB_COMPUTER_SCIENCE_4);
+                    break;
+                case COMPUTER_SCIENCE_FIVE:
+                    _courseWebList.Add(WEB_COMPUTER_SCIENCE_5);
+                    break;
+            }
         }
     }
 }

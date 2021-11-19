@@ -64,7 +64,7 @@ namespace CourseSystem
                 LoadComputerScienceCourseTab("資工二");
                 LoadComputerScienceCourseTab("資工四");
                 LoadComputerScienceCourseTab("資工所");
-                _classNameCount = _courseSelectingFormPresentationModel.GetClassNameList.Count();
+                _classNameCount = GetClassNameListCount;
             }
             else
             {
@@ -73,6 +73,15 @@ namespace CourseSystem
             _courseDataGridView.Rows.Clear();
             List<CourseInfo> courseList = _courseSelectingFormPresentationModel.GetCourseList(_index);
             LoadDataGridView(courseList, _courseDataGridView);
+        }
+
+        //GetClassNameListCount
+        private int GetClassNameListCount
+        {
+            get
+            {
+                return _courseSelectingFormPresentationModel.GetClassNameList.Count();
+            }
         }
 
         //FinishLoadComputerScienceCourseTabButton
@@ -84,36 +93,23 @@ namespace CourseSystem
         //LoadComputerScienceCourseTab
         private void LoadComputerScienceCourseTab(string className)
         {
-            
-            if (_classNameCount != _courseSelectingFormPresentationModel.GetClassNameList.Count)
+            if (_classNameCount != GetClassNameListCount)
             {
-                int count = 0;
-                string tabText = className;
-                foreach (TabPage tabPage in _selectingTabControl.TabPages)
+                TabPage tabpage = AddTabPage(className, GetClassNameListCount - 1);
+                if (!_selectingTabControl.TabPages.Contains(tabpage))
                 {
-                    if (tabText == tabPage.Text)
-                    {
-                        count++;
-                    }
+                    _selectingTabControl.TabPages.Add(tabpage);
                 }
-                if (count == 0)
-                {
-                    _selectingTabControl.TabPages.Add(AddTabPage(_courseSelectingFormPresentationModel.GetClassNameList[_courseSelectingFormPresentationModel.GetClassNameList.Count() - 1], _courseSelectingFormPresentationModel.GetClassNameList.Count() - 1));
-                }
-                _classNameCount = _courseSelectingFormPresentationModel.GetClassNameList.Count();
             }
-            int departmentIndex = 0;
-            foreach (string name in _courseSelectingFormPresentationModel.GetClassNameList)
-            {
-                if(className == name)
-                {
-                    break;
-                }
-                departmentIndex++;
-            }
-            _courseSelectingFormPresentationModel.UpdateCourseListInfo(departmentIndex);
+            _courseSelectingFormPresentationModel.UpdateCourseListInfo(GetClassNameIndex(className));
             _courseSelectingFormPresentationModel.WaitSeconds(1);
             UpdateAllForm();
+        }
+
+        //GetClassNameIndex
+        private int GetClassNameIndex(string className)
+        {
+            return _courseSelectingFormPresentationModel.GetClassNameList.IndexOf(className);
         }
 
         //LoadDataGridView
@@ -295,10 +291,10 @@ namespace CourseSystem
         //load
         private void LoadNewTab()
         {
-            if (_classNameCount != _courseSelectingFormPresentationModel.GetClassNameList.Count)
+            if (_classNameCount != GetClassNameListCount)
             {
                 int count = 0;
-                string tabText = _courseSelectingFormPresentationModel.GetClassNameList[_courseSelectingFormPresentationModel.GetClassNameList.Count() - 1];
+                string tabText = _courseSelectingFormPresentationModel.GetClassNameList[GetClassNameListCount - 1];
                 foreach (TabPage tabPage in _selectingTabControl.TabPages)
                 {
                     if (tabText == tabPage.Text)

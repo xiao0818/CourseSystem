@@ -8,11 +8,11 @@ namespace CourseSystem
 {
     public enum Department
     {
-        SelectedList = -1,
-        NotEnabledList = -2,
-        ComputerScience3 = 0,
+        SelectedList = -2,
+        NotEnabledList,
+        ComputerScience3,
         SelectedComputerScience3,
         ElectronicEngineering3,
-        SelectedElectronicEngineering3,
+        SelectedElectronicEngineering3
     }
 }
