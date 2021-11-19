@@ -16,6 +16,7 @@ namespace CourseSystem
         ImportCourseProgressFormPresentationModel _importCourseProgressFormPresentationModel;
         CourseManagementFormPresentationModel _courseManagementFormPresentationModel;
         StartUpForm _startUpForm;
+        int _index;
         const int DAY_PER_WEEK = 7;
         const string SPACE = " ";
         const string CLASS_TIME_CHAR = "1234N56789ABCD";
@@ -27,6 +28,7 @@ namespace CourseSystem
         const int COUNT_OF_TAB = 6;
         public CourseManagementForm(StartUpForm startUpForm, CourseManagementFormPresentationModel courseManagementFormPresentationModel, ImportCourseProgressFormPresentationModel importCourseProgressFormPresentationModel)
         {
+            _index = 0;
             _courseManagementFormPresentationModel = courseManagementFormPresentationModel;
             _startUpForm = startUpForm;
             _importCourseProgressFormPresentationModel = importCourseProgressFormPresentationModel;
@@ -49,7 +51,7 @@ namespace CourseSystem
         }
 
         //LoadListBox
-        private void LoadListBox()
+        private void LoadCourseListBox()
         {
             _courseListBox.Items.Clear();
             foreach (List<CourseInfo> courseList in _courseManagementFormPresentationModel.GetCourseListCollection)
@@ -98,14 +100,14 @@ namespace CourseSystem
             _saveCourseDataButton.Text = "儲存";
             CourseInfo course = _courseManagementFormPresentationModel.GetCourseInfoBySelectedIndex(_courseListBox.SelectedIndex);
             Tuple<int, int, int> department = GetCourseDepartmentBySelectedIndex(_courseListBox.SelectedIndex);
-            LoadContext(department, course);
+            LoadCourseContext(department, course);
             _courseManagementFormPresentationModel.SelectListBox();
             _addCourseDataButton.Enabled = _courseManagementFormPresentationModel.IsAddCourseDataButton;
             _saveCourseDataButton.Enabled = _courseManagementFormPresentationModel.IsSaveCourseDataButton;
         }
 
         //LoadContext
-        private void LoadContext(Tuple<int, int, int> department, CourseInfo course)
+        private void LoadCourseContext(Tuple<int, int, int> department, CourseInfo course)
         {
             LoadTextBoxAndComboBox(course);
             LoadClassComboBox(department);
@@ -189,15 +191,27 @@ namespace CourseSystem
         //LoadManagementForm
         private void LoadManagementForm()
         {
-            LoadListBox();
-            SetAllObjectInGroupBoxEmpty();
-            AddRowsInClassTimeDataGridView();
-            SetAllObjectInGroupBoxEnabled(false);
-            _courseManagementFormPresentationModel.ResetAllButton();
-            _saveCourseDataButton.Enabled = _courseManagementFormPresentationModel.IsSaveCourseDataButton;
-            _addCourseDataButton.Enabled = _courseManagementFormPresentationModel.IsAddCourseDataButton;
-            _loadComputerScienceButton.Enabled = _courseManagementFormPresentationModel.IsLoadComputerScienceCourseButton;
-            _courseTimeDataGridView.ClearSelection();
+            if (_index == 0)
+            {
+                LoadCourseListBox();
+                SetAllObjectInGroupBoxEmpty();
+                AddRowsInClassTimeDataGridView();
+                SetAllObjectInGroupBoxEnabled(false);
+                _courseManagementFormPresentationModel.ResetAllButton();
+                _saveCourseDataButton.Enabled = _courseManagementFormPresentationModel.IsSaveCourseDataButton;
+                _addCourseDataButton.Enabled = _courseManagementFormPresentationModel.IsAddCourseDataButton;
+                _loadComputerScienceButton.Enabled = _courseManagementFormPresentationModel.IsLoadComputerScienceCourseButton;
+                _courseTimeDataGridView.ClearSelection();
+                UpdateCourseClassSelectionComboBox();
+            }
+            else
+            {
+                LoadClassListBox();
+                _classNameTextBox.Text = "";
+                _courseInClassListBox.Items.Clear();
+                _courseInClassListBox.ClearSelected();
+                _classListBox.ClearSelected();
+            }
         }
 
         //SetAllObjectInGroupBoxEmpty
@@ -400,13 +414,11 @@ namespace CourseSystem
         //ClickLoadComputerScienceButton
         private void ClickLoadComputerScienceButton(object sender, EventArgs e)
         {
-            _courseClassSelectionComboBox.Items.Clear();
-            _courseClassSelectionComboBox.Items.Add(_courseManagementFormPresentationModel.GetClassNameList[(int)Department.ComputerScience3 / 2]);
-            _courseClassSelectionComboBox.Items.Add(_courseManagementFormPresentationModel.GetClassNameList[(int)Department.ElectronicEngineering3 / 2]);
-            _courseClassSelectionComboBox.Items.Add(_courseManagementFormPresentationModel.GetClassNameList[(int)Department.ComputerScience5 / 2]);
-            _courseClassSelectionComboBox.Items.Add(_courseManagementFormPresentationModel.GetClassNameList[(int)Department.ComputerScience4 / 2]);
-            _courseClassSelectionComboBox.Items.Add(_courseManagementFormPresentationModel.GetClassNameList[(int)Department.ComputerScience2 / 2]);
-            _courseClassSelectionComboBox.Items.Add(_courseManagementFormPresentationModel.GetClassNameList[(int)Department.ComputerScience1 / 2]);
+            AddClassName("資工三");
+            AddClassName("資工一");
+            AddClassName("資工二");
+            AddClassName("資工四");
+            AddClassName("資工所");
             _courseManagementFormPresentationModel.ClickLoadComputerScienceCourseTabButton();
             _importCourseProgressForm = new ImportCourseProgressForm(_importCourseProgressFormPresentationModel, this);
             _importCourseProgressForm.ShowDialog();
@@ -424,6 +436,94 @@ namespace CourseSystem
         private void UpdateAllForm()
         {
             _courseManagementFormPresentationModel.ReloadAllForm();
+        }
+
+        //ChangedSelectedIndexManagementTabControl
+        private void ChangedSelectedIndexManagementTabControl(object sender, EventArgs e)
+        {
+            _index = _managementTabControl.SelectedIndex;
+            LoadManagementForm();
+        }
+
+        //LoadClassListBox
+        private void LoadClassListBox()
+        {
+            _classListBox.Items.Clear();
+            foreach (string className in _courseManagementFormPresentationModel.GetClassNameList)
+            {
+                _classListBox.Items.Add(className);
+            }
+        }
+
+        //ChangedSelectedIndexClassListBox
+        private void ChangedSelectedIndexClassListBox(object sender, EventArgs e)
+        {
+            _classGroupBox.Text = "班級";
+            _addClassButton.Enabled = true;
+            _saveAddClassButton.Enabled = false;
+            _classNameTextBox.ReadOnly = true;
+            _classNameTextBox.Text = (string)_classListBox.SelectedItem;
+            _courseInClassListBox.Items.Clear();
+            foreach (CourseInfo course in _courseManagementFormPresentationModel.GetClassListForSelectedIndex(_classListBox.SelectedIndex))
+            {
+                _courseInClassListBox.Items.Add(course.Name);
+            }
+        }
+
+        //UpdateCourseClassSelectionComboBox
+        private void UpdateCourseClassSelectionComboBox()
+        {
+            _courseClassSelectionComboBox.Items.Clear();
+            foreach (string className in _courseManagementFormPresentationModel.GetClassNameList)
+            {
+                _courseClassSelectionComboBox.Items.Add(className);
+            }
+        }
+
+        //AddClassName
+        private void AddClassName(string className)
+        {
+            _courseManagementFormPresentationModel.AddClassNameList(className);
+            //if (_courseManagementFormPresentationModel.GetClassNameList.Contains(className) == false)
+            //{
+            //    _courseManagementFormPresentationModel.AddClassNameList(className);
+            //    MessageBox.Show("新增成功");
+            //}
+            //else
+            //{
+            //    MessageBox.Show("新增失敗\n" + className + "已存在");
+            //}
+        }
+
+        //ClickSaveAddClassButton
+        private void ClickSaveAddClassButton(object sender, EventArgs e)
+        {
+            AddClassName(_classNameTextBox.Text);
+        }
+
+        //ClickAddClassButton
+        private void ClickAddClassButton(object sender, EventArgs e)
+        {
+            _classGroupBox.Text = "新增班級";
+            _addClassButton.Enabled = false;
+            _saveAddClassButton.Enabled = false;
+            _classNameTextBox.ReadOnly = false;
+            _classNameTextBox.Text = "";
+            _courseInClassListBox.Items.Clear();
+        }
+
+        //TextChangedClassNameTextBox
+        private void TextChangedClassNameTextBox(object sender, EventArgs e)
+        {
+            if (_classNameTextBox.Text != "" && _classGroupBox.Text == "新增班級" && !_courseManagementFormPresentationModel.GetClassNameList.Contains(_classNameTextBox.Text))
+            {
+                _saveAddClassButton.Enabled = true;
+            }
+            else
+            {
+                _saveAddClassButton.Enabled = false;
+
+            }
         }
     }
 }

@@ -333,5 +333,17 @@ namespace CourseSystem
                 _presentationModelChanged();
             }
         }
+
+        //GetClassListForSelectedIndex
+        public List<CourseInfo> GetClassListForSelectedIndex(int selectedIndex)
+        {
+            return _presentationModel.GetClassListForSelectedIndex(selectedIndex);
+        }
+
+        //AddClassNameList
+        public void AddClassNameList(string className)
+        {
+            _presentationModel.AddClassNameList(className);
+        }
     }
 }

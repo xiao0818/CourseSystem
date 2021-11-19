@@ -37,10 +37,6 @@ namespace CourseSystem
             _courseListCollection = new List<List<CourseInfo>>();
             _courseListCollection.Add(new List<CourseInfo>());
             _courseListCollection.Add(new List<CourseInfo>());
-            _courseListCollection.Add(new List<CourseInfo>());
-            _courseListCollection.Add(new List<CourseInfo>());
-            _courseListCollection.Add(new List<CourseInfo>());
-            _courseListCollection.Add(new List<CourseInfo>());
             _selectedCourseList = new List<CourseInfo>();
             _notEnabledCourseList = new List<CourseInfo>();
             SortAll();
@@ -315,6 +311,38 @@ namespace CourseSystem
             {
                 _modelChanged();
             }
+        }
+
+        //GetClassListForSelectedIndex
+        public List<CourseInfo> GetClassListForSelectedIndex(int selectedIndex)
+        {
+            List<CourseInfo> courseList = new List<CourseInfo>();
+            foreach (CourseInfo course in _courseListCollection[selectedIndex])
+            {
+                courseList.Add(course);
+            }
+            for (int index = 0; index < _selectedCourseList.Count(); index++)
+            {
+                if (_selectedCourseTabDictionary[GetNumber(_selectedCourseList[index])] == selectedIndex * 2)
+                {
+                    courseList.Add(_selectedCourseList[index]);
+                }
+            }
+            for (int index = 0; index < _notEnabledCourseList.Count(); index++)
+            {
+                if (_notEnabledCourseTabDictionary[GetNumber(_notEnabledCourseList[index])] == selectedIndex * 2 || _notEnabledCourseTabDictionary[GetNumber(_notEnabledCourseList[index])] == selectedIndex * 2 + 1)
+                {
+                    courseList.Add(_notEnabledCourseList[index]);
+                }
+            }
+            return courseList;
+        }
+
+        //AddClassNameList
+        public void AddClassNameList()
+        {
+            _courseListCollection.Add(new List<CourseInfo>());
+            ReloadAllForm();
         }
     }
 }

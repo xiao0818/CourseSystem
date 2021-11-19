@@ -14,13 +14,5 @@ namespace CourseSystem
         SelectedComputerScience3,
         ElectronicEngineering3,
         SelectedElectronicEngineering3,
-        ComputerScience1,
-        SelectedComputerScience1,
-        ComputerScience2,
-        SelectedComputerScience2,
-        ComputerScience4,
-        SelectedComputerScience4,
-        ComputerScience5,
-        SelectedComputerScience5
     }
 }

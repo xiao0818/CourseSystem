@@ -205,6 +205,86 @@
             <Smell>
               <Id>2</Id>
               <SmellType>Literal constants(字面常數)-2</SmellType>
+              <HashCode>LiteralConstants.GetClassListForSelectedIndex.2</HashCode>
+              <Severity>Warning</Severity>
+              <Weight>1</Weight>
+              <Project>CourseSystem</Project>
+              <File>Model.cs</File>
+              <Line>330</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>3</Id>
+              <SmellType>Literal constants(字面常數)-2</SmellType>
+              <HashCode>LiteralConstants.GetClassListForSelectedIndex.2</HashCode>
+              <Severity>Warning</Severity>
+              <Weight>1</Weight>
+              <Project>CourseSystem</Project>
+              <File>Model.cs</File>
+              <Line>337</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>4</Id>
+              <SmellType>Literal constants(字面常數)-2</SmellType>
+              <HashCode>LiteralConstants.GetClassListForSelectedIndex.2</HashCode>
+              <Severity>Warning</Severity>
+              <Weight>1</Weight>
+              <Project>CourseSystem</Project>
+              <File>Model.cs</File>
+              <Line>337</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>5</Id>
+              <SmellType>Large class(過大類別)</SmellType>
+              <HashCode>LargeClass.CourseSystem.Model.305</HashCode>
+              <Severity>Warning</Severity>
+              <Weight>305</Weight>
+              <Project>CourseSystem</Project>
+              <File>Model.cs</File>
+              <Line>10</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>6</Id>
+              <SmellType>Long method(過長函式)</SmellType>
+              <HashCode>LongMethod.Model.GetClassListForSelectedIndex.23int selectedIndex;</HashCode>
+              <Severity>Warning</Severity>
+              <Weight>23</Weight>
+              <Project>CourseSystem</Project>
+              <File>Model.cs</File>
+              <Line>321</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>7</Id>
+              <SmellType>Literal constants(字面常數)-2</SmellType>
               <HashCode>LiteralConstants.SaveModifyForSelectedCheck.2</HashCode>
               <Severity>Warning</Severity>
               <Weight>1</Weight>
@@ -219,7 +299,7 @@
               <Auto>false</Auto>
             </Smell>
             <Smell>
-              <Id>3</Id>
+              <Id>8</Id>
               <SmellType>Literal constants(字面常數)-2</SmellType>
               <HashCode>LiteralConstants.SaveModifyCoursePartThree.2</HashCode>
               <Severity>Warning</Severity>
@@ -235,7 +315,7 @@
               <Auto>false</Auto>
             </Smell>
             <Smell>
-              <Id>4</Id>
+              <Id>9</Id>
               <SmellType>Literal constants(字面常數)-2</SmellType>
               <HashCode>LiteralConstants.SaveModifyCoursePartThree.2</HashCode>
               <Severity>Warning</Severity>
@@ -251,7 +331,7 @@
               <Auto>false</Auto>
             </Smell>
             <Smell>
-              <Id>5</Id>
+              <Id>10</Id>
               <SmellType>Literal constants(字面常數)-2</SmellType>
               <HashCode>LiteralConstants.SaveModifyCoursePartFive.2</HashCode>
               <Severity>Warning</Severity>
@@ -267,7 +347,7 @@
               <Auto>false</Auto>
             </Smell>
             <Smell>
-              <Id>6</Id>
+              <Id>11</Id>
               <SmellType>Literal constants(字面常數)-2</SmellType>
               <HashCode>LiteralConstants.SaveModifyCoursePartSix.2</HashCode>
               <Severity>Warning</Severity>
@@ -283,7 +363,7 @@
               <Auto>false</Auto>
             </Smell>
             <Smell>
-              <Id>7</Id>
+              <Id>12</Id>
               <SmellType>Literal constants(字面常數)-2</SmellType>
               <HashCode>LiteralConstants.SaveModifyCoursePartSix.2</HashCode>
               <Severity>Warning</Severity>
@@ -299,94 +379,14 @@
               <Auto>false</Auto>
             </Smell>
             <Smell>
-              <Id>8</Id>
-              <SmellType>Literal constants(字面常數)-2</SmellType>
-              <HashCode>LiteralConstants.SaveAddCourse.2</HashCode>
-              <Severity>Warning</Severity>
-              <Weight>1</Weight>
-              <Project>CourseSystem</Project>
-              <File>CourseManagementForm.cs</File>
-              <Line>321</Line>
-              <StartLine>0</StartLine>
-              <StartCol>0</StartCol>
-              <EndLine>0</EndLine>
-              <EndCol>0</EndCol>
-              <Comment />
-              <Auto>false</Auto>
-            </Smell>
-            <Smell>
-              <Id>9</Id>
-              <SmellType>Literal constants(字面常數)-2</SmellType>
-              <HashCode>LiteralConstants.ClickLoadComputerScienceButton.2</HashCode>
-              <Severity>Warning</Severity>
-              <Weight>1</Weight>
-              <Project>CourseSystem</Project>
-              <File>CourseManagementForm.cs</File>
-              <Line>404</Line>
-              <StartLine>0</StartLine>
-              <StartCol>0</StartCol>
-              <EndLine>0</EndLine>
-              <EndCol>0</EndCol>
-              <Comment />
-              <Auto>false</Auto>
-            </Smell>
-            <Smell>
-              <Id>10</Id>
-              <SmellType>Literal constants(字面常數)-2</SmellType>
-              <HashCode>LiteralConstants.ClickLoadComputerScienceButton.2</HashCode>
-              <Severity>Warning</Severity>
-              <Weight>1</Weight>
-              <Project>CourseSystem</Project>
-              <File>CourseManagementForm.cs</File>
-              <Line>405</Line>
-              <StartLine>0</StartLine>
-              <StartCol>0</StartCol>
-              <EndLine>0</EndLine>
-              <EndCol>0</EndCol>
-              <Comment />
-              <Auto>false</Auto>
-            </Smell>
-            <Smell>
-              <Id>11</Id>
-              <SmellType>Literal constants(字面常數)-2</SmellType>
-              <HashCode>LiteralConstants.ClickLoadComputerScienceButton.2</HashCode>
-              <Severity>Warning</Severity>
-              <Weight>1</Weight>
-              <Project>CourseSystem</Project>
-              <File>CourseManagementForm.cs</File>
-              <Line>406</Line>
-              <StartLine>0</StartLine>
-              <StartCol>0</StartCol>
-              <EndLine>0</EndLine>
-              <EndCol>0</EndCol>
-              <Comment />
-              <Auto>false</Auto>
-            </Smell>
-            <Smell>
-              <Id>12</Id>
-              <SmellType>Literal constants(字面常數)-2</SmellType>
-              <HashCode>LiteralConstants.ClickLoadComputerScienceButton.2</HashCode>
-              <Severity>Warning</Severity>
-              <Weight>1</Weight>
-              <Project>CourseSystem</Project>
-              <File>CourseManagementForm.cs</File>
-              <Line>407</Line>
-              <StartLine>0</StartLine>
-              <StartCol>0</StartCol>
-              <EndLine>0</EndLine>
-              <EndCol>0</EndCol>
-              <Comment />
-              <Auto>false</Auto>
-            </Smell>
-            <Smell>
               <Id>13</Id>
-              <SmellType>Literal constants(字面常數)-2</SmellType>
-              <HashCode>LiteralConstants.ClickLoadComputerScienceButton.2</HashCode>
+              <SmellType>Large class(過大類別)</SmellType>
+              <HashCode>LargeClass.CourseSystem.CourseManagementFormPresentationModel.306</HashCode>
               <Severity>Warning</Severity>
-              <Weight>1</Weight>
+              <Weight>306</Weight>
               <Project>CourseSystem</Project>
-              <File>CourseManagementForm.cs</File>
-              <Line>408</Line>
+              <File>CourseManagementFormPresentationModel.cs</File>
+              <Line>6</Line>
               <StartLine>0</StartLine>
               <StartCol>0</StartCol>
               <EndLine>0</EndLine>
@@ -396,13 +396,13 @@
             </Smell>
             <Smell>
               <Id>14</Id>
-              <SmellType>Literal constants(字面常數)-2</SmellType>
-              <HashCode>LiteralConstants.ClickLoadComputerScienceButton.2</HashCode>
+              <SmellType>Large class(過大類別)</SmellType>
+              <HashCode>LargeClass.CourseSystem.CourseManagementForm.434</HashCode>
               <Severity>Warning</Severity>
-              <Weight>1</Weight>
+              <Weight>434</Weight>
               <Project>CourseSystem</Project>
               <File>CourseManagementForm.cs</File>
-              <Line>409</Line>
+              <Line>13</Line>
               <StartLine>0</StartLine>
               <StartCol>0</StartCol>
               <EndLine>0</EndLine>
@@ -412,13 +412,13 @@
             </Smell>
             <Smell>
               <Id>15</Id>
-              <SmellType>Literal constants(字面常數)-2</SmellType>
-              <HashCode>LiteralConstants.CourseSelectingForm.2</HashCode>
+              <SmellType>Long method(過長函式)</SmellType>
+              <HashCode>LongMethod.CourseManagementForm.LoadManagementForm.25</HashCode>
               <Severity>Warning</Severity>
-              <Weight>1</Weight>
+              <Weight>25</Weight>
               <Project>CourseSystem</Project>
-              <File>CourseSelectingForm.cs</File>
-              <Line>27</Line>
+              <File>CourseManagementForm.cs</File>
+              <Line>192</Line>
               <StartLine>0</StartLine>
               <StartCol>0</StartCol>
               <EndLine>0</EndLine>
@@ -434,7 +434,7 @@
               <Weight>1</Weight>
               <Project>CourseSystem</Project>
               <File>CourseSelectingForm.cs</File>
-              <Line>28</Line>
+              <Line>27</Line>
               <StartLine>0</StartLine>
               <StartCol>0</StartCol>
               <EndLine>0</EndLine>
@@ -450,7 +450,7 @@
               <Weight>1</Weight>
               <Project>CourseSystem</Project>
               <File>CourseSelectingForm.cs</File>
-              <Line>29</Line>
+              <Line>28</Line>
               <StartLine>0</StartLine>
               <StartCol>0</StartCol>
               <EndLine>0</EndLine>
@@ -482,7 +482,7 @@
               <Weight>1</Weight>
               <Project>CourseSystem</Project>
               <File>CourseSelectingForm.cs</File>
-              <Line>30</Line>
+              <Line>29</Line>
               <StartLine>0</StartLine>
               <StartCol>0</StartCol>
               <EndLine>0</EndLine>
@@ -514,7 +514,7 @@
               <Weight>1</Weight>
               <Project>CourseSystem</Project>
               <File>CourseSelectingForm.cs</File>
-              <Line>31</Line>
+              <Line>30</Line>
               <StartLine>0</StartLine>
               <StartCol>0</StartCol>
               <EndLine>0</EndLine>
@@ -524,38 +524,6 @@
             </Smell>
             <Smell>
               <Id>22</Id>
-              <SmellType>Literal constants(字面常數)-2</SmellType>
-              <HashCode>LiteralConstants.CourseSelectingForm.2</HashCode>
-              <Severity>Warning</Severity>
-              <Weight>1</Weight>
-              <Project>CourseSystem</Project>
-              <File>CourseSelectingForm.cs</File>
-              <Line>31</Line>
-              <StartLine>0</StartLine>
-              <StartCol>0</StartCol>
-              <EndLine>0</EndLine>
-              <EndCol>0</EndCol>
-              <Comment />
-              <Auto>false</Auto>
-            </Smell>
-            <Smell>
-              <Id>23</Id>
-              <SmellType>Literal constants(字面常數)-2</SmellType>
-              <HashCode>LiteralConstants.LoadForm.2</HashCode>
-              <Severity>Warning</Severity>
-              <Weight>1</Weight>
-              <Project>CourseSystem</Project>
-              <File>CourseSelectingForm.cs</File>
-              <Line>58</Line>
-              <StartLine>0</StartLine>
-              <StartCol>0</StartCol>
-              <EndLine>0</EndLine>
-              <EndCol>0</EndCol>
-              <Comment />
-              <Auto>false</Auto>
-            </Smell>
-            <Smell>
-              <Id>24</Id>
               <SmellType>Literal constants(字面常數)-2</SmellType>
               <HashCode>LiteralConstants.LoadForm.2</HashCode>
               <Severity>Warning</Severity>
@@ -571,7 +539,7 @@
               <Auto>false</Auto>
             </Smell>
             <Smell>
-              <Id>25</Id>
+              <Id>23</Id>
               <SmellType>Literal constants(字面常數)-2</SmellType>
               <HashCode>LiteralConstants.LoadForm.2</HashCode>
               <Severity>Warning</Severity>
@@ -587,7 +555,7 @@
               <Auto>false</Auto>
             </Smell>
             <Smell>
-              <Id>26</Id>
+              <Id>24</Id>
               <SmellType>Literal constants(字面常數)-2</SmellType>
               <HashCode>LiteralConstants.LoadForm.2</HashCode>
               <Severity>Warning</Severity>
@@ -603,7 +571,7 @@
               <Auto>false</Auto>
             </Smell>
             <Smell>
-              <Id>27</Id>
+              <Id>25</Id>
               <SmellType>Literal constants(字面常數)-2</SmellType>
               <HashCode>LiteralConstants.LoadForm.2</HashCode>
               <Severity>Warning</Severity>
@@ -611,6 +579,22 @@
               <Project>CourseSystem</Project>
               <File>CourseSelectingForm.cs</File>
               <Line>62</Line>
+              <StartLine>0</StartLine>
+              <StartCol>0</StartCol>
+              <EndLine>0</EndLine>
+              <EndCol>0</EndCol>
+              <Comment />
+              <Auto>false</Auto>
+            </Smell>
+            <Smell>
+              <Id>26</Id>
+              <SmellType>Literal constants(字面常數)-2</SmellType>
+              <HashCode>LiteralConstants.LoadForm.2</HashCode>
+              <Severity>Warning</Severity>
+              <Weight>1</Weight>
+              <Project>CourseSystem</Project>
+              <File>CourseSelectingForm.cs</File>
+              <Line>63</Line>
               <StartLine>0</StartLine>
               <StartCol>0</StartCol>
               <EndLine>0</EndLine>
@@ -795,7 +779,7 @@
               </AnalysisFile>
             </AnalysisFiles>
           </AnalysisFileManager>
-          <ProductionLoc>4317</ProductionLoc>
+          <ProductionLoc>4388</ProductionLoc>
           <TestLoc>1250</TestLoc>
         </CodeReview>
       </Data>
