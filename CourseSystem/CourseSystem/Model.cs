@@ -32,7 +32,6 @@ namespace CourseSystem
         const int NOT_ENABLED_TAB = -1;
         public Model()
         {
-            _modelChanged += SortAll;
             _courseWebList.Add(WEB_COMPUTER_SCIENCE_3);
             _courseWebList.Add(WEB_ELECTRONIC_ENGINEERING_3_A);
             _courseListCollection.Add(new List<CourseInfo>());
@@ -278,6 +277,7 @@ namespace CourseSystem
         //UpdateAllForm
         public void ReloadAllForm()
         {
+            SortAll();
             NotifyObserver();
         }
 
@@ -295,7 +295,7 @@ namespace CourseSystem
             courseList = courseList.Union(_courseListCollection[selectedIndex]).ToList();
             for (int index = 0; index < _selectedCourseList.Count(); index++)
             {
-                if (_selectedCourseTabDictionary[GetNumber(_selectedCourseList[index])] == selectedIndex * TAB_SET)
+                if (_selectedCourseTabDictionary[GetNumber(_selectedCourseList[index])] == selectedIndex)
                     courseList.Add(_selectedCourseList[index]);
             }
             for (int index = 0; index < _notEnabledCourseList.Count(); index++)
@@ -326,7 +326,7 @@ namespace CourseSystem
                 _courseWebList.Add(WEB_COMPUTER_SCIENCE_2);
             else if (className == COMPUTER_SCIENCE_FOUR)
                 _courseWebList.Add(WEB_COMPUTER_SCIENCE_4);
-            else if (className == COMPUTER_SCIENCE_FIVE)
+            else
                 _courseWebList.Add(WEB_COMPUTER_SCIENCE_5);
         }
     }

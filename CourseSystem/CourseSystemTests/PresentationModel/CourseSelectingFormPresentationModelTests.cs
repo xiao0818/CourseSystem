@@ -50,6 +50,13 @@ namespace CourseSystem.Tests
             Assert.AreNotEqual(0, courseSelectingFormPresentationModel.GetCourseList((int)Department.ComputerScience3 / 2).Count);
         }
 
+        //GetClassNameListTest
+        [TestMethod()]
+        public void GetClassNameListTest()
+        {
+            Assert.AreEqual(2, courseSelectingFormPresentationModel.GetClassNameList.Count());
+        }
+
         //RemoveFromCourseListAndAddInToSelectedTabTest
         [TestMethod()]
         public void RemoveFromCourseListAndAddInToSelectedTabTest()
@@ -145,6 +152,8 @@ namespace CourseSystem.Tests
         public void ReloadAllFormTest()
         {
             bool isNotifyObserverWork = false;
+            courseSelectingFormPresentationModel.ReloadAllForm();
+            Assert.IsFalse(isNotifyObserverWork);
             courseSelectingFormPresentationModel._presentationModelChanged += () =>
             {
                 isNotifyObserverWork = true;

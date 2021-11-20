@@ -45,6 +45,13 @@ namespace CourseSystem.Tests
             Assert.AreEqual(0, presentationModel.GetCourseList((int)Department.ComputerScience3 / 2).Count());
         }
 
+        //GetClassNameListTest
+        [TestMethod()]
+        public void GetClassNameListTest()
+        {
+            Assert.AreEqual(2, presentationModel.GetClassNameList.Count());
+        }
+
         //RemoveFromCourseListAndAddInToSelectedTabTest
         [TestMethod()]
         public void RemoveFromCourseListAndAddInToSelectedTabTest()
@@ -252,6 +259,8 @@ namespace CourseSystem.Tests
         public void ReloadAllFormTest()
         {
             bool isNotifyObserverWork = false;
+            presentationModel.ReloadAllForm();
+            Assert.IsFalse(isNotifyObserverWork);
             presentationModel._presentationModelChanged += () =>
             {
                 isNotifyObserverWork = true;
@@ -271,6 +280,33 @@ namespace CourseSystem.Tests
             };
             presentationModel.NotifyObserver();
             Assert.IsTrue(isNotifyObserverWork);
+        }
+
+        //GetClassListForSelectedIndexTest
+        [TestMethod()]
+        public void GetClassListForSelectedIndexTest()
+        {
+            presentationModel.AddIntoCourseList(windowsProgrammingCourseInfo, (int)Department.ComputerScience3 / 2);
+            Assert.AreEqual(1, presentationModel.GetClassListForSelectedIndex((int)Department.ComputerScience3 / 2).Count());
+            Assert.AreEqual(windowsProgrammingCourseInfo, presentationModel.GetClassListForSelectedIndex((int)Department.ComputerScience3 / 2)[0]);
+        }
+
+        //AddClassNameListTest
+        [TestMethod()]
+        public void AddClassNameListTest()
+        {
+            presentationModel.AddClassNameList("電資三");
+            presentationModel.UpdateCourseListInfo(2);
+            Assert.AreEqual(3, presentationModel.GetCourseListCollection.Count());
+            Assert.AreEqual(0, presentationModel.GetCourseList(2).Count());
+        }
+
+        //AddClassNameListTest
+        [TestMethod()]
+        public void AddClassNameListTestForContain()
+        {
+            presentationModel.AddClassNameList("資工三");
+            Assert.AreEqual(2, presentationModel.GetCourseListCollection.Count());
         }
     }
 }

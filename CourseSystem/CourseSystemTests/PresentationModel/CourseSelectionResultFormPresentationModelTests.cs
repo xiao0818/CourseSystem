@@ -48,6 +48,8 @@ namespace CourseSystem.Tests
         public void ReloadAllFormTest()
         {
             bool isNotifyObserverWork = false;
+            courseSelectionResultFormPresentationModel.ReloadAllForm();
+            Assert.IsFalse(isNotifyObserverWork);
             courseSelectionResultFormPresentationModel._presentationModelChanged += () =>
             {
                 isNotifyObserverWork = true;

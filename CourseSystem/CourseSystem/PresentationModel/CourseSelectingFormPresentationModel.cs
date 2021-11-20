@@ -142,9 +142,7 @@ namespace CourseSystem
         public void NotifyObserver()
         {
             if (_presentationModelChanged != null)
-            {
                 _presentationModelChanged();
-            }
         }
     }
 }

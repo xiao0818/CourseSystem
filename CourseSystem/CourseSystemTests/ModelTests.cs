@@ -13,6 +13,8 @@ namespace CourseSystem.Tests
     {
         Model model;
         CourseInfo windowsProgrammingCourseInfo = new CourseInfo("291710", "視窗程式設計", "1", "3.0", "3", "★", "陳偉凱", "", "", "", "", "3 4 6", "", "", "二教206(e)\n二教205(e)", "43", "15", "", "", "", "查詢", "", "");
+        CourseInfo windowsProgrammingCourseInfo2 = new CourseInfo("123456", "視窗程式設計", "1", "3.0", "3", "★", "陳偉凱", "", "", "", "", "3 4 6", "", "", "二教206(e)\n二教205(e)", "43", "15", "", "", "", "查詢", "", "");
+        CourseInfo windowsProgrammingCourseInfo3 = new CourseInfo("7890", "視窗程式設計", "1", "3.0", "3", "★", "陳偉凱", "", "", "", "", "3 4 6", "", "", "二教206(e)\n二教205(e)", "43", "15", "", "", "", "查詢", "", "");
 
         //Initialize
         [TestInitialize()]
@@ -223,6 +225,8 @@ namespace CourseSystem.Tests
         public void ReloadAllFormTest()
         {
             bool isNotifyObserverWork = false;
+            model.ReloadAllForm();
+            Assert.IsFalse(isNotifyObserverWork);
             model._modelChanged += () =>
             {
                 isNotifyObserverWork = true;
@@ -242,6 +246,50 @@ namespace CourseSystem.Tests
             };
             model.NotifyObserver();
             Assert.IsTrue(isNotifyObserverWork);
+        }
+
+        //GetClassListForSelectedIndexTest
+        [TestMethod()]
+        public void GetClassListForSelectedIndexTest()
+        {
+            model.AddIntoCourseList(windowsProgrammingCourseInfo, (int)Department.ComputerScience3 / 2);
+            model.AddIntoSelectedCourseListAndCourseTab(windowsProgrammingCourseInfo2, (int)Department.ComputerScience3 / 2);
+            model.AddIntoSelectedCourseListAndCourseTab(windowsProgrammingCourseInfo3, (int)Department.ElectronicEngineering3 / 2);
+            model.AddIntoNotEnabledCourseListAndCourseTab(windowsProgrammingCourseInfo3, (int)Department.ComputerScience3);
+            model.AddIntoNotEnabledCourseListAndCourseTab(windowsProgrammingCourseInfo2, (int)Department.ElectronicEngineering3);
+            Assert.AreEqual(3, model.GetClassListForSelectedIndex((int)Department.ComputerScience3 / 2).Count());
+            Assert.AreEqual(windowsProgrammingCourseInfo, model.GetClassListForSelectedIndex((int)Department.ComputerScience3 / 2)[0]);
+            Assert.AreEqual(windowsProgrammingCourseInfo2, model.GetClassListForSelectedIndex((int)Department.ComputerScience3 / 2)[1]);
+            Assert.AreEqual(windowsProgrammingCourseInfo3, model.GetClassListForSelectedIndex((int)Department.ComputerScience3 / 2)[2]);
+        }
+
+        //AddClassNameListTestForKnownName
+        [TestMethod()]
+        public void AddClassNameListTestForKnownName()
+        {
+            model.AddClassNameList("資工所");
+            model.UpdateCourseListInfo(2);
+            model.AddClassNameList("資工一");
+            model.UpdateCourseListInfo(3);
+            model.AddClassNameList("資工二");
+            model.UpdateCourseListInfo(4);
+            model.AddClassNameList("資工四");
+            model.UpdateCourseListInfo(5);
+            Assert.AreEqual(6, model.GetCourseListCollection.Count());
+            Assert.AreNotEqual(0, model.GetCourseList(2).Count());
+            Assert.AreNotEqual(0, model.GetCourseList(3).Count());
+            Assert.AreNotEqual(0, model.GetCourseList(4).Count());
+            Assert.AreNotEqual(0, model.GetCourseList(5).Count());
+        }
+
+        //AddClassNameListTestForNotKnownName
+        [TestMethod()]
+        public void AddClassNameListTestForNotKnownName()
+        {
+            model.AddClassNameList("電資三");
+            model.UpdateCourseListInfo(2);
+            Assert.AreEqual(3, model.GetCourseListCollection.Count());
+            Assert.AreEqual(0, model.GetCourseList(2).Count());
         }
     }
 }

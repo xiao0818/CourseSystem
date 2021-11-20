@@ -37,6 +37,13 @@ namespace CourseSystem.Tests
             Assert.IsFalse(courseManagementFormPresentationModel.IsSaveAddClassButton);
         }
 
+        //GetClassNameListTest
+        [TestMethod()]
+        public void GetClassNameListTest()
+        {
+            Assert.AreEqual(2, courseManagementFormPresentationModel.GetClassNameList.Count());
+        }
+
         //GetCourseInfoBySelectedIndexTest
         [TestMethod()]
         public void GetCourseInfoBySelectedIndexTest()
@@ -269,6 +276,8 @@ namespace CourseSystem.Tests
         public void ReloadAllFormTest()
         {
             bool isNotifyObserverWork = false;
+            courseManagementFormPresentationModel.ReloadAllForm();
+            Assert.IsFalse(isNotifyObserverWork);
             courseManagementFormPresentationModel._presentationModelChanged += () =>
             {
                 isNotifyObserverWork = true;
@@ -288,6 +297,58 @@ namespace CourseSystem.Tests
             };
             courseManagementFormPresentationModel.NotifyObserver();
             Assert.IsTrue(isNotifyObserverWork);
+        }
+
+        //GetClassListForSelectedIndexTest
+        [TestMethod()]
+        public void GetClassListForSelectedIndexTest()
+        {
+            courseManagementFormPresentationModel.AddIntoCourseList(windowsProgrammingCourseInfo, (int)Department.ComputerScience3 / 2);
+            Assert.AreEqual(1, courseManagementFormPresentationModel.GetClassListForSelectedIndex((int)Department.ComputerScience3 / 2).Count());
+            Assert.AreEqual(windowsProgrammingCourseInfo, courseManagementFormPresentationModel.GetClassListForSelectedIndex((int)Department.ComputerScience3 / 2)[0]);
+        }
+
+        //AddClassNameListTest
+        [TestMethod()]
+        public void AddClassNameListTest()
+        {
+            courseManagementFormPresentationModel.AddClassNameList("電資三");
+            presentationModel.UpdateCourseListInfo(2);
+            Assert.AreEqual(3, courseManagementFormPresentationModel.GetCourseListCollection.Count());
+            Assert.AreEqual(0, presentationModel.GetCourseList(2).Count());
+        }
+
+        //ResetClassButtonTest
+        [TestMethod()]
+        public void ResetClassButtonTest()
+        {
+            courseManagementFormPresentationModel.ResetClassButton();
+            Assert.IsTrue(courseManagementFormPresentationModel.IsAddClassButton);
+            Assert.IsFalse(courseManagementFormPresentationModel.IsSaveAddClassButton);
+        }
+
+        //ChangeClassButtonTest
+        [TestMethod()]
+        public void ChangeClassButtonTest()
+        {
+            courseManagementFormPresentationModel.ChangeClassButton();
+            Assert.IsTrue(courseManagementFormPresentationModel.IsAddClassButton);
+        }
+
+        //ChangedClassNameTextEnableTest
+        [TestMethod()]
+        public void ChangedClassNameTextEnableTest()
+        {
+            courseManagementFormPresentationModel.ChangedClassNameTextEnable();
+            Assert.IsTrue(courseManagementFormPresentationModel.IsSaveAddClassButton);
+        }
+
+        //ChangedClassNameTextNotEnableTest
+        [TestMethod()]
+        public void ChangedClassNameTextNotEnableTest()
+        {
+            courseManagementFormPresentationModel.ChangedClassNameTextNotEnable();
+            Assert.IsFalse(courseManagementFormPresentationModel.IsSaveAddClassButton);
         }
     }
 }
