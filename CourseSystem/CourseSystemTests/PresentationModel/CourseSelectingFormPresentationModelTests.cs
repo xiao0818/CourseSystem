@@ -37,17 +37,17 @@ namespace CourseSystem.Tests
         [TestMethod()]
         public void UpdateCourseListInfoTest()
         {
-            courseSelectingFormPresentationModel.UpdateCourseListInfo((int)Department.ComputerScience3);
-            Assert.AreNotEqual(0, courseSelectingFormPresentationModel.GetCourseList((int)Department.ComputerScience3).Count);
+            courseSelectingFormPresentationModel.UpdateCourseListInfo((int)Department.ComputerScience3 / 2);
+            Assert.AreNotEqual(0, courseSelectingFormPresentationModel.GetCourseList((int)Department.ComputerScience3 / 2).Count);
         }
 
         //GetCourseListTest
         [TestMethod()]
         public void GetCourseListTest()
         {
-            Assert.AreEqual(0, courseSelectingFormPresentationModel.GetCourseList((int)Department.ComputerScience3).Count);
-            courseSelectingFormPresentationModel.UpdateCourseListInfo((int)Department.ComputerScience3);
-            Assert.AreNotEqual(0, courseSelectingFormPresentationModel.GetCourseList((int)Department.ComputerScience3).Count);
+            Assert.AreEqual(0, courseSelectingFormPresentationModel.GetCourseList((int)Department.ComputerScience3 / 2).Count);
+            courseSelectingFormPresentationModel.UpdateCourseListInfo((int)Department.ComputerScience3 / 2);
+            Assert.AreNotEqual(0, courseSelectingFormPresentationModel.GetCourseList((int)Department.ComputerScience3 / 2).Count);
         }
 
         //GetClassNameListTest
@@ -62,11 +62,11 @@ namespace CourseSystem.Tests
         [TestMethod()]
         public void RemoveFromCourseListAndAddInToSelectedTabTest()
         {
-            model.AddIntoCourseList(windowsProgrammingCourseInfo, (int)Department.ComputerScience3);
+            model.AddIntoCourseList(windowsProgrammingCourseInfo, (int)Department.ComputerScience3 / 2);
             courseSelectingFormPresentationModel.AddSelectedCourse(windowsProgrammingCourseInfo);
-            courseSelectingFormPresentationModel.RemoveFromCourseListAndAddInToSelectedTab((int)Department.ComputerScience3, 0);
-            Assert.AreEqual(0, courseSelectingFormPresentationModel.GetCourseList((int)Department.ComputerScience3).Count);
-            Assert.AreEqual(Tuple.Create(-2, (int)Department.ComputerScience3, 0), presentationModel.GetCourseDepartmentBySelectedIndex(0));
+            courseSelectingFormPresentationModel.RemoveFromCourseListAndAddInToSelectedTab((int)Department.ComputerScience3 / 2, 0);
+            Assert.AreEqual(0, courseSelectingFormPresentationModel.GetCourseList((int)Department.ComputerScience3 / 2).Count);
+            Assert.AreEqual(Tuple.Create(-2, (int)Department.ComputerScience3 / 2, 0), presentationModel.GetCourseDepartmentBySelectedIndex(0));
         }
 
         //ResetCheckButtonTest

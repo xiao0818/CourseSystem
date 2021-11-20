@@ -32,81 +32,81 @@ namespace CourseSystem.Tests
         [TestMethod()]
         public void UpdateCourseListInfoTest()
         {
-            model.UpdateCourseListInfo((int)Department.ComputerScience3);
-            int count = model.GetCourseList((int)Department.ComputerScience3).Count();
-            Assert.AreNotEqual(0, model.GetCourseList((int)Department.ComputerScience3).Count());
-            model.UpdateCourseListInfo((int)Department.ComputerScience3);
-            Assert.AreEqual(count, model.GetCourseList((int)Department.ComputerScience3).Count());
+            model.UpdateCourseListInfo((int)Department.ComputerScience3 / 2);
+            int count = model.GetCourseList((int)Department.ComputerScience3 / 2).Count();
+            Assert.AreNotEqual(0, model.GetCourseList((int)Department.ComputerScience3 / 2).Count());
+            model.UpdateCourseListInfo((int)Department.ComputerScience3 / 2);
+            Assert.AreEqual(count, model.GetCourseList((int)Department.ComputerScience3 / 2).Count());
         }
 
         //UpdateCourseListInfoWithDuplicateAtSameClassTest
         [TestMethod()]
         public void UpdateCourseListInfoWithDuplicateAtSameClassTest()
         {
-            model.AddIntoSelectedCourseListAndCourseTab(windowsProgrammingCourseInfo, (int)Department.ComputerScience3);
-            model.UpdateCourseListInfo((int)Department.ComputerScience3);
-            int count = model.GetCourseList((int)Department.ComputerScience3).Count();
-            Assert.AreNotEqual(0, model.GetCourseList((int)Department.ComputerScience3).Count());
-            model.UpdateCourseListInfo((int)Department.ComputerScience3);
-            Assert.AreEqual(count, model.GetCourseList((int)Department.ComputerScience3).Count());
+            model.AddIntoSelectedCourseListAndCourseTab(windowsProgrammingCourseInfo, (int)Department.ComputerScience3 / 2);
+            model.UpdateCourseListInfo((int)Department.ComputerScience3 / 2);
+            int count = model.GetCourseList((int)Department.ComputerScience3 / 2).Count();
+            Assert.AreNotEqual(0, model.GetCourseList((int)Department.ComputerScience3 / 2).Count());
+            model.UpdateCourseListInfo((int)Department.ComputerScience3 / 2);
+            Assert.AreEqual(count, model.GetCourseList((int)Department.ComputerScience3 / 2).Count());
         }
 
         //UpdateCourseListInfoWithDuplicateAtAnotherClassTest
         [TestMethod()]
         public void UpdateCourseListInfoWithDuplicateAtAnotherClassTest()
         {
-            model.AddIntoSelectedCourseListAndCourseTab(windowsProgrammingCourseInfo, (int)Department.ElectronicEngineering3);
-            model.UpdateCourseListInfo((int)Department.ComputerScience3);
-            int count = model.GetCourseList((int)Department.ComputerScience3).Count();
-            Assert.AreNotEqual(0, model.GetCourseList((int)Department.ComputerScience3).Count());
-            model.UpdateCourseListInfo((int)Department.ComputerScience3);
-            Assert.AreEqual(count, model.GetCourseList((int)Department.ComputerScience3).Count());
+            model.AddIntoSelectedCourseListAndCourseTab(windowsProgrammingCourseInfo, (int)Department.ElectronicEngineering3 / 2);
+            model.UpdateCourseListInfo((int)Department.ComputerScience3 / 2);
+            int count = model.GetCourseList((int)Department.ComputerScience3 / 2).Count();
+            Assert.AreNotEqual(0, model.GetCourseList((int)Department.ComputerScience3 / 2).Count());
+            model.UpdateCourseListInfo((int)Department.ComputerScience3 / 2);
+            Assert.AreEqual(count, model.GetCourseList((int)Department.ComputerScience3 / 2).Count());
         }
 
         //GetCourseListTest
         [TestMethod()]
         public void GetCourseListTest()
         {
-            Assert.AreEqual(0, model.GetCourseList((int)Department.ComputerScience3).Count());
+            Assert.AreEqual(0, model.GetCourseList((int)Department.ComputerScience3 / 2).Count());
         }
 
         //RemoveFromCourseListAndAddInToSelectedTabTest
         [TestMethod()]
         public void RemoveFromCourseListAndAddInToSelectedTabTest()
         {
-            model.AddIntoCourseList(windowsProgrammingCourseInfo, (int)Department.ComputerScience3);
+            model.AddIntoCourseList(windowsProgrammingCourseInfo, (int)Department.ComputerScience3 / 2);
             model.AddSelectedCourse(windowsProgrammingCourseInfo);
-            model.RemoveFromCourseListAndAddInToSelectedTab((int)Department.ComputerScience3, 0);
-            Assert.AreEqual(0, model.GetCourseList((int)Department.ComputerScience3).Count());
-            Assert.AreEqual(Tuple.Create(-2, (int)Department.ComputerScience3, 0), model.GetCourseDepartmentBySelectedIndex(0));
+            model.RemoveFromCourseListAndAddInToSelectedTab((int)Department.ComputerScience3 / 2, 0);
+            Assert.AreEqual(0, model.GetCourseList((int)Department.ComputerScience3 / 2).Count());
+            Assert.AreEqual(Tuple.Create(-2, (int)Department.ComputerScience3 / 2, 0), model.GetCourseDepartmentBySelectedIndex(0));
         }
 
         //RemoveCourseFromCourseListTest
         [TestMethod()]
         public void RemoveCourseFromCourseListTest()
         {
-            model.AddIntoCourseList(windowsProgrammingCourseInfo, (int)Department.ComputerScience3);
-            model.RemoveCourseFromCourseList((int)Department.ComputerScience3, 0);
-            Assert.AreEqual(0, model.GetCourseList((int)Department.ComputerScience3).Count());
+            model.AddIntoCourseList(windowsProgrammingCourseInfo, (int)Department.ComputerScience3 / 2);
+            model.RemoveCourseFromCourseList((int)Department.ComputerScience3 / 2, 0);
+            Assert.AreEqual(0, model.GetCourseList((int)Department.ComputerScience3 / 2).Count());
         }
 
         //RemoveCourseFromSelectionResultTest
         [TestMethod()]
         public void RemoveCourseFromSelectionResultTest()
         {
-            model.AddIntoSelectedCourseListAndCourseTab(windowsProgrammingCourseInfo, (int)Department.ComputerScience3);
+            model.AddIntoSelectedCourseListAndCourseTab(windowsProgrammingCourseInfo, (int)Department.ComputerScience3 / 2);
             model.RemoveCourseFromSelectionResult(0);
             Assert.AreEqual(0, model.GetSelectedCourseList.Count());
-            Assert.AreEqual(windowsProgrammingCourseInfo, model.GetCourseList((int)Department.ComputerScience3)[0]);
-            Assert.AreEqual(1, model.GetCourseList((int)Department.ComputerScience3).Count());
-            Assert.AreEqual(Tuple.Create((int)Department.ComputerScience3, (int)Department.ComputerScience3, 0), model.GetCourseDepartmentBySelectedIndex(0));
+            Assert.AreEqual(windowsProgrammingCourseInfo, model.GetCourseList((int)Department.ComputerScience3 / 2)[0]);
+            Assert.AreEqual(1, model.GetCourseList((int)Department.ComputerScience3 / 2).Count());
+            Assert.AreEqual(Tuple.Create((int)Department.ComputerScience3 / 2, (int)Department.ComputerScience3 / 2, 0), model.GetCourseDepartmentBySelectedIndex(0));
         }
 
         //RemoveCourseFromSelectedListTest
         [TestMethod()]
         public void RemoveCourseFromSelectedListTest()
         {
-            model.AddIntoSelectedCourseListAndCourseTab(windowsProgrammingCourseInfo, (int)Department.ComputerScience3);
+            model.AddIntoSelectedCourseListAndCourseTab(windowsProgrammingCourseInfo, (int)Department.ComputerScience3 / 2);
             model.RemoveCourseFromSelectedList(0);
             Assert.AreEqual(0, model.GetSelectedCourseList.Count());
         }
@@ -115,7 +115,7 @@ namespace CourseSystem.Tests
         [TestMethod()]
         public void GetCourseInfoBySelectedIndexForCourseTest()
         {
-            model.AddIntoCourseList(windowsProgrammingCourseInfo, (int)Department.ComputerScience3);
+            model.AddIntoCourseList(windowsProgrammingCourseInfo, (int)Department.ComputerScience3 / 2);
             Assert.AreEqual(windowsProgrammingCourseInfo, model.GetCourseInfoBySelectedIndex(0));
         }
 
@@ -123,7 +123,7 @@ namespace CourseSystem.Tests
         [TestMethod()]
         public void GetCourseInfoBySelectedIndexForSelectedCourseTest()
         {
-            model.AddIntoSelectedCourseListAndCourseTab(windowsProgrammingCourseInfo, (int)Department.ComputerScience3);
+            model.AddIntoSelectedCourseListAndCourseTab(windowsProgrammingCourseInfo, (int)Department.ComputerScience3 / 2);
             Assert.AreEqual(windowsProgrammingCourseInfo, model.GetCourseInfoBySelectedIndex(0));
         }
 
@@ -139,16 +139,16 @@ namespace CourseSystem.Tests
         [TestMethod()]
         public void GetCourseDepartmentBySelectedIndexForCourseTest()
         {
-            model.AddIntoCourseList(windowsProgrammingCourseInfo, (int)Department.ComputerScience3);
-            Assert.AreEqual(Tuple.Create((int)Department.ComputerScience3, (int)Department.ComputerScience3, 0), model.GetCourseDepartmentBySelectedIndex(0));
+            model.AddIntoCourseList(windowsProgrammingCourseInfo, (int)Department.ComputerScience3 / 2);
+            Assert.AreEqual(Tuple.Create((int)Department.ComputerScience3 / 2, (int)Department.ComputerScience3 / 2, 0), model.GetCourseDepartmentBySelectedIndex(0));
         }
 
         //GetCourseDepartmentBySelectedIndexForSelectedCourseTest
         [TestMethod()]
         public void GetCourseDepartmentBySelectedIndexForSelectedCourseTest()
         {
-            model.AddIntoSelectedCourseListAndCourseTab(windowsProgrammingCourseInfo, (int)Department.ComputerScience3);
-            Assert.AreEqual(Tuple.Create(-2, (int)Department.ComputerScience3, 0), model.GetCourseDepartmentBySelectedIndex(0));
+            model.AddIntoSelectedCourseListAndCourseTab(windowsProgrammingCourseInfo, (int)Department.ComputerScience3 / 2);
+            Assert.AreEqual(Tuple.Create(-2, (int)Department.ComputerScience3 / 2, 0), model.GetCourseDepartmentBySelectedIndex(0));
         }
 
         //GetCourseDepartmentBySelectedIndexForNotEnabledCourseTest
@@ -163,10 +163,10 @@ namespace CourseSystem.Tests
         [TestMethod()]
         public void AddIntoSelectedCourseListAndCourseTabTest()
         {
-            model.AddIntoSelectedCourseListAndCourseTab(windowsProgrammingCourseInfo, (int)Department.ComputerScience3);
+            model.AddIntoSelectedCourseListAndCourseTab(windowsProgrammingCourseInfo, (int)Department.ComputerScience3 / 2);
             Assert.AreEqual(1, model.GetSelectedCourseList.Count());
             Assert.AreEqual(windowsProgrammingCourseInfo, model.GetSelectedCourseList[0]);
-            Assert.AreEqual(Tuple.Create(-2, (int)Department.ComputerScience3, 0), model.GetCourseDepartmentBySelectedIndex(0));
+            Assert.AreEqual(Tuple.Create(-2, (int)Department.ComputerScience3 / 2, 0), model.GetCourseDepartmentBySelectedIndex(0));
         }
 
         //AddIntoNotEnabledCourseListAndCourseTabTest
@@ -183,20 +183,20 @@ namespace CourseSystem.Tests
         [TestMethod()]
         public void AddIntoCourseListTest()
         {
-            model.AddIntoCourseList(windowsProgrammingCourseInfo, (int)Department.ComputerScience3);
-            Assert.AreEqual(1, model.GetCourseList((int)Department.ComputerScience3).Count());
-            Assert.AreEqual(windowsProgrammingCourseInfo, model.GetCourseList((int)Department.ComputerScience3)[0]);
-            Assert.AreEqual(Tuple.Create((int)Department.ComputerScience3, (int)Department.ComputerScience3, 0), model.GetCourseDepartmentBySelectedIndex(0));
+            model.AddIntoCourseList(windowsProgrammingCourseInfo, (int)Department.ComputerScience3 / 2);
+            Assert.AreEqual(1, model.GetCourseList((int)Department.ComputerScience3 / 2).Count());
+            Assert.AreEqual(windowsProgrammingCourseInfo, model.GetCourseList((int)Department.ComputerScience3 / 2)[0]);
+            Assert.AreEqual(Tuple.Create((int)Department.ComputerScience3 / 2, (int)Department.ComputerScience3 / 2, 0), model.GetCourseDepartmentBySelectedIndex(0));
         }
 
         //RemoveCourseFromSelectedTabDictionaryTest
         [TestMethod()]
         public void RemoveCourseFromSelectedTabDictionaryTest()
         {
-            model.AddIntoSelectedCourseListAndCourseTab(windowsProgrammingCourseInfo, (int)Department.ComputerScience3);
+            model.AddIntoSelectedCourseListAndCourseTab(windowsProgrammingCourseInfo, (int)Department.ComputerScience3 / 2);
             model.RemoveCourseFromSelectedTabDictionary(0);
-            model.AddIntoSelectedCourseListAndCourseTab(windowsProgrammingCourseInfo, (int)Department.ElectronicEngineering3);
-            Assert.AreEqual(Tuple.Create(-2, (int)Department.ElectronicEngineering3, 1), model.GetCourseDepartmentBySelectedIndex(1));
+            model.AddIntoSelectedCourseListAndCourseTab(windowsProgrammingCourseInfo, (int)Department.ElectronicEngineering3 / 2);
+            Assert.AreEqual(Tuple.Create(-2, (int)Department.ElectronicEngineering3 / 2, 1), model.GetCourseDepartmentBySelectedIndex(1));
         }
 
         //RemoveCourseFromNotEnabledTabDictionaryTest

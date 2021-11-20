@@ -36,11 +36,11 @@ namespace CourseSystem.Tests
         [TestMethod()]
         public void RemoveCourseFromSelectionResultTest()
         {
-            model.AddIntoSelectedCourseListAndCourseTab(windowsProgrammingCourseInfo, (int)Department.ComputerScience3);
+            model.AddIntoSelectedCourseListAndCourseTab(windowsProgrammingCourseInfo, (int)Department.ComputerScience3 / 2);
             courseSelectionResultFormPresentationModel.RemoveCourseFromSelectionResult(0);
             Assert.AreEqual(0, courseSelectionResultFormPresentationModel.GetSelectedCourseList.Count());
-            Assert.AreEqual(windowsProgrammingCourseInfo, model.GetCourseList((int)Department.ComputerScience3)[0]);
-            Assert.AreEqual(Tuple.Create((int)Department.ComputerScience3, (int)Department.ComputerScience3, 0), presentationModel.GetCourseDepartmentBySelectedIndex(0));
+            Assert.AreEqual(windowsProgrammingCourseInfo, model.GetCourseList((int)Department.ComputerScience3 / 2)[0]);
+            Assert.AreEqual(Tuple.Create((int)Department.ComputerScience3 / 2, (int)Department.ComputerScience3 / 2, 0), presentationModel.GetCourseDepartmentBySelectedIndex(0));
         }
 
         //ReloadAllFormTest
