@@ -50,14 +50,6 @@ namespace CourseSystem.Tests
             Assert.AreNotEqual(0, courseSelectingFormPresentationModel.GetCourseList((int)Department.ComputerScience3 / 2).Count);
         }
 
-        //GetClassNameListTest
-        [TestMethod()]
-        public void GetClassNameListTest()
-        {
-            Assert.AreEqual("資工三", courseSelectingFormPresentationModel.GetClassNameList[0]);
-        }
-
-
         //RemoveFromCourseListAndAddInToSelectedTabTest
         [TestMethod()]
         public void RemoveFromCourseListAndAddInToSelectedTabTest()

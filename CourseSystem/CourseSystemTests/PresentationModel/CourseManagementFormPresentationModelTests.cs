@@ -33,6 +33,8 @@ namespace CourseSystem.Tests
             Assert.IsTrue(courseManagementFormPresentationModel.IsAddCourseDataButton);
             Assert.IsFalse(courseManagementFormPresentationModel.IsSaveCourseDataButton);
             Assert.IsTrue(courseManagementFormPresentationModel.IsLoadComputerScienceCourseButton);
+            Assert.IsTrue(courseManagementFormPresentationModel.IsAddClassButton);
+            Assert.IsFalse(courseManagementFormPresentationModel.IsSaveAddClassButton);
         }
 
         //GetCourseInfoBySelectedIndexTest
@@ -96,7 +98,6 @@ namespace CourseSystem.Tests
         {
             courseManagementFormPresentationModel.ClickAddButton();
             Assert.IsFalse(courseManagementFormPresentationModel.IsAddCourseDataButton);
-            Assert.IsFalse(courseManagementFormPresentationModel.IsSaveCourseDataButton);
         }
 
         //ChangeContentEnabledTest

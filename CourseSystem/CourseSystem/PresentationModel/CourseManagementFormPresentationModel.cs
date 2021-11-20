@@ -8,8 +8,8 @@ namespace CourseSystem
         public event PresentationModelChangedEventHandler _presentationModelChanged;
         public delegate void PresentationModelChangedEventHandler();
         PresentationModel _presentationModel;
-        bool _isSaveCourseDataButton = false;
         bool _isAddCourseDataButton = true;
+        bool _isSaveCourseDataButton = false;
         bool _isLoadComputerScienceCourseButton = true;
         bool _isAddClassButton = true;
         bool _isSaveAddClassButton = false;
