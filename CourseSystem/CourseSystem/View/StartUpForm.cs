@@ -63,5 +63,12 @@ namespace CourseSystem
             _startUpFormPresentationModel.ResetCourseManagementFormButton();
             _courseManagementFormButton.Enabled = _startUpFormPresentationModel.IsCourseManagementFormButtonEnabled;
         }
+
+        //ClosingFormStartUpForm
+        private void ClosingFormStartUpForm(object sender, FormClosingEventArgs e)
+        {
+            _courseSelectingForm.Close();
+            _courseManagementForm.Close();
+        }
     }
 }

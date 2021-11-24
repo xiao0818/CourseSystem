@@ -1,12 +1,14 @@
-﻿using OpenQA.Selenium.Appium;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Windows;
 using System;
 using System.Threading;
-using System.Collections.Generic;
-using System.Windows.Forms;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Windows.Automation;
 using System.Windows;
+using System.Collections.Generic;
+using OpenQA.Selenium;
+using System.Windows.Input;
+using System.Windows.Forms;
 
 namespace CourseSystemTests
 {
@@ -164,6 +166,58 @@ namespace CourseSystemTests
                     Assert.AreEqual(rowCount, gridPattern.Current.RowCount);
                 }
             }
+        }
+
+        // get
+        public bool GetEnable(string name)
+        {
+            WindowsElement element = _driver.FindElementByName(name);
+            return element.Enabled;
+        }
+
+        // get
+        public string GetText(string name)
+        {
+            WindowsElement element = _driver.FindElementByAccessibilityId(name);
+            return element.Text;
+        }
+
+        // get
+        public string[] GetDataGridViewRowDataBy(string name, int rowIndex)
+        {
+            var dataGridView = _driver.FindElementByAccessibilityId(name);
+            var rowDatas = dataGridView.FindElementByName($"資料列 {rowIndex}").FindElementsByXPath("//*");
+            string[] data = new string[rowDatas.Count - 1]; 
+            // FindElementsByXPath("//*") 會把 "row" node 也抓出來，因此 i 要從 1 開始以跳過 "row" node
+            for (int i = 1; i < rowDatas.Count; i++)
+            {
+                data[i - 1] += rowDatas[i].Text.Replace("(null)", "");
+            }
+            return data;
+        }
+
+        // get
+        public int GetDataGridViewRowCountBy(string name)
+        {
+            var dataGridView = _driver.FindElementByAccessibilityId(name);
+            Point point = new Point(dataGridView.Location.X, dataGridView.Location.Y);
+            AutomationElement element = AutomationElement.FromPoint(point);
+
+            while (element != null && element.Current.LocalizedControlType.Contains("datagrid") == false)
+            {
+                element = TreeWalker.RawViewWalker.GetParent(element);
+            }
+
+            if (element != null)
+            {
+                GridPattern gridPattern = element.GetCurrentPattern(GridPattern.Pattern) as GridPattern;
+
+                if (gridPattern != null)
+                {
+                    return gridPattern.Current.RowCount;
+                }
+            }
+            return -1;
         }
     }
 }

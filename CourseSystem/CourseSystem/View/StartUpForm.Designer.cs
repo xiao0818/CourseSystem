@@ -86,6 +86,7 @@ namespace CourseSystem
             this.MinimizeBox = false;
             this.Name = "StartUpForm";
             this.Text = "StartUpForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ClosingFormStartUpForm);
             this.ResumeLayout(false);
 
         }

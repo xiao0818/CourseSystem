@@ -99,6 +99,7 @@ namespace CourseSystem
             newCourseList = DeleteDuplicateCourse(newCourseList, departmentIndex, _selectedCourseTabDictionary);
             newCourseList = DeleteDuplicateCourse(newCourseList, departmentIndex, _notEnabledCourseTabDictionary);
             _courseListCollection[departmentIndex] = _courseListCollection[departmentIndex].Union(newCourseList).ToList<CourseInfo>();
+            SortAll();
         }
 
         //DeleteDuplicateCourse
