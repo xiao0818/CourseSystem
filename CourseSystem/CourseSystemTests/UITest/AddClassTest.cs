@@ -23,6 +23,10 @@ namespace CourseSystemTests
             string solutionPath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\\..\\..\\"));
             targetAppPath = Path.Combine(solutionPath, projectName, "bin", "Debug", "CourseSystem.exe");
             _robot = new Robot(targetAppPath, START_UP_FORM);
+
+            _robot.ClickButton("Course Selecting System");
+            _robot.ClickButton("Course Management System");
+            _robot.SwitchTo("CourseManagementForm");
         }
 
         //TearDown
@@ -36,9 +40,6 @@ namespace CourseSystemTests
         [TestMethod]
         public void AddClassTestLoadSuccessfully()
         {
-            _robot.ClickButton("Course Selecting System");
-            _robot.ClickButton("Course Management System");
-            _robot.SwitchTo("CourseManagementForm");
             _robot.ClickTabControl("班級管理");
             _robot.ClickListBox("資工三");
             _robot.AssertText("_classNameTextBox", "資工三");
@@ -48,9 +49,6 @@ namespace CourseSystemTests
         [TestMethod]
         public void AddClassTestAddSuccessfully()
         {
-            _robot.ClickButton("Course Selecting System");
-            _robot.ClickButton("Course Management System");
-            _robot.SwitchTo("CourseManagementForm");
             _robot.ClickTabControl("班級管理");
             _robot.ClickButton("新增班級");
             _robot.TypeTextBox("_classNameTextBox", "電資三");

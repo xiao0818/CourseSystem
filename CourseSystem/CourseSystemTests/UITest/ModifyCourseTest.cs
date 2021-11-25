@@ -23,6 +23,9 @@ namespace CourseSystemTests
             string solutionPath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\\..\\..\\"));
             targetAppPath = Path.Combine(solutionPath, projectName, "bin", "Debug", "CourseSystem.exe");
             _robot = new Robot(targetAppPath, START_UP_FORM);
+
+            _robot.ClickButton("Course Selecting System");
+            _robot.ClickButton("Course Management System");
         }
 
         //TearDown
@@ -36,10 +39,7 @@ namespace CourseSystemTests
         [TestMethod]
         public void ModifyCourseTestForChangeTextContent()
         {
-            _robot.ClickButton("Course Selecting System");
-            _robot.ClickButton("Course Management System");
             _robot.SwitchTo("CourseManagementForm");
-
             _robot.ClickListBox("視窗程式設計");
             _robot.TypeTextBox("_courseNumberTextBox", "123456");
             _robot.AssertEnableById("_saveCourseDataButton", true);
@@ -51,10 +51,7 @@ namespace CourseSystemTests
         [TestMethod]
         public void ModifyCourseTestForChangeClassTime()
         {
-            _robot.ClickButton("Course Selecting System");
-            _robot.ClickButton("Course Management System");
             _robot.SwitchTo("CourseManagementForm");
-
             _robot.ClickListBox("視窗程式設計");
             _robot.ClickDataGridViewCellBy("_courseTimeDataGridView", 6, "四");
             _robot.ClickDataGridViewCellBy("_courseTimeDataGridView", 5, "四");
@@ -67,10 +64,7 @@ namespace CourseSystemTests
         [TestMethod]
         public void ModifyCourseTestForSavingWithoutSelected()
         {
-            _robot.ClickButton("Course Selecting System");
-            _robot.ClickButton("Course Management System");
             _robot.SwitchTo("CourseSelectingForm");
-
             _robot.ClickButton("查看選課結果");
             string[] windowsProgramming = _robot.GetDataGridViewRowDataBy("_courseDataGridView", 8);
             string[] bigDataAnalize = _robot.GetDataGridViewRowDataBy("_courseDataGridView", 9);
@@ -79,30 +73,9 @@ namespace CourseSystemTests
             string[] computerNetwork = _robot.GetDataGridViewRowDataBy("_courseDataGridView", 1);
             int electronicEngineeringCount = _robot.GetDataGridViewRowCountBy("_courseDataGridView");
             _robot.SwitchTo("CourseManagementForm");
-            _robot.Sleep(5);
 
-            _robot.ClickListBox("視窗程式設計");
-            _robot.TypeTextBox("_courseNumberTextBox", "270915");
-            _robot.TypeTextBox("_courseNameTextBox", "物件導向分析與設計");
-            _robot.TypeTextBox("_courseCreditTextBox", "2");
-            _robot.ClickGroupBox("時數(*)", "2");
-            _robot.ClickGroupBox("班級(*)", "電子三甲");
-            _robot.ClickDataGridViewCellBy("_courseTimeDataGridView", 2, "四");
-            _robot.ClickDataGridViewCellBy("_courseTimeDataGridView", 3, "四");
-            _robot.ClickDataGridViewCellBy("_courseTimeDataGridView", 6, "四");
-            _robot.ClickDataGridViewCellBy("_courseTimeDataGridView", 2, "一");
-            _robot.ClickDataGridViewCellBy("_courseTimeDataGridView", 2, "二");
-            _robot.ClickButton("儲存");
-            _robot.CloseMessageBox();
-            windowsProgramming[1] = "270915";
-            windowsProgramming[2] = "物件導向分析與設計";
-            windowsProgramming[4] = "2";
-            windowsProgramming[5] = "2";
-            windowsProgramming[9] = "3";
-            windowsProgramming[10] = "3";
-            windowsProgramming[12] = "";
+            ModifyWindowsProgrammingCourseData(windowsProgramming);
 
-            _robot.AssertTextByName("物件導向分析與設計", "物件導向分析與設計");
             _robot.SwitchTo("CourseSelectingForm");
             _robot.ClickTabControl("資工三");
             _robot.AssertDataGridViewRowDataBy("_courseDataGridView", 8, bigDataAnalize);
@@ -118,10 +91,7 @@ namespace CourseSystemTests
         [TestMethod]
         public void ModifyCourseTestForSavingWithSelected()
         {
-            _robot.ClickButton("Course Selecting System");
-            _robot.ClickButton("Course Management System");
             _robot.SwitchTo("CourseSelectingForm");
-
             _robot.ClickButton("查看選課結果");
             string[] windowsProgramming = _robot.GetDataGridViewRowDataBy("_courseDataGridView", 8);
             _robot.ClickDataGridViewCellBy("_courseDataGridView", 8, "選");
@@ -130,7 +100,17 @@ namespace CourseSystemTests
             _robot.SwitchTo("CourseManagementForm");
 
             _robot.RollDown(8);
-            _robot.Sleep(5);
+            ModifyWindowsProgrammingCourseData(windowsProgramming);
+
+            _robot.SwitchTo("CourseSelectionResultForm");
+            windowsProgramming[0] = "退選";
+            _robot.AssertDataGridViewRowDataBy("_courseResultDataGridView", 0, windowsProgramming);
+            _robot.AssertDataGridViewRowCountBy("_courseResultDataGridView", 1);
+        }
+
+        //Modify
+        private string[] ModifyWindowsProgrammingCourseData(string[] windowsProgramming)
+        {
             _robot.ClickListBox("視窗程式設計");
             _robot.TypeTextBox("_courseNumberTextBox", "270915");
             _robot.TypeTextBox("_courseNameTextBox", "物件導向分析與設計");
@@ -151,12 +131,8 @@ namespace CourseSystemTests
             windowsProgramming[9] = "3";
             windowsProgramming[10] = "3";
             windowsProgramming[12] = "";
-
             _robot.AssertTextByName("物件導向分析與設計", "物件導向分析與設計");
-            _robot.SwitchTo("CourseSelectionResultForm");
-            windowsProgramming[0] = "退選";
-            _robot.AssertDataGridViewRowDataBy("_courseResultDataGridView", 0, windowsProgramming);
-            _robot.AssertDataGridViewRowCountBy("_courseResultDataGridView", 1);
+            return windowsProgramming;
         }
     }
 }

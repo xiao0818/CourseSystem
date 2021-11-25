@@ -197,10 +197,10 @@ namespace CourseSystemTests
             return -1;
         }
 
-        // test
-        public void AssertMessageBoxText(string className, string text)
+        // get
+        public string GetMessageBoxText(string className)
         {
-            Assert.AreEqual(text, _driver.FindElementByClassName(className).Text);
+            return _driver.FindElementByClassName(className).Text;
         }
 
         // test
