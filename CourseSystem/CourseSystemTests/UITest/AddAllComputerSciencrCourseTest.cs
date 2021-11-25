@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace CourseSystemTests
 {
     [TestClass()]
-    public class AddCourseTest
+    public class AddAllComputerScienceCourseTest
     {
         Robot _robot;
         private string targetAppPath;
@@ -32,31 +32,28 @@ namespace CourseSystemTests
             _robot.CleanUp();
         }
 
-        //AddCourseTestSuccessfully
+        //AddAllComputerScienceCourseTestSuccessfully
         [TestMethod]
-        public void AddCourseTestSuccessfully()
+        public void AddAllComputerScienceCourseTestSuccessfully()
         {
             _robot.ClickButton("Course Selecting System");
             _robot.ClickButton("Course Management System");
             _robot.SwitchTo("CourseManagementForm");
-            
-            _robot.ClickButton("新增課程");
-            _robot.AssertText("_saveCourseDataButton", "新增");
-            _robot.AssertText("_courseDataGroupBox", "新增課程");
-            _robot.AssertEnableById("_saveCourseDataButton", false);
-            _robot.AssertEnableById("_addCourseDataButton", false);
 
-            _robot.TypeTextBox("_courseNumberTextBox", "123456");
-            _robot.TypeTextBox("_courseNameTextBox", "叮叮咚咚");
-            _robot.TypeTextBox("_courseStageTextBox", "1");
-            _robot.TypeTextBox("_courseCreditTextBox", "1.0");
-            _robot.TypeTextBox("_courseTeacherTextBox", "叮咚");
-            _robot.ClickDataGridViewCellBy("_courseTimeDataGridView", 4, "六");
-            _robot.AssertEnableById("_saveCourseDataButton", true);
-            _robot.ClickButton("新增");
-            _robot.CloseMessageBox();
+            _robot.ClickButton("匯入資工系\n全部課程");
+            _robot.Sleep(10);
 
-            _robot.AssertTextByName("叮叮咚咚", "叮叮咚咚");
+            _robot.SwitchTo("CourseSelectingForm");
+            _robot.ClickTabControl("資工三");
+            _robot.AssertDataGridViewRowCountNotEmpty("_courseDataGridView");
+            _robot.ClickTabControl("資工一");
+            _robot.AssertDataGridViewRowCountNotEmpty("_courseDataGridView");
+            _robot.ClickTabControl("資工二");
+            _robot.AssertDataGridViewRowCountNotEmpty("_courseDataGridView");
+            _robot.ClickTabControl("資工四");
+            _robot.AssertDataGridViewRowCountNotEmpty("_courseDataGridView");
+            _robot.ClickTabControl("資工所");
+            _robot.AssertDataGridViewRowCountNotEmpty("_courseDataGridView");
         }
     }
 }

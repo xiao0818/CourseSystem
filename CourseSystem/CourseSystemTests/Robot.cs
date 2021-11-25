@@ -51,11 +51,11 @@ namespace CourseSystemTests
         }
 
         // test
-        public void SwitchTo(string formName)
+        public void SwitchTo(string formId)
         {
-            if (_windowHandles.ContainsKey(formName))
+            if (_windowHandles.ContainsKey(formId))
             {
-                _driver.SwitchTo().Window(_windowHandles[formName]);
+                _driver.SwitchTo().Window(_windowHandles[formId]);
             }
             else
             {
@@ -64,8 +64,8 @@ namespace CourseSystemTests
                     _driver.SwitchTo().Window(windowHandle);
                     try
                     {
-                        _driver.FindElementByAccessibilityId(formName);
-                        _windowHandles.Add(formName, windowHandle);
+                        _driver.FindElementByAccessibilityId(formId);
+                        _windowHandles.Add(formId, windowHandle);
                         return;
                     }
                     catch
@@ -224,6 +224,50 @@ namespace CourseSystemTests
         public void AssertMessageBoxText(string className, string text)
         {
             Assert.AreEqual(text, _driver.FindElementByClassName(className).Text);
+        }
+
+        // test
+        public void AssertDataGridViewRowCountNotEmpty(string id)
+        {
+            var dataGridView = _driver.FindElementByAccessibilityId(id);
+            Point point = new Point(dataGridView.Location.X, dataGridView.Location.Y);
+            AutomationElement element = AutomationElement.FromPoint(point);
+
+            while (element != null && element.Current.LocalizedControlType.Contains("datagrid") == false)
+            {
+                element = TreeWalker.RawViewWalker.GetParent(element);
+            }
+
+            if (element != null)
+            {
+                GridPattern gridPattern = element.GetCurrentPattern(GridPattern.Pattern) as GridPattern;
+
+                if (gridPattern != null)
+                {
+                    Assert.AreNotEqual(0, gridPattern.Current.RowCount);
+                }
+            }
+        }
+
+        // test
+        public void AssertEnableById(string id, bool state)
+        {
+            WindowsElement element = _driver.FindElementByAccessibilityId(id);
+            Assert.AreEqual(state, element.Enabled);
+        }
+
+        //text
+        public void TypeTextBox(string id, string text)
+        {
+            _driver.FindElementByAccessibilityId(id).Clear();
+            _driver.FindElementByAccessibilityId(id).SendKeys(text);
+        }
+
+        // test
+        public void AssertTextByName(string name, string text)
+        {
+            WindowsElement element = _driver.FindElementByName(name);
+            Assert.AreEqual(text, element.Text);
         }
     }
 }
