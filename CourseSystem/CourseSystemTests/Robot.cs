@@ -269,5 +269,27 @@ namespace CourseSystemTests
             WindowsElement element = _driver.FindElementByName(name);
             Assert.AreEqual(text, element.Text);
         }
+
+        // test
+        public void ClickListBox(string name)
+        {
+            _driver.FindElementByName(name).Click();
+        }
+
+        // test
+        public void ClickGroupBox(string name, string targetName)
+        {
+            _driver.FindElementByName(name).Click();
+            _driver.FindElementByName(targetName).Click();
+        }
+
+        //test
+        public void RollDown(int times)
+        {
+            for (int i = 0; i < times; i++)
+            {
+                _driver.FindElementByName("下移一行").Click();
+            }
+        }
     }
 }
