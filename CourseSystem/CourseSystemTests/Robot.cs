@@ -20,6 +20,20 @@ namespace CourseSystemTests
         private const string CONTROL_NOT_FOUND_EXCEPTION = "The specific control is not found!!";
         private const string WIN_APP_DRIVER_URI = "http://127.0.0.1:4723";
 
+        const string APPLICATION = "app";
+        const string DEVICE_NAME = "deviceName";
+        const string WINDOWS = "WindowsPC";
+        const string CONTROL_TYPE_TAB_ITEM = "ControlType.TabItem";
+        const string SEND_WAIT_KEYS = "%{F4}";
+        const string ENTER = "確定";
+        const string SPACE = " ";
+        const string DATA_ROW = "資料列";
+        const string DATA_GRID = "datagrid";
+        const string PATH_SYMBOL = "//*";
+        const string NULL = "(null)";
+        const string NEXT_ROW = "下移一行";
+        const int WAITING_SECONDS = 5;
+
         // constructor
         public Robot(string targetAppPath, string root)
         {
@@ -31,14 +45,15 @@ namespace CourseSystemTests
         {
             _root = root;
             var options = new AppiumOptions();
-            options.AddAdditionalCapability("app", targetAppPath);
-            options.AddAdditionalCapability("deviceName", "WindowsPC");
-
+            options.AddAdditionalCapability(APPLICATION, targetAppPath);
+            options.AddAdditionalCapability(DEVICE_NAME, WINDOWS);
             _driver = new WindowsDriver<WindowsElement>(new Uri(WIN_APP_DRIVER_URI), options);
-            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(WAITING_SECONDS);
             _windowHandles = new Dictionary<string, string>
             {
-                { _root, _driver.CurrentWindowHandle }
+                {
+                    _root, _driver.CurrentWindowHandle
+                }
             };
         }
 
@@ -54,25 +69,10 @@ namespace CourseSystemTests
         public void SwitchTo(string formId)
         {
             if (_windowHandles.ContainsKey(formId))
-            {
                 _driver.SwitchTo().Window(_windowHandles[formId]);
-            }
             else
             {
-                foreach (var windowHandle in _driver.WindowHandles)
-                {
-                    _driver.SwitchTo().Window(windowHandle);
-                    try
-                    {
-                        _driver.FindElementByAccessibilityId(formId);
-                        _windowHandles.Add(formId, windowHandle);
-                        return;
-                    }
-                    catch
-                    {
-
-                    }
-                }
+                SwitchWithNotContain(formId);
             }
         }
 
@@ -94,7 +94,7 @@ namespace CourseSystemTests
             var elements = _driver.FindElementsByName(name);
             foreach (var element in elements)
             {
-                if ("ControlType.TabItem" == element.TagName)
+                if (CONTROL_TYPE_TAB_ITEM == element.TagName)
                     element.Click();
             }
         }
@@ -102,20 +102,20 @@ namespace CourseSystemTests
         // test
         public void CloseWindow()
         {
-            SendKeys.SendWait("%{F4}");
+            SendKeys.SendWait(SEND_WAIT_KEYS);
         }
 
         // test
         public void CloseMessageBox()
         {
-            _driver.FindElementByName("確定").Click();
+            _driver.FindElementByName(ENTER).Click();
         }
 
         // test
         public void ClickDataGridViewCellBy(string id, int rowIndex, string columnName)
         {
             var dataGridView = _driver.FindElementByAccessibilityId(id);
-            _driver.FindElementByName($"{columnName} 資料列 {rowIndex}").Click();
+            _driver.FindElementByName(columnName + SPACE + DATA_ROW + SPACE + rowIndex).Click();
         }
 
         // test
@@ -136,13 +136,10 @@ namespace CourseSystemTests
         public void AssertDataGridViewRowDataBy(string id, int rowIndex, string[] data)
         {
             var dataGridView = _driver.FindElementByAccessibilityId(id);
-            var rowDatas = dataGridView.FindElementByName($"資料列 {rowIndex}").FindElementsByXPath("//*");
-
+            var rowDatas = dataGridView.FindElementByName(DATA_ROW + SPACE + rowIndex).FindElementsByXPath(PATH_SYMBOL);
             // FindElementsByXPath("//*") 會把 "row" node 也抓出來，因此 i 要從 1 開始以跳過 "row" node
             for (int i = 1; i < rowDatas.Count; i++)
-            {
-                Assert.AreEqual(data[i - 1], rowDatas[i].Text.Replace("(null)", ""));
-            }
+                Assert.AreEqual(data[i - 1], rowDatas[i].Text.Replace(NULL, ""));
         }
 
         // test
@@ -151,20 +148,13 @@ namespace CourseSystemTests
             var dataGridView = _driver.FindElementByAccessibilityId(id);
             Point point = new Point(dataGridView.Location.X, dataGridView.Location.Y);
             AutomationElement element = AutomationElement.FromPoint(point);
-
-            while (element != null && element.Current.LocalizedControlType.Contains("datagrid") == false)
-            {
+            while (element != null && element.Current.LocalizedControlType.Contains(DATA_GRID) == false)
                 element = TreeWalker.RawViewWalker.GetParent(element);
-            }
-
             if (element != null)
             {
                 GridPattern gridPattern = element.GetCurrentPattern(GridPattern.Pattern) as GridPattern;
-
                 if (gridPattern != null)
-                {
                     Assert.AreEqual(rowCount, gridPattern.Current.RowCount);
-                }
             }
         }
 
@@ -186,14 +176,8 @@ namespace CourseSystemTests
         public string[] GetDataGridViewRowDataBy(string id, int rowIndex)
         {
             var dataGridView = _driver.FindElementByAccessibilityId(id);
-            var rowDatas = dataGridView.FindElementByName($"資料列 {rowIndex}").FindElementsByXPath("//*");
-            string[] data = new string[rowDatas.Count - 1]; 
-            // FindElementsByXPath("//*") 會把 "row" node 也抓出來，因此 i 要從 1 開始以跳過 "row" node
-            for (int i = 1; i < rowDatas.Count; i++)
-            {
-                data[i - 1] += rowDatas[i].Text.Replace("(null)", "");
-            }
-            return data;
+            var rowDatas = dataGridView.FindElementByName(DATA_ROW + SPACE + rowIndex).FindElementsByXPath(PATH_SYMBOL);
+            return TakeOutDataGridViewRowData(rowDatas);
         }
 
         // get
@@ -202,20 +186,13 @@ namespace CourseSystemTests
             var dataGridView = _driver.FindElementByAccessibilityId(id);
             Point point = new Point(dataGridView.Location.X, dataGridView.Location.Y);
             AutomationElement element = AutomationElement.FromPoint(point);
-
-            while (element != null && element.Current.LocalizedControlType.Contains("datagrid") == false)
-            {
+            while (element != null && element.Current.LocalizedControlType.Contains(DATA_GRID) == false)
                 element = TreeWalker.RawViewWalker.GetParent(element);
-            }
-
             if (element != null)
             {
                 GridPattern gridPattern = element.GetCurrentPattern(GridPattern.Pattern) as GridPattern;
-
                 if (gridPattern != null)
-                {
                     return gridPattern.Current.RowCount;
-                }
             }
             return -1;
         }
@@ -232,20 +209,13 @@ namespace CourseSystemTests
             var dataGridView = _driver.FindElementByAccessibilityId(id);
             Point point = new Point(dataGridView.Location.X, dataGridView.Location.Y);
             AutomationElement element = AutomationElement.FromPoint(point);
-
-            while (element != null && element.Current.LocalizedControlType.Contains("datagrid") == false)
-            {
+            while (element != null && element.Current.LocalizedControlType.Contains(DATA_GRID) == false)
                 element = TreeWalker.RawViewWalker.GetParent(element);
-            }
-
             if (element != null)
             {
                 GridPattern gridPattern = element.GetCurrentPattern(GridPattern.Pattern) as GridPattern;
-
                 if (gridPattern != null)
-                {
                     Assert.AreNotEqual(0, gridPattern.Current.RowCount);
-                }
             }
         }
 
@@ -287,8 +257,34 @@ namespace CourseSystemTests
         public void RollDown(int times)
         {
             for (int i = 0; i < times; i++)
+                _driver.FindElementByName(NEXT_ROW).Click();
+        }
+
+        //Take
+        private string[] TakeOutDataGridViewRowData(System.Collections.ObjectModel.ReadOnlyCollection<AppiumWebElement> rowDatas)
+        {
+            string[] data = new string[rowDatas.Count - 1];
+            // FindElementsByXPath("//*") 會把 "row" node 也抓出來，因此 i 要從 1 開始以跳過 "row" node
+            for (int i = 1; i < rowDatas.Count; i++)
+                data[i - 1] += rowDatas[i].Text.Replace(NULL, "");
+            return data;
+        }
+
+        // test
+        private void SwitchWithNotContain(string formId)
+        {
+            foreach (var windowHandle in _driver.WindowHandles)
             {
-                _driver.FindElementByName("下移一行").Click();
+                _driver.SwitchTo().Window(windowHandle);
+                try
+                {
+                    _driver.FindElementByAccessibilityId(formId);
+                    _windowHandles.Add(formId, windowHandle);
+                    return;
+                }
+                catch
+                {
+                }
             }
         }
     }
