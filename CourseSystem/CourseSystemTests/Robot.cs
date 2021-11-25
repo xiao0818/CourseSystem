@@ -112,9 +112,9 @@ namespace CourseSystemTests
         }
 
         // test
-        public void ClickDataGridViewCellBy(string name, int rowIndex, string columnName)
+        public void ClickDataGridViewCellBy(string id, int rowIndex, string columnName)
         {
-            var dataGridView = _driver.FindElementByAccessibilityId(name);
+            var dataGridView = _driver.FindElementByAccessibilityId(id);
             _driver.FindElementByName($"{columnName} 資料列 {rowIndex}").Click();
         }
 
@@ -126,16 +126,16 @@ namespace CourseSystemTests
         }
 
         // test
-        public void AssertText(string name, string text)
+        public void AssertText(string id, string text)
         {
-            WindowsElement element = _driver.FindElementByAccessibilityId(name);
+            WindowsElement element = _driver.FindElementByAccessibilityId(id);
             Assert.AreEqual(text, element.Text);
         }
 
         // test
-        public void AssertDataGridViewRowDataBy(string name, int rowIndex, string[] data)
+        public void AssertDataGridViewRowDataBy(string id, int rowIndex, string[] data)
         {
-            var dataGridView = _driver.FindElementByAccessibilityId(name);
+            var dataGridView = _driver.FindElementByAccessibilityId(id);
             var rowDatas = dataGridView.FindElementByName($"資料列 {rowIndex}").FindElementsByXPath("//*");
 
             // FindElementsByXPath("//*") 會把 "row" node 也抓出來，因此 i 要從 1 開始以跳過 "row" node
@@ -146,9 +146,9 @@ namespace CourseSystemTests
         }
 
         // test
-        public void AssertDataGridViewRowCountBy(string name, int rowCount)
+        public void AssertDataGridViewRowCountBy(string id, int rowCount)
         {
-            var dataGridView = _driver.FindElementByAccessibilityId(name);
+            var dataGridView = _driver.FindElementByAccessibilityId(id);
             Point point = new Point(dataGridView.Location.X, dataGridView.Location.Y);
             AutomationElement element = AutomationElement.FromPoint(point);
 
@@ -176,16 +176,16 @@ namespace CourseSystemTests
         }
 
         // get
-        public string GetText(string name)
+        public string GetText(string id)
         {
-            WindowsElement element = _driver.FindElementByAccessibilityId(name);
+            WindowsElement element = _driver.FindElementByAccessibilityId(id);
             return element.Text;
         }
 
         // get
-        public string[] GetDataGridViewRowDataBy(string name, int rowIndex)
+        public string[] GetDataGridViewRowDataBy(string id, int rowIndex)
         {
-            var dataGridView = _driver.FindElementByAccessibilityId(name);
+            var dataGridView = _driver.FindElementByAccessibilityId(id);
             var rowDatas = dataGridView.FindElementByName($"資料列 {rowIndex}").FindElementsByXPath("//*");
             string[] data = new string[rowDatas.Count - 1]; 
             // FindElementsByXPath("//*") 會把 "row" node 也抓出來，因此 i 要從 1 開始以跳過 "row" node
@@ -197,9 +197,9 @@ namespace CourseSystemTests
         }
 
         // get
-        public int GetDataGridViewRowCountBy(string name)
+        public int GetDataGridViewRowCountBy(string id)
         {
-            var dataGridView = _driver.FindElementByAccessibilityId(name);
+            var dataGridView = _driver.FindElementByAccessibilityId(id);
             Point point = new Point(dataGridView.Location.X, dataGridView.Location.Y);
             AutomationElement element = AutomationElement.FromPoint(point);
 
@@ -218,6 +218,12 @@ namespace CourseSystemTests
                 }
             }
             return -1;
+        }
+
+        // test
+        public void AssertMessageBoxText(string className, string text)
+        {
+            Assert.AreEqual(text, _driver.FindElementByClassName(className).Text);
         }
     }
 }
